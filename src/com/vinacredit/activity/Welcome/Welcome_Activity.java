@@ -15,6 +15,8 @@ import android.widget.TextView;
 public class Welcome_Activity extends Activity {
 
 	private Button btnSignIn;
+	private Button btnEnglish;
+	private Button btnVietnam;
 	private TextView textView1, textView2;
 	private ImageView imageView1;
     @Override
@@ -27,6 +29,9 @@ public class Welcome_Activity extends Activity {
 	private void initialize() {
 		// TODO Auto-generated method stub
 		btnSignIn = (Button)findViewById(R.id.btnSignIn);
+		
+		btnEnglish = (Button)findViewById(R.id.btnLanguageEnglish);
+		btnVietnam = (Button)findViewById(R.id.btnLanguageVietnam);
 		textView1 = (TextView)findViewById(R.id.textView1);
 		textView2 = (TextView)findViewById(R.id.textView2);
 		imageView1 = (ImageView)findViewById(R.id.imageView1);
@@ -38,6 +43,22 @@ public class Welcome_Activity extends Activity {
 				Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
 				startActivity(intent);
 			}
+		});
+		btnEnglish.setOnClickListener(new View.OnClickListener() {
+		    
+		    @Override
+		    public void onClick(View v) {
+			// TODO Auto-generated method stub
+			
+		    }
+		});
+		btnVietnam.setOnClickListener(new View.OnClickListener() {
+		    
+		    @Override
+		    public void onClick(View v) {
+			// TODO Auto-generated method stub
+			
+		    }
 		});
 	}
 
