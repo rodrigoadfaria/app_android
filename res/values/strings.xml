@@ -1,0 +1,36 @@
+<resources>
+
+    <string name="app_name">Vinacredit</string>
+        
+    <!-- string content Description ImageView -->
+    <string name="imgView">ImageView</string>
+    
+    <!-- string of Welcome page -->
+    <string name="txtVina">Welcome to Vinacredit</string>
+    <string name="txtLogo">Free credit card reader Take your first payment today Nightly deposits to your bank</string>
+    <string name="btnSignIn">Sign In</string>
+    
+    <!-- string of Sign In page -->
+    <string name="btnWrongPass">Forgot Password?</string>
+    <string name="hintUsername">Username</string>
+    <string name="hintPassword">Password</string>
+
+    <!-- string of Information Account page -->
+    <string name="txtTitleBarInfor">Information Account</string>
+    <string name="btnBack">Back</string>
+    <string name="txtFirstname">First name</string>
+    <string name="txtLastname">Last name</string>
+    <string name="txtCompany">Company name</string>
+    <string name="txtAddress">Address</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtOldPass">Old pass</string>
+    <string name="txtNewPass">New pass</string>
+    <string name="txtConfirmPass">Confirm pass</string>
+    <string name="btnContinue">Continue</string>
+
+    <!-- string of Account page -->
+    <string name="btnSignOut">Sign Out</string>
+    <string name="txtUsername">Username</string>
+    <string name="txtTitle">Item</string>
+    <string name="txtSubtitle">50%</string>
+</resources>
