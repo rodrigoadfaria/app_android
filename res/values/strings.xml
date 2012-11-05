@@ -50,4 +50,22 @@
     
     <!-- string of Support page -->
     <string name="txtTitleBarSupport">Support</string>
+    <string name="btnVinacredit">Vinacredit</string>
+    <string name="btnHotline"># Hotline</string>
+    <string name="btnInstruction">Instruction</string>
+    
+    <!-- string of Tax page -->
+    <string name="txtTitleBarTax">Tax</string>
+    <string name="txtAddSaleTax">Add Sale Tax</string>
+    <string name="txtTaxRate">Tax Rate</string>
+    <string name="txtTax">0 %</string>
+    <string name="txtTaxName">Add a percentage to you payments to account for state taxes.</string>
+    
+    <!-- string of Charge page -->
+    <string name="txtTitleBarCharge">Charge</string>
+    <string name="txtPay">0</string>
+    <string name="txtChange">0</string>
+    <string name="txtCash">Cash Payment</string>
+    <string name="txtSumPrice">0</string>
+    <string name="btnTenderCash">Tender Cash</string>
 </resources>

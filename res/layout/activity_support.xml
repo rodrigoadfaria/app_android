@@ -30,9 +30,27 @@
     
     <Button 
         android:id="@+id/btnVinacredit"
-        android:layout_width="wrap_content"
+        android:text="@string/btnVinacredit"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/relativelayout_title_bar"
-        />
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+    <Button 
+        android:id="@+id/btnHotline"
+        android:text="@string/btnHotline"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnVinacredit"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+    <Button 
+        android:id="@+id/btnInstruction"
+        android:text="@string/btnInstruction"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnHotline"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

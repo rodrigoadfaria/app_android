@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout 
+        android:id="@+id/relativelayout_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/titlebar"
+        android:layout_marginBottom="4dip">
+        
+        <Button 
+            android:id="@+id/btnBack"
+            android:text="@string/btnBack"
+            android:textColor="@color/white"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_back_pressed"/>
+        
+        <TextView 
+            android:id="@+id/txtTitleBar"
+            android:text="@string/txtTitleBarCharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <TextView 
+        android:id="@+id/txtCash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtCash"
+        android:layout_below="@id/relativelayout_title_bar"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"/>
+    <TextView 
+        android:id="@+id/txtSumPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtSumPrice"
+        android:layout_below="@id/txtCash"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+    
+    <ImageView 
+        android:id="@+id/imgMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtSumPrice"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/money"
+        android:contentDescription="@string/imgView"/>
+    <TextView 
+        android:id="@+id/txtPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtSumPrice"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/imgMoney"
+        android:layout_alignBaseline="@id/imgMoney"
+        android:layout_alignParentRight="true"
+        android:height="32dp"
+        android:textSize="32sp"
+        android:text="@string/txtPay"/>
+    
+    <ImageView 
+        android:id="@+id/imgChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgMoney"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/change"
+        android:contentDescription="@string/imgView"
+        android:layout_marginTop="10dp"/>
+    <TextView 
+        android:id="@+id/txtChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtPay"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/imgChange"
+        android:layout_alignBaseline="@id/imgChange"
+        android:layout_alignParentRight="true"
+        android:height="32dp"
+        android:textSize="32sp"
+        android:text="@string/txtChange"/>
+    
+    <Button 
+        android:id="@+id/btnTenderCash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtChange"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btnTenderCash"/>
+    
+    
+    
+    <!-- Add Key Pad -->
+    <!-- 000 , 0 , <- -->
+
+    <ImageButton
+        android:id="@+id/btn1"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="1.5dp"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_000" 
+        android:contentDescription="@string/imgView"/>
+	<ImageButton
+        android:id="@+id/btn2"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/btn1"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_0" 
+        android:contentDescription="@string/imgView"/>
+
+    <ImageButton
+        android:id="@+id/btn3"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/btn2"
+        android:onClick="clearClick"
+        android:src="@drawable/navigation_clear" 
+        android:contentDescription="@string/imgView"/>
+    <!-- 7 , 8 , 9 -->
+
+    <ImageButton
+        android:id="@+id/btn4"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn1"
+        android:layout_marginLeft="1.5dp"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_7" 
+        android:contentDescription="@string/imgView"/>
+
+    <ImageButton
+        android:id="@+id/btn5"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn2"
+        android:layout_toRightOf="@id/btn4"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_8" 
+        android:contentDescription="@string/imgView"/>
+    
+    <ImageButton
+        android:id="@+id/btn6"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/btn5"
+        android:layout_alignBottom="@+id/btn5"
+        android:layout_alignLeft="@+id/btn3"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_9" 
+        android:contentDescription="@string/imgView"/>
+    <!-- 4 , 5 , 6 -->
+
+    <ImageButton
+        android:id="@+id/btn7"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn4"
+        android:layout_marginLeft="1.5dp"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_4"
+        android:contentDescription="@string/imgView"/>
+
+    <ImageButton
+        android:id="@+id/btn8"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn5"
+        android:layout_toRightOf="@id/btn4"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_5"
+        android:contentDescription="@string/imgView"/>
+    
+    <ImageButton
+        android:id="@+id/btn9"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/btn11"
+        android:layout_toRightOf="@+id/btn8"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_6" 
+        android:contentDescription="@string/imgView"/>
+    <!-- 1 , 2 , 3 -->
+
+    <ImageButton
+        android:id="@+id/btn10"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn7"
+        android:layout_marginLeft="1.5dp"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_1" 
+        android:contentDescription="@string/imgView"/>
+
+    <ImageButton
+        android:id="@+id/btn11"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn8"
+        android:layout_toRightOf="@id/btn7"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_2" 
+        android:contentDescription="@string/imgView"/>
+    
+    <ImageButton
+        android:id="@+id/btn12"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@+id/btn8"
+        android:layout_toRightOf="@+id/btn8"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_3"
+        android:contentDescription="@string/imgView"/>
+
+</RelativeLayout>
