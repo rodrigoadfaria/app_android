@@ -35,8 +35,16 @@
     <string name="btnContinue">Continue</string>
 
     <!-- string of Account page -->
+    <string name="txtTitleBarAccount">Account</string>
     <string name="btnSignOut">Sign Out</string>
     <string name="txtUsername">Username</string>
     <string name="txtTitle">Item</string>
     <string name="txtSubtitle">50%</string>
+    
+    <!-- string of Sales History page -->
+    <string name="btnAccount">Account</string>
+    <string name="txtTitleBarSalesHistory">Sales History</string>
+    
+    <!-- string of Support page -->
+    <string name="txtTitleBarSupport">Support</string>
 </resources>
