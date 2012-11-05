@@ -25,17 +25,21 @@ public final class R {
         public static final int button_back_selected=0x7f020006;
         public static final int chomsao=0x7f020007;
         public static final int customshape=0x7f020008;
-        public static final int help_support=0x7f020009;
-        public static final int ic_action_search=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int image_bg=0x7f02000c;
-        public static final int sales_history=0x7f02000d;
-        public static final int tax=0x7f02000e;
-        public static final int titlebar=0x7f02000f;
+        public static final int english_flag=0x7f020009;
+        public static final int help_support=0x7f02000a;
+        public static final int ic_action_search=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int image_bg=0x7f02000d;
+        public static final int sales_history=0x7f02000e;
+        public static final int tax=0x7f02000f;
+        public static final int titlebar=0x7f020010;
+        public static final int vietnam_flag=0x7f020011;
     }
     public static final class id {
         public static final int btnBack=0x7f070001;
         public static final int btnContinue=0x7f070019;
+        public static final int btnLanguageEnglish=0x7f070021;
+        public static final int btnLanguageVietnam=0x7f070022;
         public static final int btnSignIn=0x7f07001c;
         public static final int btnSignOut=0x7f070003;
         public static final int btnWrongPass=0x7f07001d;
@@ -50,7 +54,7 @@ public final class R {
         public static final int edtPassword=0x7f07001b;
         public static final int edtUsername=0x7f07001a;
         public static final int imageView1=0x7f07001e;
-        public static final int imgList=0x7f070022;
+        public static final int imgList=0x7f070024;
         public static final int imgUser=0x7f070005;
         public static final int listView1=0x7f070008;
         public static final int relative=0x7f070004;
@@ -58,7 +62,7 @@ public final class R {
         public static final int relativelayout_title_bar=0x7f070000;
         public static final int textView1=0x7f07001f;
         public static final int textView2=0x7f070020;
-        public static final int thumbnail=0x7f070021;
+        public static final int thumbnail=0x7f070023;
         public static final int txtAddress=0x7f070010;
         public static final int txtCompany=0x7f07000e;
         public static final int txtConfirmPass=0x7f070017;
@@ -67,8 +71,8 @@ public final class R {
         public static final int txtLastname=0x7f07000c;
         public static final int txtNewPass=0x7f070015;
         public static final int txtOldPass=0x7f070013;
-        public static final int txtSubtitle=0x7f070024;
-        public static final int txtTitle=0x7f070023;
+        public static final int txtSubtitle=0x7f070026;
+        public static final int txtTitle=0x7f070025;
         public static final int txtTitleBar=0x7f070002;
         public static final int txtUsername=0x7f070006;
     }
@@ -81,35 +85,37 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int btnBack=0x7f050009;
-        public static final int btnContinue=0x7f050012;
+        public static final int btnBack=0x7f05000b;
+        public static final int btnContinue=0x7f050014;
+        public static final int btnLanguageEnglish=0x7f050005;
+        public static final int btnLanguageVietnam=0x7f050006;
         public static final int btnSignIn=0x7f050004;
         /**  string of Account page 
          */
-        public static final int btnSignOut=0x7f050013;
+        public static final int btnSignOut=0x7f050015;
         /**  string of Sign In page 
          */
-        public static final int btnWrongPass=0x7f050005;
-        public static final int hintPassword=0x7f050007;
-        public static final int hintUsername=0x7f050006;
+        public static final int btnWrongPass=0x7f050007;
+        public static final int hintPassword=0x7f050009;
+        public static final int hintUsername=0x7f050008;
         /**  string content Description ImageView 
          */
         public static final int imgView=0x7f050001;
-        public static final int txtAddress=0x7f05000d;
-        public static final int txtCompany=0x7f05000c;
-        public static final int txtConfirmPass=0x7f050011;
-        public static final int txtEmail=0x7f05000e;
-        public static final int txtFirstname=0x7f05000a;
-        public static final int txtLastname=0x7f05000b;
+        public static final int txtAddress=0x7f05000f;
+        public static final int txtCompany=0x7f05000e;
+        public static final int txtConfirmPass=0x7f050013;
+        public static final int txtEmail=0x7f050010;
+        public static final int txtFirstname=0x7f05000c;
+        public static final int txtLastname=0x7f05000d;
         public static final int txtLogo=0x7f050003;
-        public static final int txtNewPass=0x7f050010;
-        public static final int txtOldPass=0x7f05000f;
-        public static final int txtSubtitle=0x7f050016;
-        public static final int txtTitle=0x7f050015;
+        public static final int txtNewPass=0x7f050012;
+        public static final int txtOldPass=0x7f050011;
+        public static final int txtSubtitle=0x7f050018;
+        public static final int txtTitle=0x7f050017;
         /**  string of Information Account page 
          */
-        public static final int txtTitleBarInfor=0x7f050008;
-        public static final int txtUsername=0x7f050014;
+        public static final int txtTitleBarInfor=0x7f05000a;
+        public static final int txtUsername=0x7f050016;
         /**  string of Welcome page 
          */
         public static final int txtVina=0x7f050002;

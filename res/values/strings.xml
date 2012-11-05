@@ -10,6 +10,9 @@
     <string name="txtLogo">Free credit card reader Take your first payment today Nightly deposits to your bank</string>
     <string name="btnSignIn">Sign In</string>
     
+    <string name="btnLanguageEnglish"></string>
+    <string name="btnLanguageVietnam"></string>
+    
     <!-- string of Sign In page -->
     <string name="txtTitleBarSignIn">Sign In</string>
     <string name="btnWrongPass">Forgot Password?</string>
