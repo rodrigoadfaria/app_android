@@ -6,8 +6,8 @@
     <string name="imgView">ImageView</string>
     
     <!-- string of Welcome page -->
-    <string name="txtVina">Welcome to Vinacredit</string>
-    <string name="txtLogo">Free credit card reader Take your first payment today Nightly deposits to your bank</string>
+    <string name="txtWelcome_vina">Welcome to Vinacredit</string>
+    <string name="txtWelcome_content">Free credit card reader Take your first payment today Nightly deposits to your bank</string>
     <string name="btnSignIn">Sign In</string>
     
     <string name="btnLanguageEnglish"></string>

@@ -14,32 +14,32 @@
         android:contentDescription="@string/imgView" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txt_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="@string/txtVina"
+        android:text="@string/txtWelcome_vina"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txt_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/txt_welcome"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/txtLogo"
+        android:text="@string/txtWelcome_content"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/txt_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/btnSignIn" />
