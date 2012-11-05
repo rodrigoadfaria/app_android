@@ -68,4 +68,5 @@
     <string name="txtCash">Cash Payment</string>
     <string name="txtSumPrice">0</string>
     <string name="btnTenderCash">Tender Cash</string>
+    <string name="btnSkip">Skip</string>
 </resources>

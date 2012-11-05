@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <ImageView 
+        android:id="@+id/imgUsername"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/chomsao"
+        android:contentDescription="@string/imgView"/>
+    
+    <EditText 
+        android:id="@+id/edtEmail"
+        android:hint="@string/txtEmail"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgUsername"
+        android:layout_margin="20dp"/>
+    <Button 
+        android:id="@+id/btnSkip"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtEmail"
+        android:layout_marginLeft="20dp"
+        android:text="@string/btnSkip"/>
+    <Button 
+        android:id="@+id/btnSend"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtEmail"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="@string/btnSend"/>
+
+</RelativeLayout>
