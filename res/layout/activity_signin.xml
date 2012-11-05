@@ -4,6 +4,21 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <RelativeLayout 
+        android:id="@+id/relativelayout_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/titlebar"
+        android:layout_marginBottom="4dip">        
+        <TextView 
+            android:id="@+id/txtTitleBar"
+            android:text="@string/txtTitleBarSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>        
+    </RelativeLayout>
     <EditText
         android:id="@+id/edtUsername"
         android:layout_width="match_parent"

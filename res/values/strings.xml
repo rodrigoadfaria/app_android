@@ -11,9 +11,15 @@
     <string name="btnSignIn">Sign In</string>
     
     <!-- string of Sign In page -->
+    <string name="txtTitleBarSignIn">Sign In</string>
     <string name="btnWrongPass">Forgot Password?</string>
     <string name="hintUsername">Username</string>
     <string name="hintPassword">Password</string>
+    
+    <!-- string of Wrong Pass page-->
+    <string name="txtTitleBarWrongPass">Wrong Password</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnSend">Send</string>
 
     <!-- string of Information Account page -->
     <string name="txtTitleBarInfor">Information Account</string>
@@ -25,7 +31,7 @@
     <string name="txtEmail">Email</string>
     <string name="txtOldPass">Old pass</string>
     <string name="txtNewPass">New pass</string>
-    <string name="txtConfirmPass">Confirm pass</string>
+    <string name="txtConfirmPass">Confirm</string>
     <string name="btnContinue">Continue</string>
 
     <!-- string of Account page -->
