@@ -31,12 +31,12 @@
             android:id="@+id/_btnSaleCharge"
             android:layout_width="80dip"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/btnAccount"
-            android:layout_alignTop="@+id/btnAccount"
-            android:layout_toRightOf="@+id/txtTitleBar"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:background="@drawable/button_back_pressed"
             android:text="@string/btnSaleCharge"
             android:textColor="@color/white" />
+
     </RelativeLayout>
 
     <RelativeLayout
