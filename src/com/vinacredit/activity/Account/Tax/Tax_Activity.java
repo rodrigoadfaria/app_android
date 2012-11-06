@@ -6,6 +6,7 @@ import com.vinacredit.activity.Account.Account_Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,15 +20,17 @@ public class Tax_Activity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		initialize();
+	    Log.i("debug","Tax_Activity");
+	    setContentView(R.layout.activity_tax);
+	    super.onCreate(savedInstanceState);
+	    initialize();
 	}
 
 	private void initialize() {
 		// TODO Auto-generated method stub
 		btnAccount		= (Button)findViewById(R.id.btnAccount);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-		txtAddSaleTax	= (TextView)findViewById(R.id.txtAddSaleTax);
+		txtAddSaleTax		= (TextView)findViewById(R.id.txtAddSaleTax);
 		txtTaxRate		= (TextView)findViewById(R.id.txtTaxRate);
 		txtTax			= (TextView)findViewById(R.id.txtTax);
 		txtTaxName		= (TextView)findViewById(R.id.txtTaxName);

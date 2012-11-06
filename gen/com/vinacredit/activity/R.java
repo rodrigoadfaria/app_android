@@ -163,11 +163,12 @@ public final class R {
         public static final int btnBack=0x7f05000f;
         public static final int btnCancel=0x7f05000c;
         public static final int btnContinue=0x7f050018;
-        public static final int btnDone=0x7f050034;
+        public static final int btnDone=0x7f050036;
         public static final int btnHotline=0x7f050022;
         public static final int btnInstruction=0x7f050023;
         public static final int btnLanguageEnglish=0x7f050005;
         public static final int btnLanguageVietnam=0x7f050006;
+        public static final int btnReceipt=0x7f050034;
         public static final int btnSend=0x7f05000d;
         public static final int btnSending=0x7f050031;
         public static final int btnSignIn=0x7f050004;
@@ -195,7 +196,7 @@ public final class R {
         public static final int txtOldPass=0x7f050015;
         /**  string of Done page 
          */
-        public static final int txtPaidThank=0x7f050033;
+        public static final int txtPaidThank=0x7f050035;
         public static final int txtPay=0x7f05002a;
         public static final int txtSubtitle=0x7f05001d;
         public static final int txtSumPrice=0x7f05002d;
@@ -216,6 +217,9 @@ public final class R {
          */
         public static final int txtTitleBarInfor=0x7f05000e;
         public static final int txtTitleBarSalesHistory=0x7f05001f;
+        /**  string of Sending page 
+         */
+        public static final int txtTitleBarSending=0x7f050033;
         /**  string of Sign In page 
          */
         public static final int txtTitleBarSignIn=0x7f050007;

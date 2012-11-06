@@ -50,9 +50,9 @@ public class Account_Activity extends Activity{
 				Intent i;
 				switch (position) {
 				case 1:
-					 i = new Intent(getApplicationContext(), SaleHistory_Activity.class);
+					 //i = new Intent(getApplicationContext(), SaleHistory_Activity.class);
 		        	  // sending data to new activity
-		        	  startActivity(i);
+		        	  //startActivity(i);
 		        	  break;
 				case 2:
 					 i = new Intent(getApplicationContext(), Tax_Activity.class);
@@ -60,9 +60,9 @@ public class Account_Activity extends Activity{
 		        	  startActivity(i);
 		        	  break;
 				case 3:
-		        	 i = new Intent(getApplicationContext(), Support_Activity.class);
+		        	 //i = new Intent(getApplicationContext(), Support_Activity.class);
 		        	  // sending data to new activity
-		        	  startActivity(i);
+		        	  //startActivity(i);
 		        	  break;
 				}
 			}

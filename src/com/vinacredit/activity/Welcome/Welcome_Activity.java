@@ -2,6 +2,7 @@ package com.vinacredit.activity.Welcome;
 
 
 import com.vinacredit.activity.R;
+import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.SignIn.SignIn_Activity;
 
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class Welcome_Activity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
+				Intent intent = new Intent(getApplicationContext(),Charge_Activity.class);
 				startActivity(intent);
 			}
 		});
