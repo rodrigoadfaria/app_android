@@ -5,6 +5,8 @@ import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.SaleHistory.SaleHistory_Activity;
 import com.vinacredit.activity.Account.Support.Support_Activity;
 import com.vinacredit.activity.Account.Tax.Tax_Activity;
+import com.vinacredit.activity.Sale.Sale_Activity;
+import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -75,12 +77,22 @@ public class Account_Activity extends Activity{
 		// TODO Auto-generated method stub	
 		
 		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
-		txtUsername 	= (TextView)findViewById(R.id.txtUsername);
+		txtUsername 		= (TextView)findViewById(R.id.txtUsername);
 		txtEmail		= (TextView)findViewById(R.id.txtEmail);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		btnSignOut		= (Button)findViewById(R.id.btnSignOut);
 		btnBack			= (Button)findViewById(R.id.btnBack);
 		listView1		= (ListView)findViewById(R.id.listView1);
+		
+		//action button charge
+		btnBack.setOnClickListener(new View.OnClickListener() {		
+		    @Override
+		    public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
+			startActivity(i);
+		    }
+		});
 	}
 
 }
