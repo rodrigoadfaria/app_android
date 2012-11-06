@@ -28,14 +28,14 @@
             android:textStyle="bold"/>
 
         <Button
-            android:id="@+id/btnSignature"
+            android:id="@+id/btnSending"
             android:layout_width="80dip"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/btnBack"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/button_continue_pressed"
-            android:text="@string/btnSignature"
+            android:text="@string/btnSending"
             android:textColor="@color/white" />
     </RelativeLayout>
     
