@@ -2,6 +2,7 @@ package com.vinacredit.Resource;
 import com.vinacredit.Resource.*;
 public class Library {
     public static void Translate(boolean language) {
+
 	   if(language){
 	       
 	        MACROS.WELCOME_TO_VINACREDIT_LBL   		= "Welcome to Vinacredit";// lbl : label
@@ -185,5 +186,36 @@ public class Library {
 	        
 	    }
  }
+    static String reverseString(String str){
+	String tmp 	= "";
+        for(int i = str.length() - 1; i >=0; i--){
+            tmp += str.charAt(i);
+        }
+        return tmp;
+    }
+    public static String addDotNumber(String str_number){
+	String str_reverse 	= reverseString(str_number);// reverse 
+	boolean bl_add_dot = false;
+	char[] char_tmp 	= str_reverse.toCharArray();
+	/*
+	int count_dot = 0;
+	count_dot = char_tmp.length/3;
+	if (char_tmp.length % 3 == 0)count_dot -=1;
+	*/
+	char[] char_add_dot_tmp = null;
+	int count_add_dot_tmp = 0;
+	for(int i=0; i<char_tmp.length; i++){
+	    if( (i+1) % 3 == 0 )bl_add_dot = true;
+	    if(bl_add_dot){
+		char_add_dot_tmp[count_add_dot_tmp++] = ',';
+		bl_add_dot = false;
+	    }
+	    char_add_dot_tmp[count_add_dot_tmp++] = char_tmp[i];
+	}
+	String str_tmp = String.copyValueOf(char_add_dot_tmp, 0,char_tmp.length);
+	str_tmp = reverseString(str_tmp);
+	return str_tmp;
+    }
 
+    
 }
