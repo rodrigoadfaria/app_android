@@ -77,9 +77,9 @@ public final class R {
         public static final int btnLanguageEnglish=0x7f07004c;
         public static final int btnLanguageVietnam=0x7f07004d;
         public static final int btnSend=0x7f07002f;
-        public static final int btnSending=0x7f07001e;
         public static final int btnSignIn=0x7f070033;
         public static final int btnSignOut=0x7f070003;
+        public static final int btnSignature=0x7f07001e;
         public static final int btnSkip=0x7f07002e;
         public static final int btnTakePhoto=0x7f070020;
         public static final int btnTenderCash=0x7f07000f;
@@ -170,9 +170,9 @@ public final class R {
         public static final int btnLanguageVietnam=0x7f050006;
         public static final int btnReceipt=0x7f050034;
         public static final int btnSend=0x7f05000d;
-        public static final int btnSending=0x7f050031;
         public static final int btnSignIn=0x7f050004;
         public static final int btnSignOut=0x7f05001a;
+        public static final int btnSignature=0x7f050031;
         public static final int btnSkip=0x7f05002f;
         public static final int btnTakePhoto=0x7f050032;
         public static final int btnTenderCash=0x7f05002e;
