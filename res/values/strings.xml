@@ -75,6 +75,10 @@
     <string name="btnSending">Sending</string>
     <string name="btnTakePhoto">Take Photo</string>
     
+    <!-- string of Sending page -->
+    <string name="txtTitleBarSending">Sending</string>
+    <string name="btnReceipt">Receipt</string>
+    
     <!-- string of Done page -->
     <string name="txtPaidThank">paid, Thank.</string>
     <string name="btnDone">Done</string>
