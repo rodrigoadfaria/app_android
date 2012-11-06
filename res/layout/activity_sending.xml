@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout 
+        android:id="@+id/relativelayout_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/titlebar"
+        android:layout_marginBottom="4dip">
+        
+        <Button 
+            android:id="@+id/btnBack"
+            android:text="@string/btnBack"
+            android:textColor="@color/white"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_back_pressed"/>
+        
+        <TextView 
+            android:id="@+id/txtTitleBar"
+            android:text="@string/txtTitleBarSending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnReceipt"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/btnBack"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_continue_pressed"
+            android:text="@string/btnReceipt"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</RelativeLayout>
