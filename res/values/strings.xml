@@ -72,7 +72,7 @@
     
     <!-- string of Identify page -->
     <string name="txtTitleBarIdentify">Identify</string>
-    <string name="btnSending">Sending</string>
+    <string name="btnSignature">Signature</string>
     <string name="btnTakePhoto">Take Photo</string>
     
     <!-- string of Sending page -->
