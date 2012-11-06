@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Account.Tax;
 
+import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
 
@@ -9,13 +10,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class Tax_Activity extends Activity{
 
 	private Button 		btnAccount;
 	private TextView	txtTitleBar;
 	private TextView	txtAddSaleTax, txtTaxRate, txtTax, txtTaxName;
+	private ToggleButton	tgbtnstatusTax;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,21 @@ public class Tax_Activity extends Activity{
 		txtTaxRate		= (TextView)findViewById(R.id.txtTaxRate);
 		txtTax			= (TextView)findViewById(R.id.txtTax);
 		txtTaxName		= (TextView)findViewById(R.id.txtTaxName);
+		tgbtnstatusTax		= (ToggleButton)findViewById(R.id.tgbAddSaleTax);
+				
+		
+		tgbtnstatusTax.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		    @Override
+                     public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+                                     // TODO Auto-generated method stub
+			String tmp_status_tax = (String) tgbtnstatusTax.getText();
+			Log.i("tax debug", "tmp_status_tax : " + tmp_status_tax);
+			if(tmp_status_tax.equals("ON"))
+			    MACROS.tax_status_bl = true;
+			else  MACROS.tax_status_bl = false;
+			Log.i("tax debug", "status : " + MACROS.tax_status_bl);
+                     }
+		});
 		
 		btnAccount.setOnClickListener(new View.OnClickListener() {
 			
@@ -87,7 +107,7 @@ public class Tax_Activity extends Activity{
 				txtTax.setText(txtTax.getText() + "0");
 				break;
 			case R.id.btn1:
-				txtTax.setText(txtTax.getText() + "000");
+				txtTax.setText(txtTax.getText() + ".");
 				break;
 		}
 	}

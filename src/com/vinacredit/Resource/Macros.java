@@ -95,6 +95,8 @@ public class MACROS{
     public static  String      TAX_SALETAX_LBL;
     public static  String      TAX_TAXRATE_LBL;
     public static  String      TAX_TEXT_LBL;
+    // variable 
+    public static  boolean     tax_status_bl = false;// false = off, true = on	
 
     //=====SUPPORT=============
     public static  String      SUPPORT_LBL;
