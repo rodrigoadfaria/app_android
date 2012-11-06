@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView 
+        android:id="@+id/imgUsername"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/chomsao"
+        android:contentDescription="@string/imgView"/>
+    <TextView 
+        android:id="@+id/txtSumPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgUsername"
+        android:layout_marginTop="20dp"
+        android:text="@string/txtSumPrice"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+    <TextView 
+        android:id="@+id/txtPaidThank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtSumPrice"
+        android:layout_marginTop="20dp"
+        android:text="@string/txtPaidThank"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"/>
+    <Button 
+        android:id="@+id/btnDone"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btnDone"/>
+
+</RelativeLayout>

@@ -69,4 +69,13 @@
     <string name="txtSumPrice">0</string>
     <string name="btnTenderCash">Tender Cash</string>
     <string name="btnSkip">Skip</string>
+    
+    <!-- string of Identify page -->
+    <string name="txtTitleBarIdentify">Identify</string>
+    <string name="btnSending">Sending</string>
+    <string name="btnTakePhoto">Take Photo</string>
+    
+    <!-- string of Done page -->
+    <string name="txtPaidThank">paid, Thank.</string>
+    <string name="btnDone">Done</string>
 </resources>

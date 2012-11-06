@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+        <RelativeLayout 
+        android:id="@+id/relativelayout_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/titlebar"
+        android:layout_marginBottom="4dip">
+        
+        <Button 
+            android:id="@+id/btnBack"
+            android:text="@string/btnBack"
+            android:textColor="@color/white"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_back_pressed"/>
+        
+        <TextView 
+            android:id="@+id/txtTitleBar"
+            android:text="@string/txtTitleBarIdentify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnSending"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/btnBack"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_continue_pressed"
+            android:text="@string/btnSending"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+    
+        <ImageView 
+            android:id="@+id/imgIdentify"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:src="@drawable/chomsao"
+            android:contentDescription="@string/imgView"
+            android:layout_below="@id/relativelayout_title_bar"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"/>
+        <Button
+            android:id="@+id/btnTakePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgIdentify"
+            android:layout_marginTop="20dp"
+            android:text="@string/btnTakePhoto"
+            android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
