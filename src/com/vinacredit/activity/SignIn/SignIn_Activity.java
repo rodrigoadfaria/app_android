@@ -3,6 +3,7 @@ package com.vinacredit.activity.SignIn;
 
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.InformationAccount.InformationAccount_Activity;
+import com.vinacredit.activity.SignIn.WrongPass.WrongPass_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -44,7 +45,8 @@ public class SignIn_Activity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				Intent i = new Intent(getApplicationContext(),WrongPass_Activity.class);
+				startActivity(i);
 			}
 		});
 	}
