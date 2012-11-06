@@ -71,7 +71,7 @@ public class Account_Activity extends Activity{
 	}
 	private void initialize() {
 		// TODO Auto-generated method stub
-		imgUser			= (ImageView)findViewById(R.id.imgUser);
+		imgUser			= (ImageView)findViewById(R.id.imgUsername);
 		txtUsername 	= (TextView)findViewById(R.id.txtUsername);
 		txtEmail		= (TextView)findViewById(R.id.txtEmail);
 		btnSignOut		= (Button)findViewById(R.id.btnSignOut);
