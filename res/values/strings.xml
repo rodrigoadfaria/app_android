@@ -44,6 +44,11 @@
     <string name="txtTitle">Item</string>
     <string name="txtSubtitle">50%</string>
     
+    <!-- string of  Sale page -->
+    <string name="txtTitleBarSale">Sale</string>
+    <string name="btnSaleAccount">Account</string>
+    <string name="btnSaleCharge">Charge</string>
+    
     <!-- string of Sales History page -->
     <string name="btnAccount">Account</string>
     <string name="txtTitleBarSalesHistory">Sales History</string>

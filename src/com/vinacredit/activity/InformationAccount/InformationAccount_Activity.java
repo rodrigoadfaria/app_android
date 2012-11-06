@@ -2,6 +2,7 @@ package com.vinacredit.activity.InformationAccount;
 
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
+import com.vinacredit.activity.Sale.Sale_Activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -41,7 +42,7 @@ public class InformationAccount_Activity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(),Account_Activity.class);
+				Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
 				startActivity(i);
 			}
 		});
