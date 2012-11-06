@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Account;
 
+import com.vinacredit.Resource.*;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.SaleHistory.SaleHistory_Activity;
 import com.vinacredit.activity.Account.Support.Support_Activity;
@@ -18,10 +19,11 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class Account_Activity extends Activity{
 
-	private ImageView imgUser;
+	private ImageView imgUsername;
 	private TextView txtUsername;
 	private TextView txtEmail;
-	private Button btnSignOut;
+	private TextView txtTitleBar;
+	private Button btnSignOut, btnBack;
 	private ListView listView1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +52,9 @@ public class Account_Activity extends Activity{
 				Intent i;
 				switch (position) {
 				case 1:
-					 //i = new Intent(getApplicationContext(), SaleHistory_Activity.class);
+					 i = new Intent(getApplicationContext(), SaleHistory_Activity.class);
 		        	  // sending data to new activity
-		        	  //startActivity(i);
+		        	  startActivity(i);
 		        	  break;
 				case 2:
 					 i = new Intent(getApplicationContext(), Tax_Activity.class);
@@ -60,9 +62,9 @@ public class Account_Activity extends Activity{
 		        	  startActivity(i);
 		        	  break;
 				case 3:
-		        	 //i = new Intent(getApplicationContext(), Support_Activity.class);
+		        	 i = new Intent(getApplicationContext(), Support_Activity.class);
 		        	  // sending data to new activity
-		        	  //startActivity(i);
+		        	  startActivity(i);
 		        	  break;
 				}
 			}
@@ -70,11 +72,14 @@ public class Account_Activity extends Activity{
         });
 	}
 	private void initialize() {
-		// TODO Auto-generated method stub
-		imgUser			= (ImageView)findViewById(R.id.imgUsername);
-		txtUsername 		= (TextView)findViewById(R.id.txtUsername);
+		// TODO Auto-generated method stub	
+		
+		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
+		txtUsername 	= (TextView)findViewById(R.id.txtUsername);
 		txtEmail		= (TextView)findViewById(R.id.txtEmail);
+		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		btnSignOut		= (Button)findViewById(R.id.btnSignOut);
+		btnBack			= (Button)findViewById(R.id.btnBack);
 		listView1		= (ListView)findViewById(R.id.listView1);
 	}
 

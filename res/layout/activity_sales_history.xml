@@ -34,7 +34,8 @@
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/relativelayout_title_bar"
-        android:contentDescription="@string/imgView"/>
+        android:contentDescription="@string/imgView"
+        android:src="@drawable/chomsao"/>
     <LinearLayout 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

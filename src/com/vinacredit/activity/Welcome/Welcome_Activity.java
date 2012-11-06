@@ -42,7 +42,7 @@ public class Welcome_Activity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Charge_Activity.class);
+				Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
 				startActivity(intent);
 			}
 		});
