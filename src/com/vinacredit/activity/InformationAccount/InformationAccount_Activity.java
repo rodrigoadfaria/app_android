@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -15,6 +16,7 @@ public class InformationAccount_Activity extends Activity {
 	private EditText edtFirstname, edtLastname, edtCompany, edtAddressl, edtEmail
 			, edtOldPass, edtNewpass, edtConfirmPass;
 	private Button btnContinue;
+	private ImageButton imgUsername;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public class InformationAccount_Activity extends Activity {
 		edtNewpass     	= (EditText)findViewById(R.id.edtNewPass);
 		edtConfirmPass 	= (EditText)findViewById(R.id.edtConfirmPass);
 		btnContinue    	= (Button)findViewById(R.id.btnContinue);
+		imgUsername		= (ImageButton)findViewById(R.id.imgUsername);
 		
 		//action button continue
 		btnContinue.setOnClickListener(new View.OnClickListener() {
