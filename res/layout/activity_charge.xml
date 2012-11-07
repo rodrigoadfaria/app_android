@@ -62,7 +62,7 @@
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imgMoney"
         android:text="@string/txtPay"
-        android:textSize="32sp"/>
+        android:textSize="25sp"/>
 
     <ImageView
         android:id="@+id/imgChange"
@@ -87,7 +87,7 @@
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imgChange"
         android:text="@string/txtChange"
-        android:textSize="32sp"/>
+        android:textSize="25sp"/>
 
     <Button
         android:id="@+id/btnTenderCash"
