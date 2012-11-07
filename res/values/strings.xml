@@ -67,10 +67,9 @@
     <string name="txtTaxName">Add a percentage to you payments to account for state taxes.</string>
     
     <!-- string of Charge page -->
-    <string name="txtTitleBarCharge">Charge</string>
+    <string name="txtTitleBarCharge">Cash Payment</string>
     <string name="txtPay">0</string>
     <string name="txtChange">0</string>
-    <string name="txtCash">Cash Payment</string>
     <string name="txtSumPrice">0</string>
     <string name="btnTenderCash">Tender Cash</string>
     <string name="btnSkip">Skip</string>

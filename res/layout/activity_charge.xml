@@ -27,25 +27,15 @@
             android:text="@string/txtTitleBarCharge"
             android:textColor="@color/white"
             android:textStyle="bold" />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/txtCash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relativelayout_title_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="@string/txtCash"
-        android:textSize="25sp" />
+    </RelativeLayout>   
 
     <TextView
         android:id="@+id/txtSumPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCash"
+        android:layout_below="@+id/relativelayout_title_bar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="@string/txtSumPrice"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -57,7 +47,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/txtSumPrice"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:contentDescription="@string/imgView"
         android:src="@drawable/money" />
 
@@ -65,16 +55,14 @@
         android:id="@+id/txtPay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/imgMoney"
-        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/imgMoney"
         android:layout_below="@id/txtSumPrice"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imgMoney"
-        android:height="32dp"
         android:text="@string/txtPay"
-        android:textSize="32sp" />
+        android:textSize="32sp"/>
 
     <ImageView
         android:id="@+id/imgChange"
@@ -83,7 +71,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/imgMoney"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:contentDescription="@string/imgView"
         android:src="@drawable/change" />
 
@@ -91,16 +79,15 @@
         android:id="@+id/txtChange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/imgChange"
+        android:layout_alignBottom="@+id/imgChange"
         android:layout_alignParentRight="true"
         android:layout_below="@id/txtPay"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imgChange"
-        android:height="32dp"
         android:text="@string/txtChange"
-        android:textSize="32sp" />
+        android:textSize="32sp"/>
 
     <Button
         android:id="@+id/btnTenderCash"
