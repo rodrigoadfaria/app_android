@@ -80,6 +80,11 @@
     <string name="btnSignature">Signature</string>
     <string name="btnTakePhoto">Take Photo</string>
     
+    <!-- string of Signature page -->
+    <string name="btnIdentify">Identify</string>
+    <string name="txtTitleBarSignature">Signature</string>
+    <string name="btnSending">Sending</string>
+    
     <!-- string of Sending page -->
     <string name="txtTitleBarSending">Sending</string>
     <string name="btnReceipt">Receipt</string>
