@@ -98,130 +98,131 @@
         android:layout_marginTop="10dp"
         android:text="@string/btnTenderCash" />
 
-    <!-- Add Key Pad -->
+<!-- Add Key Pad -->
     <!-- 000 , 0 , <- -->
+
     <ImageButton
-        android:id="@+id/btn_number_000"
+        android:id="@+id/btn1"
         android:layout_width="105dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_marginLeft="1.5dp"
-        android:contentDescription="@string/imgView"
         android:onClick="numClick"
-        android:src="@drawable/navigation_000" />
+        android:src="@drawable/navigation_000" 
+        android:contentDescription="@string/imgView"/>
 	<ImageButton
-        android:id="@+id/btn_number_0"
+        android:id="@+id/btn2"
         android:layout_width="105dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/imgView"
+        android:layout_toRightOf="@id/btn1"
         android:onClick="numClick"
-        android:src="@drawable/navigation_0" />
+        android:src="@drawable/navigation_0" 
+        android:contentDescription="@string/imgView"/>
+
     <ImageButton
-        android:id="@+id/btn_number_clear"
+        android:id="@+id/btn3"
         android:layout_width="105dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="1.5dp"
-        android:contentDescription="@string/imgView"
+        android:layout_toRightOf="@id/btn2"
         android:onClick="clearClick"
-        android:src="@drawable/navigation_clear" />
+        android:src="@drawable/navigation_clear" 
+        android:contentDescription="@string/imgView"/>
     <!-- 7 , 8 , 9 -->
-    <ImageButton
-        android:id="@+id/btn_number_7"
-        android:layout_width="105dp"
-        android:layout_height="45dp"
-        android:layout_above="@+id/btn_number_000"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="1.5dp"
-        android:contentDescription="@string/imgView"
-        android:onClick="numClick"
-        android:src="@drawable/navigation_7" />
-    <ImageButton
-        android:id="@+id/btn_number_8"
-        android:layout_width="105dp"
-        android:layout_height="45dp"
-        android:layout_above="@+id/btn_number_0"
-        android:layout_alignLeft="@+id/btn_number_0"
-        android:contentDescription="@string/imgView"
-        android:onClick="numClick"
-        android:src="@drawable/navigation_8" />
-    <ImageButton
-        android:id="@+id/btn_number_9"
-        android:layout_width="105dp"
-        android:layout_height="45dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/btn_number_5"
-        android:layout_marginRight="1.5dp"
-        android:contentDescription="@string/imgView"
-        android:onClick="numClick"
-        android:src="@drawable/navigation_9" />
 
+    <ImageButton
+        android:id="@+id/btn4"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn1"
+        android:layout_marginLeft="1.5dp"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_7" 
+        android:contentDescription="@string/imgView"/>
+
+    <ImageButton
+        android:id="@+id/btn5"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn2"
+        android:layout_toRightOf="@id/btn4"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_8" 
+        android:contentDescription="@string/imgView"/>
+    
+    <ImageButton
+        android:id="@+id/btn6"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/btn5"
+        android:layout_alignBottom="@+id/btn5"
+        android:layout_alignLeft="@+id/btn3"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_9" 
+        android:contentDescription="@string/imgView"/>
     <!-- 4 , 5 , 6 -->
-	<ImageButton
-        android:id="@+id/btn_number_4"
-        android:layout_width="105dp"
-        android:layout_height="45dp"
-        android:layout_above="@+id/btn_number_7"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="1.5dp"
-        android:contentDescription="@string/imgView"
-        android:onClick="numClick"
-        android:src="@drawable/navigation_4" />
-	<ImageButton
-        android:id="@+id/btn_number_5"
-        android:layout_width="105dp"
-        android:layout_height="45dp"
-        android:layout_above="@+id/btn_number_8"
-        android:layout_alignLeft="@+id/btn_number_8"
-        android:contentDescription="@string/imgView"
-        android:onClick="numClick"
-        android:src="@drawable/navigation_5" />
-	<ImageButton
-        android:id="@+id/btn_number_6"
-        android:layout_width="105dp"
-        android:layout_height="45dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/btn_number_3"
-        android:layout_marginRight="1.5dp"
-        android:contentDescription="@string/imgView"
-        android:onClick="numClick"
-        android:src="@drawable/navigation_6" />
 
+    <ImageButton
+        android:id="@+id/btn7"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn4"
+        android:layout_marginLeft="1.5dp"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_4"
+        android:contentDescription="@string/imgView"/>
+
+    <ImageButton
+        android:id="@+id/btn8"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_above="@id/btn5"
+        android:layout_toRightOf="@id/btn4"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_5"
+        android:contentDescription="@string/imgView"/>
+    
+    <ImageButton
+        android:id="@+id/btn9"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/btn11"
+        android:layout_toRightOf="@+id/btn8"
+        android:onClick="numClick"
+        android:src="@drawable/navigation_6" 
+        android:contentDescription="@string/imgView"/>
     <!-- 1 , 2 , 3 -->
 
-
-	<ImageButton
-        android:id="@+id/btn_number_1"
+    <ImageButton
+        android:id="@+id/btn10"
         android:layout_width="105dp"
         android:layout_height="45dp"
-        android:layout_above="@+id/btn_number_4"
+        android:layout_above="@id/btn7"
         android:layout_marginLeft="1.5dp"
-        android:contentDescription="@string/imgView"
         android:onClick="numClick"
-        android:src="@drawable/navigation_1" />
-	<ImageButton
-        android:id="@+id/btn_number_2"
+        android:src="@drawable/navigation_1" 
+        android:contentDescription="@string/imgView"/>
+
+    <ImageButton
+        android:id="@+id/btn11"
         android:layout_width="105dp"
         android:layout_height="45dp"
-        android:layout_above="@+id/btn_number_5"
-        android:layout_alignLeft="@+id/btn_number_5"
-        android:contentDescription="@string/imgView"
+        android:layout_above="@id/btn8"
+        android:layout_toRightOf="@id/btn7"
         android:onClick="numClick"
-        android:src="@drawable/navigation_2" />
-	<ImageButton
-        android:id="@+id/btn_number_3"
+        android:src="@drawable/navigation_2" 
+        android:contentDescription="@string/imgView"/>
+    
+    <ImageButton
+        android:id="@+id/btn12"
         android:layout_width="105dp"
         android:layout_height="45dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/btn_number_2"
-        android:layout_marginRight="1.5dp"
-        android:contentDescription="@string/imgView"
+        android:layout_above="@+id/btn8"
+        android:layout_toRightOf="@+id/btn8"
         android:onClick="numClick"
-        android:src="@drawable/navigation_3" />
+        android:src="@drawable/navigation_3"
+        android:contentDescription="@string/imgView"/>
 
 
 

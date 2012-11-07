@@ -80,7 +80,7 @@ public class Tax_Activity extends Activity{
 	    	String _str_number_click = "";	 
 	    	boolean bl_pressed_dot = false;
 	    	boolean bl_pressed_zero= false;
-	    	
+	    	Log.i("Debug tax","view.getId :" + view.getId());
 		switch (view.getId()) {
 			case R.id.btn10:
 			    _str_number_click = "1";

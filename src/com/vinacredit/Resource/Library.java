@@ -1,4 +1,6 @@
 package com.vinacredit.Resource;
+import android.util.Log;
+
 import com.vinacredit.Resource.*;
 public class Library {    
     
@@ -11,7 +13,8 @@ public class Library {
 	count_dot = char_tmp.length/3;
 	if (char_tmp.length % 3 == 0)count_dot -=1;
 	*/
-	char[] char_add_dot_tmp = null;
+	char char_add_dot_tmp[];
+	char_add_dot_tmp = new char[20];
 	int count_add_dot_tmp = 0;
 	for(int i=0; i<char_tmp.length; i++){
 	    if( (i+1) % 3 == 0 )bl_add_dot = true;
@@ -19,9 +22,12 @@ public class Library {
 		char_add_dot_tmp[count_add_dot_tmp++] = ',';
 		bl_add_dot = false;
 	    }
+	    Log.i("Debug Library","char_tmp[i] :" + char_tmp[i]);
+	    
 	    char_add_dot_tmp[count_add_dot_tmp++] = char_tmp[i];
 	}
-	String str_tmp = String.copyValueOf(char_add_dot_tmp, 0,char_tmp.length);
+	//String str_tmp = String.copyValueOf(char_add_dot_tmp, 0,char_tmp.length);
+	String str_tmp = "";
 	str_tmp = reverseString(str_tmp);
 	return str_tmp;
     }
