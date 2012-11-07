@@ -4,7 +4,9 @@ public class MACROS{
     
     // variable 
     public static  boolean     bl_language  	= true; // true is english and false is vietnam
-    public static  boolean     tax_status_bl 	= false;// false = off, true = on	
+    
+    public static  boolean     tax_status_bl 	= false;// false = off, true = on
+    public static  String      tax_percent_str  = "";
     
     //=====WELCOME==============
     public static  String      WELCOME_TO_VINACREDIT_LBL;// lbl : label

@@ -171,7 +171,9 @@ public class Tax_Activity extends Activity{
 		    }
 		}
 		txtTax.setText(_str_tax + " %");
+		MACROS.tax_percent_str = txtTax.getText().toString();
 		Log.i("Debug Tax", "number tax :" + txtTax.getText() );
+		Log.i("Debug Tax", "MACROS.tax_percent_str :" + MACROS.tax_percent_str );
 	}
 	public int test_dot(String _str_test){
 	    int _index = _str_test.indexOf(".");	

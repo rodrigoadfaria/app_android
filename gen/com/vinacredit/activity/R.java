@@ -115,7 +115,7 @@ public final class R {
         public static final int imageView1=0x7f07004d;
         public static final int imgChange=0x7f07000c;
         public static final int imgIdentify=0x7f07001e;
-        public static final int imgList=0x7f070054;
+        public static final int imgList=0x7f070053;
         public static final int imgMoney=0x7f07000a;
         public static final int imgUsername=0x7f070005;
         public static final int listView1=0x7f070008;
@@ -123,7 +123,6 @@ public final class R {
         public static final int relativeLayout1=0x7f070021;
         public static final int relativelayout_title_bar=0x7f070000;
         public static final int tgbAddSaleTax=0x7f07003d;
-        public static final int thumbnail=0x7f070053;
         public static final int txtAddSaleTax=0x7f07003c;
         public static final int txtChange=0x7f07000d;
         public static final int txtConfirmPass=0x7f07002b;
@@ -132,12 +131,12 @@ public final class R {
         public static final int txtOldPass=0x7f070027;
         public static final int txtPaidThank=0x7f07001b;
         public static final int txtPay=0x7f07000b;
-        public static final int txtSubtitle=0x7f070056;
+        public static final int txtSubtitle=0x7f070055;
         public static final int txtSumPrice=0x7f070009;
         public static final int txtTax=0x7f07003f;
         public static final int txtTaxName=0x7f070040;
         public static final int txtTaxRate=0x7f07003e;
-        public static final int txtTitle=0x7f070055;
+        public static final int txtTitle=0x7f070054;
         public static final int txtTitleBar=0x7f070002;
         public static final int txtUsername=0x7f070006;
         public static final int txt_content=0x7f07004f;

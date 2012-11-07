@@ -55,15 +55,15 @@ public class Account_Activity extends Activity{
 				// TODO Auto-generated method stub
 				Intent i;
 				switch (position) {
-				case 1:
+				case 0:
 					i = new Intent(getApplicationContext(),SaleHistory_Activity.class);
 					startActivity(i);
 					break;
-				case 2:
+				case 1:
 					i = new Intent(getApplicationContext(),Tax_Activity.class);
 					startActivity(i);
 					break;
-				case 3:
+				case 2:
 					i = new Intent(getApplicationContext(),Support_Activity.class);
 					startActivity(i);
 					break;
