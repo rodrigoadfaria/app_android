@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Account.Support;
 
+import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
 
@@ -29,6 +30,8 @@ public class Support_Activity extends Activity{
 		btnHotline		= (Button)findViewById(R.id.btnHotline);
 		btnInstruction	= (Button)findViewById(R.id.btnInstruction);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
+		
+		translate();
 		
 		//action btnAccount
 		btnAccount.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +73,13 @@ public class Support_Activity extends Activity{
 				Toast.makeText(getApplicationContext(), "Instruction", Toast.LENGTH_LONG).show();
 			}
 		});
+	}
+	private void translate() {
+		// TODO Auto-generated method stub
+		btnVinacredit.setText(MACROS.SUPPORT_VINA_LBL);
+		btnHotline.setText(MACROS.SUPPORT_HOTLINE_LBL);
+		btnInstruction.setText(MACROS.SUPPORT_INSTRU_LBL);
+		txtTitleBar.setText(MACROS.SUPPORT_LBL);
 	}
 
 }

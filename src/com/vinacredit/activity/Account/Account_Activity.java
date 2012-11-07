@@ -28,6 +28,7 @@ public class Account_Activity extends Activity{
 	private TextView txtTitleBar;
 	private Button btnSignOut, btnBack;
 	private ListView listView1;
+	private String strSaleHistory, strTax, strSupport;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -35,9 +36,9 @@ public class Account_Activity extends Activity{
 		setContentView(R.layout.activity_account);
 		initialize();
         ListItem listitem_data[] = new ListItem[] {
-        		new ListItem(R.drawable.sales_history, "Sale History", null),
-                new ListItem(R.drawable.tax, "Tax", null),
-                new ListItem(R.drawable.help_support, "Support", null)
+        		new ListItem(R.drawable.sales_history, strSaleHistory, null),
+                new ListItem(R.drawable.tax, strTax, null),
+                new ListItem(R.drawable.help_support, strSupport, null)
         };
         
         ListItemAdapter adapter = new ListItemAdapter(this,R.layout.listview_row_account,listitem_data);
@@ -73,8 +74,7 @@ public class Account_Activity extends Activity{
        
 	}
 	private void initialize() {
-		// TODO Auto-generated method stub	
-		
+		// TODO Auto-generated method stub			
 		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
 		txtUsername 		= (TextView)findViewById(R.id.txtUsername);
 		txtEmail		= (TextView)findViewById(R.id.txtEmail);
@@ -82,6 +82,8 @@ public class Account_Activity extends Activity{
 		btnSignOut		= (Button)findViewById(R.id.btnSignOut);
 		btnBack			= (Button)findViewById(R.id.btnBack);
 		listView1		= (ListView)findViewById(R.id.listView1);
+		
+		translate();
 		
 		//action button charge
 		btnBack.setOnClickListener(new View.OnClickListener() {		
@@ -103,6 +105,14 @@ public class Account_Activity extends Activity{
 				startActivity(i);
 			}
 		});
+	}
+	private void translate() {
+		// TODO Auto-generated method stub
+		txtTitleBar.setText(MACROS.ACCOUNT_LBL);
+		btnSignOut.setText(MACROS.ACCOUNT_RIGHT_BTN);
+		strSaleHistory 	= MACROS.ACCOUNT_SALEHISTORY_LBL;
+		strTax			= MACROS.ACCOUNT_TAX_LBL;
+		strSupport		= MACROS.ACCOUNT_SUPPORT_LBL;
 	}
 
 }

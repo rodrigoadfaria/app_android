@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Sale.Sending;
 
+import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Receipt.Receipt_Activity;
 import com.vinacredit.activity.Sale.Signature.Signature_Activity;
@@ -29,6 +30,8 @@ public class Sending_Activity extends Activity{
 		btnReceipt	= (Button)findViewById(R.id.btnReceipt);
 		txtTitlebar	= (Button)findViewById(R.id.txtTitleBar);
 		
+		translate();
+		
 		//action btnBack
 		btnBack.setOnClickListener(new View.OnClickListener() {
 			
@@ -50,6 +53,11 @@ public class Sending_Activity extends Activity{
 				startActivity(intent);
 			}
 		});
+	}
+
+	private void translate() {
+		// TODO Auto-generated method stub
+		txtTitlebar.setText(MACROS.SEND_LBL);
 	}
 
 }

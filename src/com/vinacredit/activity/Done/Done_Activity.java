@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Done;
 
+import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Sale_Activity;
 
@@ -31,6 +32,8 @@ public class Done_Activity extends Activity{
 		txtPaidThank	= (TextView)findViewById(R.id.txtPaidThank);
 		btnDone			= (Button)findViewById(R.id.btnDone);
 		
+		translate();
+		
 		//action btnDone
 		btnDone.setOnClickListener(new View.OnClickListener() {
 			
@@ -41,6 +44,11 @@ public class Done_Activity extends Activity{
 				startActivity(intent);
 			}
 		});
+	}
+	private void translate() {
+		// TODO Auto-generated method stub
+		txtPaidThank.setText(MACROS.DONE_PAID_LBL);
+		btnDone.setText(MACROS.DONE_BTN);
 	}
 
 }

@@ -57,6 +57,7 @@ public class Library {
 	        MACROS.RECEIPT_RESULT_TRUE_LBL  		= "You check email.";
 	        MACROS.RECEIPT_RESULT_FALSE_LBL 		= "wrong email !";
 
+	        MACROS.SIGNATURE_LBL					= "Signature";
 	        MACROS.SIGNATURE_RIGHT_BTN      		= "Next";
 	        MACROS.SIGNTURE_CLEAR_BTN       		= "Clear";
 	        MACROS.SIGNATURE_TEXT_LBL       		= "I agree to pay the amount above according to my card issues agreement";
@@ -148,6 +149,7 @@ public class Library {
 	        MACROS.RECEIPT_RESULT_TRUE_LBL  		= "Thư đã được gởi đến hộp thư của bạn.";
 	        MACROS.RECEIPT_RESULT_FALSE_LBL 		= "Địa chỉ thư sai !";
 
+	        MACROS.SIGNATURE_LBL					= "Chữ ký";
 	        MACROS.SIGNATURE_RIGHT_BTN      		= "Tiếp tục";
 	        MACROS.SIGNTURE_CLEAR_BTN       		= "Xoá";
 	        MACROS.SIGNATURE_TEXT_LBL       		= "Tôi đồng ý trả số tiền trên theo thỏa thuận các vấn đề thẻ của tôi";

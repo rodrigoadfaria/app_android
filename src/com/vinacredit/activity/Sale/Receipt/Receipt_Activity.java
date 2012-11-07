@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Sale.Receipt;
 
+import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Done.Done_Activity;
 
@@ -32,6 +33,8 @@ public class Receipt_Activity extends Activity{
 		btnSkip			= (Button)findViewById(R.id.btnSkip);
 		btnSend			= (Button)findViewById(R.id.btnSend);
 		
+		translate();
+		
 		//action btnSkip
 		btnSkip.setOnClickListener(new View.OnClickListener() {
 			
@@ -55,6 +58,12 @@ public class Receipt_Activity extends Activity{
 			}
 		});
 		
+	}
+	private void translate() {
+		// TODO Auto-generated method stub
+		edtEmail.setHint(MACROS.RECEIPT_EMAIL_TXT);
+		btnSkip.setText(MACROS.RECEIPT_SKIP_BTN);
+		btnSend.setText(MACROS.RECEIPT_SEND_BTN);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Sale.Identify;
 
+import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Sale_Activity;
 import com.vinacredit.activity.Sale.Signature.Signature_Activity;
@@ -33,6 +34,8 @@ public class Identify_Activity extends Activity{
 		btnSignature	= (Button)findViewById(R.id.btnSignature);
 		btnTakePhoto	= (Button)findViewById(R.id.btnTakePhoto);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
+		imgIdentify		= (ImageView)findViewById(R.id.imgIdentify);
+		translate();
 		
 		//action btnBack
 		btnBack.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +68,13 @@ public class Identify_Activity extends Activity{
 				Toast.makeText(getApplicationContext(), "Take a photo", Toast.LENGTH_LONG).show();
 			}
 		});
+	}
+
+	private void translate() {
+		// TODO Auto-generated method stub
+		btnSignature.setText(MACROS.IDENTIFY_RIGHT_BTN);
+		btnTakePhoto.setText(MACROS.IDENTIFY_TAKEPHOTO_BTN);
+		txtTitleBar.setText(MACROS.IDENTIFY_LBL);
 	}
 
 }

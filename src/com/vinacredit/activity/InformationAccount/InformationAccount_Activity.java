@@ -16,7 +16,7 @@ import android.content.Intent;
 
 public class InformationAccount_Activity extends Activity {
 
-	private EditText 	edtFirstname, edtLastname, edtCompany, edtAddressl, edtEmail
+	private EditText 	edtFirstname, edtLastname, edtCompany, edtAddress, edtEmail
 						, edtOldPass, edtNewpass, edtConfirmPass;
 	private Button 		btnContinue;
 	private ImageButton imgUsername;
@@ -32,6 +32,7 @@ public class InformationAccount_Activity extends Activity {
 		edtFirstname   	= (EditText)findViewById(R.id.edtFirstname);
 		edtLastname    	= (EditText)findViewById(R.id.edtLastname);
 		edtCompany     	= (EditText)findViewById(R.id.edtCompany);
+		edtAddress		= (EditText)findViewById(R.id.edtAddress);
 		edtEmail 	   	= (EditText)findViewById(R.id.edtEmail);
 		edtOldPass     	= (EditText)findViewById(R.id.edtOldPass);
 		edtNewpass     	= (EditText)findViewById(R.id.edtNewPass);
@@ -62,6 +63,7 @@ public class InformationAccount_Activity extends Activity {
 		edtFirstname.setHint(MACROS.INFOR_FIRSTNAME_TXT);
 		edtLastname.setHint(MACROS.INFOR_LASTNAME_TXT);
 		edtCompany.setHint(MACROS.INFOR_COMPANY_TXT);
+		edtAddress.setHint(MACROS.INFOR_ADDRESS_TXT);
 		edtOldPass.setHint(MACROS.INFOR_OLDPASS_TXT);
 		edtNewpass.setHint(MACROS.INFOR_NEWPASS_TXT);
 		edtConfirmPass.setHint(MACROS.INFOR_CONFIRMPASS_TXT);

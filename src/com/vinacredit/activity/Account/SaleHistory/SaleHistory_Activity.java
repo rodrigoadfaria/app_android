@@ -1,5 +1,6 @@
 package com.vinacredit.activity.Account.SaleHistory;
 
+import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
 
@@ -32,6 +33,8 @@ public class SaleHistory_Activity extends Activity{
 		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
+		translate();
+		
 		//action btnAccount
 		btnAccount.setOnClickListener(new View.OnClickListener() {
 			
@@ -42,6 +45,10 @@ public class SaleHistory_Activity extends Activity{
 				startActivity(intent);
 			}
 		});
+	}
+	private void translate() {
+		// TODO Auto-generated method stub
+		txtTitleBar.setText(MACROS.SALEHISTORY_LBL);
 	}
 
 }

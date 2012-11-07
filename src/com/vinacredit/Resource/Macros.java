@@ -69,6 +69,7 @@ public class MACROS{
     public static  String      IDENTIFY_TAKEPHOTO_BTN;
 
     //=====SIGNATURE============
+    public static  String      SIGNATURE_LBL;
     public static  String      SIGNATURE_RIGHT_BTN;
     public static  String      SIGNTURE_CLEAR_BTN;
     public static  String      SIGNATURE_TEXT_LBL;

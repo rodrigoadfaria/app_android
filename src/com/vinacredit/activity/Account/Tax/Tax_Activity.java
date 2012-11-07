@@ -33,13 +33,15 @@ public class Tax_Activity extends Activity{
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		btnAccount		= (Button)findViewById(R.id.btnAccount);
-		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
+		btnAccount			= (Button)findViewById(R.id.btnAccount);
+		txtTitleBar			= (TextView)findViewById(R.id.txtTitleBar);
 		txtAddSaleTax		= (TextView)findViewById(R.id.txtAddSaleTax);
-		txtTaxRate		= (TextView)findViewById(R.id.txtTaxRate);
-		txtTax			= (TextView)findViewById(R.id.txtTax);
-		txtTaxName		= (TextView)findViewById(R.id.txtTaxName);
+		txtTaxRate			= (TextView)findViewById(R.id.txtTaxRate);
+		txtTax				= (TextView)findViewById(R.id.txtTax);
+		txtTaxName			= (TextView)findViewById(R.id.txtTaxName);
 		tgbtnstatusTax		= (ToggleButton)findViewById(R.id.tgbAddSaleTax);
+		
+		translate();
 				
 		
 		tgbtnstatusTax.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -65,6 +67,14 @@ public class Tax_Activity extends Activity{
 			}
 		});		
 	}
+	private void translate() {
+		// TODO Auto-generated method stub
+		txtTitleBar.setText(MACROS.TAX_LBL);
+		txtAddSaleTax.setText(MACROS.TAX_SALETAX_LBL);
+		txtTaxRate.setText(MACROS.TAX_TAXRATE_LBL);
+		txtTaxName.setText(MACROS.TAX_TEXT_LBL);
+	}
+
 	public void numClick(View view){
 		switch (view.getId()) {
 			case R.id.btn10:
