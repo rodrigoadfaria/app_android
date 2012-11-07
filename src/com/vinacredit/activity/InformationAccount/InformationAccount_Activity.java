@@ -67,7 +67,7 @@ public class InformationAccount_Activity extends Activity {
 		edtOldPass.setHint(MACROS.INFOR_OLDPASS_TXT);
 		edtNewpass.setHint(MACROS.INFOR_NEWPASS_TXT);
 		edtConfirmPass.setHint(MACROS.INFOR_CONFIRMPASS_TXT);
-		btnContinue.setHint(MACROS.INFOR_CONTINUE_BTN);
+		btnContinue.setText(MACROS.INFOR_CONTINUE_BTN);
 		
 		txtEmail.setText(MACROS.INFOR_EMAIL_LBL);
 		txtOldPass.setText(MACROS.INFOR_OLDPASS_LBL);

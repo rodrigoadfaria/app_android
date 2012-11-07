@@ -36,8 +36,14 @@ public class Welcome_Activity extends Activity {
 		txt_welcome 	= (TextView)findViewById(R.id.txt_welcome);
 		txt_content 	= (TextView)findViewById(R.id.txt_content);
 		imageView1 	= (ImageView)findViewById(R.id.imageView1);
-		btnSignIn.setOnClickListener(new View.OnClickListener() {
-			
+		
+		MACROS.bl_language = true;
+		//Log.i("debug","bl_language : true");
+		Library.Translate(MACROS.bl_language);	
+		translate();
+		
+		//action btnSignIn
+		btnSignIn.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
