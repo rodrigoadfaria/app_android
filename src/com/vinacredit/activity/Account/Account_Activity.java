@@ -7,6 +7,7 @@ import com.vinacredit.activity.Account.Support.Support_Activity;
 import com.vinacredit.activity.Account.Tax.Tax_Activity;
 import com.vinacredit.activity.Sale.Sale_Activity;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
+import com.vinacredit.activity.Welcome.Welcome_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -50,23 +51,22 @@ public class Account_Activity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				// TODO Auto-generated method stub
-				Intent i;
+				// TODO Auto-generated method stub				
 				switch (position) {
 				case 1:
-					 i = new Intent(getApplicationContext(), SaleHistory_Activity.class);
+					 Intent i1 = new Intent(getApplicationContext(), SaleHistory_Activity.class);
 		        	  // sending data to new activity
-		        	  startActivity(i);
+		        	  startActivity(i1);
 		        	  break;
 				case 2:
-					 i = new Intent(getApplicationContext(), Tax_Activity.class);
+					Intent i2 = new Intent(getApplicationContext(), Tax_Activity.class);
 		        	  // sending data to new activity
-		        	  startActivity(i);
+		        	  startActivity(i2);
 		        	  break;
 				case 3:
-		        	 i = new Intent(getApplicationContext(), Support_Activity.class);
+					Intent i3 = new Intent(getApplicationContext(), Support_Activity.class);
 		        	  // sending data to new activity
-		        	  startActivity(i);
+		        	  startActivity(i3);
 		        	  break;
 				}
 			}
@@ -92,6 +92,17 @@ public class Account_Activity extends Activity{
 			Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
 			startActivity(i);
 		    }
+		});
+		
+		//action btnSignOut
+		btnSignOut.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(),Welcome_Activity.class);
+				startActivity(i);
+			}
 		});
 	}
 
