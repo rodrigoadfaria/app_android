@@ -37,7 +37,7 @@ public class Welcome_Activity extends Activity {
 		txt_content 	= (TextView)findViewById(R.id.txt_content);
 		imageView1 	= (ImageView)findViewById(R.id.imageView1);
 		
-		MACROS.bl_language = true;
+		
 		//Log.i("debug","bl_language : true");
 		Library.Translate(MACROS.bl_language);	
 		translate();
