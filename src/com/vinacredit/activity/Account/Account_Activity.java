@@ -46,32 +46,31 @@ public class Account_Activity extends Activity{
         listView1.setAdapter(adapter);
         
         
-        listView1.setOnItemClickListener(new OnItemClickListener(){
+        listView1.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				// TODO Auto-generated method stub				
+				// TODO Auto-generated method stub
+				Intent i;
 				switch (position) {
 				case 1:
-					 Intent i1 = new Intent(getApplicationContext(), SaleHistory_Activity.class);
-		        	  // sending data to new activity
-		        	  startActivity(i1);
-		        	  break;
+					i = new Intent(getApplicationContext(),SaleHistory_Activity.class);
+					startActivity(i);
+					break;
 				case 2:
-					Intent i2 = new Intent(getApplicationContext(), Tax_Activity.class);
-		        	  // sending data to new activity
-		        	  startActivity(i2);
-		        	  break;
+					i = new Intent(getApplicationContext(),Tax_Activity.class);
+					startActivity(i);
+					break;
 				case 3:
-					Intent i3 = new Intent(getApplicationContext(), Support_Activity.class);
-		        	  // sending data to new activity
-		        	  startActivity(i3);
-		        	  break;
+					i = new Intent(getApplicationContext(),Support_Activity.class);
+					startActivity(i);
+					break;
 				}
 			}
         	
-        });
+		});
+       
 	}
 	private void initialize() {
 		// TODO Auto-generated method stub	
