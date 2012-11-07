@@ -22,6 +22,7 @@ public class Library {
 	        MACROS.WRONGPASS_LBL            		= "Wrong Pass";
 	        MACROS.WRONGPASS_EMAIL_TXT      		= "Email Address";
 	        MACROS.WRONGPASS_SEND_BTN       		= "Send";
+	        MACROS.WRONGPASS_CANCEL_BTN       		= "Cancel";
 	        MACROS.WRONGPASS_RESULT_LBL     		= "Enter email again";
 
 	        MACROS.INFOR_LBL                		= "Information";
@@ -112,6 +113,7 @@ public class Library {
 	        MACROS.WRONGPASS_LBL            		= "Lấy lại mật khẩu";
 	        MACROS.WRONGPASS_EMAIL_TXT      		= "Địa chỉ email";
 	        MACROS.WRONGPASS_SEND_BTN       		= "Gửi";
+	        MACROS.WRONGPASS_CANCEL_BTN       		= "Thoát";
 	        MACROS.WRONGPASS_RESULT_LBL     		= "Nhập lại email";
 
 	        MACROS.INFOR_LBL                		= "Thông tin cá nhân";

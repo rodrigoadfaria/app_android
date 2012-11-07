@@ -21,7 +21,9 @@ public class MACROS{
     public static  String      WRONGPASS_LBL;
     public static  String      WRONGPASS_EMAIL_TXT;
     public static  String      WRONGPASS_SEND_BTN;
+    public static  String	   WRONGPASS_CANCEL_BTN;
     public static  String      WRONGPASS_RESULT_LBL;
+    
 
     //=====INFOR================
     public static  String      INFOR_LBL;
