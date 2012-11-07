@@ -1,6 +1,11 @@
 package com.vinacredit.Resource;
 
 public class MACROS{
+    
+    // variable 
+    public static  boolean     bl_language  	= true; // true is english and false is vietnam
+    public static  boolean     tax_status_bl 	= false;// false = off, true = on	
+    
     //=====WELCOME==============
     public static  String      WELCOME_TO_VINACREDIT_LBL;// lbl : label
     public static  String      WELCOME_TEXT_LBL;
@@ -98,9 +103,7 @@ public class MACROS{
     public static  String      TAX_SALETAX_LBL;
     public static  String      TAX_TAXRATE_LBL;
     public static  String      TAX_TEXT_LBL;
-    // variable 
-    public static  boolean     tax_status_bl = false;// false = off, true = on	
-
+    
     //=====SUPPORT=============
     public static  String      SUPPORT_LBL;
     public static  String      SUPPORT_VINA_LBL;
@@ -111,5 +114,5 @@ public class MACROS{
     public static  String      DONE_PAID_LBL;
     public static  String      DONE_BTN;
 
-    public static  boolean bl_language = true; // true is english and false is vietnam
+    
 }
