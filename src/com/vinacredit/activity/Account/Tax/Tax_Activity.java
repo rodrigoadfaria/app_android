@@ -23,6 +23,7 @@ public class Tax_Activity extends Activity{
 	private ToggleButton	tgbtnstatusTax;
 	String _str_tax = "";
 	boolean i_first_dot    = true;
+	private boolean bl_status;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -52,8 +53,15 @@ public class Tax_Activity extends Activity{
 			String tmp_status_tax = (String) tgbtnstatusTax.getText();
 			Log.i("tax debug", "tmp_status_tax : " + tmp_status_tax);
 			if(tmp_status_tax.equals("ON"))
+			{
 			    MACROS.tax_status_bl = true;
-			else  MACROS.tax_status_bl = false;
+			    bl_status = true;
+			}
+			else  
+				{
+				MACROS.tax_status_bl = false;
+				bl_status = true;
+				}
 			Log.i("tax debug", "status : " + MACROS.tax_status_bl);
                      }
 		});
@@ -63,7 +71,9 @@ public class Tax_Activity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
+				Intent intent = new Intent(Tax_Activity.this,Account_Activity.class);
+				intent.putExtra("STATUSTAX", bl_status);
+				intent.putExtra("TAX",txtTax.getText().toString() );
 				startActivity(intent);
 			}
 		});		
@@ -170,7 +180,7 @@ public class Tax_Activity extends Activity{
 			_str_tax = "100";			
 		    }
 		}
-		txtTax.setText(_str_tax + " %");
+		txtTax.setText(_str_tax + "%");
 		MACROS.tax_percent_str = txtTax.getText().toString();
 		Log.i("Debug Tax", "number tax :" + txtTax.getText() );
 		Log.i("Debug Tax", "MACROS.tax_percent_str :" + MACROS.tax_percent_str );

@@ -38,6 +38,7 @@ public class ListItemAdapter extends ArrayAdapter<ListItem>{
 			holder.imgIcon 		= (ImageView)row.findViewById(R.id.imgList);
 			holder.txtTitle 	= (TextView)row.findViewById(R.id.txtTitle);
 			holder.txtSubtitle 	= (TextView)row.findViewById(R.id.txtSubtitle);
+			holder.imgIconArrow = (ImageView)row.findViewById(R.id.imgArrow);
 			
 			row.setTag(holder);
 		}
@@ -50,13 +51,15 @@ public class ListItemAdapter extends ArrayAdapter<ListItem>{
         holder.txtTitle.setText(list.title);
         holder.imgIcon.setImageResource(list.icon);
         holder.txtSubtitle.setText(list.subtitle);
+		holder.imgIconArrow.setImageResource(list.iconArrow);
 		
 		return row;
 	}
 	static class ListItemHolder
 	{
-		ImageView imgIcon;
-		TextView txtTitle;
-		TextView txtSubtitle;
+		ImageView 	imgIcon;
+		TextView 	txtTitle;
+		TextView 	txtSubtitle;
+		ImageView	imgIconArrow;
 	}
 }

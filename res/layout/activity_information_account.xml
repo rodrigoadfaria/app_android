@@ -87,7 +87,7 @@
 		    android:layout_alignBottom="@+id/edtEmail"
 		    android:layout_alignParentLeft="true"
 		    android:text="@string/txtEmail"
-		    android:textSize="20sp" />
+		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtEmail" 
 			android:layout_marginTop="30dp"
@@ -106,7 +106,7 @@
 		    android:layout_alignBottom="@+id/edtOldPass"
 		    android:layout_alignParentLeft="true"
 		    android:text="@string/txtOldPass"
-		    android:textSize="20sp" />
+		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtOldPass" 			
 		    android:layout_marginTop="16dp"
@@ -124,7 +124,7 @@
 		    android:layout_alignBaseline= "@+id/edtNewPass" 
 		    android:layout_alignParentLeft="true"
 		    android:text="@string/txtNewPass"
-		    android:textSize="20sp" />
+		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtNewPass" 
 			android:layout_below = "@+id/edtOldPass" 
@@ -141,7 +141,7 @@
 		    android:layout_alignBaseline="@+id/edtConfirmPass" 
 		    android:layout_alignParentLeft="true"
 		    android:text="@string/txtConfirmPass"
-		    android:textSize="20sp" />
+		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtConfirmPass" 
 			android:layout_below = "@id/edtNewPass"

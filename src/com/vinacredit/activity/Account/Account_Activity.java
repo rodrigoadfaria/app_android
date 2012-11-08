@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,7 +29,8 @@ public class Account_Activity extends Activity{
 	private TextView txtTitleBar;
 	private Button btnSignOut, btnBack;
 	private ListView listView1;
-	private String strSaleHistory, strTax, strSupport;
+	private String strSaleHistory, strTax, strSupport, strTaxNumber;
+	private boolean bl_status_tax;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -36,9 +38,9 @@ public class Account_Activity extends Activity{
 		setContentView(R.layout.activity_account);
 		initialize();
         ListItem listitem_data[] = new ListItem[] {
-        		new ListItem(R.drawable.sales_history, strSaleHistory, null),
-                new ListItem(R.drawable.tax, strTax, null),
-                new ListItem(R.drawable.help_support, strSupport, null)
+        		new ListItem(R.drawable.sales_history, 	strSaleHistory, null, 			R.drawable.arrow),
+                new ListItem(R.drawable.tax, 			strTax, 		strTaxNumber, 	R.drawable.arrow),
+                new ListItem(R.drawable.help_support, 	strSupport, 	null, 			R.drawable.arrow)
         };
         
         ListItemAdapter adapter = new ListItemAdapter(this,R.layout.listview_row_account,listitem_data);
@@ -84,6 +86,13 @@ public class Account_Activity extends Activity{
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
 		translate();
+		
+		Bundle extras = getIntent().getExtras();
+		if(extras != null){
+			bl_status_tax = extras.getBoolean("STATUSTAX");
+			if(bl_status_tax)
+				strTaxNumber = extras.getString("TAX");
+		}
 		
 		//action button charge
 		btnBack.setOnClickListener(new View.OnClickListener() {		
