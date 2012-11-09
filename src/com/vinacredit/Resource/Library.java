@@ -5,19 +5,27 @@ import com.vinacredit.Resource.*;
 public class Library {    
     
     public static String addDotNumber(String str_number){
+	Log.i("Debug Library", "str_number :"+ str_number);
+ 	Log.i("Debug Library","str_number.length :" + str_number.length());
+ 	String _str_child = str_number.substring(0,1);
+ 	Log.i("Debug Library", "_str_child :"+ _str_child);
+	str_number = str_number.replaceAll(",","");
+ 	Log.i("Debug Library","str_number.length :" + str_number.length());
 	String str_reverse 	= reverseString(str_number);// reverse 
 	boolean bl_add_dot = false;
 	char[] char_tmp 	= str_reverse.toCharArray();
-	/*
+	
 	int count_dot = 0;
 	count_dot = char_tmp.length/3;
-	if (char_tmp.length % 3 == 0)count_dot -=1;
-	*/
+	Log.i("Debug Library","count_dot :" + count_dot);
+	//if(char_tmp.length % 3 == 0)
+	    //count_dot -=1;
+	Log.i("Debug Library","char_tmp.length :" + char_tmp.length);
 	char char_add_dot_tmp[];
-	char_add_dot_tmp = new char[20];
+	char_add_dot_tmp = new char[char_tmp.length + count_dot];
 	int count_add_dot_tmp = 0;
 	for(int i=0; i<char_tmp.length; i++){
-	    if( (i+1) % 3 == 0 )bl_add_dot = true;
+	    if( i % 3 == 0 && i !=0)bl_add_dot = true;
 	    if(bl_add_dot){
 		char_add_dot_tmp[count_add_dot_tmp++] = ',';
 		bl_add_dot = false;
@@ -26,11 +34,18 @@ public class Library {
 	    
 	    char_add_dot_tmp[count_add_dot_tmp++] = char_tmp[i];
 	}
-	//String str_tmp = String.copyValueOf(char_add_dot_tmp, 0,char_tmp.length);
-	String str_tmp = "";
+	String str_tmp;
+	if(char_add_dot_tmp.length == 8)
+	    str_tmp = String.copyValueOf(char_add_dot_tmp, 0,char_add_dot_tmp.length - 1);
+	else
+	    str_tmp = String.copyValueOf(char_add_dot_tmp, 0,char_add_dot_tmp.length);
+	Log.i("Debug Library","char_add_dot_tmp.length :" + char_add_dot_tmp.length);
+	Log.i("Debug Library","str_tmp :" + str_tmp);
+	//String str_tmp = "";
 	str_tmp = reverseString(str_tmp);
 	return str_tmp;
     }
+    
     public static void Translate(boolean language) {
 
 	   if(language){

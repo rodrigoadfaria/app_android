@@ -105,6 +105,7 @@ public class Charge_Activity extends Activity{
 		default:
 			break;
 	}
+    	if(_str_tmp.length() > 13)return; // 9,000,000,000 length is 13.
 	_str_tmp = _str_tmp + _str_number_click;
 	if(_str_tmp.length() > 3)
 	    _str_tmp = Library.addDotNumber(_str_tmp);
