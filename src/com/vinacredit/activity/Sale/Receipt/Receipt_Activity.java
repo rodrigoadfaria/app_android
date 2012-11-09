@@ -46,7 +46,7 @@ public class Receipt_Activity extends Activity{
 				startActivity(intent);
 			}
 		});
-		
+		/*
 		//action btnSend
 		btnSend.setOnClickListener(new View.OnClickListener() {
 			
@@ -57,8 +57,32 @@ public class Receipt_Activity extends Activity{
 				startActivity(intent);
 			}
 		});
-		
+		*/
 	}
+	public void sendMail(View view) {
+	    
+	    try {
+	        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+	        String[] recipients = new String[]{"nguyen@gmail.com"};
+	        String[] ccList = { "vinacredit@gmail.com"};
+
+	        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, recipients);
+	        emailIntent.putExtra(android.content.Intent.EXTRA_CC, ccList);
+
+	        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Receipt demo.");
+	        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Hi you, \n detail... ");
+
+	        emailIntent.setType("text/plain");
+
+	        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+	        finish();
+	    } catch (Exception e) {
+		//Common.showMessage(getBaseContext(), e.toString());
+	    }
+	    
+	    //startActivity(i_inviteFriend );
+	    }
 	private void translate() {
 		// TODO Auto-generated method stub
 		edtEmail.setHint(MACROS.RECEIPT_EMAIL_TXT);
