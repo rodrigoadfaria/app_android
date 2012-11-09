@@ -108,7 +108,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="1.5dp"
         android:onClick="numClick"
-        android:src="@drawable/navigation_000" 
+        android:src="@drawable/button_navigation_000_pressed" 
         android:contentDescription="@string/imgView"/>
 	<ImageButton
         android:id="@+id/btn2"
@@ -117,7 +117,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn1"
         android:onClick="numClick"
-        android:src="@drawable/navigation_0" 
+        android:src="@drawable/button_navigation_0_pressed" 
         android:contentDescription="@string/imgView"/>
 
     <ImageButton
@@ -127,7 +127,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn2"
         android:onClick="clearClick"
-        android:src="@drawable/navigation_clear" 
+        android:src="@drawable/button_navigation_clear_pressed" 
         android:contentDescription="@string/imgView"/>
     <!-- 7 , 8 , 9 -->
 
@@ -138,7 +138,7 @@
         android:layout_above="@id/btn1"
         android:layout_marginLeft="1.5dp"
         android:onClick="numClick"
-        android:src="@drawable/navigation_7" 
+        android:src="@drawable/button_navigation_7_pressed" 
         android:contentDescription="@string/imgView"/>
 
     <ImageButton
@@ -148,7 +148,7 @@
         android:layout_above="@id/btn2"
         android:layout_toRightOf="@id/btn4"
         android:onClick="numClick"
-        android:src="@drawable/navigation_8" 
+        android:src="@drawable/button_navigation_8_pressed" 
         android:contentDescription="@string/imgView"/>
     
     <ImageButton
@@ -159,7 +159,7 @@
         android:layout_alignBottom="@+id/btn5"
         android:layout_alignLeft="@+id/btn3"
         android:onClick="numClick"
-        android:src="@drawable/navigation_9" 
+        android:src="@drawable/button_navigation_9_pressed" 
         android:contentDescription="@string/imgView"/>
     <!-- 4 , 5 , 6 -->
 
@@ -170,7 +170,7 @@
         android:layout_above="@id/btn4"
         android:layout_marginLeft="1.5dp"
         android:onClick="numClick"
-        android:src="@drawable/navigation_4"
+        android:src="@drawable/button_navigation_4_pressed"
         android:contentDescription="@string/imgView"/>
 
     <ImageButton
@@ -180,7 +180,7 @@
         android:layout_above="@id/btn5"
         android:layout_toRightOf="@id/btn4"
         android:onClick="numClick"
-        android:src="@drawable/navigation_5"
+        android:src="@drawable/button_navigation_5_pressed"
         android:contentDescription="@string/imgView"/>
     
     <ImageButton
@@ -190,7 +190,7 @@
         android:layout_below="@+id/btn11"
         android:layout_toRightOf="@+id/btn8"
         android:onClick="numClick"
-        android:src="@drawable/navigation_6" 
+        android:src="@drawable/button_navigation_6_pressed" 
         android:contentDescription="@string/imgView"/>
     <!-- 1 , 2 , 3 -->
 
@@ -201,7 +201,7 @@
         android:layout_above="@id/btn7"
         android:layout_marginLeft="1.5dp"
         android:onClick="numClick"
-        android:src="@drawable/navigation_1" 
+        android:src="@drawable/button_navigation_1_pressed" 
         android:contentDescription="@string/imgView"/>
 
     <ImageButton
@@ -211,7 +211,7 @@
         android:layout_above="@id/btn8"
         android:layout_toRightOf="@id/btn7"
         android:onClick="numClick"
-        android:src="@drawable/navigation_2" 
+        android:src="@drawable/button_navigation_2_pressed" 
         android:contentDescription="@string/imgView"/>
     
     <ImageButton
@@ -221,7 +221,7 @@
         android:layout_above="@+id/btn8"
         android:layout_toRightOf="@+id/btn8"
         android:onClick="numClick"
-        android:src="@drawable/navigation_3"
+        android:src="@drawable/button_navigation_3_pressed"
         android:contentDescription="@string/imgView"/>
 
 
