@@ -23,7 +23,8 @@
         android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hintUsername"
+        android:hint="@string/txtEmail"
+        android:inputType="textEmailAddress"
         android:ems="10" >
 
         <requestFocus />
