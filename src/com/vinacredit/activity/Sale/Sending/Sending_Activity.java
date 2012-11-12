@@ -28,7 +28,7 @@ public class Sending_Activity extends Activity{
 		// TODO Auto-generated method stub
 		btnBack		= (Button)findViewById(R.id.btnBack);
 		btnReceipt	= (Button)findViewById(R.id.btnReceipt);
-		txtTitlebar	= (Button)findViewById(R.id.txtTitleBar);
+		//txtTitlebar	= (Button)findViewById(R.id.txtTitleBar);
 		
 		translate();
 		
@@ -57,7 +57,7 @@ public class Sending_Activity extends Activity{
 
 	private void translate() {
 		// TODO Auto-generated method stub
-		txtTitlebar.setText(MACROS.SEND_LBL);
+		//txtTitlebar.setText(MACROS.SEND_LBL);
 	}
 
 }
