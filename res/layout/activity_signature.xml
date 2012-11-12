@@ -35,6 +35,7 @@
             android:layout_alignBaseline="@id/_btnIdentify"
             android:layout_centerVertical="true"
             android:background="@drawable/button_continue_pressed"
+            android:onClick="gotoSending"
             android:text="@string/btnSending"
             android:textColor="@color/white" />
         </RelativeLayout>
