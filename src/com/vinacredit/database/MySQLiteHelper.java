@@ -50,7 +50,7 @@ public class MySQLiteHelper
         + "firstname text,"
         + "lastname text,"
         + "company text,"
-        + "address text,";
+        + "address text);";
     
     private static final String DATABASE_CREATE_BILL = 
     	"create table Bill ("
@@ -124,6 +124,10 @@ public class MySQLiteHelper
     	ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_EMAIL_ACCOUNT, account.getEmail());
         initialValues.put(KEY_PASSWORD, account.getPass());
+        initialValues.put(KEY_FIRSTNAME,account.getFirstName());
+        initialValues.put(KEY_LASTNAME,account.getLastName());
+        initialValues.put(KEY_COMPANY,account.getCompanyName());
+        initialValues.put(KEY_ADDRESS,account.getAddress());
         return db.insert(DATABASE_TABLE_ACCOUNT, null, initialValues);
     }
 

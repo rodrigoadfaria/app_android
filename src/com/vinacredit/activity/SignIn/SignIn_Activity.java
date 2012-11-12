@@ -46,6 +46,10 @@ public class SignIn_Activity extends Activity{
 		final Account account = new Account();
 		account.setEmail("hung");
 		account.setPass("123");
+		account.setFirstName("Le");
+		account.setLastName("Hung");
+		account.setCompanyName("vina");
+		account.setAddress("abc");
 		dbaccount.AddAccount(account);
 		btnSignIn.setOnClickListener(new View.OnClickListener() {
 			
