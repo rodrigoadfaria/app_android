@@ -1,5 +1,5 @@
 
-package com.vinacredit.database;
+package com.vinacredit.Resource;
 
 import con.vinacredit.DTO.Account;
 import android.content.ContentValues;
