@@ -2,6 +2,7 @@ package com.vinacredit.activity.Sale.Signature;
 
 import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
+import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Sale.Identify.Identify_Activity;
 import com.vinacredit.activity.Sale.Sending.Sending_Activity;
 
@@ -43,18 +44,12 @@ public class Signature_Activity extends Activity{
 			}
 		});
 		
-		//action btnSending
-		btnSending.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Sending_Activity.class);
-				startActivity(intent);
-			}
-		});
 	}
-
+	// action btn Sending 
+	public void gotoSending(View view){
+	    Intent intent = new Intent(getApplicationContext(),Sending_Activity.class);
+	    startActivity(intent);
+	}
 	private void translate() {
 		// TODO Auto-generated method stub
 		txtTitleBar.setText(MACROS.SIGNATURE_LBL);

@@ -14,11 +14,13 @@ import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
 import com.vinacredit.activity.Account.ListItem;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
+import com.vinacredit.activity.Sale.Identify.Identify_Activity;
 
 public class Sale_Activity extends Activity{
 	
     private Button 		btn_gotoAccount;
     private Button 		btn_gotoCharge;
+    private Button 		btn_gotoIdentify;
     private TextView	txtTitleBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +58,13 @@ public class Sale_Activity extends Activity{
     	});
 
     }
-	private void translate() {
-		// TODO Auto-generated method stub
+    private void translate() {
+	// TODO Auto-generated method stub
     	txtTitleBar.setText(MACROS.SALE_LBL);
-	}
-    
+    }
+    public void gotoIdentify(View view){
+	
+	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
+	startActivity(i);
+    }
 }
