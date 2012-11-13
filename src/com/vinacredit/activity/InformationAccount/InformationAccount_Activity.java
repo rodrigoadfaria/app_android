@@ -47,6 +47,9 @@ public class InformationAccount_Activity extends Activity {
 		
 		translate();
 		
+		Bundle extras = getIntent().getExtras();
+		edtEmail.setText(extras.getString("EMAIL"));
+		
 		//action button continue
 		btnContinue.setOnClickListener(new View.OnClickListener() {
 			

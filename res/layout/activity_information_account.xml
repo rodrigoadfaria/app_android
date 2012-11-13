@@ -94,7 +94,8 @@
 			android:layout_below = "@id/edtAddress" 
 			android:layout_toRightOf="@id/imgUsername"
 			android:inputType="textEmailAddress"
-			android:hint = "@string/txtEmail"
+			android:hint = "@string/txtEmail"			
+		    android:focusableInTouchMode="false"
 			android:layout_width = "fill_parent" 
 			android:layout_height = "wrap_content"/>
 		

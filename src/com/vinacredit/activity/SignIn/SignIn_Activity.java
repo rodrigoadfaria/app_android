@@ -1,10 +1,6 @@
 package com.vinacredit.activity.SignIn;
 
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,7 +40,6 @@ public class SignIn_Activity extends Activity{
 	private JSONArray contacts = null;
 	private JSONParser jParser;
 	private JSONObject json;
-	private ArrayList<Account> accountList;
 	
 	
 	private EditText 	edtUsername, edtPassword;
@@ -70,7 +65,6 @@ public class SignIn_Activity extends Activity{
 		
 		
 		dbaccount 	= new MySQLiteHelper(this);
-		accountList = new ArrayList<Account>();
 		account		= new Account();
 		// Creating JSON Parser instance
 		jParser = new JSONParser();
@@ -102,18 +96,18 @@ public class SignIn_Activity extends Activity{
 							account.setFirstName(c.getString(TAG_FIRSTNAME));
 							account.setLastName(c.getString(TAG_LASTNAME));
 							
-							accountList.add(account);
-							
 							if(c.getString(TAG_EMAIL).equals(email) 
-									&& (c.getString(TAG_PASS).equals(pass))){
-								Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
-								startActivity(intent);
-								Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-							} else {
-								Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
-							}
-							
+									&& (c.getString(TAG_PASS).equals(pass)))
+								{
+									Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+									Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
+									intent.putExtra("EMAIL", email);
+									startActivity(intent);
+									return;
+								}
 						}
+							Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
+						
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

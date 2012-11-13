@@ -118,6 +118,9 @@ public class MySQLiteHelper
         DBHelper.close();
     }    
     
+    /*
+     * insert account
+     */
     public long AddAccount(Account account) throws SQLException 
     {
     	open();
@@ -131,6 +134,9 @@ public class MySQLiteHelper
         return db.insert(DATABASE_TABLE_ACCOUNT, null, initialValues);
     }
 
+    /*
+     * check login
+     */
     public boolean Login(String email, String password) throws SQLException 
     {
     	open();
@@ -141,6 +147,7 @@ public class MySQLiteHelper
             	return true;
             }
         }
+        close();
         mCursor.close();
      return false;
     }
