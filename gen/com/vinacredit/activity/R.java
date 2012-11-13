@@ -177,6 +177,7 @@ public final class R {
         public static final int activity_welcome=0x7f03000d;
         public static final int activity_wrongpass=0x7f03000e;
         public static final int listview_row_account=0x7f03000f;
+        public static final int sale_add_item=0x7f030010;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
