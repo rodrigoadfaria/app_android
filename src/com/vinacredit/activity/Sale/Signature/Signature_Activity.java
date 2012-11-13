@@ -32,18 +32,11 @@ public class Signature_Activity extends Activity{
 		btnSending		= (Button)findViewById(R.id._btnSending);
 		
 		translate();
-		
-		//action btnIdentify
-		btnIdentify.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Identify_Activity.class);
-				startActivity(intent);
-			}
-		});
-		
+	}
+	//action btnIdentify
+	public void gotoIdentify(View view){
+	    Intent intent = new Intent(getApplicationContext(),Identify_Activity.class);
+	    startActivity(intent);
 	}
 	// action btn Sending 
 	public void gotoSending(View view){
