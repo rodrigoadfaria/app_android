@@ -3,12 +3,17 @@ package com.vinacredit.activity.SignIn;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.vinacredit.Resource.*;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.InformationAccount.InformationAccount_Activity;
 import com.vinacredit.activity.SignIn.WrongPass.WrongPass_Activity;
-import com.vinacredit.database.MySQLiteHelper;
 
 import con.vinacredit.DTO.Account;
 
@@ -23,10 +28,30 @@ import android.widget.Toast;
 
 public class SignIn_Activity extends Activity{
 
+	// url to make request
+	private static String url = "https://sites.google.com/site/vinacreditdemo/home/sqlite.json";
+	
+	// JSON Node names
+	private static final String TAG_ACCOUNT 	= "sqlite";
+	private static final String TAG_EMAIL 		= "mail";
+	private static final String TAG_PASS 		= "pass";
+	private static final String TAG_FIRSTNAME 	= "firstname";
+	private static final String TAG_LASTNAME	= "lastname";
+	private static final String TAG_FIRSTLOGIN	= "firstlogin";
+	
+	
+	// contacts JSONArray
+	private JSONArray contacts = null;
+	private JSONParser jParser;
+	private JSONObject json;
+	private ArrayList<Account> accountList;
+	
+	
 	private EditText 	edtUsername, edtPassword;
 	private Button 		btnSignIn, btnWrongPass;
 	private TextView	txtTitleBar;
 	private MySQLiteHelper dbaccount;
+	private Account account;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -42,34 +67,57 @@ public class SignIn_Activity extends Activity{
 		btnWrongPass 	= (Button)findViewById(R.id.btnWrongPass);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		translate();
-		dbaccount = new MySQLiteHelper(this);
-		final Account account = new Account();
-		account.setEmail("hung");
-		account.setPass("123");
-		account.setFirstName("Le");
-		account.setLastName("Hung");
-		account.setCompanyName("vina");
-		account.setAddress("abc");
-		dbaccount.AddAccount(account);
+		
+		
+		dbaccount 	= new MySQLiteHelper(this);
+		accountList = new ArrayList<Account>();
+		account		= new Account();
+		// Creating JSON Parser instance
+		jParser = new JSONParser();
+
+		// getting JSON string from URL
+		json = jParser.getJSONFromUrl(url);	
+		
+		
 		btnSignIn.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				try{
-				if(dbaccount.Login(edtUsername.getText().toString(), edtPassword.getText().toString())){
-				Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
-				startActivity(intent);
-					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-				} else {
-					Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
-				}
 				
-				} catch (Exception e) {
-					// TODO: handle exception
-					Toast.makeText(SignIn_Activity.this,e.getMessage(), Toast.LENGTH_LONG).show();
+				String email = edtUsername.getText().toString();
+				String pass  = edtPassword.getText().toString();
+				try {
+					// Getting Array of Contacts
+					contacts = json.getJSONArray(TAG_ACCOUNT);
+					
+					// looping through All Contacts
+					for(int i = 0; i < contacts.length(); i++)
+						{
+							JSONObject c = contacts.getJSONObject(i);
+						
+							// Storing each json item in variable
+							account.setEmail(c.getString(TAG_EMAIL));
+							account.setPass(c.getString(TAG_PASS));
+							account.setFirstName(c.getString(TAG_FIRSTNAME));
+							account.setLastName(c.getString(TAG_LASTNAME));
+							
+							accountList.add(account);
+							
+							if(c.getString(TAG_EMAIL).equals(email) 
+									&& (c.getString(TAG_PASS).equals(pass))){
+								Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
+								startActivity(intent);
+								Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+							} else {
+								Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
+							}
+							
+						}
+				} catch (JSONException e) {
+					e.printStackTrace();
 				}
-				dbaccount.close();
+
 			}
 		});
 		

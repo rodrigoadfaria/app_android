@@ -37,5 +37,6 @@
         <activity android:name=".Sale.Receipt.Receipt_Activity"></activity>
         <activity android:name=".Done.Done_Activity"></activity>
     </application>
-
+    
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>
