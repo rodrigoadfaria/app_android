@@ -44,6 +44,7 @@
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="1.5dp"
         android:layout_below="@+id/relativelayout_title_bar"
         android:background="#EEEEEE" >
         
@@ -70,8 +71,6 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
     
-
-    
     <RelativeLayout 
         android:id="@+id/relative2"
         android:layout_width="match_parent"
@@ -97,8 +96,24 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="2dp"
             android:src="@drawable/recyclebin"
-            android:background="#EEEEEE"/>        
+            android:background="#EEEEEE"/>         
+    </RelativeLayout>
+        <RelativeLayout 
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative"
+        android:layout_above="@id/relative2"
+        android:background="#EEEEEE"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
+        android:layout_marginTop="1.5dp">
         
+        <ListView
+            android:id="@+id/listSale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+		</ListView>        
     </RelativeLayout>
     
     
