@@ -80,7 +80,7 @@
         android:layout_margin="1.5dp">
         <ImageButton 
             android:id="@+id/imgbtnItem"
-            android:src="@drawable/camera"
+            android:src="@android:drawable/ic_menu_camera"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:contentDescription="@string/imgView"

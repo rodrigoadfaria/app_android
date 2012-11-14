@@ -8,8 +8,9 @@
     android:padding="5dip" >
 
     <!-- Image Item -->
-    <ImageButton
+    <ImageView
         android:id="@+id/imgItem"
+        android:src="@drawable/chomsao"
         android:layout_width="40dip"
         android:layout_height="40dip"
         android:layout_alignParentLeft="true"
@@ -22,13 +23,23 @@
         android:id="@+id/edtItem"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignBottom="@+id/imgItem"
-        android:layout_alignTop="@+id/imgItem"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/imgItem"
+        android:layout_centerVertical="true"
         android:gravity="center_vertical"
         android:text="@string/txtTitle"
         android:textSize="20dip" />
+    
+    <!-- Quantity Item -->
+    <TextView 
+        android:id="@+id/txtQtyItem"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@id/edtItem"
+        android:layout_marginLeft="25dp"
+        android:gravity="center_vertical"
+        android:textSize="20dip"
+        android:text="@string/QuantityItem"/>
     
     <!-- Button plus -->
     <Button
