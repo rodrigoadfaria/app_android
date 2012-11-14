@@ -116,5 +116,6 @@ public class MACROS{
     public static  String      DONE_PAID_LBL;
     public static  String      DONE_BTN;
 
-    
+    //========================define========================
+    public static  boolean     TEST_SIGNIN_BL 		= 	false;
 }
