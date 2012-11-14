@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#EEEEEE"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <!-- Image Item -->
+    <ImageButton
+        android:id="@+id/imgItem"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="2dp"
+        android:contentDescription="@string/imgView" />
+
+    <!-- Name Item -->
+    <TextView
+        android:id="@+id/edtItem"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/imgItem"
+        android:layout_alignTop="@+id/imgItem"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/imgItem"
+        android:gravity="center_vertical"
+        android:text="@string/txtTitle"
+        android:textSize="20dip" />
+    
+    <!-- Button plus -->
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/plus" />
+    
+	<!-- Button minus -->
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignBaseline="@id/btnPlus"
+        android:layout_toLeftOf="@+id/btnPlus"
+        android:background="@drawable/minus" />
+    
+    <!-- Price Item -->
+    <TextView
+        android:id="@+id/txtSubtitle"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/btnMinus"
+        android:gravity="right|center_vertical"
+        android:text="@string/txtSubtitle"
+        android:textSize="20dip" />
+
+</RelativeLayout>

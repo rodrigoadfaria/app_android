@@ -7,9 +7,9 @@
     android:orientation="horizontal"
     android:padding="5dip">
     
-    <!-- Thumbnail image -->
+    <!-- Image Item-->
     <ImageButton
-            android:id="@+id/imgList"
+            android:id="@+id/imgItem"
             android:layout_width="40dip"
             android:layout_height="40dip"
             android:layout_alignParentLeft="true"
@@ -17,41 +17,36 @@
             android:layout_marginLeft="2dp"
             android:contentDescription="@string/imgView"  />
 
-    <!-- Title  -->
+    <!-- Name item  -->
 
     <EditText
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="40dip"
-        android:layout_centerVertical="true"
+        android:id="@+id/edtItem"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/imgList"
-        android:text="@string/txtTitle"
-        android:textColor="#040404"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    
-	<!-- Subtitle -->
+        android:layout_toRightOf="@+id/imgItem"
+        android:background="@drawable/bg"
+        android:hint="@string/txtTitle"
+        android:textSize="20dip" />   
+
+    <!-- Button add -->
+    <Button        
+        android:id="@+id/btnAdd"
+        android:background="@drawable/add"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+    	<!-- Price item -->
+
     <TextView
         android:id="@+id/txtSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@+id/btnAdd"
+        android:gravity="right|center_vertical"
         android:layout_centerVertical="true"
-        android:gravity="right"
-        android:text="@string/txtSubtitle"
-        android:layout_marginRight="30dp"
-        android:textSize="15dp"
-        android:textStyle="bold"/>
-    <!-- Rightend Arrow -->
-    <ImageView
-        android:id="@+id/imgArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/arrow"
-        android:contentDescription="@string/imgView" />
+        android:textSize="20dip"
+        android:text="@string/txtSubtitle" />
 
 </RelativeLayout>
