@@ -68,9 +68,10 @@ public class SignIn_Activity extends Activity{
 		account		= new Account();
 		// Creating JSON Parser instance
 		jParser = new JSONParser();
-
-		// getting JSON string from URL
-		json = jParser.getJSONFromUrl(url);	
+		if(MACROS.TEST_SIGNIN_BL){
+		    // getting JSON string from URL
+		    json = jParser.getJSONFromUrl(url);    
+		}
 		
 		
 		btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -78,39 +79,45 @@ public class SignIn_Activity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
-				String email = edtUsername.getText().toString();
-				String pass  = edtPassword.getText().toString();
-				try {
-					// Getting Array of Contacts
-					contacts = json.getJSONArray(TAG_ACCOUNT);
-					
-					// looping through All Contacts
-					for(int i = 0; i < contacts.length(); i++)
-						{
-							JSONObject c = contacts.getJSONObject(i);
+				if(MACROS.TEST_SIGNIN_BL){
+				    String email = edtUsername.getText().toString();
+					String pass  = edtPassword.getText().toString();
+					try {
+						// Getting Array of Contacts
+						contacts = json.getJSONArray(TAG_ACCOUNT);
 						
-							// Storing each json item in variable
-							account.setEmail(c.getString(TAG_EMAIL));
-							account.setPass(c.getString(TAG_PASS));
-							account.setFirstName(c.getString(TAG_FIRSTNAME));
-							account.setLastName(c.getString(TAG_LASTNAME));
+						// looping through All Contacts
+						for(int i = 0; i < contacts.length(); i++)
+							{
+								JSONObject c = contacts.getJSONObject(i);
 							
-							if(c.getString(TAG_EMAIL).equals(email) 
-									&& (c.getString(TAG_PASS).equals(pass)))
-								{
-									Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-									Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
-									intent.putExtra("EMAIL", email);
-									startActivity(intent);
-									return;
-								}
-						}
-							Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
-						
-				} catch (JSONException e) {
-					e.printStackTrace();
+								// Storing each json item in variable
+								account.setEmail(c.getString(TAG_EMAIL));
+								account.setPass(c.getString(TAG_PASS));
+								account.setFirstName(c.getString(TAG_FIRSTNAME));
+								account.setLastName(c.getString(TAG_LASTNAME));
+								
+								if(c.getString(TAG_EMAIL).equals(email) 
+										&& (c.getString(TAG_PASS).equals(pass)))
+									{
+										Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+										Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
+										intent.putExtra("EMAIL", email);
+										startActivity(intent);
+										return;
+									}
+							}
+								Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
+							
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 				}
+				else {
+				    Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
+				    startActivity(intent);
+				}
+				
 
 			}
 		});

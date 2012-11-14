@@ -46,9 +46,12 @@ public class InformationAccount_Activity extends Activity {
 		txtConfirmPass	= (TextView)findViewById(R.id.txtConfirmPass);
 		
 		translate();
-		
-		Bundle extras = getIntent().getExtras();
-		edtEmail.setText(extras.getString("EMAIL"));
+		if(MACROS.TEST_SIGNIN_BL){
+		    Bundle extras = getIntent().getExtras();
+		    edtEmail.setText(extras.getString("EMAIL"));    
+		}
+		else 
+		    edtEmail.setText(null);    
 		
 		//action button continue
 		btnContinue.setOnClickListener(new View.OnClickListener() {
