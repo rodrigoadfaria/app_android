@@ -16,7 +16,8 @@
             android:layout_width="80dip"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:background="@drawable/button_back_pressed"/>
+            android:background="@drawable/button_back_pressed"
+            android:onClick="btnBack"/>
         
         <TextView 
             android:id="@+id/txtTitleBar"
@@ -36,7 +37,8 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/button_continue_pressed"
             android:text="@string/btnSignature"
-            android:textColor="@color/white" />
+            android:textColor="@color/white" 
+            android:onClick="btnSignature"/>
     </RelativeLayout>
     
         <ImageView 
@@ -55,6 +57,7 @@
             android:layout_below="@id/imgIdentify"
             android:layout_marginTop="20dp"
             android:text="@string/btnTakePhoto"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:onClick="btnTakePhoto"/>
 
 </RelativeLayout>

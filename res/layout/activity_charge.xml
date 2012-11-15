@@ -17,7 +17,8 @@
             android:layout_centerVertical="true"
             android:background="@drawable/button_back_pressed"
             android:text="@string/btnBack"
-            android:textColor="@color/white" />
+            android:textColor="@color/white" 
+            android:onClick="btnBack"/>
 
         <TextView
             android:id="@+id/txtTitleBar"
@@ -96,7 +97,8 @@
         android:layout_below="@id/txtChange"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="@string/btnTenderCash" />
+        android:text="@string/btnTenderCash" 
+        android:onClick="btnTenderCash"/>
 
 <!-- Add Key Pad -->
     <!-- 000 , 0 , <- -->

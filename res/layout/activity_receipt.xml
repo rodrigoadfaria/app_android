@@ -26,7 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/edtEmail"
         android:layout_marginLeft="20dp"
-        android:text="@string/btnSkip"/>
+        android:text="@string/btnSkip"
+        android:onClick="btnSkip"/>
     <Button 
         android:id="@+id/btnSend"
         android:layout_width="100dp"

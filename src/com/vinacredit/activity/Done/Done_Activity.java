@@ -32,23 +32,18 @@ public class Done_Activity extends Activity{
 		txtPaidThank	= (TextView)findViewById(R.id.txtPaidThank);
 		btnDone			= (Button)findViewById(R.id.btnDone);
 		
-		translate();
-		
-		//action btnDone
-		btnDone.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
-				startActivity(intent);
-			}
-		});
+		translate();		
+
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
 		txtPaidThank.setText(MACROS.DONE_PAID_LBL);
 		btnDone.setText(MACROS.DONE_BTN);
+	}
+	
+	public void btnDone(View view){
+		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
+		startActivity(intent);
 	}
 
 }

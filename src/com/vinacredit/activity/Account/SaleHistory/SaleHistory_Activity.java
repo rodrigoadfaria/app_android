@@ -34,21 +34,14 @@ public class SaleHistory_Activity extends Activity{
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
 		translate();
-		
-		//action btnAccount
-		btnAccount.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
-				startActivity(intent);
-			}
-		});
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
 		txtTitleBar.setText(MACROS.SALEHISTORY_LBL);
 	}
 
+	public void btnAccount(View view){
+		Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
+		startActivity(intent);
+	}
 }

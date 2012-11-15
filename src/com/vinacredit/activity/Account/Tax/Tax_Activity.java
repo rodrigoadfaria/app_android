@@ -64,19 +64,7 @@ public class Tax_Activity extends Activity{
 				}
 			Log.i("tax debug", "status : " + MACROS.tax_status_bl);
                      }
-		});
-		
-		btnAccount.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(Tax_Activity.this,Account_Activity.class);
-				intent.putExtra("STATUSTAX", bl_status);
-				intent.putExtra("TAX",txtTax.getText().toString() );
-				startActivity(intent);
-			}
-		});		
+		});	
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -86,6 +74,13 @@ public class Tax_Activity extends Activity{
 		txtTaxName.setText(MACROS.TAX_TEXT_LBL);
 	}
 
+	public void btnAccount(View view){
+		Intent intent = new Intent(Tax_Activity.this,Account_Activity.class);
+		intent.putExtra("STATUSTAX", bl_status);
+		intent.putExtra("TAX",txtTax.getText().toString() );
+		startActivity(intent);
+	}
+	
 	public void numClick(View view){
 	    	String _str_number_click = "";	 
 	    	boolean bl_pressed_dot = false;

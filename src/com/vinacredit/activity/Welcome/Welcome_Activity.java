@@ -29,8 +29,7 @@ public class Welcome_Activity extends Activity {
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		btnSignIn = (Button)findViewById(R.id.btnSignIn);
-		
+		btnSignIn = (Button)findViewById(R.id.btnSignIn);		
 		btnEnglish 	= (Button)findViewById(R.id.btnLanguageEnglish);
 		btnVietnam 	= (Button)findViewById(R.id.btnLanguageVietnam);
 		txt_welcome 	= (TextView)findViewById(R.id.txt_welcome);
@@ -41,43 +40,42 @@ public class Welcome_Activity extends Activity {
 		//Log.i("debug","bl_language : true");
 		Library.Translate(MACROS.bl_language);	
 		translate();
-		
-		//action btnSignIn
-		btnSignIn.setOnClickListener(new View.OnClickListener() {			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
-				startActivity(intent);
-			}
-		});
-		btnEnglish.setOnClickListener(new View.OnClickListener() {
-		    
-		    @Override
-		    public void onClick(View v) {
-			// TODO Auto-generated method stub
-			MACROS.bl_language = true;
-			//Log.i("debug","bl_language : true");
-			Library.Translate(MACROS.bl_language);	
-			translate();
-		    }
-		});
-		btnVietnam.setOnClickListener(new View.OnClickListener() {
-		    
-		    @Override
-		    public void onClick(View v) {
-			// TODO Auto-generated method stub
-			MACROS.bl_language = false;
-			//Log.i("debug","bl_language : false");
-			Library.Translate(MACROS.bl_language);	
-			translate();
-		    }
-		});
-		
 	}
 	public void translate(){
 	    txt_welcome.setText(MACROS.WELCOME_TO_VINACREDIT_LBL);
 	    txt_content.setText(MACROS.WELCOME_TEXT_LBL);
 	    btnSignIn.setText(MACROS.WELCOME_SIGNIN_BTN);
+	}
+	
+	/**
+	 * translate language
+	 * @param view
+	 */
+	public void translate(View view){
+		
+		switch (view.getId()) {
+		case R.id.btnLanguageVietnam:
+			MACROS.bl_language = false;
+			//Log.i("debug","bl_language : false");
+			Library.Translate(MACROS.bl_language);	
+			translate();
+			break;
+
+		case R.id.btnLanguageEnglish:
+			MACROS.bl_language = true;
+			//Log.i("debug","bl_language : true");
+			Library.Translate(MACROS.bl_language);	
+			translate();
+			break;
+		}
+	}
+	
+	/**
+	 * sign in
+	 * @param view
+	 */
+	public void signin(View view){
+		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
+		startActivity(intent);
 	}
 }

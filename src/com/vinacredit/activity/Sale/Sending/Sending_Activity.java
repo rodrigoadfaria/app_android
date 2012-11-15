@@ -31,28 +31,7 @@ public class Sending_Activity extends Activity{
 		//txtTitlebar	= (Button)findViewById(R.id.txtTitleBar);
 		
 		translate();
-		
-		//action btnBack
-		btnBack.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
-				startActivity(intent);
-			}
-		});
-		
-		//action btnReceipt
-		btnReceipt.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Receipt_Activity.class);
-				startActivity(intent);
-			}
-		});
+
 	}
 
 	private void translate() {
@@ -60,4 +39,13 @@ public class Sending_Activity extends Activity{
 		//txtTitlebar.setText(MACROS.SEND_LBL);
 	}
 
+	public void btnBack(View view){
+		Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
+		startActivity(intent);
+	}
+	
+	public void btnReceipt(View view){
+		Intent intent = new Intent(getApplicationContext(),Receipt_Activity.class);
+		startActivity(intent);
+	}
 }

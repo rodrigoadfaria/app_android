@@ -7,6 +7,7 @@ import com.vinacredit.activity.Sale.Signature.Signature_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,9 @@ import android.widget.Toast;
 
 public class Identify_Activity extends Activity{
 
+	
+	private static final int CAMERA_REQUEST = 9999;
+	
 	private Button		btnBack, btnSignature;
 	private TextView	txtTitleBar;
 	private ImageView	imgIdentify;
@@ -35,39 +39,8 @@ public class Identify_Activity extends Activity{
 		btnTakePhoto	= (Button)findViewById(R.id.btnTakePhoto);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		imgIdentify		= (ImageView)findViewById(R.id.imgIdentify);
-		translate();
-		
-		//action btnBack
-		btnBack.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
-				startActivity(intent);
-			}
-		});
-		
-		//action btnSignature
-		btnSignature.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
-				startActivity(intent);
-			}
-		});
-		
-		//action btnTakePhoto
-		btnTakePhoto.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "Take a photo", Toast.LENGTH_LONG).show();
-			}
-		});
+		translate();		
+
 	}
 
 	private void translate() {
@@ -76,5 +49,32 @@ public class Identify_Activity extends Activity{
 		btnTakePhoto.setText(MACROS.IDENTIFY_TAKEPHOTO_BTN);
 		txtTitleBar.setText(MACROS.IDENTIFY_LBL);
 	}
+	
+	public void btnBack(View view){
+		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
+		startActivity(intent);
+	}
 
+	public void btnSignature(View view){
+		Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
+		startActivity(intent);
+	}
+	
+	public void btnTakePhoto(View view){
+		Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+		startActivityForResult(cameraIntent, CAMERA_REQUEST);
+	}
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == CAMERA_REQUEST) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imgIdentify.setImageBitmap(photo);
+		}
+	}
+	
 }

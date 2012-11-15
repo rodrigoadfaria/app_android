@@ -24,7 +24,8 @@
             android:layout_width="80dip"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@drawable/button_continue_pressed"/>
+            android:background="@drawable/button_continue_pressed"
+            android:onClick="btnContinue"/>
         
     </RelativeLayout>
     
@@ -43,7 +44,9 @@
 		    android:id="@+id/imgUsername"
 		    android:layout_width="100dp"
 		    android:layout_height="100dp"
-		    android:contentDescription="@string/imgView"/>
+		    android:contentDescription="@string/imgView"
+		    android:scaleType="fitXY"
+		    android:onClick="takePhoto"/>
 		
 		<EditText
 			android:id = "@+id/edtFirstname" 

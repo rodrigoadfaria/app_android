@@ -32,27 +32,7 @@ public class WrongPass_Activity extends Activity{
 		btnSend		= (Button)findViewById(R.id.btnSend);
 		txtTitleBar = (TextView)findViewById(R.id.txtTitleBar);
 		translate();
-		
-		//action btnCancel
-		btnCancel.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
-				startActivity(intent);
-			}
-		});
-		
-		//action btnSend
-		btnSend.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "Sending email", Toast.LENGTH_LONG).show();
-			}
-		});
+
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -61,5 +41,19 @@ public class WrongPass_Activity extends Activity{
 		btnSend.setText(MACROS.WRONGPASS_SEND_BTN);
 		txtTitleBar.setText(MACROS.WRONGPASS_LBL);
 	}
-
+	
+	/**
+	 * @param view
+	 */
+	public void btnCancel(View view){
+		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * @param view
+	 */
+	public void btnSend(View view){
+		Toast.makeText(getApplicationContext(), "Sending email", Toast.LENGTH_LONG).show();
+	}
 }

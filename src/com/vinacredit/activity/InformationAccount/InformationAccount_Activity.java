@@ -13,9 +13,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 
 public class InformationAccount_Activity extends Activity {
 
+	private static final int CAMERA_REQUEST = 8888;
+	
 	private EditText 	edtFirstname, edtLastname, edtCompany, edtAddress, edtEmail
 						, edtOldPass, edtNewpass, edtConfirmPass;
 	private Button 		btnContinue;
@@ -52,17 +55,7 @@ public class InformationAccount_Activity extends Activity {
 		}
 		else 
 		    edtEmail.setText(null);    
-		
-		//action button continue
-		btnContinue.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
-				startActivity(i);
-			}
-		});
+
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -82,4 +75,26 @@ public class InformationAccount_Activity extends Activity {
 		txtTitleBar.setText(MACROS.INFOR_LBL);
 	}
 
+	public void btnContinue(View view){
+		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
+		startActivity(i);
+	}
+	
+	public void takePhoto(View view){
+		Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+		startActivityForResult(cameraIntent, CAMERA_REQUEST);
+	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == CAMERA_REQUEST) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imgUsername.setImageBitmap(photo);
+		}
+	}
 }

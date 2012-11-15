@@ -61,8 +61,7 @@ public class SignIn_Activity extends Activity{
 		btnSignIn 		= (Button)findViewById(R.id.btnSignIn);
 		btnWrongPass 	= (Button)findViewById(R.id.btnWrongPass);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-		translate();
-		
+		translate();		
 		
 		dbaccount 	= new MySQLiteHelper(this);
 		account		= new Account();
@@ -72,65 +71,6 @@ public class SignIn_Activity extends Activity{
 		    // getting JSON string from URL
 		    json = jParser.getJSONFromUrl(url);    
 		}
-		
-		
-		btnSignIn.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if(MACROS.TEST_SIGNIN_BL){
-				    String email = edtUsername.getText().toString();
-					String pass  = edtPassword.getText().toString();
-					try {
-						// Getting Array of Contacts
-						contacts = json.getJSONArray(TAG_ACCOUNT);
-						
-						// looping through All Contacts
-						for(int i = 0; i < contacts.length(); i++)
-							{
-								JSONObject c = contacts.getJSONObject(i);
-							
-								// Storing each json item in variable
-								account.setEmail(c.getString(TAG_EMAIL));
-								account.setPass(c.getString(TAG_PASS));
-								account.setFirstName(c.getString(TAG_FIRSTNAME));
-								account.setLastName(c.getString(TAG_LASTNAME));
-								
-								if(c.getString(TAG_EMAIL).equals(email) 
-										&& (c.getString(TAG_PASS).equals(pass)))
-									{
-										Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-										Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
-										intent.putExtra("EMAIL", email);
-										startActivity(intent);
-										return;
-									}
-							}
-								Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
-							
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-				else {
-				    Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
-				    startActivity(intent);
-				}
-				
-
-			}
-		});
-		
-		btnWrongPass.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(),WrongPass_Activity.class);
-				startActivity(i);
-			}
-		});
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -139,6 +79,60 @@ public class SignIn_Activity extends Activity{
 		btnSignIn.setText(MACROS.SIGNIN_BTN);
 		btnWrongPass.setText(MACROS.SIGNIN_FORGOT_BTN);
 		txtTitleBar.setText(MACROS.SIGNIN_LBL);
+	}
+	
+	/**
+	 * 
+	 * @param view
+	 */
+	public void btnSignIn(View view){
+		if(MACROS.TEST_SIGNIN_BL){
+		    String email = edtUsername.getText().toString();
+			String pass  = edtPassword.getText().toString();
+			try {
+				// Getting Array of Contacts
+				contacts = json.getJSONArray(TAG_ACCOUNT);
+				
+				// looping through All Contacts
+				for(int i = 0; i < contacts.length(); i++)
+					{
+						JSONObject c = contacts.getJSONObject(i);
+					
+						// Storing each json item in variable
+						account.setEmail(c.getString(TAG_EMAIL));
+						account.setPass(c.getString(TAG_PASS));
+						account.setFirstName(c.getString(TAG_FIRSTNAME));
+						account.setLastName(c.getString(TAG_LASTNAME));
+						
+						if(c.getString(TAG_EMAIL).equals(email) 
+								&& (c.getString(TAG_PASS).equals(pass)))
+							{
+								Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+								Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
+								intent.putExtra("EMAIL", email);
+								startActivity(intent);
+								return;
+							}
+					}
+						Toast.makeText(getApplicationContext(), "Login do not successful", Toast.LENGTH_LONG).show();
+					
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+		    Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
+		    startActivity(intent);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param view
+	 */
+	public void btnWrongPass(View view){
+		Intent i = new Intent(getApplicationContext(),WrongPass_Activity.class);
+		startActivity(i);
 	}
 
 }

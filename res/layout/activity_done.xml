@@ -37,6 +37,7 @@
         android:layout_below="@id/txtPaidThank"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/btnDone" />
+        android:text="@string/btnDone" 
+        android:onClick="btnDone"/>
 
 </RelativeLayout>

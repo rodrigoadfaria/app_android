@@ -36,14 +36,16 @@
        android:layout_width="100dp"
        android:layout_height="wrap_content"
        android:layout_marginLeft="20dp"
-       android:text="@string/btnCancel" />
+       android:text="@string/btnCancel"
+       android:onClick="btnCancel" />
 
    <Button
        android:id="@+id/btnSend"
        android:layout_width="100dp"
        android:layout_height="wrap_content"
        android:layout_marginLeft="80dp"
-       android:text="@string/btnSend" />
+       android:text="@string/btnSend" 
+       android:onClick="btnSend"/>
 
 	</LinearLayout>
 </LinearLayout>

@@ -34,30 +34,7 @@ public class Receipt_Activity extends Activity{
 		btnSend			= (Button)findViewById(R.id.btnSend);
 		
 		translate();
-		
-		//action btnSkip
-		btnSkip.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "Skip send email", Toast.LENGTH_LONG ).show();
-				Intent intent = new Intent(getApplicationContext(),Done_Activity.class);
-				startActivity(intent);
-			}
-		});
-		/*
-		//action btnSend
-		btnSend.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Done_Activity.class);
-				startActivity(intent);
-			}
-		});
-		*/
+
 	}
 	public void sendMail(View view) {
 	    
@@ -83,6 +60,13 @@ public class Receipt_Activity extends Activity{
 	    
 	    //startActivity(i_inviteFriend );
 	    }
+	
+	public void btnSkip(View view){
+		Toast.makeText(getApplicationContext(), "Skip send email", Toast.LENGTH_LONG ).show();
+		Intent intent = new Intent(getApplicationContext(),Done_Activity.class);
+		startActivity(intent);
+	}
+	
 	private void translate() {
 		// TODO Auto-generated method stub
 		edtEmail.setHint(MACROS.RECEIPT_EMAIL_TXT);

@@ -43,13 +43,15 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="@string/btnSignIn" 
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:onClick="btnSignIn"/>
 
     <Button
         android:id="@+id/btnWrongPass"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/btnWrongPass" 
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:onClick="btnWrongPass"/>
 
 </LinearLayout>

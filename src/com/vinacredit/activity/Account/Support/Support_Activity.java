@@ -32,47 +32,6 @@ public class Support_Activity extends Activity{
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		
 		translate();
-		
-		//action btnAccount
-		btnAccount.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
-				startActivity(intent);
-			}
-		});
-		
-		//action btnVinacredit
-		btnVinacredit.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "Vinacredit", Toast.LENGTH_LONG).show();
-			}
-		});
-		
-		//action btnHotline
-		btnHotline.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "Hotline", Toast.LENGTH_LONG).show();
-			}
-		});
-		
-		//action btnInstruction
-		btnInstruction.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "Instruction", Toast.LENGTH_LONG).show();
-			}
-		});
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -80,6 +39,23 @@ public class Support_Activity extends Activity{
 		btnHotline.setText(MACROS.SUPPORT_HOTLINE_LBL);
 		btnInstruction.setText(MACROS.SUPPORT_INSTRU_LBL);
 		txtTitleBar.setText(MACROS.SUPPORT_LBL);
+	}
+	
+	public void btnAccount(View view){
+		Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
+		startActivity(intent);
+	}
+	
+	public void btnVinacredit(View view){
+		Toast.makeText(getApplicationContext(), "Vinacredit", Toast.LENGTH_LONG).show();
+	}
+	
+	public void btnHotline(View view){
+		Toast.makeText(getApplicationContext(), "Hotline", Toast.LENGTH_LONG).show();
+	}
+	
+	public void btnInstruction(View view){
+		Toast.makeText(getApplicationContext(), "Instruction", Toast.LENGTH_LONG).show();
 	}
 
 }

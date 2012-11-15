@@ -42,7 +42,8 @@
         android:layout_below="@+id/txt_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/btnSignIn" />
+        android:text="@string/btnSignIn" 
+        android:onClick="signin"/>
 
     <Button
         android:id="@+id/btnLanguageEnglish"
@@ -52,7 +53,7 @@
         android:layout_margin="8dp"
         android:layout_alignParentRight="true"
         android:background="@drawable/english_flag"
-        android:text="" />
+        android:onClick="translate"/>
 
     <Button
         android:id="@+id/btnLanguageVietnam"
@@ -60,6 +61,7 @@
         android:layout_height="30dp"
         android:layout_margin="8dp"
         android:layout_alignParentTop="true"
-        android:background="@drawable/vietnam_flag" />
+        android:background="@drawable/vietnam_flag"
+        android:onClick="translate" />
 
 </RelativeLayout>

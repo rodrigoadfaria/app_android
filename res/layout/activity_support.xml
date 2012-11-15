@@ -16,7 +16,8 @@
             android:layout_width="80dip"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:background="@drawable/button_back_pressed"/>
+            android:background="@drawable/button_back_pressed"
+            android:onClick="btnAccount"/>
         
         <TextView 
             android:id="@+id/txtTitleBar"
@@ -35,7 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/relativelayout_title_bar"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:onClick="btnVinacredit"/>
     <Button 
         android:id="@+id/btnHotline"
         android:text="@string/btnHotline"
@@ -43,7 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnVinacredit"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:onClick="btnHotline"/>
     <Button 
         android:id="@+id/btnInstruction"
         android:text="@string/btnInstruction"
@@ -51,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnHotline"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:onClick="btnInstruction"/>
 
 </RelativeLayout>

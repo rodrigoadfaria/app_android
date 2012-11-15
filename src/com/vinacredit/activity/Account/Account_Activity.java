@@ -93,27 +93,6 @@ public class Account_Activity extends Activity{
 			if(bl_status_tax)
 				strTaxNumber = extras.getString("TAX");
 		}
-		
-		//action button charge
-		btnBack.setOnClickListener(new View.OnClickListener() {		
-		    @Override
-		    public void onClick(View arg0) {
-			// TODO Auto-generated method stub
-			Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
-			startActivity(i);
-		    }
-		});
-		
-		//action btnSignOut
-		btnSignOut.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(),Welcome_Activity.class);
-				startActivity(i);
-			}
-		});
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -122,6 +101,16 @@ public class Account_Activity extends Activity{
 		strSaleHistory 	= MACROS.ACCOUNT_SALEHISTORY_LBL;
 		strTax			= MACROS.ACCOUNT_TAX_LBL;
 		strSupport		= MACROS.ACCOUNT_SUPPORT_LBL;
+	}
+	
+	public void btnBack(View view){
+		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
+		startActivity(i);
+	}
+	
+	public void btnSignOut(View view){
+		Intent i = new Intent(getApplicationContext(),Welcome_Activity.class);
+		startActivity(i);
 	}
 
 }

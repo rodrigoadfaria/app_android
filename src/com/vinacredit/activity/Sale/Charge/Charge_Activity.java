@@ -34,27 +34,19 @@ public class Charge_Activity extends Activity{
     	txtTitlebar		= (TextView)findViewById(R.id.txtTitleBar);
     	txtPay			= (TextView)findViewById(R.id.txtPay);
     	translate();
-   	
-    	//action button account
-    	btnBack.setOnClickListener(new View.OnClickListener() {		
-    		@Override
-   	    	public void onClick(View arg0) {
-    			// TODO Auto-generated method stub
-    			Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
-    			startActivity(i);
-    		}
-    	});
-    	
-    	//action button charge
-    	btnCash.setOnClickListener(new View.OnClickListener() {		
-    		@Override
-    		public void onClick(View arg0) {
-    			// TODO Auto-generated method stub
-    			Intent i = new Intent(getApplicationContext(),Receipt_Activity.class);
-    			startActivity(i);
-    		}
-    	});
+
     }
+    
+    public void btnBack(View view){
+    	Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
+		startActivity(i);
+    }
+    
+    public void btnTenderCash(View view){
+    	Intent i = new Intent(getApplicationContext(),Receipt_Activity.class);
+		startActivity(i);
+    }
+    
     public void numClick(View view){
     	String _str_number_click = "";
     	Log.i("Debug charge","view.getId :" + view.getId());

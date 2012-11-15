@@ -16,7 +16,8 @@
             android:layout_width="80dip"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:background="@drawable/button_back_pressed"/>
+            android:background="@drawable/button_back_pressed"
+            android:onClick="btnAccount"/>
         
         <TextView 
             android:id="@+id/txtTitleBar"
