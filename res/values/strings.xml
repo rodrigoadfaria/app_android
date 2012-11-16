@@ -42,7 +42,7 @@
     <string name="btnSignOut">Sign Out</string>
     <string name="txtUsername">Username</string>
     <string name="txtTitle">Item</string>
-    <string name="txtSubtitle">50%</string>
+    <string name="txtSubtitle">0</string>
     
     <!-- string of  Sale page -->
     <string name="txtTitleBarSale">Sale</string>

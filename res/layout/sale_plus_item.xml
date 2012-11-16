@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_toRightOf="@id/edtItem"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="20dp"
         android:gravity="center_vertical"
         android:textSize="20dip"
         android:text="@string/QuantityItem"/>
@@ -44,8 +44,8 @@
     <!-- Button plus -->
     <Button
         android:id="@+id/btnPlus"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:background="@drawable/plus" />
@@ -53,8 +53,8 @@
 	<!-- Button minus -->
     <Button
         android:id="@+id/btnMinus"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerVertical="true"
         android:layout_alignBaseline="@id/btnPlus"
         android:layout_toLeftOf="@+id/btnPlus"
