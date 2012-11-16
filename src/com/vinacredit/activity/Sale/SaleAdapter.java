@@ -1,12 +1,8 @@
 package com.vinacredit.activity.Sale;
 
-import static com.cyrilmottier.android.listviewtipsandtricks.data.Cheeses.CHEESES;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cyrilmottier.android.listviewtipsandtricks.R;
-import com.cyrilmottier.android.listviewtipsandtricks.AccessoriesListActivity.AccessoriesViewHolder;
 import com.vinacredit.activity.Account.Account_Activity;
 
 
@@ -38,13 +34,7 @@ public class SaleAdapter extends ArrayAdapter<DataItem>{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		return super.getView(position, convertView, parent);            
-		SaleHolder holder = null;
+		return super.getView(position, convertView, parent);    
 	}
-	
-        static class SaleHolder{
-        	
-        }
-	
 
 }
