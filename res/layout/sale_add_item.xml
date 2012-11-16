@@ -37,8 +37,7 @@
         android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"/>
-    	<!-- Price item -->
-
+   	<!-- Price item -->
     <TextView
         android:id="@+id/txtSubtitle"
         android:layout_width="100dp"

@@ -50,7 +50,8 @@ public class MySQLiteHelper
         + "firstname text,"
         + "lastname text,"
         + "company text,"
-        + "address text);";
+        + "address text,"
+        + "image blob);";
     
     private static final String DATABASE_CREATE_BILL = 
     	"create table Bill ("
