@@ -49,6 +49,7 @@
     <string name="btnSaleAccount">Account</string>
     <string name="btnSaleCharge">Charge</string>
     <string name="QuantityItem">1x</string>
+    <string name="txtItem">0</string>
     
     <!-- string of Sales History page -->
     <string name="btnAccount">Account</string>

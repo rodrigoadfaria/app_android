@@ -7,7 +7,6 @@
         android:id="@+id/relativelayout_title_bar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dip"
         android:background="@drawable/titlebar" >
 
         <Button
@@ -46,9 +45,10 @@
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="1.5dp"
         android:layout_below="@+id/relativelayout_title_bar"
-        android:background="#EEEEEE" >
+        android:background="#EEEEEE" 
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp">
         
         <ImageView 
             android:id="@+id/imgUsername"
@@ -79,21 +79,27 @@
         android:layout_height="30dp"
         android:background="#EEEEEE"
         android:layout_above="@id/btn11"
-        android:layout_margin="1.5dp">
+        android:layout_margin="1dp">
         <Button 
-            android:id="@+id/btnItem"
+            android:id="@+id/btnTakeItem"
             android:background="@android:drawable/ic_menu_camera"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:contentDescription="@string/imgView"
             android:layout_centerVertical="true"
             android:onClick="takeItem"
             android:layout_marginLeft="2dp"/>
         <Button 
+            android:id="@+id/btnIdentify"
+            android:background="@android:drawable/sym_contact_card"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:onClick="btnIdentify"/>
+        <Button 
             android:id="@+id/btnClear"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:contentDescription="@string/imgView"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="2dp"
@@ -109,16 +115,65 @@
         android:background="#EEEEEE"
         android:layout_marginLeft="1.5dp"
         android:layout_marginRight="1.5dp"
-        android:layout_marginTop="1.5dp">
-        
+        android:layout_marginTop="1dp">
+        <RelativeLayout 
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EEEEEE"
+        	android:layout_marginLeft="1.5dp"
+        	android:layout_marginRight="1.5dp"
+        	android:orientation="vertical">
+        	
+            <!-- Image Item-->
+            <ImageView 
+                android:id="@+id/imgItem"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/chomsao"
+                android:contentDescription="@string/imgView"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="1dp"/>
+            
+            <!-- Name item  -->
+            <EditText 
+                android:id="@+id/edtItem"
+		        android:layout_width="100dp"
+		        android:layout_height="40dp"
+		        android:layout_marginLeft="5dp"
+		        android:layout_toRightOf="@id/imgItem"
+		        android:background="@drawable/bg"
+		        android:hint="@string/txtTitle"
+		        android:textSize="20dip"/>
+            
+            <!-- Button add -->
+		    <Button        
+		        android:id="@+id/btnAdd"
+		        android:background="@drawable/add"
+		        android:layout_width="40dp"
+		        android:layout_height="40dp"
+		        android:layout_alignParentRight="true"
+		        android:layout_centerVertical="true"
+		        android:onClick="AddItem"/>
+		    
+		   	<!-- Price item -->
+		    <TextView
+		        android:id="@+id/txtItem"
+		        android:layout_width="100dp"
+		        android:layout_height="40dp"
+		        android:layout_toLeftOf="@+id/btnAdd"
+		        android:gravity="right|center_vertical"
+		        android:layout_centerVertical="true"
+		        android:textSize="20dip"
+		        android:text="@string/txtItem" />
+        </RelativeLayout>
         <ListView
             android:id="@+id/listSale"
+            android:layout_below="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 		</ListView>        
-    </RelativeLayout>
-    
-    
+    </RelativeLayout>   
     
     <!-- Add Key Pad -->
     <!-- 000 , 0 , <- -->

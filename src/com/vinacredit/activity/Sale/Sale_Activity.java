@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
@@ -24,31 +27,38 @@ public class Sale_Activity extends Activity{
 	
 	private static final int CAMERA_REQUEST = 1888;
 	
-    private Button 		btn_gotoAccount;
-    private Button 		btn_gotoCharge;
+    private Button 		btn_gotoAccount, btn_gotoCharge;
     private TextView	txtTitleBar;
-    private Button	btnItem, btnClear;
-    private ImageView	imgUsername;
-    private TextView	txtPriceItem;
+    private Button		btnTakeItem, btnClear;
+    private ImageView	imgUsername, imgItem;
+    private TextView	txtPriceItem, txtItem;
+    private ListView	listSale;
+    private EditText	edtItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
     	super.onCreate(savedInstanceState);
     	setContentView(R.layout.activity_sale);
     	initialize();
+    	
     }
     private void initialize() {
     	// TODO Auto-generated method stub
     	btn_gotoAccount = (Button)findViewById(R.id._btnAccount);
     	btn_gotoCharge  = (Button)findViewById(R.id._btnSaleCharge);
     	txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-    	btnItem			= (Button)findViewById(R.id.btnItem);
+    	btnTakeItem		= (Button)findViewById(R.id.btnTakeItem);
     	btnClear		= (Button)findViewById(R.id.btnClear);
     	imgUsername		= (ImageView)findViewById(R.id.imgUsername);
     	txtPriceItem	= (TextView)findViewById(R.id.txtPriceItem);
-    	
+    	listSale		= (ListView)findViewById(R.id.listSale);
+    	txtItem			= (TextView)findViewById(R.id.txtItem);
+    	edtItem			= (EditText)findViewById(R.id.edtItem);
+    	imgItem			= (ImageView)findViewById(R.id.imgItem);
     	/* tranlate language */
     	translate();
+    	
+    	
 
     }
     
@@ -93,6 +103,15 @@ public class Sale_Activity extends Activity{
     	startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
     
+    public void btnIdentify(View view){
+    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
+		startActivity(i);
+    }
+    
+    public void AddItem(View view){
+    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
+    }
+    
     /**
      * button number pad
      * @param view
@@ -118,7 +137,7 @@ public class Sale_Activity extends Activity{
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == CAMERA_REQUEST) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imgUsername.setImageBitmap(photo);
+            imgItem.setImageBitmap(photo);
 		}
 	}
     

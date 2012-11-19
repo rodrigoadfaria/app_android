@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package con.vinacredit.DTO;
 
 /**
