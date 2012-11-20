@@ -1,4 +1,10 @@
 package com.vinacredit.Resource;
+import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.util.Log;
 
 import com.vinacredit.Resource.*;
@@ -242,4 +248,36 @@ public class Library {
         }
         return tmp;
     }
+    
+    /**
+     * convert bitemap to byte[]
+     * @param bitmap
+     * @return byte[]
+     */
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(CompressFormat.JPEG, 70, stream);
+        return stream.toByteArray();
+    }
+    
+    /**
+     * get current date
+     * @return String
+     */
+    public String getDate(){
+    	Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("EE,dd-MM-yyyy");
+        return df.format(c.getTime());
+    }
+    
+    /**
+     * get current time
+     * @return String
+     */
+    public String getTime(){
+    	Calendar c = Calendar.getInstance();
+        SimpleDateFormat dt = new SimpleDateFormat("HH:mm");
+        return dt.format(c.getTime());
+    }
+
 }

@@ -118,9 +118,11 @@ public class MySQLiteHelper
     {
         DBHelper.close();
     }    
-    
-    /*
-     * insert account
+
+    /**
+     * @param account
+     * @return
+     * @throws SQLException
      */
     public long AddAccount(Account account) throws SQLException 
     {
@@ -132,11 +134,16 @@ public class MySQLiteHelper
         initialValues.put(KEY_LASTNAME,account.getLastName());
         initialValues.put(KEY_COMPANY,account.getCompanyName());
         initialValues.put(KEY_ADDRESS,account.getAddress());
+        initialValues.put(KEY_IMAGE,account.getImageAcc());
         return db.insert(DATABASE_TABLE_ACCOUNT, null, initialValues);
     }
 
-    /*
-     * check login
+
+    /**
+     * @param email
+     * @param password
+     * @return
+     * @throws SQLException
      */
     public boolean Login(String email, String password) throws SQLException 
     {
@@ -151,6 +158,33 @@ public class MySQLiteHelper
         close();
         mCursor.close();
      return false;
+    }
+    
+    /**
+     * @param email
+     * @return Account
+     * @throws SQLException
+     */
+    public Account getAccount(String email) throws SQLException{
+    	open();
+    	Account account = new Account();
+    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_ACCOUNT + "WHERE email=?", new String[]{email});
+    	if(mcursor != null){
+    		mcursor.close();
+    	}
+    	
+    	while(mcursor.moveToNext()){
+    		account.setEmail(mcursor.getString(0));
+    		account.setPass(mcursor.getString(1));
+    		account.setFirstName(mcursor.getString(2));
+    		account.setLastName(mcursor.getString(3));
+    		account.setCompanyName(mcursor.getString(4));
+    		account.setAddress(mcursor.getString(5));
+    		account.setImageAcc(mcursor.getBlob(6));
+    	}
+    	mcursor.close();
+    	close();
+    	return account;
     }
 
 }

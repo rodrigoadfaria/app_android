@@ -1,9 +1,10 @@
 package com.vinacredit.activity.InformationAccount;
 
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.Account.Account_Activity;
 import com.vinacredit.activity.Sale.Sale_Activity;
 import com.vinacredit.Resource.*;
+
+import con.vinacredit.DTO.Account;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -24,6 +26,12 @@ public class InformationAccount_Activity extends Activity {
 	private Button 		btnContinue;
 	private ImageButton imgUsername;
 	private TextView	txtTitleBar, txtEmail, txtOldPass, txtNewPass, txtConfirmPass;
+	
+	private MySQLiteHelper dbSqlite;
+	private Account		account;
+	
+	private Bitmap 		photo;
+	private Library 	library;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +57,9 @@ public class InformationAccount_Activity extends Activity {
 		txtConfirmPass	= (TextView)findViewById(R.id.txtConfirmPass);
 		
 		translate();
+		dbSqlite = new MySQLiteHelper(this);
+		account  = new Account();
+		library	 = new Library();
 		if(MACROS.TEST_SIGNIN_BL){
 		    Bundle extras = getIntent().getExtras();
 		    edtEmail.setText(extras.getString("EMAIL"));    
@@ -77,6 +88,19 @@ public class InformationAccount_Activity extends Activity {
 
 	public void btnContinue(View view){
 		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
+		
+		account.setEmail(edtEmail.getText().toString());
+		account.setFirstName(edtFirstname.getText().toString());
+		account.setLastName(edtLastname.getText().toString());
+		account.setCompanyName(edtCompany.getText().toString());
+		account.setPass(edtConfirmPass.getText().toString());
+		account.setAddress(edtAddress.getText().toString());
+		
+		/*convert bitemap to byte[] */	    
+	    account.setImageAcc(library.getBytesFromBitmap(photo));
+	    
+	    if(MACROS.TEST_SIGNIN_BL)
+	    	dbSqlite.AddAccount(account);
 		startActivity(i);
 	}
 	
@@ -93,7 +117,7 @@ public class InformationAccount_Activity extends Activity {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == CAMERA_REQUEST) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            photo = (Bitmap) data.getExtras().get("data");
             imgUsername.setImageBitmap(photo);
 		}
 	}
