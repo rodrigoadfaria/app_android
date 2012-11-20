@@ -87,20 +87,22 @@ public class InformationAccount_Activity extends Activity {
 	}
 
 	public void btnContinue(View view){
-		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
-		
-		account.setEmail(edtEmail.getText().toString());
-		account.setFirstName(edtFirstname.getText().toString());
-		account.setLastName(edtLastname.getText().toString());
-		account.setCompanyName(edtCompany.getText().toString());
-		account.setPass(edtConfirmPass.getText().toString());
-		account.setAddress(edtAddress.getText().toString());
-		
-		/*convert bitemap to byte[] */	    
-	    account.setImageAcc(library.getBytesFromBitmap(photo));
+		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);		
 	    
-	    if(MACROS.TEST_SIGNIN_BL)
-	    	dbSqlite.AddAccount(account);
+	    if(MACROS.TEST_SIGNIN_BL) {
+	    	account.setEmail(edtEmail.getText().toString());
+			account.setFirstName(edtFirstname.getText().toString());
+			account.setLastName(edtLastname.getText().toString());
+			account.setCompanyName(edtCompany.getText().toString());
+			account.setPass(edtConfirmPass.getText().toString());
+			account.setAddress(edtAddress.getText().toString());
+			
+			/*convert bitemap to byte[] */	    
+		    account.setImageAcc(library.getBytesFromBitmap(photo));
+		    
+		    dbSqlite.AddAccount(account);
+	    }
+	    	
 		startActivity(i);
 	}
 	

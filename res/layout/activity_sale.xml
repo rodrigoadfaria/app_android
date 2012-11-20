@@ -144,6 +144,7 @@
 		        android:layout_toRightOf="@id/imgItem"
 		        android:background="@drawable/bg"
 		        android:hint="@string/txtTitle"
+		        android:singleLine="true"
 		        android:textSize="20dip"/>
             
             <!-- Button add -->
@@ -165,6 +166,7 @@
 		        android:gravity="right|center_vertical"
 		        android:layout_centerVertical="true"
 		        android:textSize="20dip"
+		        android:singleLine="true"
 		        android:text="@string/txtItem" />
         </RelativeLayout>
         <ListView
