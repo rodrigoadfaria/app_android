@@ -1,11 +1,20 @@
 package com.vinacredit.activity.Sale;
 
+import static com.vinacredit.activity.Sale.Constant.FIRST_COLUMN;
+import static com.vinacredit.activity.Sale.Constant.SECOND_COLUMN;
+import static com.vinacredit.activity.Sale.Constant.THIRD_COLUMN;
+import static com.vinacredit.activity.Sale.Constant.FOURTH_COLUMN;
+import static com.vinacredit.activity.Sale.Constant.FIFTH_COLUMN;
+import static com.vinacredit.activity.Sale.Constant.SIXTH_COLUMN;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +47,9 @@ public class Sale_Activity extends Activity{
     
     private String		_str_tmp = "";
     private String 		_str_number_click = "";
+    
+    private ArrayList<HashMap<String,String>> list;
+    private SaleAdapter	saleAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
@@ -62,6 +74,8 @@ public class Sale_Activity extends Activity{
     	/* tranlate language */
     	translate();
     	
+    	list = new ArrayList<HashMap<String,String>>();
+    	saleAdapter	= new SaleAdapter(this, list);
     	
 
     }
@@ -112,8 +126,35 @@ public class Sale_Activity extends Activity{
 		startActivity(i);
     }
     
+    /**
+     * add item
+     * @param view
+     */
     public void AddItem(View view){
-    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
+//    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
+    	HashMap<String,String> temp = new HashMap<String,String>();
+		temp.put(SECOND_COLUMN,"Colored");
+		temp.put(THIRD_COLUMN, "1x");
+		temp.put(FOURTH_COLUMN, "200");
+		list.add(temp);
+		saleAdapter.notifyDataSetChanged();
+		listSale.setAdapter(saleAdapter);
+    }
+    
+    /**
+     * Plus price item
+     * @param v
+     */
+    public void PlusItem(View v){
+    	Toast.makeText(getApplicationContext(), "demo plus item", Toast.LENGTH_LONG).show();
+    }
+    
+    /**
+     * minus price item
+     * @param v
+     */
+    public void MinusItem(View v){
+    	Toast.makeText(getApplicationContext(), "demo minus item", Toast.LENGTH_LONG).show();
     }
     
     /**
