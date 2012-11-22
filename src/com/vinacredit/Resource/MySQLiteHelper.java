@@ -1,7 +1,12 @@
 
 package com.vinacredit.Resource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import con.vinacredit.DTO.Account;
+import con.vinacredit.DTO.Bill;
+import con.vinacredit.DTO.SumBill;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -38,7 +43,7 @@ public class MySQLiteHelper
     public static final String KEY_DATESALE_BILL	= "dateSale";
     
     /*----- Set key name in table database SUMBILL -----*/
-    public static final String KEY_DATESALE			= "dateSale";
+    public static final String KEY_DATESALE_SUMBILL	= "dateSale";
     public static final String KEY_SUMBILL_SUMBILL	= "sumBill";
     public static final String KEY_EMAIL_SUMBILL 	= "email";
     
@@ -124,7 +129,7 @@ public class MySQLiteHelper
      * @return
      * @throws SQLException
      */
-    public long AddAccount(Account account) throws SQLException 
+    public void AddAccount(Account account) throws SQLException 
     {
     	open();
     	ContentValues initialValues = new ContentValues();
@@ -135,7 +140,9 @@ public class MySQLiteHelper
         initialValues.put(KEY_COMPANY,account.getCompanyName());
         initialValues.put(KEY_ADDRESS,account.getAddress());
         initialValues.put(KEY_IMAGE,account.getImageAcc());
-        return db.insert(DATABASE_TABLE_ACCOUNT, null, initialValues);
+        
+        db.insert(DATABASE_TABLE_ACCOUNT, null, initialValues);
+        close();
     }
 
 
@@ -168,10 +175,7 @@ public class MySQLiteHelper
     public Account getAccount(String email) throws SQLException{
     	open();
     	Account account = new Account();
-    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_ACCOUNT + "WHERE email=?", new String[]{email});
-    	if(mcursor != null){
-    		mcursor.close();
-    	}
+    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_ACCOUNT + " WHERE email=?", new String[]{email});    	
     	
     	while(mcursor.moveToNext()){
     		account.setEmail(mcursor.getString(0));
@@ -185,6 +189,122 @@ public class MySQLiteHelper
     	mcursor.close();
     	close();
     	return account;
+    }
+
+    /**
+     * @param bill
+     * @return
+     * @throws SQLException
+     */
+    public void AddBill(Bill bill) throws SQLException{
+    	open();
+    	ContentValues initialValues = new ContentValues();
+    	initialValues.put(KEY_TIMESALE,bill.getTimeSale());
+    	initialValues.put(KEY_SUMITEM, bill.getSumItem());
+    	initialValues.put(KEY_EMAIL_BILL,bill.getEmail());
+    	initialValues.put(KEY_DATESALE_BILL,bill.getDateSale());
+    	
+    	db.insert(DATABASE_TABLE_BILL, null, initialValues);
+    	close();
+    }
+    
+    /**
+     * @param sumbill
+     * @return
+     * @throws SQLException
+     */
+    public void AddSumBill(SumBill sumbill) throws SQLException {
+    	open();
+    	ContentValues initialValues = new ContentValues();
+    	initialValues.put(KEY_DATESALE_SUMBILL, sumbill.getDateSale());
+    	initialValues.put(KEY_SUMBILL_SUMBILL, sumbill.getSumBill());
+    	initialValues.put(KEY_EMAIL_SUMBILL, sumbill.getEmail());
+    	
+    	db.insert(DATABASE_TABLE_SUMBILL, null, initialValues);
+    	close();
+    }
+    
+    /**
+     * @param email
+     * @return
+     * @throws SQLException
+     */
+    public List<SumBill> getSumBill(String email) throws SQLException {
+    	List<SumBill> sbList = new ArrayList<SumBill>();
+    	SumBill sumbill = new SumBill();
+    	open();
+    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_SUMBILL + " WHERE email=?", new String[]{email}); 
+
+    	
+    	while(mcursor.moveToNext()){
+    		sumbill.setDateSale(mcursor.getString(0));
+    		sumbill.setSumBill(mcursor.getString(1));
+    		sumbill.setEmail(mcursor.getString(2));
+    		
+    		sbList.add(sumbill);
+    	}
+    	mcursor.close();
+    	close();
+    	return sbList;
+    }
+    
+    /**
+     * @param email
+     * @param dateSale
+     * @return
+     * @throws SQLException
+     */
+    public List<Bill> getBill(String email, String dateSale) throws SQLException {
+    	List<Bill> bList = new ArrayList<Bill>();
+    	Bill bill = new Bill();
+    	open();
+    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_BILL + " WHERE email=? AND dateSale=?", new String[]{email,dateSale}); 
+    	
+    	
+    	while (mcursor.moveToNext()) {
+			bill.setTimeSale(mcursor.getString(0));
+			bill.setSumItem(mcursor.getString(1));
+			bill.setEmail(mcursor.getString(2));
+			bill.setDateSale(mcursor.getString(3));
+			
+			bList.add(bill);
+		}    	
+    	mcursor.close();
+    	close();
+    	return bList;
+    }
+    
+    /**
+     * @param email
+     * @param dateSale
+     * @return
+     */
+    public boolean isCheckDate(String email, String dateSale) {
+    	open();    	
+    	Cursor mcursor = db.rawQuery("SELECT dateSale FROM " +DATABASE_TABLE_SUMBILL + " WHERE email=?", new String[]{email});
+
+    	
+    	while (mcursor.moveToNext()) {			
+			if(dateSale.equals(mcursor.getString(0)))
+				return true;
+		} 	
+    	mcursor.close();
+    	close();
+    	return false;
+    }    
+    
+    /**
+     * @param sumbill
+     * @param bill
+     * @throws SQLException
+     */
+    public void insertBill(SumBill sumbill, Bill bill) throws SQLException {
+    	if(isCheckDate(sumbill.getEmail(), sumbill.getDateSale())) {
+    		AddBill(bill);
+    	} else {
+			AddSumBill(sumbill);
+			AddBill(bill);
+		}
     }
 
 }

@@ -9,6 +9,8 @@ import com.vinacredit.activity.Sale.Sale_Activity;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Welcome.Welcome_Activity;
 
+import con.vinacredit.DTO.Account;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +33,11 @@ public class Account_Activity extends Activity{
 	private ListView listView1;
 	private String strSaleHistory, strTax, strSupport, strTaxNumber;
 	private boolean bl_status_tax;
+	
+	private MySQLiteHelper 	dbSqlite;
+	private Account			account;
+    private Library			library;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -86,6 +93,9 @@ public class Account_Activity extends Activity{
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
 		translate();
+		dbSqlite = new MySQLiteHelper(this);
+		account  = new Account();
+		library = new Library();
 		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
@@ -93,6 +103,13 @@ public class Account_Activity extends Activity{
 			if(bl_status_tax)
 				strTaxNumber = extras.getString("TAX");
 		}
+		
+		account = dbSqlite.getAccount(extras.getString("EMAIL"));
+	    imgUsername.setImageBitmap(library.getBitmapFromByte(account.getImageAcc()));
+	    
+	    txtUsername.setText(account.getLastName() + " "+account.getFirstName());
+	    txtEmail.setText(account.getEmail());
+		
 	}
 	private void translate() {
 		// TODO Auto-generated method stub

@@ -26,10 +26,13 @@ import android.widget.Toast;
 
 import com.vinacredit.Resource.Library;
 import com.vinacredit.Resource.MACROS;
+import com.vinacredit.Resource.MySQLiteHelper;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Sale.Identify.Identify_Activity;
+
+import con.vinacredit.DTO.Account;
 
 
 
@@ -48,6 +51,9 @@ public class Sale_Activity extends Activity{
     private String		_str_tmp = "";
     private String 		_str_number_click = "";
     
+    private MySQLiteHelper 	dbSqlite;
+	private Account			account;
+    private Library			library;
     private ArrayList<HashMap<String,String>> list;
     private SaleAdapter	saleAdapter;
     @Override
@@ -76,7 +82,13 @@ public class Sale_Activity extends Activity{
     	
     	list = new ArrayList<HashMap<String,String>>();
     	saleAdapter	= new SaleAdapter(this, list);
-    	
+    	dbSqlite = new MySQLiteHelper(this);
+		account  = new Account();
+		library = new Library();
+		
+		Bundle extras = getIntent().getExtras();
+		account = dbSqlite.getAccount(extras.getString("EMAIL"));
+	    imgUsername.setImageBitmap(library.getBitmapFromByte(account.getImageAcc()));
 
     }
     
@@ -91,6 +103,7 @@ public class Sale_Activity extends Activity{
      */
     public void gotoAccount(View view){
     	Intent i = new Intent(getApplicationContext(),Account_Activity.class);
+    	i.putExtra("EMAIL", account.getEmail());
 		startActivity(i);
     }
     
@@ -133,12 +146,14 @@ public class Sale_Activity extends Activity{
     public void AddItem(View view){
 //    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
     	HashMap<String,String> temp = new HashMap<String,String>();
-		temp.put(SECOND_COLUMN,"Colored");
+		temp.put(SECOND_COLUMN,edtItem.getText().toString());
 		temp.put(THIRD_COLUMN, "1x");
-		temp.put(FOURTH_COLUMN, "200");
+		temp.put(FOURTH_COLUMN, txtItem.getText().toString());
 		list.add(temp);
 		saleAdapter.notifyDataSetChanged();
 		listSale.setAdapter(saleAdapter);
+		edtItem.setText("");
+		txtItem.setText("0");
     }
     
     /**
@@ -147,6 +162,9 @@ public class Sale_Activity extends Activity{
      */
     public void PlusItem(View v){
     	Toast.makeText(getApplicationContext(), "demo plus item", Toast.LENGTH_LONG).show();
+    	HashMap<String,String> temp = new HashMap<String,String>();
+		temp.put(THIRD_COLUMN, "2x");
+		saleAdapter.notifyDataSetChanged();
     }
     
     /**

@@ -60,13 +60,9 @@ public class InformationAccount_Activity extends Activity {
 		dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
 		library	 = new Library();
-		if(MACROS.TEST_SIGNIN_BL){
+		
 		    Bundle extras = getIntent().getExtras();
-		    edtEmail.setText(extras.getString("EMAIL"));    
-		}
-		else 
-		    edtEmail.setText(null);    
-
+		    edtEmail.setText(extras.getString("EMAIL"));
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -102,7 +98,7 @@ public class InformationAccount_Activity extends Activity {
 		    
 		    dbSqlite.AddAccount(account);
 	    }
-	    	
+	    i.putExtra("EMAIL", edtEmail.getText().toString());
 		startActivity(i);
 	}
 	

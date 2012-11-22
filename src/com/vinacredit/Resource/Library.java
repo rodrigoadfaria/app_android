@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.vinacredit.Resource.*;
@@ -250,7 +251,7 @@ public class Library {
     }
     
     /**
-     * convert bitemap to byte[]
+     * convert byte[] to bitmap
      * @param bitmap
      * @return byte[]
      */
@@ -258,6 +259,14 @@ public class Library {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(CompressFormat.JPEG, 70, stream);
         return stream.toByteArray();
+    }
+    
+    /**
+     * convert bitmap to byte[]
+     * @return
+     */
+    public Bitmap getBitmapFromByte(byte[] bitmap){
+    	return BitmapFactory.decodeByteArray(bitmap, 0, bitmap.length);
     }
     
     /**
