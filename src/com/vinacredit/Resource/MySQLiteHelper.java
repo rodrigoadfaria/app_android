@@ -125,6 +125,20 @@ public class MySQLiteHelper
     }    
 
     /**
+     * @param email
+     * @return
+     */
+    public boolean getAccountCount(String email){
+    	open();
+    	Cursor cursor = db.rawQuery("SELECT * FROM "+ DATABASE_TABLE_ACCOUNT + " WHERE email=?", new String[]{email});
+    	if(cursor.getCount() > 0)
+    		return true;
+    	cursor.close();
+    	close();    	
+    	return false;
+    }
+    
+    /**
      * @param account
      * @return
      * @throws SQLException

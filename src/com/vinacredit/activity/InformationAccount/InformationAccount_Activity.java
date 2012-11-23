@@ -87,10 +87,10 @@ public class InformationAccount_Activity extends Activity {
 	    
 	    if(MACROS.TEST_SIGNIN_BL) {
 	    	account.setEmail(edtEmail.getText().toString());
+			account.setPass(edtConfirmPass.getText().toString());
 			account.setFirstName(edtFirstname.getText().toString());
 			account.setLastName(edtLastname.getText().toString());
 			account.setCompanyName(edtCompany.getText().toString());
-			account.setPass(edtConfirmPass.getText().toString());
 			account.setAddress(edtAddress.getText().toString());
 			
 			/*convert bitemap to byte[] */	    

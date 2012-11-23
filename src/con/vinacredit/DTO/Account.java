@@ -3,10 +3,10 @@ package con.vinacredit.DTO;
 public class Account {
 
 	private String Email;
+	private String Pass;
 	private String FirstName;
 	private String LastName;
 	private String CompanyName;
-	private String Pass;
 	private byte[] ImageAcc;
 	private String Address;
 	
@@ -55,13 +55,13 @@ public class Account {
 		Address = address;
 	}
 	public Account(){}
-	public Account(String Email, String FirstName, String LastName, String CompanyName, String Pass, byte[] ImageAcc, String Address){
+	public Account(String Email, String Pass, String FirstName, String LastName, String CompanyName, byte[] ImageAcc, String Address){
 	
 		this.Email 			= Email;
+		this.Pass			= Pass;
 		this.FirstName 		= FirstName;
 		this.LastName		= LastName;
 		this.CompanyName	= CompanyName;
-		this.Pass			= Pass;
 		this.ImageAcc		= ImageAcc;
 		this.Address		= Address;
 		
