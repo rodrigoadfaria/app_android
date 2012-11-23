@@ -103,12 +103,13 @@ public class Account_Activity extends Activity{
 			if(bl_status_tax)
 				strTaxNumber = extras.getString("TAX");
 		}
-		
+		if(MACROS.TEST_SIGNIN_BL) {
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
 	    imgUsername.setImageBitmap(library.getBitmapFromByte(account.getImageAcc()));
 	    
 	    txtUsername.setText(account.getLastName() + " "+account.getFirstName());
 	    txtEmail.setText(account.getEmail());
+		}
 		
 	}
 	private void translate() {

@@ -85,11 +85,11 @@ public class Sale_Activity extends Activity{
     	dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
 		library = new Library();
-		
+		if(MACROS.TEST_SIGNIN_BL) {
 		Bundle extras = getIntent().getExtras();
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
 	    imgUsername.setImageBitmap(library.getBitmapFromByte(account.getImageAcc()));
-
+		}
     }
     
     private void translate() {
@@ -161,10 +161,8 @@ public class Sale_Activity extends Activity{
      * @param v
      */
     public void PlusItem(View v){
-    	Toast.makeText(getApplicationContext(), "demo plus item", Toast.LENGTH_LONG).show();
-    	HashMap<String,String> temp = new HashMap<String,String>();
-		temp.put(THIRD_COLUMN, "2x");
-		saleAdapter.notifyDataSetChanged();
+    	int i = listSale.getPositionForView(v);
+    	Toast.makeText(getApplicationContext(), "demo plus item " + i, Toast.LENGTH_LONG).show();
     }
     
     /**
