@@ -1,18 +1,19 @@
 package com.vinacredit.activity.Sale;
 
-import android.widget.ImageView;
+import android.graphics.Bitmap;
 
 public class DataItem {
 	
-	private ImageView		imgItem;
+	private Bitmap			imgItem;
 	private String 			strItem;
-	private String			quantityItem;
+	private String			quantityItem = "1x";
 	private String			priceItem;
 	
-	public ImageView getImgItem() {
+	
+	public Bitmap getImgItem() {
 		return imgItem;
 	}
-	public void setImgItem(ImageView imgItem) {
+	public void setImgItem(Bitmap imgItem) {
 		this.imgItem = imgItem;
 	}
 	public String getStrItem() {
@@ -36,7 +37,7 @@ public class DataItem {
 	
 	public DataItem(){}
 	
-	public DataItem(ImageView imgItem, String strItem, String quantityItem, String priceItem){
+	public DataItem(Bitmap imgItem, String strItem, String quantityItem, String priceItem){
 		this.imgItem 		= imgItem;
 		this.strItem	 	= strItem;
 		this.quantityItem 	= quantityItem;

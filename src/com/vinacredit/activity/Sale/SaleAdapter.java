@@ -1,20 +1,10 @@
 package com.vinacredit.activity.Sale;
 
-
-import static com.vinacredit.activity.Sale.Constant.FIRST_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.SECOND_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.THIRD_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.FOURTH_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.FIFTH_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.SIXTH_COLUMN;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 import com.vinacredit.activity.R;
 
-
-import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,72 +13,62 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-public class SaleAdapter extends BaseAdapter{
-
-	public ArrayList<HashMap<String,String>> list;
-	Activity activity;
+public class SaleAdapter extends BaseAdapter {
+	private Context mContext;
+	private List<DataItem> mListDataItem;
 	
-	public SaleAdapter(Activity activity, ArrayList<HashMap<String,String>> list) {
-		super();
-		this.activity = activity;
-		this.list = list;
+	public SaleAdapter(Context context, List<DataItem> list) {
+		mContext = context;
+		mListDataItem = list;	
+		
 	}
+
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return list.size();
+		return mListDataItem.size();		
 	}
 
 	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return list.get(position);
+	public Object getItem(int pos) {
+		return mListDataItem.get(pos);		
 	}
 
 	@Override
-	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+	public long getItemId(int pos) {
+		return pos;
 	}
-	
-	private class ViewHolder {
-	       ImageView  	imgItem;
-	       TextView   	txtItem;
-	       TextView   	txtQtyItem;
-	       TextView   	txtSubtitle;
-	       Button		btnMinus;
-	       Button		btnPlus;
-	  }
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		ViewHolder holder;
-		LayoutInflater inflater =  activity.getLayoutInflater();
-
-		if (convertView == null)
-		{
+	public View getView(int pos, View convertView, ViewGroup parent) {
+		// get selected entry
+		DataItem entry = mListDataItem.get(pos);
+		
+		// inflating list view layout if null
+		if(convertView == null) {
+			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(R.layout.sale_plus_item, null);
-			holder = new ViewHolder();
-			holder.imgItem 		= (ImageView) convertView.findViewById(R.id.imgItem);
-			holder.txtItem 		= (TextView) convertView.findViewById(R.id.txtItem);
-			holder.txtQtyItem 	= (TextView) convertView.findViewById(R.id.txtQtyItem);
-			holder.txtSubtitle 	= (TextView) convertView.findViewById(R.id.txtSubtitle);
-			holder.btnMinus		= (Button) convertView.findViewById(R.id.btnMinus);
-			holder.btnPlus		= (Button) convertView.findViewById(R.id.btnPlus);
-			convertView.setTag(holder);
-		}
-		else
-		{
-			holder = (ViewHolder) convertView.getTag();
 		}
 		
-		HashMap<String, String> map = list.get(position);
-		holder.txtItem.setText(map.get(SECOND_COLUMN));
-		holder.txtQtyItem.setText(map.get(THIRD_COLUMN));
-		holder.txtSubtitle.setText(map.get(FOURTH_COLUMN));
-	return convertView;
+		// set avatar
+		ImageView ivAvatar = (ImageView)convertView.findViewById(R.id.imgItem);
+		ivAvatar.setImageBitmap(entry.getImgItem());
+		
+		// set name
+		TextView tvName = (TextView)convertView.findViewById(R.id.txtItem);
+		tvName.setText(entry.getStrItem());
+		
+		// set phone
+		TextView tvPhone = (TextView)convertView.findViewById(R.id.txtQtyItem);
+		tvPhone.setText(entry.getQuantityItem());
+		
+		// set email
+		TextView tvEmail = (TextView)convertView.findViewById(R.id.txtSubtitle);
+		tvEmail.setText(entry.getPriceItem());
+		
+		Button btnPlus	= (Button)convertView.findViewById(R.id.btnPlus);
+		Button btnMinus = (Button)convertView.findViewById(R.id.btnMinus);
+		
+		return convertView;
 	}
 
 }

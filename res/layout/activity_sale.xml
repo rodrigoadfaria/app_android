@@ -62,12 +62,12 @@
 
         <TextView
             android:id="@+id/txtPriceItem"
-            android:layout_width="100dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_margin="3dp"
             android:text="@string/txtSubtitle"
-            android:textSize="20dp"
-            android:gravity="right|center"
+            android:textSize="35dp"
+            android:gravity="right|center_vertical"
             android:layout_centerVertical="true"
             android:textStyle="bold"
             android:layout_alignParentRight="true"/>
@@ -137,7 +137,7 @@
             <!-- Name item  -->
             <EditText 
                 android:id="@+id/edtItem"
-		        android:layout_width="100dp"
+		        android:layout_width="wrap_content"
 		        android:layout_height="40dp"
 		        android:layout_marginLeft="5dp"
 		        android:layout_toRightOf="@id/imgItem"
@@ -159,12 +159,12 @@
 		   	<!-- Price item -->
 		    <TextView
 		        android:id="@+id/txtItem"
-		        android:layout_width="100dp"
+		        android:layout_width="wrap_content"
 		        android:layout_height="40dp"
 		        android:layout_toLeftOf="@+id/btnAdd"
 		        android:gravity="right|center_vertical"
 		        android:layout_centerVertical="true"
-		        android:textSize="20dip"
+		        android:textSize="30dip"
 		        android:singleLine="true"
 		        android:text="@string/txtItem" />
         </RelativeLayout>

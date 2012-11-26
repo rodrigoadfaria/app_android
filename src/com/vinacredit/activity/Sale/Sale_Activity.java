@@ -9,16 +9,18 @@ import static com.vinacredit.activity.Sale.Constant.SIXTH_COLUMN;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -54,8 +56,11 @@ public class Sale_Activity extends Activity{
     private MySQLiteHelper 	dbSqlite;
 	private Account			account;
     private Library			library;
-    private ArrayList<HashMap<String,String>> list;
-    private SaleAdapter	saleAdapter;
+    private SaleAdapter		saleAdapter;
+    private List<DataItem>	ListdataItem;
+    private DataItem		dataItem;
+    private Bitmap			bpPhoto;
+    private int count = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
@@ -80,9 +85,15 @@ public class Sale_Activity extends Activity{
     	/* tranlate language */
     	translate();
     	
-    	list = new ArrayList<HashMap<String,String>>();
-    	saleAdapter	= new SaleAdapter(this, list);
+    	dataItem	 = new DataItem();
+    	ListdataItem = new ArrayList<DataItem>();
+    	saleAdapter  = new SaleAdapter(this, ListdataItem);
+    	listSale.setAdapter(saleAdapter);
+    	
+    	/* database instance */
     	dbSqlite = new MySQLiteHelper(this);
+    	
+    	/* account instance */
 		account  = new Account();
 		library = new Library();
 		if(MACROS.TEST_SIGNIN_BL) {
@@ -145,15 +156,16 @@ public class Sale_Activity extends Activity{
      */
     public void AddItem(View view){
 //    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
-    	HashMap<String,String> temp = new HashMap<String,String>();
-		temp.put(SECOND_COLUMN,edtItem.getText().toString());
-		temp.put(THIRD_COLUMN, "1x");
-		temp.put(FOURTH_COLUMN, txtItem.getText().toString());
-		list.add(temp);
-		saleAdapter.notifyDataSetChanged();
-		listSale.setAdapter(saleAdapter);
-		edtItem.setText("");
-		txtItem.setText("0");
+    	dataItem.setImgItem(bpPhoto);
+    	dataItem.setStrItem(edtItem.getText().toString());
+    	dataItem.setQuantityItem("1x");
+    	dataItem.setPriceItem(txtItem.getText().toString());
+    	ListdataItem.add(dataItem);
+    	saleAdapter.notifyDataSetChanged();
+    	imgItem.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.chomsao));
+    	_str_tmp="0";
+    	txtItem.setText("0");
+    	edtItem.setText("");
     }
     
     /**
@@ -162,7 +174,8 @@ public class Sale_Activity extends Activity{
      */
     public void PlusItem(View v){
     	int i = listSale.getPositionForView(v);
-    	Toast.makeText(getApplicationContext(), "demo plus item " + i, Toast.LENGTH_LONG).show();
+    	count++;
+    	Toast.makeText(getApplicationContext(), "demo plus item " + i, Toast.LENGTH_SHORT).show();
     }
     
     /**
@@ -170,7 +183,9 @@ public class Sale_Activity extends Activity{
      * @param v
      */
     public void MinusItem(View v){
-    	Toast.makeText(getApplicationContext(), "demo minus item", Toast.LENGTH_LONG).show();
+    	int ix = listSale.getPositionForView(v);
+    	Toast.makeText(getApplicationContext(), "demo minus item" + ix, Toast.LENGTH_SHORT).show();
+    	count--;
     }
     
     /**
@@ -254,8 +269,8 @@ public class Sale_Activity extends Activity{
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == CAMERA_REQUEST) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imgItem.setImageBitmap(photo);
+            bpPhoto = (Bitmap) data.getExtras().get("data");
+            imgItem.setImageBitmap(bpPhoto);
 		}
 	}
     
