@@ -19,9 +19,11 @@ public class Charge_Activity extends Activity{
     private Button btnBack;
     private Button btnCash;
     private TextView txtTitlebar;
-    private TextView txtPay;
+    private TextView txtPay, txtChange, txtSumPrice;
     
-    String _str_tmp = "";
+    private String		_str_tmp 	= "";
+    private String		_str_Change = "";
+    private String		_str_Sum	= "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charge);
@@ -33,6 +35,14 @@ public class Charge_Activity extends Activity{
     	btnCash  		= (Button)findViewById(R.id.btnTenderCash);
     	txtTitlebar		= (TextView)findViewById(R.id.txtTitleBar);
     	txtPay			= (TextView)findViewById(R.id.txtPay);
+    	txtChange		= (TextView)findViewById(R.id.txtChange);
+    	txtSumPrice		= (TextView)findViewById(R.id.txtSumPrice);
+    	
+    	Bundle bundle = getIntent().getExtras();
+    	txtSumPrice.setText(bundle.getString("PRICEITEM"));
+    	
+    	_str_Sum = txtSumPrice.getText().toString().replace(",","");
+    	
     	translate();
 
     }
@@ -99,14 +109,18 @@ public class Charge_Activity extends Activity{
 	}
     	if(_str_tmp.length() > 13)return; // 9,000,000,000 length is 13.
 	_str_tmp = _str_tmp + _str_number_click;
-	if(_str_tmp.length() > 3)
-	    _str_tmp = Library.addDotNumber(_str_tmp);
+	if(_str_tmp.length() > 3){
+		txtPay.setText(Library.addDotNumber(_str_tmp));
+	} else 
+		txtPay.setText(_str_tmp);
 	Log.i("Debug Charge","_str_tmp :" + _str_tmp);
-	txtPay.setText(_str_tmp);	 
+		 
+	
+	_str_Change = String.valueOf(Integer.parseInt(_str_Sum) - Integer.parseInt(_str_tmp));
+	txtChange.setText(Library.addDotNumber(_str_Change));
 }
     public void clearClick(View view){
 	if(view.getId() == R.id.btn3){
-		_str_tmp = _str_tmp.replaceAll(",","");
 		if(_str_tmp.length() < 1){
 			txtPay.setText("0");
 		} else {

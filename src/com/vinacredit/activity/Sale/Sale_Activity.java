@@ -44,7 +44,7 @@ public class Sale_Activity extends Activity{
     
     private String		_str_tmp = "";
     private String 		_str_number_click = "";
-    
+    private String		_str_total_price = "0";
     private MySQLiteHelper 	dbSqlite;
 	private Account			account;
     private Library			library;
@@ -87,11 +87,16 @@ public class Sale_Activity extends Activity{
     	
     	/* account instance */
 		account  = new Account();
+		
+		/* library instance */
 		library = new Library();
+		
 		if(MACROS.TEST_SIGNIN_BL) {
 		Bundle extras = getIntent().getExtras();
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
 	    imgUsername.setImageBitmap(library.getBitmapFromByte(account.getImageAcc()));
+	    
+
 		}
     }
     
@@ -116,6 +121,7 @@ public class Sale_Activity extends Activity{
      */
     public void gotoCharge(View view){
     	Intent i = new Intent(getApplicationContext(),Charge_Activity.class);
+    	i.putExtra("PRICEITEM", txtPriceItem.getText().toString());
 		startActivity(i);
     }
     
@@ -152,8 +158,14 @@ public class Sale_Activity extends Activity{
     	dataItem.setStrItem(edtItem.getText().toString());
     	dataItem.setQuantityItem("1x");
     	dataItem.setPriceItem(txtItem.getText().toString());
-    	ListdataItem.add(new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
+    	ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
     	saleAdapter.notifyDataSetChanged();
+    	
+    	/*------ assign price item into total price ------*/
+    	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) + Integer.parseInt(_str_tmp));
+    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+    	
+    	/*------ reset variable ------*/
     	imgItem.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.chomsao));
     	bpPhoto = null;
     	_str_tmp="";
@@ -243,8 +255,10 @@ public class Sale_Activity extends Activity{
 	}
     	if(_str_tmp.length() > 13) return; // 9,000,000,000 length is 13.
 	_str_tmp = _str_tmp + _str_number_click;
-	if(_str_tmp.length() > 3)
-	    _str_tmp = Library.addDotNumber(_str_tmp);
+	if(_str_tmp.length() > 3) {
+		txtItem.setText(Library.addDotNumber(_str_tmp));
+		return;
+	}		
 	Log.i("Debug Charge","_str_tmp :" + _str_tmp);
 	txtItem.setText(_str_tmp);
     }
@@ -256,7 +270,6 @@ public class Sale_Activity extends Activity{
     public void clearClick(View view){
     	if(view.getId() == R.id.btn3){
 //    	    String _str = txtItem.getText().toString();
-    		_str_tmp = _str_tmp.replaceAll(",","");
     		if(_str_tmp.length() < 1){
     			txtItem.setText("0");
     		} else {
