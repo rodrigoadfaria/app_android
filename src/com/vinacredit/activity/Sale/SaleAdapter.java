@@ -49,21 +49,21 @@ public class SaleAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.sale_plus_item, null);
 		}
 		
-		// set avatar
-		ImageView ivAvatar = (ImageView)convertView.findViewById(R.id.imgItem);
-		ivAvatar.setImageBitmap(entry.getImgItem());
+		// set Image Item
+		ImageView imgItem = (ImageView)convertView.findViewById(R.id.imgItem);
+		imgItem.setImageBitmap(entry.getImgItem());
 		
-		// set name
-		TextView tvName = (TextView)convertView.findViewById(R.id.txtItem);
-		tvName.setText(entry.getStrItem());
+		// set Name Item
+		TextView txtItem = (TextView)convertView.findViewById(R.id.txtItem);
+		txtItem.setText(entry.getStrItem());
 		
-		// set phone
-		TextView tvPhone = (TextView)convertView.findViewById(R.id.txtQtyItem);
-		tvPhone.setText(entry.getQuantityItem());
+		// set Quantity Item
+		TextView txtQtyItem = (TextView)convertView.findViewById(R.id.txtQtyItem);
+		txtQtyItem.setText(entry.getQuantityItem());
 		
-		// set email
-		TextView tvEmail = (TextView)convertView.findViewById(R.id.txtSubtitle);
-		tvEmail.setText(entry.getPriceItem());
+		// set Price Item
+		TextView txtSubtitle = (TextView)convertView.findViewById(R.id.txtSubtitle);
+		txtSubtitle.setText(entry.getPriceItem());
 		
 		Button btnPlus	= (Button)convertView.findViewById(R.id.btnPlus);
 		Button btnMinus = (Button)convertView.findViewById(R.id.btnMinus);

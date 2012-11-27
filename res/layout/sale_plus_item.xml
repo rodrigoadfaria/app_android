@@ -28,7 +28,7 @@
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
         android:text="@string/txtTitle"
-        android:textSize="25dip" />
+        android:textSize="20dip" />
     
     <!-- Quantity Item -->
     <TextView 
@@ -38,7 +38,7 @@
         android:layout_toRightOf="@id/txtItem"
         android:layout_marginLeft="20dp"
         android:gravity="center_vertical"
-        android:textSize="25dip"
+        android:textSize="20dip"
         android:text="@string/QuantityItem"/>
     
     <!-- Button plus -->
@@ -71,6 +71,6 @@
         android:layout_toLeftOf="@+id/btnMinus"
         android:gravity="right|center_vertical"
         android:text="@string/txtSubtitle"
-        android:textSize="25dip" />
+        android:textSize="20dip" />
 
 </RelativeLayout>

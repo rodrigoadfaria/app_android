@@ -1,14 +1,6 @@
 package com.vinacredit.activity.Sale;
 
-import static com.vinacredit.activity.Sale.Constant.FIRST_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.SECOND_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.THIRD_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.FOURTH_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.FIFTH_COLUMN;
-import static com.vinacredit.activity.Sale.Constant.SIXTH_COLUMN;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -160,10 +152,11 @@ public class Sale_Activity extends Activity{
     	dataItem.setStrItem(edtItem.getText().toString());
     	dataItem.setQuantityItem("1x");
     	dataItem.setPriceItem(txtItem.getText().toString());
-    	ListdataItem.add(dataItem);
+    	ListdataItem.add(new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
     	saleAdapter.notifyDataSetChanged();
     	imgItem.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.chomsao));
-    	_str_tmp="0";
+    	bpPhoto = null;
+    	_str_tmp="";
     	txtItem.setText("0");
     	edtItem.setText("");
     }
@@ -176,6 +169,9 @@ public class Sale_Activity extends Activity{
     	int i = listSale.getPositionForView(v);
     	count++;
     	Toast.makeText(getApplicationContext(), "demo plus item " + i, Toast.LENGTH_SHORT).show();
+    	dataItem = ListdataItem.get(i);
+    	dataItem.setQuantityItem(count + "x");
+    	saleAdapter.notifyDataSetChanged();
     }
     
     /**
@@ -186,6 +182,9 @@ public class Sale_Activity extends Activity{
     	int ix = listSale.getPositionForView(v);
     	Toast.makeText(getApplicationContext(), "demo minus item" + ix, Toast.LENGTH_SHORT).show();
     	count--;
+    	dataItem = ListdataItem.get(ix);
+    	dataItem.setQuantityItem(count + "x");
+    	saleAdapter.notifyDataSetChanged();
     }
     
     /**
@@ -256,8 +255,20 @@ public class Sale_Activity extends Activity{
      */
     public void clearClick(View view){
     	if(view.getId() == R.id.btn3){
-    	    txtItem.setText("0");
-    	    _str_tmp = "";
+//    	    String _str = txtItem.getText().toString();
+    		_str_tmp = _str_tmp.replaceAll(",","");
+    		if(_str_tmp.length() < 1){
+    			txtItem.setText("0");
+    		} else {
+    			_str_tmp = _str_tmp.substring(0,_str_tmp.length()-1);
+    			if(_str_tmp.length() > 3)
+    				txtItem.setText(Library.addDotNumber(_str_tmp));
+    			else
+    				txtItem.setText(_str_tmp);
+    			if(_str_tmp.length() < 1){
+        			txtItem.setText("0");
+        		}
+    		}    		
     	}
     }
     
