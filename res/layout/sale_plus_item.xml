@@ -21,14 +21,15 @@
     <!-- Name Item -->
     <TextView
         android:id="@+id/txtItem"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/imgItem"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
         android:text="@string/txtTitle"
-        android:textSize="20dip" />
+        android:singleLine="true"
+        android:textSize="22dip" />
     
     <!-- Quantity Item -->
     <TextView 
@@ -36,9 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_toRightOf="@id/txtItem"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
-        android:textSize="20dip"
+        android:textSize="22dip"
         android:text="@string/QuantityItem"/>
     
     <!-- Button plus -->
@@ -71,6 +72,6 @@
         android:layout_toLeftOf="@+id/btnMinus"
         android:gravity="right|center_vertical"
         android:text="@string/txtSubtitle"
-        android:textSize="20dip" />
+        android:textSize="22dip" />
 
 </RelativeLayout>
