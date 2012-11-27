@@ -106,8 +106,19 @@ public class Charge_Activity extends Activity{
 }
     public void clearClick(View view){
 	if(view.getId() == R.id.btn3){
-	    txtPay.setText("0");
-	    _str_tmp = "";
+		_str_tmp = _str_tmp.replaceAll(",","");
+		if(_str_tmp.length() < 1){
+			txtPay.setText("0");
+		} else {
+			_str_tmp = _str_tmp.substring(0,_str_tmp.length()-1);
+			if(_str_tmp.length() > 3)
+				txtPay.setText(Library.addDotNumber(_str_tmp));
+			else
+				txtPay.setText(_str_tmp);
+			if(_str_tmp.length() < 1){
+				txtPay.setText("0");
+    		}
+		}   
 	}
 }
     private void translate() {
