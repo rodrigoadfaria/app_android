@@ -52,7 +52,6 @@ public class Sale_Activity extends Activity{
     private List<DataItem>	ListdataItem;
     private DataItem		dataItem;
     private Bitmap			bpPhoto;
-    private int count = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
@@ -179,10 +178,16 @@ public class Sale_Activity extends Activity{
      */
     public void PlusItem(View v){
     	int i = listSale.getPositionForView(v);
+    	Toast.makeText(getApplicationContext(), ListdataItem.get(i).getStrItem(), Toast.LENGTH_SHORT).show();
+    	int count = ListdataItem.get(i).getQtyItem();
     	count++;
-    	Toast.makeText(getApplicationContext(), "demo plus item " + i, Toast.LENGTH_SHORT).show();
-    	dataItem = ListdataItem.get(i);
-    	dataItem.setQuantityItem(count + "x");
+    	ListdataItem.get(i).setQtyItem(count);
+    	ListdataItem.get(i).setQuantityItem(count + "x");
+    	String _str_p = ListdataItem.get(i).getPriceItem().replaceAll(",", "");
+    	/*------ assign price item into total price ------*/
+    	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) + Integer.parseInt(_str_p));
+    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+    	
     	saleAdapter.notifyDataSetChanged();
     }
     
@@ -192,10 +197,23 @@ public class Sale_Activity extends Activity{
      */
     public void MinusItem(View v){
     	int ix = listSale.getPositionForView(v);
-    	Toast.makeText(getApplicationContext(), "demo minus item" + ix, Toast.LENGTH_SHORT).show();
+    	Toast.makeText(getApplicationContext(), ListdataItem.get(ix).getStrItem(), Toast.LENGTH_SHORT).show();
+    	int count = ListdataItem.get(ix).getQtyItem();
+    	String _str_p = ListdataItem.get(ix).getPriceItem().replaceAll(",", "");
     	count--;
-    	dataItem = ListdataItem.get(ix);
-    	dataItem.setQuantityItem(count + "x");
+    	/*------ assign price item into total price ------*/
+    	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) - Integer.parseInt(_str_p));
+    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+    	
+    	if(count < 1) 
+    		{
+    			ListdataItem.remove(ix);
+    			saleAdapter.notifyDataSetChanged();
+    			return;
+    		}
+    	ListdataItem.get(ix).setQtyItem(count);
+    	ListdataItem.get(ix).setQuantityItem(count + "x");    	
+    	
     	saleAdapter.notifyDataSetChanged();
     }
     

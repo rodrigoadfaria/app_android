@@ -6,10 +6,17 @@ public class DataItem {
 	
 	private Bitmap			imgItem;
 	private String 			strItem;
-	private String			quantityItem = "1x";
+	private String			quantityItem;
 	private String			priceItem;
+	private int				qtyItem = 1;
 	
 	
+	public int getQtyItem() {
+		return qtyItem;
+	}
+	public void setQtyItem(int qtyItem) {
+		this.qtyItem = qtyItem;
+	}
 	public Bitmap getImgItem() {
 		return imgItem;
 	}
