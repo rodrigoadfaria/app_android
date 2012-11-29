@@ -43,44 +43,7 @@ public class Account_Activity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_account);
-		initialize();
-        ListItem listitem_data[] = new ListItem[] {
-        		new ListItem(R.drawable.sales_history, 	strSaleHistory, null, 			R.drawable.arrow),
-                new ListItem(R.drawable.tax, 			strTax, 		strTaxNumber, 	R.drawable.arrow),
-                new ListItem(R.drawable.help_support, 	strSupport, 	null, 			R.drawable.arrow)
-        };
-        
-        ListItemAdapter adapter = new ListItemAdapter(this,R.layout.listview_row_account,listitem_data);
-        
-        listView1 = (ListView)findViewById(R.id.listView1);
-        listView1.setAdapter(adapter);
-        
-        
-        listView1.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position,
-					long id) {
-				// TODO Auto-generated method stub
-				Intent i;
-				switch (position) {
-				case 0:
-					i = new Intent(getApplicationContext(),SaleHistory_Activity.class);
-					startActivity(i);
-					break;
-				case 1:
-					i = new Intent(getApplicationContext(),Tax_Activity.class);
-					startActivity(i);
-					break;
-				case 2:
-					i = new Intent(getApplicationContext(),Support_Activity.class);
-					startActivity(i);
-					break;
-				}
-			}
-        	
-		});
-       
+		initialize();          
 	}
 	private void initialize() {
 		// TODO Auto-generated method stub			
@@ -110,6 +73,45 @@ public class Account_Activity extends Activity{
 	    txtUsername.setText(account.getLastName() + " "+account.getFirstName());
 	    txtEmail.setText(account.getEmail());
 		}
+		
+		/* set item in listview    */
+		ListItem listitem_data[] = new ListItem[] {
+        		new ListItem(R.drawable.sales_history, 	strSaleHistory, null, 			R.drawable.arrow),
+                new ListItem(R.drawable.tax, 			strTax, 		strTaxNumber, 	R.drawable.arrow),
+                new ListItem(R.drawable.help_support, 	strSupport, 	null, 			R.drawable.arrow)
+        };
+        
+        ListItemAdapter adapter = new ListItemAdapter(this,R.layout.listview_row_account,listitem_data);
+        
+        listView1 = (ListView)findViewById(R.id.listView1);
+        listView1.setAdapter(adapter);
+        
+        
+        listView1.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				Intent i;
+				switch (position) {
+				case 0:
+					i = new Intent(getApplicationContext(),SaleHistory_Activity.class);
+					i.putExtra("EMAIL", account.getEmail());
+					startActivity(i);
+					break;
+				case 1:
+					i = new Intent(getApplicationContext(),Tax_Activity.class);
+					startActivity(i);
+					break;
+				case 2:
+					i = new Intent(getApplicationContext(),Support_Activity.class);
+					startActivity(i);
+					break;
+				}
+			}
+        	
+		});
 		
 	}
 	private void translate() {

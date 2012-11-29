@@ -55,6 +55,10 @@
     <string name="btnAccount">Account</string>
     <string name="txtTitleBarSalesHistory">Sales History</string>
     
+    <!-- string of Detail Sale History page -->
+    <string name="btnSaleHistory">SaleHistory</string>
+    <string name="txtTitleBarDetailSalesHistory">Detail Sales</string>
+    <string name="txtTotal">Total</string>
     <!-- string of Support page -->
     <string name="txtTitleBarSupport">Support</string>
     <string name="btnVinacredit">Vinacredit</string>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#EEEEEE"
+    android:layout_marginLeft="1.5dp"
+    android:layout_marginRight="1.5dp" >
+    
+    <ImageView 
+        android:id="@+id/imgCard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="1.5dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/charge_money"
+        android:contentDescription="@string/imgView"
+        android:scaleType="fitXY"/>
+    <TextView 
+        android:id="@+id/txtBill"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/imgCard"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="@string/txtTitle"
+        android:singleLine="true"
+        android:textSize="22dip" />
+    <TextView 
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/txtBill"
+        android:layout_marginLeft="30dp"
+        android:gravity="center_vertical"
+        android:text="@string/txtTitle"
+        android:singleLine="true"
+        android:textSize="22dip"/>
+    <TextView 
+        android:id="@+id/txtPriceBill"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="1.5dp"
+        android:gravity="center_vertical"
+        android:text="@string/txtSumPrice"
+        android:singleLine="true"
+        android:textSize="22dip"/>
+
+</RelativeLayout>

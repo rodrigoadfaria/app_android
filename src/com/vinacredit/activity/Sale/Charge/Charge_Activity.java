@@ -116,7 +116,7 @@ public class Charge_Activity extends Activity{
 	Log.i("Debug Charge","_str_tmp :" + _str_tmp);
 		 
 	
-	_str_Change = String.valueOf(Integer.parseInt(_str_Sum) - Integer.parseInt(_str_tmp));
+	_str_Change = String.valueOf(Integer.parseInt(_str_tmp) - Integer.parseInt(_str_Sum));
 	txtChange.setText(Library.addDotNumber(_str_Change));
 }
     public void clearClick(View view){

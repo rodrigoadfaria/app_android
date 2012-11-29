@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout 
+        android:id="@+id/relativelayout_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/titlebar"
+        android:layout_marginBottom="4dip">
+        
+        <Button 
+            android:id="@+id/btnSaleHistory"
+            android:text="@string/btnSaleHistory"
+            android:textColor="@color/white"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_back_pressed"
+            android:onClick="btnAccount"/>
+        
+        <TextView 
+            android:id="@+id/txtTitleBar"
+            android:text="@string/txtTitleBarDetailSalesHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+    </RelativeLayout>  
+    <ImageView 
+         android:id="@+id/imgUsername"
+         android:layout_width="100dp"
+         android:layout_height="100dp"
+         android:layout_below="@+id/relativelayout_title_bar"
+         android:layout_centerHorizontal="true"
+         android:contentDescription="@string/imgView"
+         android:src="@drawable/chomsao"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/imgUsername"
+        android:layout_margin="10dp"
+        android:background="@drawable/customshape">     
+     <TextView
+        android:id="@+id/txtTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/txtTotal"
+        android:layout_margin="5dp"
+        android:textSize="24dip"
+        android:textColor="#FFFFFF" />
+     <TextView 
+         android:id="@+id/txtPriceTotal"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentRight="true"
+         android:layout_alignBaseline="@+id/txtTotal"
+         android:text="@string/txtSumPrice"
+         android:layout_margin="5dp"
+         android:textSize="24dip"
+         android:textColor="#FFFFFF"
+         android:textStyle="bold"/>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtTotal"
+        android:layout_below="@id/imgUsername"
+        android:layout_margin="5dp"
+        android:background="#FFFFFF" >
+    </ListView>   
+
+    </RelativeLayout>
+</RelativeLayout>

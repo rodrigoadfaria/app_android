@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#EEEEEE"
+    android:layout_marginLeft="1.5dp"
+    android:layout_marginRight="1.5dp" >
+    
+    <TextView 
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical|left"
+        android:text="@string/txtTitle"
+        android:singleLine="true"
+        android:textSize="22dip"/>
+    <ImageView 
+        android:id="@+id/imgStar"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/arrow"
+        android:contentDescription="@string/imgView"
+        android:layout_centerVertical="true"/>
+    <TextView 
+        android:id="@+id/txtPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@id/imgStar"
+        android:text="@string/txtSumPrice"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical|right"
+        android:singleLine="true"
+        android:textSize="22dip"/>
+
+</RelativeLayout>

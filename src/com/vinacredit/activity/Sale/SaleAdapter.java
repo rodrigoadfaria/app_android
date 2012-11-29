@@ -67,8 +67,8 @@ public class SaleAdapter extends BaseAdapter {
 				TextView txtSubtitle = (TextView)convertView.findViewById(R.id.txtSubtitle);
 				txtSubtitle.setText(entry.getPriceItem());
 				
-				Button btnPlus	= (Button)convertView.findViewById(R.id.btnPlus);
-				Button btnMinus = (Button)convertView.findViewById(R.id.btnMinus);
+//				Button btnPlus	= (Button)convertView.findViewById(R.id.btnPlus);
+//				Button btnMinus = (Button)convertView.findViewById(R.id.btnMinus);
 			}
 		}
 		

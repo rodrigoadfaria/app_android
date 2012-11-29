@@ -1,13 +1,23 @@
 package com.vinacredit.activity.Account.SaleHistory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.vinacredit.Resource.MACROS;
+import com.vinacredit.Resource.MySQLiteHelper;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
+import com.vinacredit.activity.Account.SaleHistory.DetailSale.DetailSale_Activity;
+
+import con.vinacredit.DTO.Account;
+import con.vinacredit.DTO.SumBill;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -15,10 +25,15 @@ import android.widget.TextView;
 
 public class SaleHistory_Activity extends Activity{
 
-	private TextView	txtTitleBar;
-	private Button		btnAccount;
-	private ImageView	imgUsername;
-	private ListView	listView1;
+	private TextView			txtTitleBar;
+	private Button				btnAccount;
+	private ImageView			imgUsername;
+	private ListView			listView1;
+	private List<SumBill>		ListSumBill;
+	private SaleHistoryAdapter	saleHistoryAdapter;
+	private MySQLiteHelper		mDb;
+	private Account				account;
+	private SumBill				sumBill;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -33,7 +48,38 @@ public class SaleHistory_Activity extends Activity{
 		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
+		/*translate language */
 		translate();
+		
+		mDb 	= new MySQLiteHelper(this);
+		account	= new Account();
+		Bundle extras = getIntent().getExtras();
+		
+		
+		ListSumBill = new ArrayList<SumBill>();
+		ListSumBill = mDb.getSumBill(extras.getString("EMAIL"));
+		
+		for (SumBill i : ListSumBill) {
+			ListSumBill.add(new SumBill(i.getDateSale(),i.getSumBill()));
+		}
+		saleHistoryAdapter = new SaleHistoryAdapter(this, ListSumBill);
+		listView1.setAdapter(saleHistoryAdapter);
+		
+		listView1.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(),DetailSale_Activity.class);
+				i.putExtra("EMAIL", ListSumBill.get(position).getEmail());
+				i.putExtra("DATE", ListSumBill.get(position).getDateSale());
+				i.putExtra("SUMBILL", ListSumBill.get(position).getSumBill());
+				startActivity(i);
+			}
+			
+		});
+		
 	}
 	private void translate() {
 		// TODO Auto-generated method stub

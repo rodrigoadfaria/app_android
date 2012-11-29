@@ -36,5 +36,9 @@ public class SumBill {
 		this.SumBill	= SumBill;
 		this.Email		= Email;
 	}
+	public SumBill(String DateSale, String SumBill){
+		this.DateSale	= DateSale;
+		this.SumBill	= SumBill;
+	}
 	
 }
