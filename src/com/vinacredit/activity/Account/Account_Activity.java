@@ -40,7 +40,6 @@ public class Account_Activity extends Activity{
 	
 	private MySQLiteHelper 	dbSqlite;
 	private Account			account;
-    private Library			library;
     private AccountAdapter	accountAdapter;
     private List<ListItem> 	listItem;
     private ListItem		item;
@@ -65,7 +64,6 @@ public class Account_Activity extends Activity{
 		/* initialize variable */
 		dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
-		library = new Library();
 		item	= new ListItem();
 		listItem = new ArrayList<ListItem>();
 		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.sales_history), "Sales History", item.getSubtitle(),
@@ -86,7 +84,7 @@ public class Account_Activity extends Activity{
 		}
 		if(MACROS.TEST_SIGNIN_BL) {
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
-	    imgUsername.setImageBitmap(library.getBitmapFromByte(account.getImageAcc()));
+	    imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 	    
 	    txtUsername.setText(account.getLastName() + " "+account.getFirstName());
 	    txtEmail.setText(account.getEmail());

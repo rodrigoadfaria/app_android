@@ -3,6 +3,7 @@ package com.vinacredit.activity.Account.SaleHistory;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vinacredit.Resource.Library;
 import com.vinacredit.Resource.MACROS;
 import com.vinacredit.Resource.MySQLiteHelper;
 import com.vinacredit.activity.R;
@@ -59,6 +60,8 @@ public class SaleHistory_Activity extends Activity{
 		ListSumBill = new ArrayList<SumBill>();
 		if(MACROS.TEST_SIGNIN_BL)
 		{
+			account = mDb.getAccount(extras.getString("EMAIL"));
+			imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 			ListSumBill = mDb.getSumBill(extras.getString("EMAIL"));
 			
 			for (SumBill i : ListSumBill) {

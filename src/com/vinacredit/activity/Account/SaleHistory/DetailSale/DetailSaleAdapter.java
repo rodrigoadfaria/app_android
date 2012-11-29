@@ -3,7 +3,6 @@ package com.vinacredit.activity.Account.SaleHistory.DetailSale;
 import java.util.List;
 
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.R.drawable;
 
 import con.vinacredit.DTO.Bill;
 
@@ -55,9 +54,13 @@ public class DetailSaleAdapter extends BaseAdapter {
 				ImageView imgItem = (ImageView)convertView.findViewById(R.id.imgCard);
 				imgItem.setBackgroundResource(R.drawable.charge_money);
 				
-				// set Date Item
-				TextView txtItem = (TextView)convertView.findViewById(R.id.txtTime);
-				txtItem.setText(entry.getTimeSale());
+				// set Bill Item
+				TextView txtItem = (TextView)convertView.findViewById(R.id.txtBill);
+				txtItem.setText(entry.getTxtBill());
+				
+				// set Time Item
+				TextView txtTime = (TextView)convertView.findViewById(R.id.txtTime);
+				txtTime.setText(entry.getTimeSale());
 				
 				// set Price Item
 				TextView txtQtyItem = (TextView)convertView.findViewById(R.id.txtPriceBill);

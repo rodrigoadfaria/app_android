@@ -2,11 +2,19 @@ package con.vinacredit.DTO;
 
 public class Bill {
 
+	private String txtBill;
 	private String TimeSale;
 	private String SumItem;
 	private String Email;
 	private String DateSale;
 	
+	
+	public String getTxtBill() {
+		return txtBill;
+	}
+	public void setTxtBill(String txtBill) {
+		this.txtBill = txtBill;
+	}
 	public String getTimeSale() {
 		return TimeSale;
 	}
@@ -40,7 +48,7 @@ public class Bill {
 		this.DateSale	= DateSale;
 	}
 	
-	public Bill(String TimeSale, String SumItem){
+	public Bill(String txtBill, String TimeSale, String SumItem){
 		this.TimeSale 	= TimeSale;
 		this.SumItem	= SumItem;
 	}

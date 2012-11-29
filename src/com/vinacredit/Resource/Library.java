@@ -255,7 +255,7 @@ public class Library {
      * @param bitmap
      * @return byte[]
      */
-    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+    public static byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(CompressFormat.JPEG, 70, stream);
         return stream.toByteArray();
@@ -265,7 +265,7 @@ public class Library {
      * convert bitmap to byte[]
      * @return
      */
-    public Bitmap getBitmapFromByte(byte[] bitmap){
+    public static Bitmap getBitmapFromByte(byte[] bitmap){
     	return BitmapFactory.decodeByteArray(bitmap, 0, bitmap.length);
     }
     
@@ -273,7 +273,7 @@ public class Library {
      * get current date
      * @return String
      */
-    public String getDate(){
+    public static String getDate(){
     	Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("EE,dd-MM-yyyy");
         return df.format(c.getTime());
@@ -283,7 +283,7 @@ public class Library {
      * get current time
      * @return String
      */
-    public String getTime(){
+    public static String getTime(){
     	Calendar c = Calendar.getInstance();
         SimpleDateFormat dt = new SimpleDateFormat("HH:mm");
         return dt.format(c.getTime());
