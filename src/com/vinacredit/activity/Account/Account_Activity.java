@@ -1,5 +1,8 @@
 package com.vinacredit.activity.Account;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.vinacredit.Resource.*;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.SaleHistory.SaleHistory_Activity;
@@ -13,6 +16,7 @@ import con.vinacredit.DTO.Account;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
@@ -37,7 +41,9 @@ public class Account_Activity extends Activity{
 	private MySQLiteHelper 	dbSqlite;
 	private Account			account;
     private Library			library;
-    
+    private AccountAdapter	accountAdapter;
+    private List<ListItem> 	listItem;
+    private ListItem		item;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -56,15 +62,27 @@ public class Account_Activity extends Activity{
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
 		translate();
+		/* initialize variable */
 		dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
 		library = new Library();
+		item	= new ListItem();
+		listItem = new ArrayList<ListItem>();
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.sales_history), "Sales History", item.getSubtitle(),
+				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.tax), "Tax", item.getSubtitle(),
+				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.help_support), "Support", item.getSubtitle(),
+				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
+		accountAdapter = new AccountAdapter(this, listItem);
+		listView1.setAdapter(accountAdapter);
 		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			bl_status_tax = extras.getBoolean("STATUSTAX");
 			if(bl_status_tax)
-				strTaxNumber = extras.getString("TAX");
+				listItem.get(1).setSubtitle(extras.getString("TAX"));
+				accountAdapter.notifyDataSetChanged();
 		}
 		if(MACROS.TEST_SIGNIN_BL) {
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
@@ -73,18 +91,6 @@ public class Account_Activity extends Activity{
 	    txtUsername.setText(account.getLastName() + " "+account.getFirstName());
 	    txtEmail.setText(account.getEmail());
 		}
-		
-		/* set item in listview    */
-		ListItem listitem_data[] = new ListItem[] {
-        		new ListItem(R.drawable.sales_history, 	strSaleHistory, null, 			R.drawable.arrow),
-                new ListItem(R.drawable.tax, 			strTax, 		strTaxNumber, 	R.drawable.arrow),
-                new ListItem(R.drawable.help_support, 	strSupport, 	null, 			R.drawable.arrow)
-        };
-        
-        ListItemAdapter adapter = new ListItemAdapter(this,R.layout.listview_row_account,listitem_data);
-        
-        listView1 = (ListView)findViewById(R.id.listView1);
-        listView1.setAdapter(adapter);
         
         
         listView1.setOnItemClickListener(new OnItemClickListener() {

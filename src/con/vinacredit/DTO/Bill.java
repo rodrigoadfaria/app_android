@@ -40,4 +40,9 @@ public class Bill {
 		this.DateSale	= DateSale;
 	}
 	
+	public Bill(String TimeSale, String SumItem){
+		this.TimeSale 	= TimeSale;
+		this.SumItem	= SumItem;
+	}
+	
 }

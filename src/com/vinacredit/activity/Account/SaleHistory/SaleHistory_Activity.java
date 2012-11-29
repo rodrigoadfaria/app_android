@@ -57,13 +57,16 @@ public class SaleHistory_Activity extends Activity{
 		
 		
 		ListSumBill = new ArrayList<SumBill>();
-		ListSumBill = mDb.getSumBill(extras.getString("EMAIL"));
-		
-		for (SumBill i : ListSumBill) {
-			ListSumBill.add(new SumBill(i.getDateSale(),i.getSumBill()));
-		}
-		saleHistoryAdapter = new SaleHistoryAdapter(this, ListSumBill);
-		listView1.setAdapter(saleHistoryAdapter);
+		if(MACROS.TEST_SIGNIN_BL)
+		{
+			ListSumBill = mDb.getSumBill(extras.getString("EMAIL"));
+			
+			for (SumBill i : ListSumBill) {
+				ListSumBill.add(new SumBill(i.getDateSale(),i.getSumBill()));
+			}
+			saleHistoryAdapter = new SaleHistoryAdapter(this, ListSumBill);
+			listView1.setAdapter(saleHistoryAdapter);
+		}		
 		
 		listView1.setOnItemClickListener(new OnItemClickListener() {
 
@@ -90,4 +93,5 @@ public class SaleHistory_Activity extends Activity{
 		Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
 		startActivity(intent);
 	}
+	
 }

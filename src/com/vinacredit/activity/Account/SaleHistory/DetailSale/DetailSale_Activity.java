@@ -13,6 +13,13 @@ public class DetailSale_Activity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail_sale);
+		
+		initialize();
+	}
+
+	private void initialize() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
