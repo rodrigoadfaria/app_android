@@ -77,6 +77,7 @@ public class SignIn_Activity extends Activity{
 					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
 					Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
 					intent.putExtra("EMAIL", email);
+					intent.putExtra("PASS", pass);
 					startActivity(intent);
 					return;
 				}
@@ -86,6 +87,7 @@ public class SignIn_Activity extends Activity{
 		else {
 		    Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
 		    intent.putExtra("EMAIL", email);
+		    intent.putExtra("PASS", pass);
 		    startActivity(intent);
 		}
 	}

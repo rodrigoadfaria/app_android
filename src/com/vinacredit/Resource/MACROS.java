@@ -118,4 +118,6 @@ public class MACROS{
 
     //========================define========================
     public static  boolean     TEST_SIGNIN_BL 		= 	false;
+    public static  boolean	   TEST_DATABASE		=	false;
+    public static  boolean	   TEST_INFOR			=   false;
 }

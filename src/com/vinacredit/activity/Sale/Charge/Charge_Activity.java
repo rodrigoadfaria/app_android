@@ -48,8 +48,9 @@ public class Charge_Activity extends Activity{
     }
     
     public void btnBack(View view){
-    	Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
-		startActivity(i);
+//    	Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
+//		startActivity(i);
+    	finish();
     }
     
     public void btnTenderCash(View view){

@@ -31,7 +31,6 @@ public class InformationAccount_Activity extends Activity {
 	private Account		account;
 	
 	private Bitmap 		photo;
-	private Library 	library;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +58,6 @@ public class InformationAccount_Activity extends Activity {
 		translate();
 		dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
-		library	 = new Library();
 		
 		    Bundle extras = getIntent().getExtras();
 		    edtEmail.setText(extras.getString("EMAIL"));
@@ -84,8 +82,8 @@ public class InformationAccount_Activity extends Activity {
 
 	public void btnContinue(View view){
 		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);		
-	    
-	    if(MACROS.TEST_SIGNIN_BL) {
+		i.putExtra("EMAIL", edtEmail.getText().toString());
+	    if(MACROS.TEST_DATABASE) {
 	    	account.setEmail(edtEmail.getText().toString());
 			account.setPass(edtConfirmPass.getText().toString());
 			account.setFirstName(edtFirstname.getText().toString());
@@ -94,18 +92,31 @@ public class InformationAccount_Activity extends Activity {
 			account.setAddress(edtAddress.getText().toString());
 			
 			/*convert bitemap to byte[] */	    
-		    account.setImageAcc(library.getBytesFromBitmap(photo));
+		    account.setImageAcc(Library.getBytesFromBitmap(photo));
 		    
 		    dbSqlite.AddAccount(account);
 	    }
-	    i.putExtra("EMAIL", edtEmail.getText().toString());
-		startActivity(i);
+	    if(MACROS.TEST_INFOR){
+	    	if(isCheck())
+	    		startActivity(i);
+	    } else
+	    	startActivity(i);
+		
 	}
 	
 	public void takePhoto(View view){
 		Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 		startActivityForResult(cameraIntent, CAMERA_REQUEST);
 	}
+	
+	public boolean isCheck(){
+		if(edtFirstname.getText().toString() != null && edtLastname.getText().toString() != null &&
+				edtCompany.getText().toString() != null && edtAddress.getText().toString() != null &&
+				edtNewpass.getText().toString().length() >= 8 && edtConfirmPass.getText().toString().equals(edtNewpass.getText().toString()))
+			return true;
+		return false;
+	}
+	
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
