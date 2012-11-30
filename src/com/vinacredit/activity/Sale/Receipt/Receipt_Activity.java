@@ -65,6 +65,7 @@ public class Receipt_Activity extends Activity{
 		Toast.makeText(getApplicationContext(), "Skip send email", Toast.LENGTH_LONG ).show();
 		Intent intent = new Intent(getApplicationContext(),Done_Activity.class);
 		startActivity(intent);
+		finish();
 	}
 	
 	private void translate() {
@@ -72,6 +73,12 @@ public class Receipt_Activity extends Activity{
 		edtEmail.setHint(MACROS.RECEIPT_EMAIL_TXT);
 		btnSkip.setText(MACROS.RECEIPT_SKIP_BTN);
 		btnSend.setText(MACROS.RECEIPT_SEND_BTN);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
 	}
 
 }

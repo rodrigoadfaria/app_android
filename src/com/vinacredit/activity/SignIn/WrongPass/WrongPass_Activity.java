@@ -46,8 +46,9 @@ public class WrongPass_Activity extends Activity{
 	 * @param view
 	 */
 	public void btnCancel(View view){
-		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
-		startActivity(intent);
+//		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
+//		startActivity(intent);
+		finish();
 	}
 	
 	/**
@@ -56,4 +57,5 @@ public class WrongPass_Activity extends Activity{
 	public void btnSend(View view){
 		Toast.makeText(getApplicationContext(), "Sending email", Toast.LENGTH_LONG).show();
 	}
+	
 }

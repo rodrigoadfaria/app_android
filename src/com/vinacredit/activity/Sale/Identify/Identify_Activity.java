@@ -51,8 +51,9 @@ public class Identify_Activity extends Activity{
 	}
 	
 	public void btnBack(View view){
-		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
-		startActivity(intent);
+//		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
+//		startActivity(intent);
+		finish();
 	}
 
 	public void btnSignature(View view){
@@ -64,6 +65,14 @@ public class Identify_Activity extends Activity{
 		Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 		startActivityForResult(cameraIntent, CAMERA_REQUEST);
 	}
+	
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+	}
+	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
 	 */
@@ -74,7 +83,7 @@ public class Identify_Activity extends Activity{
 		if (requestCode == CAMERA_REQUEST) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             imgIdentify.setImageBitmap(photo);
-		}
+		} else return;
 	}
 	
 }

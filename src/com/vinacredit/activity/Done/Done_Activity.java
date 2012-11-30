@@ -46,4 +46,9 @@ public class Done_Activity extends Activity{
 		startActivity(intent);
 	}
 
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+	}
 }

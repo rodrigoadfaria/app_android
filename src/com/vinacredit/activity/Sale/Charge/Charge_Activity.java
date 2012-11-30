@@ -56,6 +56,7 @@ public class Charge_Activity extends Activity{
     public void btnTenderCash(View view){
     	Intent i = new Intent(getApplicationContext(),Receipt_Activity.class);
 		startActivity(i);
+		finish();
     }
     
     public void numClick(View view){
@@ -140,6 +141,12 @@ public class Charge_Activity extends Activity{
 	// TODO Auto-generated method stub
     	btnCash.setText(MACROS.CHARGE_TENDER_BTN);
     	txtTitlebar.setText(MACROS.CHARGE_LBL);
+    }
+    
+    @Override
+    public void onBackPressed() {
+    	// TODO Auto-generated method stub
+//    	super.onBackPressed();
     }
     
 }

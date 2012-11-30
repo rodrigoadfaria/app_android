@@ -77,5 +77,11 @@ public class Welcome_Activity extends Activity {
 	public void signin(View view){
 		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
 		startActivity(intent);
+		finish();
+	}
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
 	}
 }

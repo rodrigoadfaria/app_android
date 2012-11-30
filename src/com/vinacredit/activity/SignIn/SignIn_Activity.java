@@ -72,6 +72,7 @@ public class SignIn_Activity extends Activity{
 					Intent intent_Sale = new Intent(getApplicationContext(),Sale_Activity.class);
 					intent_Sale.putExtra("EMAIL", email);
 					startActivity(intent_Sale);
+					finish();
 					return;
 				} else {
 					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
@@ -79,6 +80,7 @@ public class SignIn_Activity extends Activity{
 					intent.putExtra("EMAIL", email);
 					intent.putExtra("PASS", pass);
 					startActivity(intent);
+					finish();
 					return;
 				}
 			} else
@@ -89,6 +91,7 @@ public class SignIn_Activity extends Activity{
 		    intent.putExtra("EMAIL", email);
 		    intent.putExtra("PASS", pass);
 		    startActivity(intent);
+		    finish();
 		}
 	}
 	
@@ -101,4 +104,9 @@ public class SignIn_Activity extends Activity{
 		startActivity(i);
 	}
 
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+	}
 }

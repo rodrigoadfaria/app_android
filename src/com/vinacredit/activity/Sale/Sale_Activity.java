@@ -47,7 +47,6 @@ public class Sale_Activity extends Activity{
     private String		_str_total_price = "0";
     private MySQLiteHelper 	dbSqlite;
 	private Account			account;
-    private Library			library;
     private SaleAdapter		saleAdapter;
     private List<DataItem>	ListdataItem;
     private DataItem		dataItem;
@@ -85,15 +84,12 @@ public class Sale_Activity extends Activity{
     	dbSqlite = new MySQLiteHelper(this);
     	
     	/* account instance */
-		account  = new Account();
-		
-		/* library instance */
-		library = new Library();
+		account  = new Account();		
 		
 		if(MACROS.TEST_SIGNIN_BL) {
 		Bundle extras = getIntent().getExtras();
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
-	    imgUsername.setImageBitmap(library.getBitmapFromByte(account.getImageAcc()));
+	    imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 	    
 
 		}
@@ -129,7 +125,12 @@ public class Sale_Activity extends Activity{
      * @param view
      */
     public void clear(View view){
-    	
+    	ListdataItem.clear();
+    	_str_tmp = "";
+    	_str_total_price = "0";
+    	_str_number_click = "";
+    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+    	saleAdapter.notifyDataSetChanged();
     }
     
     /**
@@ -157,12 +158,17 @@ public class Sale_Activity extends Activity{
     	dataItem.setStrItem(edtItem.getText().toString());
     	dataItem.setQuantityItem("1x");
     	dataItem.setPriceItem(txtItem.getText().toString());
-    	ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
-    	saleAdapter.notifyDataSetChanged();
+    	if(_str_tmp.length() > 0){
+    		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
+        	saleAdapter.notifyDataSetChanged();
+        	
+        	/*------ assign price item into total price ------*/
+        	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) + Integer.parseInt(_str_tmp));
+        	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+    	} else {
+			Toast.makeText(getApplicationContext(), "Enter price item,Please!", Toast.LENGTH_SHORT).show();
+		}
     	
-    	/*------ assign price item into total price ------*/
-    	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) + Integer.parseInt(_str_tmp));
-    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
     	
     	/*------ reset variable ------*/
     	imgItem.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.chomsao));
@@ -303,6 +309,11 @@ public class Sale_Activity extends Activity{
     	}
     }
     
+    @Override
+    public void onBackPressed() {
+    	// TODO Auto-generated method stub
+//    	super.onBackPressed();
+    }
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
 	 */

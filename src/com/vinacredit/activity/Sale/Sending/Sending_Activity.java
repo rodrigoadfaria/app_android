@@ -40,12 +40,19 @@ public class Sending_Activity extends Activity{
 	}
 
 	public void btnBack(View view){
-		Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
-		startActivity(intent);
+//		Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
+//		startActivity(intent);
+		finish();
 	}
 	
 	public void btnReceipt(View view){
 		Intent intent = new Intent(getApplicationContext(),Receipt_Activity.class);
 		startActivity(intent);
+		finish();
+	}
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
 	}
 }

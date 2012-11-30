@@ -35,8 +35,9 @@ public class Signature_Activity extends Activity{
 	}
 	//action btnIdentify
 	public void gotoIdentify(View view){
-	    Intent intent = new Intent(getApplicationContext(),Identify_Activity.class);
-	    startActivity(intent);
+//	    Intent intent = new Intent(getApplicationContext(),Identify_Activity.class);
+//	    startActivity(intent);
+		finish();
 	}
 	// action btn Sending 
 	public void gotoSending(View view){
@@ -46,6 +47,12 @@ public class Signature_Activity extends Activity{
 	private void translate() {
 		// TODO Auto-generated method stub
 		txtTitleBar.setText(MACROS.SIGNATURE_LBL);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
 	}
 
 }

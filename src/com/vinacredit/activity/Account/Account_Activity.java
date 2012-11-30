@@ -53,7 +53,7 @@ public class Account_Activity extends Activity{
 	private void initialize() {
 		// TODO Auto-generated method stub			
 		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
-		txtUsername 		= (TextView)findViewById(R.id.txtUsername);
+		txtUsername 	= (TextView)findViewById(R.id.txtUsername);
 		txtEmail		= (TextView)findViewById(R.id.txtEmail);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		btnSignOut		= (Button)findViewById(R.id.btnSignOut);
@@ -128,13 +128,16 @@ public class Account_Activity extends Activity{
 	}
 	
 	public void btnBack(View view){
-		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
-		startActivity(i);
+//		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
+//		startActivity(i);
+		finish();
 	}
 	
 	public void btnSignOut(View view){
 		Intent i = new Intent(getApplicationContext(),Welcome_Activity.class);
 		startActivity(i);
+		finish();
 	}
 
+	
 }

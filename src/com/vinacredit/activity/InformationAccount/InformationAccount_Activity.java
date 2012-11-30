@@ -97,10 +97,16 @@ public class InformationAccount_Activity extends Activity {
 		    dbSqlite.AddAccount(account);
 	    }
 	    if(MACROS.TEST_INFOR){
-	    	if(isCheck())
+	    	if(isCheck()) {
 	    		startActivity(i);
-	    } else
+	    		finish();
+	    	}
+	    		
+	    } else {
 	    	startActivity(i);
+	    	finish();
+	    }
+	    	
 		
 	}
 	
@@ -118,6 +124,11 @@ public class InformationAccount_Activity extends Activity {
 	}
 	
 	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+	}
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
 	 */
