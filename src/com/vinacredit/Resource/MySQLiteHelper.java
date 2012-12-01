@@ -244,11 +244,14 @@ public class MySQLiteHelper
      * @throws SQLException
      */
     public List<SumBill> getSumBill(String email) throws SQLException {
+    	
+    	String update = "UPDATE SumBill SET sumBill = (select sum(Bill.sumItem) from Bill where SumBill.email = Bill.email and SumBill.dateSale = Bill.dateSale)";
     	List<SumBill> sbList = new ArrayList<SumBill>();
     	SumBill sumbill = new SumBill();
     	open();
+    	db.execSQL(update);
     	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_SUMBILL + " WHERE email=?", new String[]{email}); 
-
+    	
     	
     	while(mcursor.moveToNext()){
     		sumbill.setDateSale(mcursor.getString(0));

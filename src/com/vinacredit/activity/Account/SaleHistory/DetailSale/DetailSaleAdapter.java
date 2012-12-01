@@ -2,6 +2,7 @@ package com.vinacredit.activity.Account.SaleHistory.DetailSale;
 
 import java.util.List;
 
+import com.vinacredit.Resource.Library;
 import com.vinacredit.activity.R;
 
 import con.vinacredit.DTO.Bill;
@@ -64,7 +65,7 @@ public class DetailSaleAdapter extends BaseAdapter {
 				
 				// set Price Item
 				TextView txtQtyItem = (TextView)convertView.findViewById(R.id.txtPriceBill);
-				txtQtyItem.setText(entry.getSumItem());
+				txtQtyItem.setText(Library.addDotNumber(entry.getSumItem()));
 		
 		return convertView;
 	}

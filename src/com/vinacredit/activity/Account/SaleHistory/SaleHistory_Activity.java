@@ -64,9 +64,9 @@ public class SaleHistory_Activity extends Activity{
 			imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 			ListSumBill = mDb.getSumBill(extras.getString("EMAIL"));
 			
-			for (SumBill i : ListSumBill) {
-				ListSumBill.add(new SumBill(i.getDateSale(),i.getSumBill()));
-			}
+//			for (SumBill i : ListSumBill) {
+//				ListSumBill.add(new SumBill(i.getDateSale(),i.getSumBill()));
+//			}
 			saleHistoryAdapter = new SaleHistoryAdapter(this, ListSumBill);
 			listView1.setAdapter(saleHistoryAdapter);
 		}		
@@ -78,9 +78,11 @@ public class SaleHistory_Activity extends Activity{
 					long id) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(),DetailSale_Activity.class);
-				i.putExtra("EMAIL", ListSumBill.get(position).getEmail());
-				i.putExtra("DATE", ListSumBill.get(position).getDateSale());
-				i.putExtra("SUMBILL", ListSumBill.get(position).getSumBill());
+				Bundle myBundle = new Bundle();
+				myBundle.putString("EMAIL", ListSumBill.get(position).getEmail());
+				myBundle.putString("DATE", ListSumBill.get(position).getDateSale());
+				myBundle.putString("SUMBILL", ListSumBill.get(position).getSumBill());
+				i.putExtras(myBundle);
 				startActivity(i);
 			}
 			

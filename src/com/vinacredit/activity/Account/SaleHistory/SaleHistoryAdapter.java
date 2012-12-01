@@ -2,6 +2,7 @@ package com.vinacredit.activity.Account.SaleHistory;
 
 import java.util.List;
 
+import com.vinacredit.Resource.Library;
 import com.vinacredit.activity.R;
 
 import con.vinacredit.DTO.SumBill;
@@ -55,7 +56,7 @@ public class SaleHistoryAdapter extends BaseAdapter {
 				
 				// set Price Item
 				TextView txtQtyItem = (TextView)convertView.findViewById(R.id.txtPrice);
-				txtQtyItem.setText(entry.getSumBill());
+				txtQtyItem.setText(Library.addDotNumber(entry.getSumBill()));
 				
 				// set Image Item
 //				ImageView imgItem = (ImageView)convertView.findViewById(R.id.imgStar);

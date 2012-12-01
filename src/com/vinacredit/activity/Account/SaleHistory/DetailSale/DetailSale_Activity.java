@@ -65,9 +65,9 @@ public class DetailSale_Activity extends Activity{
 			
 			listBill = mDb.getBill(extras.getString("EMAIL"), extras.getString("DATE"));
 			
-			for (int i = 0; i < listBill.size(); i++) {
-				listBill.add(new Bill("Bill "+ i,listBill.get(i).getTimeSale(),listBill.get(i).getSumItem()));
-			}
+//			for (int i = 0; i < listBill.size(); i++) {
+//				listBill.add(new Bill("Bill "+ i,listBill.get(i).getTimeSale(),listBill.get(i).getSumItem()));
+//			}
 			txtPriceTotal.setText(Library.addDotNumber(extras.getString("SUMBILL")));
 			detailAdapter	= new DetailSaleAdapter(this, listBill);
 			listview1.setAdapter(detailAdapter);

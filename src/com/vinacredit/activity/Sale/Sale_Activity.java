@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.vinacredit.Resource.MACROS;
 import com.vinacredit.Resource.MySQLiteHelper;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
+import com.vinacredit.activity.Done.Done_Activity;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Sale.Identify.Identify_Activity;
 
@@ -91,7 +93,10 @@ public class Sale_Activity extends Activity{
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
 	    imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 	    
-
+	    SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_WORLD_READABLE );
+	    SharedPreferences.Editor editor = share.edit();
+	    editor.putString("EMAIL",extras.getString("EMAIL"));
+	    editor.commit();
 		}
     }
     
@@ -116,7 +121,10 @@ public class Sale_Activity extends Activity{
      */
     public void gotoCharge(View view){
     	Intent i = new Intent(getApplicationContext(),Charge_Activity.class);
-    	i.putExtra("PRICEITEM", txtPriceItem.getText().toString());
+    	Bundle myBundle = new Bundle();
+    	myBundle.putString("EMAIL", account.getEmail());
+    	myBundle.putString("PRICEITEM", txtPriceItem.getText().toString());
+    	i.putExtras(myBundle);
 		startActivity(i);
     }
     

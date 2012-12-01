@@ -84,29 +84,23 @@ public class InformationAccount_Activity extends Activity {
 		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);		
 		i.putExtra("EMAIL", edtEmail.getText().toString());
 	    if(MACROS.TEST_DATABASE) {
-	    	account.setEmail(edtEmail.getText().toString());
-			account.setPass(edtConfirmPass.getText().toString());
-			account.setFirstName(edtFirstname.getText().toString());
-			account.setLastName(edtLastname.getText().toString());
-			account.setCompanyName(edtCompany.getText().toString());
-			account.setAddress(edtAddress.getText().toString());
-			
-			/*convert bitemap to byte[] */	    
-		    account.setImageAcc(Library.getBytesFromBitmap(photo));
-		    
-		    dbSqlite.AddAccount(account);
-	    }
-	    if(MACROS.TEST_INFOR){
 	    	if(isCheck()) {
-	    		startActivity(i);
+	    		account.setEmail(edtEmail.getText().toString());
+				account.setPass(edtConfirmPass.getText().toString());
+				account.setFirstName(edtFirstname.getText().toString());
+				account.setLastName(edtLastname.getText().toString());
+				account.setCompanyName(edtCompany.getText().toString());
+				account.setAddress(edtAddress.getText().toString());
+				
+				/*convert bitemap to byte[] */	    
+			    account.setImageAcc(Library.getBytesFromBitmap(photo));
+			    
+			    dbSqlite.AddAccount(account);
+			    startActivity(i);
 	    		finish();
-	    	}
-	    		
-	    } else {
-	    	startActivity(i);
-	    	finish();
-	    }
-	    	
+	    	} else
+	    		Toast.makeText(getApplicationContext(), "Enter full infor,Please", Toast.LENGTH_SHORT).show();	    	
+	    }    	
 		
 	}
 	

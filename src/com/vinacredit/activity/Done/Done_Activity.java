@@ -6,6 +6,7 @@ import com.vinacredit.activity.Sale.Sale_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class Done_Activity extends Activity{
 	private TextView 	txtSumPrice;
 	private TextView 	txtPaidThank;
 	private Button		btnDone;
+	static String email;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -32,7 +34,7 @@ public class Done_Activity extends Activity{
 		txtPaidThank	= (TextView)findViewById(R.id.txtPaidThank);
 		btnDone			= (Button)findViewById(R.id.btnDone);
 		
-		translate();		
+		translate();	
 
 	}
 	private void translate() {
@@ -43,7 +45,10 @@ public class Done_Activity extends Activity{
 	
 	public void btnDone(View view){
 		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
+		SharedPreferences share = this.getSharedPreferences("EMAIL", MODE_WORLD_READABLE);
+		intent.putExtra("EMAIL",share.getString("EMAIL", "NOTHING"));
 		startActivity(intent);
+		finish();
 	}
 
 	@Override
