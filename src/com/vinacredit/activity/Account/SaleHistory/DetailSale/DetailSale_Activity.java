@@ -16,6 +16,7 @@ import con.vinacredit.DTO.Bill;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -80,5 +81,14 @@ public class DetailSale_Activity extends Activity{
 		txtTitleBar.setText(MACROS.DETAILSALE_LBL);
 		txtTotal.setText(MACROS.DETAILSALE_TOTAL_LBL);
 	}
-
+	
+	public void btnSaleHistory(View v){
+		finish();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+	}
 }

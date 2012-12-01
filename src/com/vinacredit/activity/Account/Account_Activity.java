@@ -25,10 +25,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class Account_Activity extends Activity{
 
+	private static final int IPC_ID = 1122;
+	
 	private ImageView imgUsername;
 	private TextView txtUsername;
 	private TextView txtEmail;
@@ -76,13 +79,7 @@ public class Account_Activity extends Activity{
 		listView1.setAdapter(accountAdapter);
 		
 		Bundle extras = getIntent().getExtras();
-		if(extras != null){
-			bl_status_tax = extras.getBoolean("STATUSTAX");
-			if(bl_status_tax)
-				listItem.get(1).setSubtitle(extras.getString("TAX"));
-				accountAdapter.notifyDataSetChanged();
-		}
-		if(MACROS.TEST_SIGNIN_BL) {
+		if(MACROS.TEST_DATABASE) {
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
 	    imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 	    
@@ -105,8 +102,14 @@ public class Account_Activity extends Activity{
 					startActivity(i);
 					break;
 				case 1:
-					i = new Intent(getApplicationContext(),Tax_Activity.class);
-					startActivity(i);
+					i = new Intent(Account_Activity.this,Tax_Activity.class);
+					Bundle myBundle = new Bundle();
+					myBundle.putBoolean("STATUSTAX1", bl_status_tax);
+					if(listItem.get(1).getSubtitle() == "")
+						listItem.get(1).setSubtitle("0%");
+					myBundle.putString("TAX1", listItem.get(1).getSubtitle());
+					i.putExtras(myBundle);
+					startActivityForResult(i, IPC_ID);
 					break;
 				case 2:
 					i = new Intent(getApplicationContext(),Support_Activity.class);
@@ -133,10 +136,45 @@ public class Account_Activity extends Activity{
 		finish();
 	}
 	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+	}
+	
 	public void btnSignOut(View view){
 		Intent i = new Intent(getApplicationContext(),Welcome_Activity.class);
 		startActivity(i);
 		finish();
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		try {
+			switch (requestCode) {
+			case IPC_ID: {
+				if (resultCode == Activity.RESULT_OK) {
+					Bundle extras = data.getExtras();
+					if(extras != null){
+						bl_status_tax = extras.getBoolean("STATUSTAX");
+						if(bl_status_tax) {
+							listItem.get(1).setSubtitle(extras.getString("TAX"));
+							accountAdapter.notifyDataSetChanged();
+						} else{
+							listItem.get(1).setSubtitle("");
+							accountAdapter.notifyDataSetChanged();
+						}
+							
+							Toast.makeText(getBaseContext(), extras.getString("TAX"), Toast.LENGTH_SHORT).show();
+					}
+				}
+				break;
+			}
+			}
+		} catch (Exception e) {
+			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	

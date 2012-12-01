@@ -86,7 +86,7 @@ public class Sale_Activity extends Activity{
     	/* account instance */
 		account  = new Account();		
 		
-		if(MACROS.TEST_SIGNIN_BL) {
+		if(MACROS.TEST_DATABASE) {
 		Bundle extras = getIntent().getExtras();
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
 	    imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));

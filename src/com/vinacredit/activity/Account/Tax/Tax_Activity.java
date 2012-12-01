@@ -23,7 +23,7 @@ public class Tax_Activity extends Activity{
 	private ToggleButton	tgbtnstatusTax;
 	String _str_tax = "";
 	boolean i_first_dot    = true;
-	private boolean bl_status;
+	private boolean bl_status = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -43,29 +43,25 @@ public class Tax_Activity extends Activity{
 		txtTaxName			= (TextView)findViewById(R.id.txtTaxName);
 		tgbtnstatusTax		= (ToggleButton)findViewById(R.id.tgbAddSaleTax);
 		
-		translate();
-				
+		translate();		
 		
-		tgbtnstatusTax.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-		    @Override
-                     public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-                                     // TODO Auto-generated method stub
-			String tmp_status_tax = (String) tgbtnstatusTax.getText();
-			Log.i("tax debug", "tmp_status_tax : " + tmp_status_tax);
-			if(tmp_status_tax.equals("ON"))
-			{
-			    MACROS.tax_status_bl = true;
-			    bl_status = true;
-			}
-			else  
-				{
-				MACROS.tax_status_bl = false;
-				bl_status = true;
-				}
-			Log.i("tax debug", "status : " + MACROS.tax_status_bl);
-                     }
-		});	
+		Intent myLocalIntent = getIntent();
+        Bundle myBundle = myLocalIntent.getExtras();
+        
+        if(myBundle.getBoolean("STATUSTAX1"))
+        	tgbtnstatusTax.setChecked(true);
+        else
+        	tgbtnstatusTax.setChecked(false);
+        txtTax.setText(myBundle.getString("TAX1"));
 	}
+	
+	public void clickChange(View view){
+		if(tgbtnstatusTax.isChecked()){
+			bl_status = true;
+		}
+		
+	}
+	
 	private void translate() {
 		// TODO Auto-generated method stub
 		txtTitleBar.setText(MACROS.TAX_LBL);
@@ -75,10 +71,13 @@ public class Tax_Activity extends Activity{
 	}
 
 	public void btnAccount(View view){
-		Intent intent = new Intent(Tax_Activity.this,Account_Activity.class);
-		intent.putExtra("STATUSTAX", bl_status);
-		intent.putExtra("TAX",txtTax.getText().toString() );
-		startActivity(intent);
+		Intent intent = new Intent();
+		Bundle myBundle = new Bundle();
+		myBundle.putBoolean("STATUSTAX", bl_status);
+		myBundle.putString("TAX", txtTax.getText().toString());
+		intent.putExtras(myBundle);
+		setResult(Activity.RESULT_OK, intent);
+		finish();
 	}
 	
 	public void numClick(View view){
@@ -196,4 +195,18 @@ public class Tax_Activity extends Activity{
 		       i_first_dot = true;
 		}
 	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onRestoreInstanceState(savedInstanceState);
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+	}
+	
+	
 }
