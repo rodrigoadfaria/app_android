@@ -293,6 +293,39 @@ public class MySQLiteHelper
     
     /**
      * @param email
+     * @return
+     * @throws SQLException
+     */
+    public Cursor selectSumBill(String email) throws SQLException {
+    	String update = "UPDATE SumBill SET sumBill = (select sum(Bill.sumItem) from Bill where SumBill.email = Bill.email and SumBill.dateSale = Bill.dateSale)";    	
+    	open();
+    	db.execSQL(update);
+    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_SUMBILL + " WHERE email=?", new String[]{email});
+    	if (mcursor != null) {
+    		   mcursor.moveToFirst();
+    		  }
+    	close();
+    	return mcursor;
+    }
+    
+    /**
+     * @param email
+     * @param dateSale
+     * @return
+     * @throws SQLException
+     */
+    public Cursor selectBill(String email, String dateSale) throws SQLException {
+    	open();
+    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_BILL + " WHERE email=? AND dateSale=?", new String[]{email,dateSale}); 
+    	if (mcursor != null) {
+ 		   mcursor.moveToFirst();
+ 		  }
+    	close();
+    	return mcursor;
+    }
+    
+    /**
+     * @param email
      * @param dateSale
      * @return
      */
