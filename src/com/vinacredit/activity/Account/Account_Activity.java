@@ -69,11 +69,11 @@ public class Account_Activity extends Activity{
 		account  = new Account();
 		item	= new ListItem();
 		listItem = new ArrayList<ListItem>();
-		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.sales_history), "Sales History", item.getSubtitle(),
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.sales_history), strSaleHistory, item.getSubtitle(),
 				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
-		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.tax), "Tax", item.getSubtitle(),
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.tax), strTax, item.getSubtitle(),
 				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
-		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.help_support), "Support", item.getSubtitle(),
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.help_support), strSupport, item.getSubtitle(),
 				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
 		accountAdapter = new AccountAdapter(this, listItem);
 		listView1.setAdapter(accountAdapter);

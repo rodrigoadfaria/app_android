@@ -52,7 +52,10 @@ public class SaleAdapter extends BaseAdapter {
 			if(entry != null){
 				// set Image Item
 				ImageView imgItem = (ImageView)convertView.findViewById(R.id.imgItem);
-				imgItem.setImageBitmap(entry.getImgItem());
+				if(entry.getImgItem() == null)
+					imgItem.setImageResource(R.drawable.chomsao);
+				else 
+					imgItem.setImageBitmap(entry.getImgItem());
 				
 				// set Name Item
 				TextView txtItem = (TextView)convertView.findViewById(R.id.txtItem);

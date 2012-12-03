@@ -55,6 +55,8 @@ public class MACROS{
     public static  String      SALE_DELETEPHOTO_LBL;
     public static  String      SALE_CANCEL_LBL;
     public static  String      SALE_SWIPE_CARD;
+    public static  String      SALE_ACCOUNT;
+    public static  String      SALE_CHARGE;
 
     //=====CHARGE==============
     public static  String      CHARGE_LBL;

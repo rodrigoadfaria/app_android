@@ -98,7 +98,9 @@ public class Library {
 	        MACROS.SALE_DELETEPHOTO_LBL     		= "Delete Photo";
 	        MACROS.SALE_CANCEL_LBL          		= "Cancel";
 	        MACROS.SALE_SWIPE_CARD          		= "Swipe Card";
-
+	        MACROS.SALE_ACCOUNT						= "Account";
+	        MACROS.SALE_CHARGE						= "Charge";	
+	        
 	        MACROS.CHARGE_LBL               		= "Charge";
 	        MACROS.CHARGE_CASH_LBL          		= "Cash Payment";
 	        MACROS.CHARGE_TENDER_BTN        		= "Tender Cash";
@@ -169,7 +171,7 @@ public class Library {
 	        MACROS.WRONGPASS_CANCEL_BTN       		= "Thoát";
 	        MACROS.WRONGPASS_RESULT_LBL     		= "Nhập lại email";
 
-	        MACROS.INFOR_LBL                		= "Thông tin cá nhân";
+	        MACROS.INFOR_LBL                		= "Trang cá nhân";
 	        MACROS.INFOR_ENTER_LBL          		= "Thay đổi thông tin cá nhân";
 	        MACROS.INFOR_CONTINUE_BTN       		= "Tiếp tục";
 	        MACROS.INFOR_FIRSTNAME_TXT      		= "tên";
@@ -190,6 +192,8 @@ public class Library {
 	        MACROS.SALE_DELETEPHOTO_LBL     		= "Xoá hình";
 	        MACROS.SALE_CANCEL_LBL          		= "Thoát";
 	        MACROS.SALE_SWIPE_CARD          		= "Quét Thẻ Visa";
+	        MACROS.SALE_ACCOUNT						= "Tài khoản";
+	        MACROS.SALE_CHARGE						= "Thanh Toán";	
 
 	        MACROS.CHARGE_LBL               		= "Thanh toán";
 	        MACROS.CHARGE_CASH_LBL          		= "Thanh toán tiền mặt";

@@ -102,6 +102,9 @@ public class Sale_Activity extends Activity{
     private void translate() {
 	// TODO Auto-generated method stub
     	txtTitleBar.setText(MACROS.SALE_LBL);
+    	btn_gotoAccount.setText(MACROS.SALE_ACCOUNT);
+    	btn_gotoCharge.setText(MACROS.SALE_CHARGE);
+    	
     }
     
     /**
