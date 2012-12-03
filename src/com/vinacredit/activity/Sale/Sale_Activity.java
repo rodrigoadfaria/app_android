@@ -53,6 +53,8 @@ public class Sale_Activity extends Activity{
     private List<DataItem>	ListdataItem;
     private DataItem		dataItem;
     private Bitmap			bpPhoto;
+    
+    private Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
@@ -88,16 +90,13 @@ public class Sale_Activity extends Activity{
     	/* account instance */
 		account  = new Account();		
 		
+		extras = getIntent().getExtras();
 		if(MACROS.TEST_DATABASE) {
-		Bundle extras = getIntent().getExtras();
+		
 		account = dbSqlite.getAccount(extras.getString("EMAIL"));
 	    imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
-	    
-	    SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_WORLD_READABLE );
-	    SharedPreferences.Editor editor = share.edit();
-	    editor.putString("EMAIL",extras.getString("EMAIL"));
-	    editor.commit();
 		}
+	    
     }
     
     private void translate() {
@@ -120,6 +119,7 @@ public class Sale_Activity extends Activity{
      * @param view
      */
     public void gotoCharge(View view){
+    	
     	Intent i = new Intent(getApplicationContext(),Charge_Activity.class);
     	Bundle myBundle = new Bundle();
     	myBundle.putString("EMAIL", account.getEmail());
@@ -177,7 +177,12 @@ public class Sale_Activity extends Activity{
 			Toast.makeText(getApplicationContext(), "Enter price item,Please!", Toast.LENGTH_SHORT).show();
 		}
     	
-    	
+    	SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_WORLD_READABLE );
+	    SharedPreferences.Editor editor = share.edit();
+	    editor.putString("EMAIL",extras.getString("EMAIL"));
+	    editor.putString("SUMPRICE", txtPriceItem.getText().toString());
+	    editor.commit();
+	    
     	/*------ reset variable ------*/
     	imgItem.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.chomsao));
     	bpPhoto = null;

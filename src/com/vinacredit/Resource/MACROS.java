@@ -117,7 +117,7 @@ public class MACROS{
     public static  String      DONE_BTN;
 
     //========================define========================
-    public static  boolean     TEST_SIGNIN_BL 		= 	true;
-    public static  boolean	   TEST_DATABASE		=	true;
-    public static  boolean	   TEST_INFOR			=   true;
+    public static  boolean     TEST_SIGNIN_BL 		= 	false;
+    public static  boolean	   TEST_DATABASE		=	false;
+    public static  boolean	   TEST_INFOR			=   false;
 }

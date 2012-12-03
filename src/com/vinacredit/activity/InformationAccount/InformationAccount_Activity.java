@@ -101,7 +101,8 @@ public class InformationAccount_Activity extends Activity {
 	    	} else
 	    		Toast.makeText(getApplicationContext(), "Enter full infor,Please", Toast.LENGTH_SHORT).show();	    	
 	    }    	
-		
+	    startActivity(i);
+		finish();
 	}
 	
 	public void takePhoto(View view){

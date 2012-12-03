@@ -42,8 +42,15 @@ public class Support_Activity extends Activity{
 	}
 	
 	public void btnAccount(View view){
-		Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
-		startActivity(intent);
+//		Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
+//		startActivity(intent);
+		finish();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
 	}
 	
 	public void btnVinacredit(View view){
