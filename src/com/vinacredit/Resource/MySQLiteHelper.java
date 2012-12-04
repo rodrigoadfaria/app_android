@@ -247,13 +247,14 @@ public class MySQLiteHelper
     	
     	String update = "UPDATE SumBill SET sumBill = (select sum(Bill.sumItem) from Bill where SumBill.email = Bill.email and SumBill.dateSale = Bill.dateSale)";
     	List<SumBill> sbList = new ArrayList<SumBill>();
-    	SumBill sumbill = new SumBill();
+    	
     	open();
     	db.execSQL(update);
     	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_SUMBILL + " WHERE email=?", new String[]{email}); 
     	
     	
     	while(mcursor.moveToNext()){
+    		SumBill sumbill = new SumBill();
     		sumbill.setDateSale(mcursor.getString(0));
     		sumbill.setSumBill(mcursor.getString(1));
     		sumbill.setEmail(mcursor.getString(2));
@@ -272,13 +273,12 @@ public class MySQLiteHelper
      * @throws SQLException
      */
     public List<Bill> getBill(String email, String dateSale) throws SQLException {
-    	List<Bill> bList = new ArrayList<Bill>();
-    	Bill bill = new Bill();
+    	List<Bill> bList = new ArrayList<Bill>();    	
     	open();
-    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_BILL + " WHERE email=? AND dateSale=?", new String[]{email,dateSale}); 
-    	
+    	Cursor mcursor = db.rawQuery("SELECT * FROM " + DATABASE_TABLE_BILL + " WHERE email=? AND dateSale=?", new String[]{email,dateSale});    	
     	
     	while (mcursor.moveToNext()) {
+    		Bill bill = new Bill();
 			bill.setTimeSale(mcursor.getString(0));
 			bill.setSumItem(mcursor.getString(1));
 			bill.setEmail(mcursor.getString(2));

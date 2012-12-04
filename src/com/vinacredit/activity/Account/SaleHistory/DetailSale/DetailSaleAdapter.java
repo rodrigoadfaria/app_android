@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.vinacredit.Resource.Library;
 import com.vinacredit.activity.R;
+import com.vinacredit.activity.Sale.DataItem;
 
 import con.vinacredit.DTO.Bill;
 
@@ -49,7 +50,7 @@ public class DetailSaleAdapter extends BaseAdapter {
 		if(convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(R.layout.detail_sale_item, null);
-		}				
+		}
 		
 				// set Image Item
 				ImageView imgItem = (ImageView)convertView.findViewById(R.id.imgCard);
@@ -57,7 +58,7 @@ public class DetailSaleAdapter extends BaseAdapter {
 				
 				// set Bill Item
 				TextView txtItem = (TextView)convertView.findViewById(R.id.txtBill);
-				txtItem.setText(entry.getTxtBill());
+				txtItem.setText("Bill " + ++pos);
 				
 				// set Time Item
 				TextView txtTime = (TextView)convertView.findViewById(R.id.txtTime);
@@ -66,7 +67,7 @@ public class DetailSaleAdapter extends BaseAdapter {
 				// set Price Item
 				TextView txtQtyItem = (TextView)convertView.findViewById(R.id.txtPriceBill);
 				txtQtyItem.setText(Library.addDotNumber(entry.getSumItem()));
-		
+
 		return convertView;
 	}
 

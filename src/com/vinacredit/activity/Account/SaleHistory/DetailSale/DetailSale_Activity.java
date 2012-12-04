@@ -59,7 +59,7 @@ public class DetailSale_Activity extends Activity{
 		mDb = new MySQLiteHelper(this);
 		listBill	= new ArrayList<Bill>();
 		Bundle extras = getIntent().getExtras();
-		if(MACROS.TEST_SIGNIN_BL){
+		if(MACROS.TEST_DATABASE){
 			account = mDb.getAccount(extras.getString("EMAIL"));
 			imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 			
