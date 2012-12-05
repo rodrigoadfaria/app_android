@@ -7,7 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/titlebar"
-        android:layout_marginBottom="4dip">
+        android:layout_marginBottom="1dp">
         
         <Button
             android:id="@+id/_btnIdentify"
@@ -41,4 +41,48 @@
             android:text="@string/btnSending"
             android:textColor="@color/white" />
         </RelativeLayout>
+    <RelativeLayout 
+        android:id="@+id/relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"        
+        android:layout_margin="2dp">
+        <TextView 
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:text="@string/txtPay"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_above="@+id/txtName"
+            android:layout_alignParentRight="true"
+            android:text="@string/btnClear" 
+            android:onClick="Clear"/>
+
+        <TextView 
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtPrice"
+            android:textSize="15dp"
+            android:textStyle="italic"
+            android:text="@string/txtName"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/drawing_screen_drawlocation"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/relativelayout_title_bar"
+        android:layout_above="@id/relative"
+        android:orientation="vertical" >
+        <com.vinacredit.activity.Sale.Signature.DrawView
+            android:id="@+id/drawing_screen_drawview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </LinearLayout>
 </RelativeLayout>

@@ -8,6 +8,8 @@ import com.vinacredit.activity.Sale.Sending.Sending_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,13 +17,17 @@ import android.widget.TextView;
 
 public class Signature_Activity extends Activity{
 
-	private TextView	txtTitleBar;
-	private Button		btnIdentify, btnSending;
+	private TextView	txtTitleBar, txtPrice, txtName;
+	private Button		btnIdentify, btnSending, btnClear;
+	private DrawView	drawView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_signature);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		drawView		= (DrawView)findViewById(R.id.drawing_screen_drawview);
+		drawView.requestFocus();
 		initialize();
 	}
 
@@ -30,7 +36,12 @@ public class Signature_Activity extends Activity{
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		btnIdentify		= (Button)findViewById(R.id._btnIdentify);
 		btnSending		= (Button)findViewById(R.id._btnSending);
+		btnClear		= (Button)findViewById(R.id.btnClear);
+		txtPrice		= (TextView)findViewById(R.id.txtPrice);
+		txtName			= (TextView)findViewById(R.id.txtName);
 		
+		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_WORLD_READABLE);
+		txtPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
 		translate();
 	}
 	//action btnIdentify
@@ -44,6 +55,11 @@ public class Signature_Activity extends Activity{
 	    Intent intent = new Intent(getApplicationContext(),Sending_Activity.class);
 	    startActivity(intent);
 	}
+	
+	public void Clear(View v){
+		
+	}
+	
 	private void translate() {
 		// TODO Auto-generated method stub
 		txtTitleBar.setText(MACROS.SIGNATURE_LBL);

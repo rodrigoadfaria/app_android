@@ -89,6 +89,8 @@
     <string name="btnIdentify">Identify</string>
     <string name="txtTitleBarSignature">Signature</string>
     <string name="btnSending">Sending</string>
+    <string name="txtName">I agree to pay the amount above according to my card issues agreement</string>
+    <string name="btnClear">Clear</string>
     
     <!-- string of Sending page -->
     <string name="txtTitleBarSending">Sending</string>

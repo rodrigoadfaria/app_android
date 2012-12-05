@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -48,17 +49,24 @@ public class Tax_Activity extends Activity{
 		Intent myLocalIntent = getIntent();
         Bundle myBundle = myLocalIntent.getExtras();
         
-        if(myBundle.getBoolean("STATUSTAX1"))
+        if(myBundle.getBoolean("STATUSTAX1")) {
+
         	tgbtnstatusTax.setChecked(true);
-        else
+        	bl_status = true;
+        }        
+        else {
         	tgbtnstatusTax.setChecked(false);
+        	bl_status = false;
+        }
+        	
         txtTax.setText(myBundle.getString("TAX1"));
 	}
 	
 	public void clickChange(View view){
 		if(tgbtnstatusTax.isChecked()){
 			bl_status = true;
-		}
+		} else
+			bl_status = false;
 		
 	}
 	
@@ -200,12 +208,14 @@ public class Tax_Activity extends Activity{
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
+		Toast.makeText(getBaseContext(), "restore", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
+		Toast.makeText(getBaseContext(), "save", Toast.LENGTH_SHORT).show();
 	}
 	
 	
