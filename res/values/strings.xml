@@ -2,6 +2,8 @@
 
     <string name="app_name">Vinacredit</string>
         
+    <string name="external_dir">GetSignature</string>
+    
     <!-- string content Description ImageView -->
     <string name="imgView">ImageView</string>
     

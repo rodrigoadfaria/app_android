@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"        
-        android:layout_margin="2dp">
+        android:layout_margin="1dp">
         <TextView 
             android:id="@+id/txtPrice"
             android:layout_width="wrap_content"
@@ -80,9 +80,9 @@
         android:layout_below="@id/relativelayout_title_bar"
         android:layout_above="@id/relative"
         android:orientation="vertical" >
-        <com.vinacredit.activity.Sale.Signature.DrawView
-            android:id="@+id/drawing_screen_drawview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+        <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     </LinearLayout>
 </RelativeLayout>
