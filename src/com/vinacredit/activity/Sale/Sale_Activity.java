@@ -178,13 +178,7 @@ public class Sale_Activity extends Activity{
         	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
     	} else {
 			Toast.makeText(getApplicationContext(), "Enter price item,Please!", Toast.LENGTH_SHORT).show();
-		}
-    	
-    	SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_WORLD_READABLE );
-	    SharedPreferences.Editor editor = share.edit();
-	    editor.putString("EMAIL",extras.getString("EMAIL"));
-	    editor.putString("SUMPRICE", txtPriceItem.getText().toString());
-	    editor.commit();
+		}    	
 	    
     	/*------ reset variable ------*/
     	imgItem.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.chomsao));
@@ -330,6 +324,19 @@ public class Sale_Activity extends Activity{
     	// TODO Auto-generated method stub
 //    	super.onBackPressed();
     }
+    
+    
+    
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_WORLD_READABLE );
+	    SharedPreferences.Editor editor = share.edit();
+	    editor.putString("EMAIL",extras.getString("EMAIL"));
+	    editor.putString("SUMPRICE", txtPriceItem.getText().toString());
+	    editor.commit();
+	}
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
 	 */
