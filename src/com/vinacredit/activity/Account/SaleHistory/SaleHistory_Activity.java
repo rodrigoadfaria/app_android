@@ -105,5 +105,10 @@ public class SaleHistory_Activity extends Activity{
 		// TODO Auto-generated method stub
 //		super.onBackPressed();
 	}
-	
+	@Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
 }

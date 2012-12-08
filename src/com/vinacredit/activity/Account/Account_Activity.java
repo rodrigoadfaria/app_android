@@ -16,6 +16,8 @@ import con.vinacredit.DTO.Account;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -176,6 +178,18 @@ public class Account_Activity extends Activity{
 			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 		}
 	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
 
+	@Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
 	
 }

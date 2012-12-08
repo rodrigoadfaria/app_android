@@ -57,5 +57,10 @@ public class WrongPass_Activity extends Activity{
 	public void btnSend(View view){
 		Toast.makeText(getApplicationContext(), "Sending email", Toast.LENGTH_LONG).show();
 	}
-	
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
 }

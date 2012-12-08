@@ -205,18 +205,17 @@ public class Tax_Activity extends Activity{
 	}
 
 	@Override
-	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		super.onRestoreInstanceState(savedInstanceState);
-		Toast.makeText(getBaseContext(), "restore", Toast.LENGTH_SHORT).show();
+//		super.onBackPressed();
 	}
-
+	
 	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
-		super.onSaveInstanceState(outState);
-		Toast.makeText(getBaseContext(), "save", Toast.LENGTH_SHORT).show();
-	}
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
 	
 	
 }

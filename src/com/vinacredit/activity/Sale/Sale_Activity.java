@@ -325,7 +325,12 @@ public class Sale_Activity extends Activity{
 //    	super.onBackPressed();
     }
     
-    
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
     
 	@Override
 	protected void onPause() {

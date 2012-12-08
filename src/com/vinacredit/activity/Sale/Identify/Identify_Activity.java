@@ -86,4 +86,11 @@ public class Identify_Activity extends Activity{
 		} else return;
 	}
 	
+	@Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
+	
 }

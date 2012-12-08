@@ -64,5 +64,12 @@ public class Support_Activity extends Activity{
 	public void btnInstruction(View view){
 		Toast.makeText(getApplicationContext(), "Instruction", Toast.LENGTH_LONG).show();
 	}
+	
+	@Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
 
 }

@@ -116,7 +116,12 @@ public class Signature_Activity extends Activity{
 		// TODO Auto-generated method stub
 //		super.onBackPressed();
 	}
-	
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	translate();
+    }
 	
 	
     private String getTodaysDate() { 
@@ -322,6 +327,7 @@ public class Signature_Activity extends Activity{
             dirtyRect.top = Math.min(lastTouchY, eventY);
             dirtyRect.bottom = Math.max(lastTouchY, eventY);
         }
-    }
+    }   
+
 
 }
