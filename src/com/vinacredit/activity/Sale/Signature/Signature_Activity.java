@@ -89,6 +89,7 @@ public class Signature_Activity extends Activity{
         mSignature = new signature(this, null);
         mSignature.setBackgroundColor(Color.WHITE);
         mContent.addView(mSignature, LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
+        mView = mContent;
 	}
 	//action btnIdentify
 	public void gotoIdentify(View view){
@@ -100,6 +101,7 @@ public class Signature_Activity extends Activity{
 	public void gotoSending(View view){
 	    Intent intent = new Intent(getApplicationContext(),Sending_Activity.class);
 	    startActivity(intent);
+	    mSignature.save(mView);
 	}
 	
 	public void Clear(View v){
