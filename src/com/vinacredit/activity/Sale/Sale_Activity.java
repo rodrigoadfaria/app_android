@@ -24,7 +24,6 @@ import com.vinacredit.Resource.MACROS;
 import com.vinacredit.Resource.MySQLiteHelper;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
-import com.vinacredit.activity.Done.Done_Activity;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Sale.Identify.Identify_Activity;
 
