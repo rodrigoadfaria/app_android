@@ -101,4 +101,11 @@
     <!-- string of Done page -->
     <string name="txtPaidThank">paid, Thank.</string>
     <string name="btnDone">Done</string>
+    
+    
+    <string name="unknown_error">Unknown Error</string>
+    <string name="nodevice">No Device</string>
+    <string name="timeoutack">Time Out</string>
+    <string name="second">\'s</string>
+    <string name="de_len">Length Error = </string>
 </resources>

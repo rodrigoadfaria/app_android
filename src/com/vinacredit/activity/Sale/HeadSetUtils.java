@@ -1,4 +1,4 @@
-package com.singular.hijack;
+package com.vinacredit.activity.Sale;
 
 import java.io.BufferedReader;
 import java.io.File;
