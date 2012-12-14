@@ -105,13 +105,14 @@ public class Account_Activity extends Activity{
 					break;
 				case 1:
 					i = new Intent(Account_Activity.this,Tax_Activity.class);
-					Bundle myBundle = new Bundle();
-					myBundle.putBoolean("STATUSTAX1", bl_status_tax);
-					if(listItem.get(1).getSubtitle() == "")
-						listItem.get(1).setSubtitle("0%");
-					myBundle.putString("TAX1", listItem.get(1).getSubtitle());
-					i.putExtras(myBundle);
-					startActivityForResult(i, IPC_ID);
+					startActivity(i);
+//					Bundle myBundle = new Bundle();
+//					myBundle.putBoolean("STATUSTAX1", bl_status_tax);
+//					if(listItem.get(1).getSubtitle() == "")
+//						listItem.get(1).setSubtitle("0%");
+//					myBundle.putString("TAX1", listItem.get(1).getSubtitle());
+//					i.putExtras(myBundle);
+//					startActivityForResult(i, IPC_ID);
 					break;
 				case 2:
 					i = new Intent(getApplicationContext(),Support_Activity.class);
@@ -149,35 +150,35 @@ public class Account_Activity extends Activity{
 		startActivity(i);
 		finish();
 	}
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
-		try {
-			switch (requestCode) {
-			case IPC_ID: {
-				if (resultCode == Activity.RESULT_OK) {
-					Bundle extras = data.getExtras();
-					if(extras != null){
-						bl_status_tax = extras.getBoolean("STATUSTAX");
-						if(bl_status_tax) {
-							listItem.get(1).setSubtitle(extras.getString("TAX"));
-							accountAdapter.notifyDataSetChanged();
-						} else{
-							listItem.get(1).setSubtitle("");
-							accountAdapter.notifyDataSetChanged();
-						}
-							
-							Toast.makeText(getBaseContext(), extras.getString("TAX"), Toast.LENGTH_SHORT).show();
-					}
-				}
-				break;
-			}
-			}
-		} catch (Exception e) {
-			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-		}
-	}
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		// TODO Auto-generated method stub
+//		super.onActivityResult(requestCode, resultCode, data);
+//		try {
+//			switch (requestCode) {
+//			case IPC_ID: {
+//				if (resultCode == Activity.RESULT_OK) {
+//					Bundle extras = data.getExtras();
+//					if(extras != null){
+//						bl_status_tax = extras.getBoolean("STATUSTAX");
+//						if(bl_status_tax) {
+//							listItem.get(1).setSubtitle(extras.getString("TAX"));
+//							accountAdapter.notifyDataSetChanged();
+//						} else{
+//							listItem.get(1).setSubtitle("");
+//							accountAdapter.notifyDataSetChanged();
+//						}
+//							
+//							Toast.makeText(getBaseContext(), extras.getString("TAX"), Toast.LENGTH_SHORT).show();
+//					}
+//				}
+//				break;
+//			}
+//			}
+//		} catch (Exception e) {
+//			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+//		}
+//	}
 	
 	@Override
 	protected void onPause() {
@@ -190,6 +191,14 @@ public class Account_Activity extends Activity{
     	// TODO Auto-generated method stub
     	super.onResume();
     	translate();
+    	SharedPreferences share = this.getSharedPreferences("STAX",MODE_WORLD_READABLE );
+    	if(share.getBoolean("STATUSTAX", false)) {
+    		listItem.get(1).setSubtitle(share.getString("TAX", "0%"));
+    		accountAdapter.notifyDataSetChanged();
+    	} else {
+    		listItem.get(1).setSubtitle("");
+    		accountAdapter.notifyDataSetChanged();
+    	}
     }
 	
 }

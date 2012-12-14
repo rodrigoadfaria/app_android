@@ -52,12 +52,15 @@ public class Receipt_Activity extends Activity{
 
 	        emailIntent.setType("text/plain");
 
-	        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-	        finish();
+	        startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"));
+//	        finish();
+	        
+	        
+	        
 	    } catch (Exception e) {
 		//Common.showMessage(getBaseContext(), e.toString());
 	    }
-	    
+
 	    //startActivity(i_inviteFriend );
 	    }
 	

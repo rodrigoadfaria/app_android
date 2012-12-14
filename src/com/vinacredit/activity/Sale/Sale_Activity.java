@@ -551,15 +551,15 @@ public class Sale_Activity extends Activity{
 	    editor.putString("SUMPRICE", txtPriceItem.getText().toString());
 	    editor.commit();
 	    
-	    sreader.Stop();
-//		if (sreader != null) {
-//			sreader.Stop();
-//			sreader = null;
-//			if (myToast != null)
-//				myToast.cancel();
-////			finish();
-////			System.exit(0);
-//		}
+//	    sreader.Stop();
+		if (sreader != null) {
+			sreader.Stop();
+			sreader = null;
+			if (myToast != null)
+				myToast.cancel();
+//			finish();
+//			System.exit(0);
+		}
 	}
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)

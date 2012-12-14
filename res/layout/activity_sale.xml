@@ -145,7 +145,8 @@
 		        android:background="@drawable/bg"
 		        android:hint="@string/txtTitle"
 		        android:singleLine="true"
-		        android:textSize="20dip"/>
+		        android:textSize="20dip"
+		        android:focusable="false"/>
             
             <!-- Button add -->
 		    <Button        

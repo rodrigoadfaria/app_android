@@ -6,6 +6,7 @@ import com.vinacredit.activity.Account.Account_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,7 +50,9 @@ public class Tax_Activity extends Activity{
 		Intent myLocalIntent = getIntent();
         Bundle myBundle = myLocalIntent.getExtras();
         
-        if(myBundle.getBoolean("STATUSTAX1")) {
+        SharedPreferences share = this.getSharedPreferences("STAX",MODE_WORLD_READABLE );
+    	txtTax.setText(share.getString("TAX", "0%"));        
+        if(share.getBoolean("STATUSTAX", false)) {
 
         	tgbtnstatusTax.setChecked(true);
         	bl_status = true;
@@ -58,8 +61,7 @@ public class Tax_Activity extends Activity{
         	tgbtnstatusTax.setChecked(false);
         	bl_status = false;
         }
-        	
-        txtTax.setText(myBundle.getString("TAX1"));
+
 	}
 	
 	public void clickChange(View view){
@@ -216,6 +218,17 @@ public class Tax_Activity extends Activity{
     	super.onResume();
     	translate();
     }
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SharedPreferences share = this.getSharedPreferences("STAX",MODE_WORLD_READABLE);
+	    SharedPreferences.Editor editor = share.edit();
+	    editor.putBoolean("STATUSTAX",bl_status);
+	    editor.putString("TAX", txtTax.getText().toString());
+	    editor.commit();
+	}
 	
 	
 }
