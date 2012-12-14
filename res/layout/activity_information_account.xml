@@ -78,6 +78,7 @@
 		
 		<EditText
 			android:id = "@+id/edtAddress" 
+			android:inputType="textPostalAddress"
 			android:layout_below = "@id/edtCompany"
 			android:layout_toRightOf="@id/imgUsername"
 			android:hint = "@string/txtAddress"

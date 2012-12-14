@@ -19,6 +19,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -539,6 +540,7 @@ public class Sale_Activity extends Activity{
     	// TODO Auto-generated method stub
     	super.onResume();
     	translate();
+    	getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
     
 	@Override
