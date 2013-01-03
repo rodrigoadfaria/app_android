@@ -36,11 +36,11 @@ public class Done_Activity extends Activity{
 		btnDone			= (Button)findViewById(R.id.btnDone);
 		
 		translate();	
-		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_WORLD_READABLE);
+		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		txtSumPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
-		Editor edit = s.edit();
-		edit.remove("SUMPRICE");
-		edit.commit();
+//		Editor edit = s.edit();
+//		edit.remove("SUMPRICE");
+//		edit.commit();
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -50,7 +50,7 @@ public class Done_Activity extends Activity{
 	
 	public void btnDone(View view){
 		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
-		SharedPreferences share = this.getSharedPreferences("EMAIL", MODE_WORLD_READABLE);
+		SharedPreferences share = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		intent.putExtra("EMAIL",share.getString("EMAIL", "NOTHING"));
 		startActivity(intent);
 		finish();

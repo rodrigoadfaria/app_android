@@ -46,11 +46,8 @@ public class Tax_Activity extends Activity{
 		tgbtnstatusTax		= (ToggleButton)findViewById(R.id.tgbAddSaleTax);
 		
 		translate();		
-		
-		Intent myLocalIntent = getIntent();
-        Bundle myBundle = myLocalIntent.getExtras();
-        
-        SharedPreferences share = this.getSharedPreferences("STAX",MODE_WORLD_READABLE );
+		        
+        SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE );
     	txtTax.setText(share.getString("TAX", "0%"));        
         if(share.getBoolean("STATUSTAX", false)) {
 
@@ -223,7 +220,7 @@ public class Tax_Activity extends Activity{
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		SharedPreferences share = this.getSharedPreferences("STAX",MODE_WORLD_READABLE);
+		SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE);
 	    SharedPreferences.Editor editor = share.edit();
 	    editor.putBoolean("STATUSTAX",bl_status);
 	    editor.putString("TAX", txtTax.getText().toString());

@@ -6,6 +6,7 @@ import java.util.concurrent.TimeoutException;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +18,6 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -35,6 +35,7 @@ import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Sale.Identify.Identify_Activity;
+import com.vinacredit.activity.Sale.Sending.Sending_Activity;
 
 import con.vinacredit.DTO.Account;
 
@@ -51,6 +52,7 @@ public class Sale_Activity extends Activity{
     private TextView	txtPriceItem, txtItem;
     private ListView	listSale;
     private EditText	edtItem;
+    private ProgressDialog dialog = null;
     
     private String		_str_tmp = "";
     private String 		_str_number_click = "";
@@ -120,8 +122,7 @@ public class Sale_Activity extends Activity{
 		
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
-			handler.post(begin_detect);
+			// TODO Auto-generated method stub			
 			onDetect();
 		}
 	};	
@@ -131,7 +132,7 @@ public class Sale_Activity extends Activity{
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			handler.post(begin_swipe);
+//			handler.post(begin_swipe);
 			onSwipe();
 		}
 	};
@@ -148,6 +149,8 @@ public class Sale_Activity extends Activity{
 	private Runnable unknown_err = new Runnable() {
 		public void run() {
 //			result_text.setText(R.string.unknown_error);
+			Toast.makeText(Sale_Activity.this, "unknown_error",
+					Toast.LENGTH_LONG).show();
 		}
 	};
 
@@ -157,8 +160,8 @@ public class Sale_Activity extends Activity{
 //			result_text.setText(txt);
 			Toast.makeText(Sale_Activity.this, txt,
 					Toast.LENGTH_LONG).show();
-			if(txt.length() > 0)
-				handler.post(swipe);
+//			if(txt.length() > 0)
+//				handler.post(swipe);
 		}
 	};
 
@@ -179,7 +182,10 @@ public class Sale_Activity extends Activity{
 			txt += decryption_data + "\n";
 //			result_text.setText(txt);
 			Toast.makeText(Sale_Activity.this, txt,
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_LONG).show();			
+			//dialog.dismiss();
+	    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
+			startActivity(i);
 		}
 	};
 
@@ -211,10 +217,10 @@ public class Sale_Activity extends Activity{
 
 	private Runnable begin_swipe = new Runnable() {
 		public void run() {
-//			myToast = new MyToast(Sale_Activity.this, "Please swipe card...");
-//			myToast.show();
-			Toast.makeText(Sale_Activity.this, "Please swipe card...",
-					Toast.LENGTH_SHORT).show();
+			myToast = new MyToast(Sale_Activity.this, "Please swipe card...");
+			myToast.show();
+//			Toast.makeText(Sale_Activity.this, "Please swipe card...",
+//					Toast.LENGTH_SHORT).show();
 		}
 	};
 
@@ -365,8 +371,15 @@ public class Sale_Activity extends Activity{
     }
     
     public void btnIdentify(View view){
-    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
-		startActivity(i);
+//        dialog = ProgressDialog.show(Sale_Activity.this, "", "Swiping card...", true);
+//        new Thread(new Runnable() {
+//               public void run() {                    
+//            	   onSwipe();                   
+//               }
+//             }).start(); 
+    	onSwipe();
+//    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
+//		startActivity(i);
     }
     
     /**
@@ -379,7 +392,7 @@ public class Sale_Activity extends Activity{
     	dataItem.setStrItem(edtItem.getText().toString());
     	dataItem.setQuantityItem("1x");
     	dataItem.setPriceItem(txtItem.getText().toString());
-    	if(_str_tmp.length() > 0){
+    	if(Library.isCheckPrice(_str_tmp)){
     		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
         	saleAdapter.notifyDataSetChanged();
         	
@@ -387,7 +400,7 @@ public class Sale_Activity extends Activity{
         	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) + Integer.parseInt(_str_tmp));
         	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
     	} else {
-			Toast.makeText(getApplicationContext(), "Enter price item,Please!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
 		}    	
 	    
     	/*------ reset variable ------*/
@@ -547,10 +560,11 @@ public class Sale_Activity extends Activity{
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_WORLD_READABLE );
+		SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_PRIVATE );
 	    SharedPreferences.Editor editor = share.edit();
 	    editor.putString("EMAIL",extras.getString("EMAIL"));
 	    editor.putString("SUMPRICE", txtPriceItem.getText().toString());
+	    editor.putString("DECRYPTION", decryption_data);
 	    editor.commit();
 	    
 //	    sreader.Stop();
@@ -597,7 +611,7 @@ public class Sale_Activity extends Activity{
 				handler.post(clear_encryption);
 				handler.post(begin_swipe);
 				try {
-					data = sreader.ReadCard(1500);
+					data = sreader.ReadCard(15000);
 
 				} catch (Exception ex) {
 					if (ex instanceof TimeoutException) {
@@ -668,7 +682,7 @@ public class Sale_Activity extends Activity{
 					}
 
 					try {
-						random = sreader.GetRandom(1000);
+						random = sreader.GetRandom(10000);
 						if (random == null) {
 							String err = sreader.GetErrorString();
 							if (err.equalsIgnoreCase("cancel all"))
@@ -691,6 +705,7 @@ public class Sale_Activity extends Activity{
 //				handler.post(settext_swpie);
 			}
 		}.start();
+		
 	}
 
 	private int FindSplitCharIndex(String str, String split, int start) {
@@ -740,6 +755,7 @@ public class Sale_Activity extends Activity{
 	}
 
 	private void Initialization() {
+		handler.post(begin_detect);
 		new Thread() {
 			public void run() {
 				int i = 0;
@@ -812,7 +828,7 @@ public class Sale_Activity extends Activity{
 					handler.post(set_version);
 				} catch (Exception ex) {
 //					time.cancel();
-//					myToast.cancel();
+					myToast.cancel();
 					if (ex instanceof TimeoutException) {
 						handler.post(timeout_ack);
 					} else

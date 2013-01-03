@@ -106,13 +106,6 @@ public class Account_Activity extends Activity{
 				case 1:
 					i = new Intent(Account_Activity.this,Tax_Activity.class);
 					startActivity(i);
-//					Bundle myBundle = new Bundle();
-//					myBundle.putBoolean("STATUSTAX1", bl_status_tax);
-//					if(listItem.get(1).getSubtitle() == "")
-//						listItem.get(1).setSubtitle("0%");
-//					myBundle.putString("TAX1", listItem.get(1).getSubtitle());
-//					i.putExtras(myBundle);
-//					startActivityForResult(i, IPC_ID);
 					break;
 				case 2:
 					i = new Intent(getApplicationContext(),Support_Activity.class);
@@ -191,7 +184,7 @@ public class Account_Activity extends Activity{
     	// TODO Auto-generated method stub
     	super.onResume();
     	translate();
-    	SharedPreferences share = this.getSharedPreferences("STAX",MODE_WORLD_READABLE );
+    	SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE );
     	if(share.getBoolean("STATUSTAX", false)) {
     		listItem.get(1).setSubtitle(share.getString("TAX", "0%"));
     		accountAdapter.notifyDataSetChanged();

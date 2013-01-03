@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Calendar;
 
+import com.vinacredit.Resource.Library;
 import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
@@ -69,20 +70,20 @@ public class Signature_Activity extends Activity{
 		txtPrice		= (TextView)findViewById(R.id.txtPrice);
 		txtName			= (TextView)findViewById(R.id.txtName);
 		
-		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_WORLD_READABLE);
+		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		txtPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
 		translate();
 		
 		
 		/* Draw signature */
 		tempDir = Environment.getExternalStorageDirectory() + "/" + getResources().getString(R.string.external_dir) + "/";
-        ContextWrapper cw = new ContextWrapper(getApplicationContext());
-        File directory = cw.getDir(getResources().getString(R.string.external_dir), Context.MODE_PRIVATE);
+//        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        File directory = Environment.getExternalStorageDirectory();
  
         prepareDirectory();
         uniqueId = getTodaysDate() + "_" + getCurrentTime() + "_" + Math.random();
         current = uniqueId + ".png";
-        mypath= new File(directory,current);
+        mypath= new File(directory,"test.png");
  
  
         mContent = (LinearLayout) findViewById(R.id.linearLayout);
@@ -99,11 +100,13 @@ public class Signature_Activity extends Activity{
 	}
 	// action btn Sending 
 	public void gotoSending(View view){
+		mBitmap = Library.getBitmapFromView(mView);
 	    Intent intent = new Intent(getApplicationContext(),Sending_Activity.class);
+	    intent.putExtra("SIGNATURE", Library.getBytesFromBitmap(mBitmap));
 	    startActivity(intent);
 	    mSignature.save(mView);
 	}
-	
+ 
 	public void Clear(View v){
 		mSignature.clear();
 	}
@@ -214,7 +217,8 @@ public class Signature_Activity extends Activity{
             Log.v("log_tag", "Height: " + v.getHeight());
             if(mBitmap == null)
             {
-                mBitmap =  Bitmap.createBitmap (mContent.getWidth(), mContent.getHeight(), Bitmap.Config.RGB_565);;
+            	//convert view to bitmap
+                mBitmap =  Bitmap.createBitmap (mContent.getWidth(), mContent.getHeight(), Bitmap.Config.RGB_565);
             }
             Canvas canvas = new Canvas(mBitmap);
             try
@@ -222,11 +226,11 @@ public class Signature_Activity extends Activity{
                 FileOutputStream mFileOutStream = new FileOutputStream(mypath);
  
                 v.draw(canvas); 
-                mBitmap.compress(Bitmap.CompressFormat.PNG, 90, mFileOutStream); 
+                mBitmap.compress(Bitmap.CompressFormat.JPEG, 90, mFileOutStream);
                 mFileOutStream.flush();
                 mFileOutStream.close();
-                String url = Images.Media.insertImage(getContentResolver(), mBitmap, "title", null);
-                Log.v("log_tag","url: " + url);
+//                String url = Images.Media.insertImage(getContentResolver(), mBitmap, "title", null);
+//                Log.v("log_tag","url: " + url);
                 //In case you want to delete the file
                 //boolean deleted = mypath.delete();
                 //Log.v("log_tag","deleted: " + mypath.toString() + deleted);

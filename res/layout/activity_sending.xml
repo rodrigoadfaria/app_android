@@ -42,4 +42,21 @@
             android:onClick="btnReceipt"/>
     </RelativeLayout>
 
+    <ImageView 
+        android:id="@+id/imgSignature"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/relativelayout_title_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/chomsao"/>
+    <Button 
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgSignature"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="Send"
+        android:onClick="send_server"/>
 </RelativeLayout>

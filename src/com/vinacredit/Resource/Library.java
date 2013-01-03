@@ -4,9 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.view.View;
 
 import com.vinacredit.Resource.*;
 public class Library {    
@@ -261,7 +263,7 @@ public class Library {
      */
     public static byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(CompressFormat.JPEG, 70, stream);
+        bitmap.compress(CompressFormat.JPEG, 90, stream);
         return stream.toByteArray();
     }
     
@@ -272,6 +274,17 @@ public class Library {
     public static Bitmap getBitmapFromByte(byte[] bitmap){
     	return BitmapFactory.decodeByteArray(bitmap, 0, bitmap.length);
     }
+    /**
+     * convert view to bitmap
+     * @param view
+     * @return
+     */
+	public static Bitmap getBitmapFromView(View view) {
+	    Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),Bitmap.Config.RGB_565);
+	    Canvas canvas = new Canvas(returnedBitmap);
+	    view.draw(canvas);
+	    return returnedBitmap;
+	}
     
     /**
      * get current date
@@ -291,6 +304,14 @@ public class Library {
     	Calendar c = Calendar.getInstance();
         SimpleDateFormat dt = new SimpleDateFormat("HH:mm");
         return dt.format(c.getTime());
+    }
+    
+    public static boolean isCheckPrice(String price){
+    	
+    	int iPrice = Integer.parseInt(price.replaceAll(",",""));
+    	if(iPrice % 100 == 0)
+    		return true;
+    	return false;
     }
 
 }

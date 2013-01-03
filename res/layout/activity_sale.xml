@@ -27,7 +27,7 @@
             android:text="@string/txtTitleBarSale"
             android:textColor="@color/white"
             android:textStyle="bold" 
-            android:textSize="25dp"/>
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/_btnSaleCharge"
@@ -91,7 +91,7 @@
             android:layout_marginLeft="2dp"/>
         <Button 
             android:id="@+id/btnIdentify"
-            android:background="@android:drawable/sym_contact_card"
+            android:background="@drawable/swipe_card"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerInParent="true"
