@@ -27,6 +27,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.imagpay.MessageHandler;
+import com.imagpay.SwipeEvent;
+import com.imagpay.SwipeHandler;
+import com.imagpay.SwipeListener;
 import com.singular.hijack.SReaderApi;
 import com.vinacredit.Resource.Library;
 import com.vinacredit.Resource.MACROS;
@@ -44,6 +48,11 @@ import con.vinacredit.DTO.Account;
 public class Sale_Activity extends Activity{
 	
 	private static final int CAMERA_REQUEST = 1888;
+	
+	/* *********************************** */
+	private SwipeHandler _handler;
+	private MessageHandler _msgHandler;
+	/* *********************************** */
 	
     private Button 		btn_gotoAccount, btn_gotoCharge;
     private TextView	txtTitleBar;
@@ -71,6 +80,8 @@ public class Sale_Activity extends Activity{
 	private AudioManager am = null;
 	
 	private boolean mHeadsetPlugged = false;
+	
+	
 	private BroadcastReceiver mHeadsetReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -302,17 +313,86 @@ public class Sale_Activity extends Activity{
 	    imgUsername.setImageBitmap(Library.getBitmapFromByte(account.getImageAcc()));
 		}
 		
-		
-		/* code SReader */
-		am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		if(MACROS.isReader){
+			/* code SReader */
+			am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-		IntentFilter iFilter = new IntentFilter();
-		iFilter.addAction(Intent.ACTION_HEADSET_PLUG);
-		iFilter.addCategory(Intent.CATEGORY_DEFAULT);
-		registerReceiver(mHeadsetReceiver, iFilter);
-		setVolumeControlStream(AudioManager.STREAM_MUSIC);
-		int maxVol = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-		am.setStreamVolume(AudioManager.STREAM_MUSIC, maxVol, 0);
+			IntentFilter iFilter = new IntentFilter();
+			iFilter.addAction(Intent.ACTION_HEADSET_PLUG);
+			iFilter.addCategory(Intent.CATEGORY_DEFAULT);
+			registerReceiver(mHeadsetReceiver, iFilter);
+			setVolumeControlStream(AudioManager.STREAM_MUSIC);
+			int maxVol = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+			am.setStreamVolume(AudioManager.STREAM_MUSIC, maxVol, 0);		
+			/* end code SReader */
+		} else {
+			/* code IMagPayManager */
+			_handler = new SwipeHandler(this);
+			_handler.setReadonly(true);
+			_handler.setDownloadEnvironment(true);
+			_handler.setUploadEnvironment(true);
+			_handler.addSwipeListener(new SwipeListener() {
+				@Override
+				public void onReadData(SwipeEvent event) {
+				}
+
+				@Override
+				public void onParseData(SwipeEvent event) {
+					handler.post(clear_all);
+					encryption_data = event.getValue();
+					// hex string message
+//					handler.post(display_encryptiondata);
+//					sendMessage("Final(16)=>% " + result);
+					String[] tmps = event.getValue().split(" ");
+					StringBuffer sbf = new StringBuffer();
+					for (String str : tmps) {
+						sbf.append((char) Integer.parseInt(str, 16));
+						sbf.append(" ");
+					}
+					decryption_data = sbf.toString().trim();
+					if(decryption_data.length() >= 16)
+						handler.post(display_decryptiondata);
+					// char message
+//					sendMessage("Final(10)=>% " + sbf.toString().trim());
+				}
+
+				@Override
+				public void onDisconnected(SwipeEvent event) {
+//					sendMessage("Device is disconnected!");
+//					_testFlag = true;
+//					_handler.powerOff();
+					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
+				}
+
+				@Override
+				public void onConnected(SwipeEvent event) {
+//					sendMessage("Device is connected!");
+					Toast.makeText(getApplicationContext(), "Device is connected!", Toast.LENGTH_SHORT).show();
+//					_testFlag = false;
+					_handler.isReadable();
+					_handler.powerOn();
+				}
+
+				@Override
+				public void onStarted(SwipeEvent event) {
+//					if (!_testFlag)
+//						sendMessage("Device is started");
+					Toast.makeText(getApplicationContext(), "Device is started!", Toast.LENGTH_SHORT).show();
+				}
+
+				@Override
+				public void onStopped(SwipeEvent event) {
+//					if (!_testFlag)
+//						sendMessage("Device is stopped");
+					Toast.makeText(getApplicationContext(), "Device is stopped!", Toast.LENGTH_SHORT).show();
+				}
+				
+			});
+			/* end code IMagPayManager */
+		}
+		
+		
+		
     }
     
     private void translate() {
@@ -376,8 +456,10 @@ public class Sale_Activity extends Activity{
 //               public void run() {                    
 //            	   onSwipe();                   
 //               }
-//             }).start(); 
-    	onSwipe();
+//             }).start();
+    	if(MACROS.isReader){
+    		onSwipe();
+    	}    	
 //    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
 //		startActivity(i);
     }
@@ -566,6 +648,8 @@ public class Sale_Activity extends Activity{
 	    editor.putString("SUMPRICE", txtPriceItem.getText().toString());
 	    editor.putString("DECRYPTION", decryption_data);
 	    editor.commit();
+	    
+	    _handler.onDestroy();
 	    
 //	    sreader.Stop();
 		if (sreader != null) {

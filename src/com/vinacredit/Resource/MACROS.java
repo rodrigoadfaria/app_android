@@ -122,4 +122,5 @@ public class MACROS{
     public static  boolean     TEST_SIGNIN_BL 		= 	false;
     public static  boolean	   TEST_DATABASE		=	false;
     public static  boolean	   TEST_INFOR			=   false;
+    public static  boolean	   isReader				=	false;
 }
