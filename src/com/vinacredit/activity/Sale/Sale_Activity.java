@@ -192,8 +192,7 @@ public class Sale_Activity extends Activity{
 			txt += encryption_data + "\n\n\nDecryption data\n";
 			txt += decryption_data + "\n";
 //			result_text.setText(txt);
-			Toast.makeText(Sale_Activity.this, txt,
-					Toast.LENGTH_LONG).show();			
+//			Toast.makeText(Sale_Activity.this, txt,Toast.LENGTH_LONG).show();			
 			//dialog.dismiss();
 	    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
 			startActivity(i);
@@ -436,7 +435,7 @@ public class Sale_Activity extends Activity{
     	_str_tmp = "";
     	_str_total_price = "0";
     	_str_number_click = "";
-    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+    	txtPriceItem.setText("0");
     	saleAdapter.notifyDataSetChanged();
     }
     
@@ -479,7 +478,9 @@ public class Sale_Activity extends Activity{
         	saleAdapter.notifyDataSetChanged();
         	
         	/*------ assign price item into total price ------*/
-        	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) + Integer.parseInt(_str_tmp));
+        	Double d = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_tmp);
+        	Integer i = d.intValue();
+        	_str_total_price = String.valueOf(i);
         	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
     	} else {
 			Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
@@ -499,14 +500,16 @@ public class Sale_Activity extends Activity{
      */
     public void PlusItem(View v){
     	int i = listSale.getPositionForView(v);
-    	Toast.makeText(getApplicationContext(), ListdataItem.get(i).getStrItem(), Toast.LENGTH_SHORT).show();
+    	
     	int count = ListdataItem.get(i).getQtyItem();
     	count++;
     	ListdataItem.get(i).setQtyItem(count);
     	ListdataItem.get(i).setQuantityItem(count + "x");
     	String _str_p = ListdataItem.get(i).getPriceItem().replaceAll(",", "");
     	/*------ assign price item into total price ------*/
-    	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) + Integer.parseInt(_str_p));
+    	Double b = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_p);
+    	Integer ip = b.intValue();
+    	_str_total_price = String.valueOf(ip);
     	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
     	
     	saleAdapter.notifyDataSetChanged();
@@ -518,12 +521,14 @@ public class Sale_Activity extends Activity{
      */
     public void MinusItem(View v){
     	int ix = listSale.getPositionForView(v);
-    	Toast.makeText(getApplicationContext(), ListdataItem.get(ix).getStrItem(), Toast.LENGTH_SHORT).show();
+    	
     	int count = ListdataItem.get(ix).getQtyItem();
     	String _str_p = ListdataItem.get(ix).getPriceItem().replaceAll(",", "");
     	count--;
     	/*------ assign price item into total price ------*/
-    	_str_total_price = String.valueOf(Integer.parseInt(_str_total_price) - Integer.parseInt(_str_p));
+    	Double b = Double.parseDouble(_str_total_price) - Double.parseDouble(_str_p);
+    	Integer i = b.intValue();
+    	_str_total_price = String.valueOf(i);
     	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
     	
     	if(count < 1) 
@@ -548,58 +553,98 @@ public class Sale_Activity extends Activity{
 	
     	switch (view.getId()) {
 		case R.id.btn10:
-		    _str_number_click = "1";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "1";
 			break;
     
 		case R.id.btn11:
-		    _str_number_click = "2";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "2";
 			break;
     
 		case R.id.btn12:
-		    _str_number_click = "3";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "3";
 			break;
 
 		case R.id.btn7:
-		    _str_number_click = "4";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "4";
 			break;
     
 		case R.id.btn8:
-		    _str_number_click = "5";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "5";
 			break;
     
 		case R.id.btn9:
-		    _str_number_click = "6";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "6";
 			break;
     
 		case R.id.btn4:
-		    _str_number_click = "7";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "7";
 			break;
     
 		case R.id.btn5:
-		    _str_number_click = "8";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "8";
 			break;
     
 		case R.id.btn6:
-		    _str_number_click = "9";
+			if(_str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "9";
 			break;
     
 		case R.id.btn2:
-		    _str_number_click = "0";
+			if(_str_tmp.equals("") || _str_tmp.length() >= 9)
+				return;
+			else
+				_str_number_click = "0";
 		    break;
 		case R.id.btn1:
-		    _str_number_click = "000";
+			if(txtItem.getText().toString().equals("0") || _str_tmp.length() >= 6)
+				return;
+			else
+				_str_number_click = "000";
 		    break;
 		default:
 			break;
 	}
-    	if(_str_tmp.length() > 13) return; // 9,000,000,000 length is 13.
-	_str_tmp = _str_tmp + _str_number_click;
-	if(_str_tmp.length() > 3) {
-		txtItem.setText(Library.addDotNumber(_str_tmp));
-		return;
-	}		
-	Log.i("Debug Charge","_str_tmp :" + _str_tmp);
-	txtItem.setText(_str_tmp);
+    	if(_str_tmp.length() > 9) // 9,000,000,000 length is 13.
+    		return; 
+    	else
+    		_str_tmp = _str_tmp + _str_number_click;
+    	
+    	if(_str_tmp.length() > 3) {
+    		txtItem.setText(Library.addDotNumber(_str_tmp));
+    		return;
+    	} else
+    	{
+    		txtItem.setText(_str_tmp);
+    		Log.i("Debug Charge","_str_tmp :" + _str_tmp);
+    	}
+
+    	
     }
     
     /**
@@ -649,7 +694,7 @@ public class Sale_Activity extends Activity{
 	    editor.putString("DECRYPTION", decryption_data);
 	    editor.commit();
 	    
-	    _handler.onDestroy();
+//	    _handler.onDestroy();
 	    
 //	    sreader.Stop();
 		if (sreader != null) {

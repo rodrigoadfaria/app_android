@@ -308,7 +308,7 @@ public class Library {
     
     public static boolean isCheckPrice(String price){
     	
-    	int iPrice = Integer.parseInt(price.replaceAll(",",""));
+    	double iPrice = Double.parseDouble(price.replaceAll(",",""));
     	if(iPrice % 100 == 0)
     		return true;
     	return false;
