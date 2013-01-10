@@ -2,6 +2,7 @@ package com.vinacredit.activity.InformationAccount;
 
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Sale_Activity;
+import com.vinacredit.activity.SignIn.SignIn_Activity;
 import com.vinacredit.Resource.*;
 
 import con.vinacredit.DTO.Account;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
@@ -22,11 +24,13 @@ public class InformationAccount_Activity extends Activity {
 	private EditText 	edtFirstname, edtLastname, edtCompany, edtAddress, edtEmail
 						, edtOldPass, edtNewpass, edtConfirmPass;
 	private ImageButton imgUsername;
+	ProgressDialog dialog = null;
 	
 	private MySQLiteHelper dbSqlite;
 	private Account		account;
 	
 	private Bitmap 		photo;
+	String oldPass = "";
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +54,21 @@ public class InformationAccount_Activity extends Activity {
 		
 		    Bundle extras = getIntent().getExtras();
 		    edtEmail.setText(extras.getString("EMAIL"));
+		    oldPass = extras.getString("PASS");
 	}
 
 	public void btnContinue(View view){
+		dialog = ProgressDialog.show(InformationAccount_Activity.this, "", "Checking...", true);
+		new Thread(new Runnable() {			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				checking();
+			}
+		}).start();
+	}
+	
+	public void checking(){
 		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);		
 		i.putExtra("EMAIL", edtEmail.getText().toString());
 	    if(MACROS.TEST_DATABASE) {
@@ -69,11 +85,14 @@ public class InformationAccount_Activity extends Activity {
 			    
 			    dbSqlite.AddAccount(account);
 			    startActivity(i);
+			    dialog.dismiss();
 	    		finish();
 	    	} else
+	    		dialog.dismiss();
 	    		Toast.makeText(getApplicationContext(), "Enter full infor,Please", Toast.LENGTH_SHORT).show();	    	
 	    }    	
 	    startActivity(i);
+	    dialog.dismiss();
 		finish();
 	}
 	
@@ -85,7 +104,9 @@ public class InformationAccount_Activity extends Activity {
 	public boolean isCheck(){
 		if(edtFirstname.getText().toString() != null && edtLastname.getText().toString() != null &&
 				edtCompany.getText().toString() != null && edtAddress.getText().toString() != null &&
-				edtNewpass.getText().toString().length() >= 8 && edtConfirmPass.getText().toString().equals(edtNewpass.getText().toString()))
+				edtNewpass.getText().toString().length() >= 8 && 
+				edtConfirmPass.getText().toString().equals(edtNewpass.getText().toString()) &&
+				edtOldPass.getText().toString().equals(oldPass))
 			return true;
 		return false;
 	}

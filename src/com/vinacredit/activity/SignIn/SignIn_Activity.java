@@ -61,6 +61,10 @@ public class SignIn_Activity extends Activity{
 	public void login(){
 		String email = edtUsername.getText().toString();
 		String pass  = edtPassword.getText().toString();
+
+			
+		/*----set flag -----*/
+		if(MACROS.TEST_SIGNIN_BL){		
 			if(email.equals("")){
 				dialog.dismiss();
 				Toast.makeText(getApplicationContext(), "Enter email,please!", Toast.LENGTH_SHORT).show();				
@@ -70,15 +74,11 @@ public class SignIn_Activity extends Activity{
 				Toast.makeText(getApplicationContext(), "Enter pass,please!", Toast.LENGTH_SHORT).show();				
 				return;
 			}
-			
-		/*----set flag -----*/
-		if(MACROS.TEST_SIGNIN_BL){		    
 			if(jsonDao.login(url, email, pass)) {
 				if(dbaccount.getAccountCount(email)) {
 //					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
 					Intent intent_Sale = new Intent(getApplicationContext(),Sale_Activity.class);
-					intent_Sale.putExtra("EMAIL", email);
-					
+					intent_Sale.putExtra("EMAIL", email);					
 					startActivity(intent_Sale);
 					dialog.dismiss();
 					finish();
