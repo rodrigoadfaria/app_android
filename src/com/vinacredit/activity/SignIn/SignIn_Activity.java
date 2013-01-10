@@ -9,6 +9,7 @@ import com.vinacredit.activity.SignIn.WrongPass.WrongPass_Activity;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public class SignIn_Activity extends Activity{
 		
 	private EditText 	edtUsername, edtPassword;
 	private MySQLiteHelper dbaccount;
+	ProgressDialog dialog = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -45,35 +47,60 @@ public class SignIn_Activity extends Activity{
 	 * @param view
 	 */
 	public void btnSignIn(View view){
+		dialog = ProgressDialog.show(SignIn_Activity.this, "", "Log in...", true);
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				login();
+			}
+		}).start();
+	}
+	
+	public void login(){
 		String email = edtUsername.getText().toString();
 		String pass  = edtPassword.getText().toString();
+			if(email.equals("")){
+				dialog.dismiss();
+				Toast.makeText(getApplicationContext(), "Enter email,please!", Toast.LENGTH_SHORT).show();				
+				return;
+			} else if(pass.equals("")){
+				dialog.dismiss();
+				Toast.makeText(getApplicationContext(), "Enter pass,please!", Toast.LENGTH_SHORT).show();				
+				return;
+			}
+			
 		/*----set flag -----*/
-		if(MACROS.TEST_SIGNIN_BL){
-		    
+		if(MACROS.TEST_SIGNIN_BL){		    
 			if(jsonDao.login(url, email, pass)) {
 				if(dbaccount.getAccountCount(email)) {
-					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+//					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
 					Intent intent_Sale = new Intent(getApplicationContext(),Sale_Activity.class);
 					intent_Sale.putExtra("EMAIL", email);
+					
 					startActivity(intent_Sale);
+					dialog.dismiss();
 					finish();
-					return;
 				} else {
-					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+//					Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
 					Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
 					intent.putExtra("EMAIL", email);
-					intent.putExtra("PASS", pass);
+					intent.putExtra("PASS", pass);					
 					startActivity(intent);
+					dialog.dismiss();
 					finish();
-					return;
 				}
-			} else
-				Toast.makeText(getApplicationContext(), "Login unsuccessful", Toast.LENGTH_LONG).show();
+			} else {
+				dialog.dismiss();
+				Toast.makeText(getApplicationContext(), "Login unsuccessful", Toast.LENGTH_LONG).show();				
+			}
 		}
 		else {
 		    Intent intent = new Intent(getApplicationContext(),InformationAccount_Activity.class);
 		    intent.putExtra("EMAIL", email);
 		    intent.putExtra("PASS", pass);
+		    dialog.dismiss();
 		    startActivity(intent);
 		    finish();
 		}

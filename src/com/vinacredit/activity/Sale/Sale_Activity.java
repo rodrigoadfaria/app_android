@@ -423,6 +423,7 @@ public class Sale_Activity extends Activity{
     	_str_tmp = "";
     	_str_total_price = "0";
     	_str_number_click = "";
+    	txtItem.setText("0");
     	txtPriceItem.setText("0");
     	saleAdapter.notifyDataSetChanged();
     }
