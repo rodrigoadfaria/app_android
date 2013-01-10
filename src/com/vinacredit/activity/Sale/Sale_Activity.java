@@ -292,7 +292,7 @@ public class Sale_Activity extends Activity{
     	edtItem			= (EditText)findViewById(R.id.edtItem);
     	imgItem			= (ImageView)findViewById(R.id.imgItem);
     	/* tranlate language */
-    	translate();
+//    	translate();
     	
     	dataItem	 = new DataItem();
     	ListdataItem = new ArrayList<DataItem>();
@@ -679,7 +679,7 @@ public class Sale_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     	getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
     

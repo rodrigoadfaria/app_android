@@ -1,0 +1,116 @@
+<resources>
+
+    <string name="app_name">Vinacredit</string>
+        
+    <string name="external_dir">GetSignature</string>
+    
+    <!-- string content Description ImageView -->
+    <string name="imgView">ImageView</string>
+    
+    <!-- string of Welcome page -->
+    <string name="txtWelcome_vina">Chào mừng đến Vinacredit</string>
+    <string name="txtWelcome_content">Thanh toán thẻ tín dụng trực tiếp</string>
+    <string name="btnSignIn">Đăng Nhập</string>
+    
+    <string name="btnLanguageEnglish"></string>
+    <string name="btnLanguageVietnam"></string>
+    
+    <!-- string of Sign In page -->
+    <string name="txtTitleBarSignIn">Đăng Nhập</string>
+    <string name="btnWrongPass">Quên mật khẩu?</string>
+    <string name="hintUsername">Địa chỉ email</string>
+    <string name="hintPassword">Mật khẩu</string>
+    
+    <!-- string of Wrong Pass page-->
+    <string name="txtTitleBarWrongPass">Lấy lại mật khẩu</string>
+    <string name="btnCancel">Thoát</string>
+    <string name="btnSend">Gửi</string>
+
+    <!-- string of Information Account page -->
+    <string name="txtTitleBarInfor">Trang cá nhân</string>
+    <string name="btnBack">Quay lại</string>
+    <string name="txtFirstname">Tên</string>
+    <string name="txtLastname">Họ</string>
+    <string name="txtCompany">Tên công ty</string>
+    <string name="txtAddress">Địa chỉ</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtOldPass">Mật khẩu cũ</string>
+    <string name="txtNewPass">Mật khẩu mới</string>
+    <string name="txtConfirmPass">Nhập lại</string>
+    <string name="btnContinue">Tiếp tục</string>
+    <string name="Email">Email</string>
+    <string name="OldPass">Mật khẩu cũ</string>
+    <string name="NewPass">Mật khẩu mới</string>
+    <string name="ConfirmPass">Nhập lại</string>
+
+    <!-- string of Account page -->
+    <string name="txtTitleBarAccount">Trang cá nhân</string>
+    <string name="btnSignOut">Đăng xuất</string>
+    <string name="txtUsername">Họ </string>
+    <string name="txtTitle">Item</string>
+    <string name="txtSubtitle">0</string>
+    
+    <!-- string of  Sale page -->
+    <string name="txtTitleBarSale">Bán hàng</string>
+    <string name="btnSaleAccount">Tài khoản</string>
+    <string name="btnSaleCharge">Thanh Toán</string>
+    <string name="QuantityItem">1x</string>
+    <string name="txtItem">0</string>
+    
+    <!-- string of Sales History page -->
+    <string name="btnAccount">Tài khoản</string>
+    <string name="txtTitleBarSalesHistory">Lịch sử bán hàng</string>
+    
+    <!-- string of Detail Sale History page -->
+    <string name="btnSaleHistory">Lịch sử bán hàng</string>
+    <string name="txtTitleBarDetailSalesHistory">Chi tiết bán hàng</string>
+    <string name="txtTotal">Tổng:</string>
+    
+    <!-- string of Support page -->
+    <string name="txtTitleBarSupport">Hỗ trợ</string>
+    <string name="btnVinacredit">Vinacredit</string>
+    <string name="btnHotline"># Đường dây nóng</string>
+    <string name="btnInstruction">Hướng dẫn</string>
+    
+    <!-- string of Tax page -->
+    <string name="txtTitleBarTax">Thuế</string>
+    <string name="txtAddSaleTax">Thuế bán hàng</string>
+    <string name="txtTaxRate">Tỉ giá thuế</string>
+    <string name="txtTax">0 %</string>
+    <string name="txtTaxName">Thêm tỷ lệ phần trăm để bạn thanh toán vào tài khoản cho các khoản thuế nhà nước.</string>
+    
+    <!-- string of Charge page -->
+    <string name="txtTitleBarCharge">Thanh toán</string>
+    <string name="txtPay">0</string>
+    <string name="txtChange">0</string>
+    <string name="txtSumPrice">0</string>
+    <string name="btnTenderCash">Thanh toán</string>
+    <string name="btnSkip">Bỏ qua</string>
+    
+    <!-- string of Identify page -->
+    <string name="txtTitleBarIdentify">Xác nhận</string>
+    <string name="btnSignature">Ký tên</string>
+    <string name="btnTakePhoto">Chụp hình</string>
+    
+    <!-- string of Signature page -->
+    <string name="btnIdentify">Xác nhận</string>
+    <string name="txtTitleBarSignature">Ký tên</string>
+    <string name="btnSending">Đang gửi</string>
+    <string name="txtName">Tôi đồng ý trả số tiền trên theo thỏa thuận các vấn đề thẻ của tôi</string>
+    <string name="btnClear">Xoá</string>
+    
+    <!-- string of Sending page -->
+    <string name="txtTitleBarSending">Đang gửi</string>
+    <string name="btnReceipt">Biên lai</string>
+    
+    <!-- string of Done page -->
+    <string name="txtPaidThank">đã trả, cảm ơn.</string>
+    <string name="btnDone">Hoàn thành.</string>
+    
+    
+    <string name="unknown_error">Lỗi</string>
+    <string name="nodevice">Không có thiết bị</string>
+    <string name="timeoutack">Time Out</string>
+    <string name="second">\'s</string>
+    <string name="de_len">Length Error = </string>
+</resources>

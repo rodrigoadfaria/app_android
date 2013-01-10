@@ -45,7 +45,7 @@ public class Tax_Activity extends Activity{
 		txtTaxName			= (TextView)findViewById(R.id.txtTaxName);
 		tgbtnstatusTax		= (ToggleButton)findViewById(R.id.tgbAddSaleTax);
 		
-		translate();		
+//		translate();		
 		        
         SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE );
     	txtTax.setText(share.getString("TAX", "0%"));        
@@ -213,7 +213,7 @@ public class Tax_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 	
 	@Override

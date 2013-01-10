@@ -58,7 +58,7 @@ public class Charge_Activity extends Activity{
     	
     	_str_Sum = txtSumPrice.getText().toString().replace(",","");
     	
-    	translate();
+//    	translate();
 
     }
     
@@ -218,6 +218,6 @@ public class Charge_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 }

@@ -50,7 +50,7 @@ public class SaleHistory_Activity extends Activity{
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
 		/*translate language */
-		translate();
+//		translate();
 		
 		mDb 	= new MySQLiteHelper(this);
 		account	= new Account();
@@ -109,6 +109,6 @@ public class SaleHistory_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 }

@@ -44,7 +44,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/btnSignIn" 
         android:onClick="signin"/>
-
+	<!--  
     <Button
         android:id="@+id/btnLanguageEnglish"
         android:layout_width="30dp"
@@ -63,5 +63,5 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/vietnam_flag"
         android:onClick="translate" />
-
+	-->
 </RelativeLayout>

@@ -55,7 +55,7 @@ public class InformationAccount_Activity extends Activity {
 		txtNewPass		= (TextView)findViewById(R.id.txtNewPass);
 		txtConfirmPass	= (TextView)findViewById(R.id.txtConfirmPass);
 		
-		translate();
+//		translate();
 		dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
 		
@@ -141,6 +141,6 @@ public class InformationAccount_Activity extends Activity {
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 }

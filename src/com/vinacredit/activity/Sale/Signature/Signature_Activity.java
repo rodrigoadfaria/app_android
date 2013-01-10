@@ -58,7 +58,7 @@ public class Signature_Activity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_signature);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		initialize();
+//		initialize();
 	}
 
 	private void initialize() {
@@ -72,7 +72,7 @@ public class Signature_Activity extends Activity{
 		
 		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		txtPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
-		translate();
+//		translate();
 		
 		
 		/* Draw signature */
@@ -125,7 +125,7 @@ public class Signature_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 	
 	

@@ -42,7 +42,7 @@ public class SignIn_Activity extends Activity{
 		btnSignIn 		= (Button)findViewById(R.id.btnSignIn);
 		btnWrongPass 	= (Button)findViewById(R.id.btnWrongPass);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-		translate();		
+//		translate();		
 		
 		dbaccount 	= new MySQLiteHelper(this);
 		jsonDao		= new JSONDAO();

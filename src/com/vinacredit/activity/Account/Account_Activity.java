@@ -40,7 +40,10 @@ public class Account_Activity extends Activity{
 	private TextView txtTitleBar;
 	private Button btnSignOut, btnBack;
 	private ListView listView1;
-	private String strSaleHistory, strTax, strSupport, strTaxNumber;
+	private String strSaleHistory ;
+	private String strTax		;
+	private String strSupport	;
+	private String strTaxNumber;
 	private boolean bl_status_tax;
 	
 	private MySQLiteHelper 	dbSqlite;
@@ -65,17 +68,17 @@ public class Account_Activity extends Activity{
 		btnBack			= (Button)findViewById(R.id.btnBack);
 		listView1		= (ListView)findViewById(R.id.listView1);
 		
-		translate();
+//		translate();
 		/* initialize variable */
 		dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
 		item	= new ListItem();
 		listItem = new ArrayList<ListItem>();
-		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.sales_history), strSaleHistory, item.getSubtitle(),
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.sales_history), getResources().getString(R.string.txtTitleBarSalesHistory), item.getSubtitle(),
 				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
-		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.tax), strTax, item.getSubtitle(),
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.tax), getResources().getString(R.string.txtTitleBarTax), item.getSubtitle(),
 				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
-		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.help_support), strSupport, item.getSubtitle(),
+		listItem.add(new ListItem(BitmapFactory.decodeResource(getResources(), R.drawable.help_support), getResources().getString(R.string.txtTitleBarSupport), item.getSubtitle(),
 				BitmapFactory.decodeResource(getResources(), R.drawable.arrow)));
 		accountAdapter = new AccountAdapter(this, listItem);
 		listView1.setAdapter(accountAdapter);
@@ -183,7 +186,7 @@ public class Account_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     	SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE );
     	if(share.getBoolean("STATUSTAX", false)) {
     		listItem.get(1).setSubtitle(share.getString("TAX", "0%"));

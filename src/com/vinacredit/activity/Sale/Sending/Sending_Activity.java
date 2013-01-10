@@ -60,7 +60,7 @@ public class Sending_Activity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sending);
-		initialize();
+//		initialize();
 	}
 
 	private void initialize() {
@@ -71,7 +71,7 @@ public class Sending_Activity extends Activity{
 		btnSend			= (Button)findViewById(R.id.btnSend);
 		imgSignature	= (ImageView)findViewById(R.id.imgSignature);
 		
-		translate();
+//		translate();
 		
 		Bundle extras = getIntent().getExtras();
 		b = extras.getByteArray("SIGNATURE");
@@ -126,7 +126,7 @@ public class Sending_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 	
 	//Send file on server

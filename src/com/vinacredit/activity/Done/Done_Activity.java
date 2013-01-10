@@ -35,7 +35,7 @@ public class Done_Activity extends Activity{
 		txtPaidThank	= (TextView)findViewById(R.id.txtPaidThank);
 		btnDone			= (Button)findViewById(R.id.btnDone);
 		
-		translate();	
+//		translate();	
 		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		txtSumPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
 //		Editor edit = s.edit();
@@ -66,6 +66,6 @@ public class Done_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 }

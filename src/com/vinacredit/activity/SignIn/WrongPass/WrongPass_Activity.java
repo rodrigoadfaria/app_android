@@ -31,7 +31,7 @@ public class WrongPass_Activity extends Activity{
 		btnCancel	= (Button)findViewById(R.id.btnCancel);
 		btnSend		= (Button)findViewById(R.id.btnSend);
 		txtTitleBar = (TextView)findViewById(R.id.txtTitleBar);
-		translate();
+//		translate();
 
 	}
 	private void translate() {
@@ -61,6 +61,6 @@ public class WrongPass_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 }

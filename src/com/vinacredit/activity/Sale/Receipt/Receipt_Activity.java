@@ -35,7 +35,7 @@ public class Receipt_Activity extends Activity{
 		btnSkip			= (Button)findViewById(R.id.btnSkip);
 		btnSend			= (Button)findViewById(R.id.btnSend);
 		
-		translate();
+//		translate();
 
 	}
 	public void sendMail(View view) {
@@ -89,6 +89,6 @@ public class Receipt_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 }

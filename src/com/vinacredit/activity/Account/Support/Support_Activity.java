@@ -31,7 +31,7 @@ public class Support_Activity extends Activity{
 		btnInstruction	= (Button)findViewById(R.id.btnInstruction);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		
-		translate();
+//		translate();
 	}
 	private void translate() {
 		// TODO Auto-generated method stub
@@ -69,7 +69,7 @@ public class Support_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 
 }

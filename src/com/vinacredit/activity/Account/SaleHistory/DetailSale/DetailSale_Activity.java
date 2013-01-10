@@ -52,7 +52,7 @@ public class DetailSale_Activity extends Activity{
 		txtPriceTotal	= (TextView)findViewById(R.id.txtPriceTotal);
 		
 		/*translate language */
-		translate();
+//		translate();
 		
 		/* initialize variable */
 		account = new Account();
@@ -95,6 +95,6 @@ public class DetailSale_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 }

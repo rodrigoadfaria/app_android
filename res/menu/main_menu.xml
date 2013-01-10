@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 
+        android:id="@+id/menu_btnVietnam"
+        android:icon="@drawable/ic_vietnam"/>
+    <item 
+        android:id="@+id/menu_btnEnglish"
+        android:icon="@drawable/ic_english"/>
+
+</menu>

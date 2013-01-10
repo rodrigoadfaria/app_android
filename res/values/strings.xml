@@ -38,6 +38,10 @@
     <string name="txtNewPass">New pass</string>
     <string name="txtConfirmPass">Confirm</string>
     <string name="btnContinue">Continue</string>
+    <string name="Email">Email</string>
+    <string name="OldPass">Old pass</string>
+    <string name="NewPass">New pass</string>
+    <string name="ConfirmPass">Confirm</string>
 
     <!-- string of Account page -->
     <string name="txtTitleBarAccount">Account</string>

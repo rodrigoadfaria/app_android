@@ -1,25 +1,29 @@
 package com.vinacredit.activity.Welcome;
 
 
+import java.util.Locale;
+
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.SignIn.SignIn_Activity;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.vinacredit.Resource.*;
 public class Welcome_Activity extends Activity {
 
 	private Button btnSignIn;
-	private Button btnEnglish;
-	private Button btnVietnam;
 	private TextView txt_welcome, txt_content;
-	private ImageView imageView1;
+	Locale myLocale;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,47 +33,17 @@ public class Welcome_Activity extends Activity {
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		btnSignIn = (Button)findViewById(R.id.btnSignIn);		
-		btnEnglish 	= (Button)findViewById(R.id.btnLanguageEnglish);
-		btnVietnam 	= (Button)findViewById(R.id.btnLanguageVietnam);
+		btnSignIn = (Button)findViewById(R.id.btnSignIn);
 		txt_welcome 	= (TextView)findViewById(R.id.txt_welcome);
 		txt_content 	= (TextView)findViewById(R.id.txt_content);
-		imageView1 	= (ImageView)findViewById(R.id.imageView1);
-		
-		
-		//Log.i("debug","bl_language : true");
-		Library.Translate(MACROS.bl_language);	
-		translate();
+
 	}
 	public void translate(){
 	    txt_welcome.setText(MACROS.WELCOME_TO_VINACREDIT_LBL);
 	    txt_content.setText(MACROS.WELCOME_TEXT_LBL);
 	    btnSignIn.setText(MACROS.WELCOME_SIGNIN_BTN);
 	}
-	
-	/**
-	 * translate language
-	 * @param view
-	 */
-	public void translate(View view){
-		
-		switch (view.getId()) {
-		case R.id.btnLanguageVietnam:
-			MACROS.bl_language = false;
-			//Log.i("debug","bl_language : false");
-			Library.Translate(MACROS.bl_language);	
-			translate();
-			break;
 
-		case R.id.btnLanguageEnglish:
-			MACROS.bl_language = true;
-			//Log.i("debug","bl_language : true");
-			Library.Translate(MACROS.bl_language);	
-			translate();
-			break;
-		}
-	}
-	
 	/**
 	 * sign in
 	 * @param view
@@ -84,4 +58,40 @@ public class Welcome_Activity extends Activity {
 		// TODO Auto-generated method stub
 //		super.onBackPressed();
 	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+//		return super.onOptionsItemSelected(item);
+		
+		switch(item.getItemId()){
+		case R.id.menu_btnVietnam:
+			setLocale("vi");
+			return true;
+		case R.id.menu_btnEnglish:
+			setLocale("");
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}		
+	}
+	
+	public void setLocale(String lang) {
+
+		myLocale = new Locale(lang);
+		Resources res = getResources();
+		DisplayMetrics dm = res.getDisplayMetrics();
+		Configuration conf = res.getConfiguration();
+		conf.locale = myLocale;
+		res.updateConfiguration(conf, dm);
+		Intent refresh = new Intent(this, Welcome_Activity.class);
+		startActivity(refresh);
+	}
+	
 }

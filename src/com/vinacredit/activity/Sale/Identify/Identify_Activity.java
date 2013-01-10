@@ -39,7 +39,7 @@ public class Identify_Activity extends Activity{
 		btnTakePhoto	= (Button)findViewById(R.id.btnTakePhoto);
 		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		imgIdentify		= (ImageView)findViewById(R.id.imgIdentify);
-		translate();		
+//		translate();		
 
 	}
 
@@ -90,7 +90,7 @@ public class Identify_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	translate();
+//    	translate();
     }
 	
 }

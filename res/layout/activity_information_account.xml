@@ -16,7 +16,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="25dp"/>
+            android:textSize="25sp"/>
                 
         <Button 
             android:id="@+id/btnContinue"
@@ -92,7 +92,7 @@
 		    android:layout_alignBaseline="@+id/edtEmail"
 		    android:layout_alignBottom="@+id/edtEmail"
 		    android:layout_alignParentLeft="true"
-		    android:text="@string/txtEmail"
+		    android:text="@string/Email"
 		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtEmail" 
@@ -112,7 +112,7 @@
 		    android:layout_alignBaseline="@+id/edtOldPass"
 		    android:layout_alignBottom="@+id/edtOldPass"
 		    android:layout_alignParentLeft="true"
-		    android:text="@string/txtOldPass"
+		    android:text="@string/OldPass"
 		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtOldPass" 			
@@ -130,7 +130,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_alignBaseline= "@+id/edtNewPass" 
 		    android:layout_alignParentLeft="true"
-		    android:text="@string/txtNewPass"
+		    android:text="@string/NewPass"
 		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtNewPass" 
@@ -147,7 +147,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_alignBaseline="@+id/edtConfirmPass" 
 		    android:layout_alignParentLeft="true"
-		    android:text="@string/txtConfirmPass"
+		    android:text="@string/ConfirmPass"
 		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtConfirmPass" 
