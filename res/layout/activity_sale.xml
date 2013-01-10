@@ -91,7 +91,7 @@
             android:layout_marginLeft="2dp"/>
         <Button 
             android:id="@+id/btnIdentify"
-            android:background="@drawable/swipe_card"
+            android:background="@drawable/card_lock"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerInParent="true"

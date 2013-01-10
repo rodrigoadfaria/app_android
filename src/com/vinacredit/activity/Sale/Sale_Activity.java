@@ -352,13 +352,15 @@ public class Sale_Activity extends Activity{
 //					sendMessage("Device is disconnected!");
 //					_testFlag = true;
 //					_handler.powerOff();
-					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
+					btnIdentify.setBackgroundResource(R.drawable.card_lock);
+//					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
 				}
 
 				@Override
 				public void onConnected(SwipeEvent event) {
 //					sendMessage("Device is connected!");
-					Toast.makeText(getApplicationContext(), "Device is connected!", Toast.LENGTH_SHORT).show();
+//					Toast.makeText(getApplicationContext(), "Device is connected!", Toast.LENGTH_SHORT).show();
+					btnIdentify.setBackgroundResource(R.drawable.card_unlock);
 //					_testFlag = false;
 					_handler.isReadable();
 					_handler.powerOn();
@@ -368,14 +370,16 @@ public class Sale_Activity extends Activity{
 				public void onStarted(SwipeEvent event) {
 //					if (!_testFlag)
 //						sendMessage("Device is started");
-					Toast.makeText(getApplicationContext(), "Device is started!", Toast.LENGTH_SHORT).show();
+					btnIdentify.setBackgroundResource(R.drawable.swipe_card);
+//					Toast.makeText(getApplicationContext(), "Device is started!", Toast.LENGTH_SHORT).show();
 				}
 
 				@Override
 				public void onStopped(SwipeEvent event) {
 //					if (!_testFlag)
 //						sendMessage("Device is stopped");
-					Toast.makeText(getApplicationContext(), "Device is stopped!", Toast.LENGTH_SHORT).show();
+					btnIdentify.setBackgroundResource(R.drawable.card_unlock);
+//					Toast.makeText(getApplicationContext(), "Device is stopped!", Toast.LENGTH_SHORT).show();
 				}
 				
 			});
@@ -664,7 +668,8 @@ public class Sale_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
+    	_handler.powerOn();
+//    	_handler.i
     	getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
     
@@ -679,7 +684,7 @@ public class Sale_Activity extends Activity{
 	    editor.putString("DECRYPTION", decryption_data);
 	    editor.commit();
 	    
-//	    _handler.onDestroy();
+	    _handler.powerOff();
 	    
 //	    sreader.Stop();
 		if (sreader != null) {
