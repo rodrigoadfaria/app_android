@@ -1,8 +1,7 @@
 package com.vinacredit.activity.Sale.Identify;
 
-import com.vinacredit.Resource.MACROS;
+
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.Sale.Sale_Activity;
 import com.vinacredit.activity.Sale.Signature.Signature_Activity;
 
 import android.app.Activity;
@@ -10,20 +9,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Identify_Activity extends Activity{
 
 	
 	private static final int CAMERA_REQUEST = 9999;
-	
-	private Button		btnBack, btnSignature;
-	private TextView	txtTitleBar;
+
 	private ImageView	imgIdentify;
-	private Button		btnTakePhoto;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -34,20 +27,9 @@ public class Identify_Activity extends Activity{
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		btnBack			= (Button)findViewById(R.id.btnBack);
-		btnSignature	= (Button)findViewById(R.id.btnSignature);
-		btnTakePhoto	= (Button)findViewById(R.id.btnTakePhoto);
-		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
 		imgIdentify		= (ImageView)findViewById(R.id.imgIdentify);
-//		translate();		
 
-	}
 
-	private void translate() {
-		// TODO Auto-generated method stub
-		btnSignature.setText(MACROS.IDENTIFY_RIGHT_BTN);
-		btnTakePhoto.setText(MACROS.IDENTIFY_TAKEPHOTO_BTN);
-		txtTitleBar.setText(MACROS.IDENTIFY_LBL);
 	}
 	
 	public void btnBack(View view){
@@ -90,7 +72,6 @@ public class Identify_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
     }
 	
 }

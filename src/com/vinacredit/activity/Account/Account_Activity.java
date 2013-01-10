@@ -8,8 +8,6 @@ import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.SaleHistory.SaleHistory_Activity;
 import com.vinacredit.activity.Account.Support.Support_Activity;
 import com.vinacredit.activity.Account.Tax.Tax_Activity;
-import com.vinacredit.activity.Sale.Sale_Activity;
-import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Welcome.Welcome_Activity;
 
 import con.vinacredit.DTO.Account;
@@ -17,34 +15,23 @@ import con.vinacredit.DTO.Account;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class Account_Activity extends Activity{
 
-	private static final int IPC_ID = 1122;
+
 	
 	private ImageView imgUsername;
 	private TextView txtUsername;
 	private TextView txtEmail;
-	private TextView txtTitleBar;
-	private Button btnSignOut, btnBack;
 	private ListView listView1;
-	private String strSaleHistory ;
-	private String strTax		;
-	private String strSupport	;
-	private String strTaxNumber;
-	private boolean bl_status_tax;
 	
 	private MySQLiteHelper 	dbSqlite;
 	private Account			account;
@@ -63,12 +50,8 @@ public class Account_Activity extends Activity{
 		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
 		txtUsername 	= (TextView)findViewById(R.id.txtUsername);
 		txtEmail		= (TextView)findViewById(R.id.txtEmail);
-		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-		btnSignOut		= (Button)findViewById(R.id.btnSignOut);
-		btnBack			= (Button)findViewById(R.id.btnBack);
 		listView1		= (ListView)findViewById(R.id.listView1);
-		
-//		translate();
+
 		/* initialize variable */
 		dbSqlite = new MySQLiteHelper(this);
 		account  = new Account();
@@ -120,14 +103,6 @@ public class Account_Activity extends Activity{
 		});
 		
 	}
-	private void translate() {
-		// TODO Auto-generated method stub
-		txtTitleBar.setText(MACROS.ACCOUNT_LBL);
-		btnSignOut.setText(MACROS.ACCOUNT_RIGHT_BTN);
-		strSaleHistory 	= MACROS.ACCOUNT_SALEHISTORY_LBL;
-		strTax			= MACROS.ACCOUNT_TAX_LBL;
-		strSupport		= MACROS.ACCOUNT_SUPPORT_LBL;
-	}
 	
 	public void btnBack(View view){
 //		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
@@ -146,35 +121,6 @@ public class Account_Activity extends Activity{
 		startActivity(i);
 		finish();
 	}
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		// TODO Auto-generated method stub
-//		super.onActivityResult(requestCode, resultCode, data);
-//		try {
-//			switch (requestCode) {
-//			case IPC_ID: {
-//				if (resultCode == Activity.RESULT_OK) {
-//					Bundle extras = data.getExtras();
-//					if(extras != null){
-//						bl_status_tax = extras.getBoolean("STATUSTAX");
-//						if(bl_status_tax) {
-//							listItem.get(1).setSubtitle(extras.getString("TAX"));
-//							accountAdapter.notifyDataSetChanged();
-//						} else{
-//							listItem.get(1).setSubtitle("");
-//							accountAdapter.notifyDataSetChanged();
-//						}
-//							
-//							Toast.makeText(getBaseContext(), extras.getString("TAX"), Toast.LENGTH_SHORT).show();
-//					}
-//				}
-//				break;
-//			}
-//			}
-//		} catch (Exception e) {
-//			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-//		}
-//	}
 	
 	@Override
 	protected void onPause() {
@@ -186,7 +132,7 @@ public class Account_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
+    	
     	SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE );
     	if(share.getBoolean("STATUSTAX", false)) {
     		listItem.get(1).setSubtitle(share.getString("TAX", "0%"));

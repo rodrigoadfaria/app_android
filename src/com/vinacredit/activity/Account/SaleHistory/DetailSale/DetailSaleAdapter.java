@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.vinacredit.Resource.Library;
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.Sale.DataItem;
 
 import con.vinacredit.DTO.Bill;
 

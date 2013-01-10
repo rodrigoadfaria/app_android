@@ -12,9 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignIn_Activity extends Activity{
@@ -25,8 +23,6 @@ public class SignIn_Activity extends Activity{
 	private JSONDAO jsonDao;
 		
 	private EditText 	edtUsername, edtPassword;
-	private Button 		btnSignIn, btnWrongPass;
-	private TextView	txtTitleBar;
 	private MySQLiteHelper dbaccount;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +34,10 @@ public class SignIn_Activity extends Activity{
 	private void initialize() {
 		// TODO Auto-generated method stub
 		edtUsername 	= (EditText)findViewById(R.id.edtUsername);
-		edtPassword 	= (EditText)findViewById(R.id.edtPassword);
-		btnSignIn 		= (Button)findViewById(R.id.btnSignIn);
-		btnWrongPass 	= (Button)findViewById(R.id.btnWrongPass);
-		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-//		translate();		
+		edtPassword 	= (EditText)findViewById(R.id.edtPassword);	
 		
 		dbaccount 	= new MySQLiteHelper(this);
 		jsonDao		= new JSONDAO();
-	}
-	private void translate() {
-		// TODO Auto-generated method stub
-		edtUsername.setHint(MACROS.SIGNIN_EMAIL_TXT);
-		edtPassword.setHint(MACROS.SIGNIN_PASS_TXT);
-		btnSignIn.setText(MACROS.SIGNIN_BTN);
-		btnWrongPass.setText(MACROS.SIGNIN_FORGOT_BTN);
-		txtTitleBar.setText(MACROS.SIGNIN_LBL);
 	}
 	
 	/**

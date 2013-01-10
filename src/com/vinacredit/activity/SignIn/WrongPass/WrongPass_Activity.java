@@ -1,23 +1,16 @@
 package com.vinacredit.activity.SignIn.WrongPass;
 
-import com.vinacredit.Resource.*;
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.SignIn.SignIn_Activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class WrongPass_Activity extends Activity{
 
-	private Button 		btnCancel, btnSend;
 	private EditText 	edtEmail;
-	private TextView 	txtTitleBar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -28,20 +21,8 @@ public class WrongPass_Activity extends Activity{
 	private void initialize() {
 		// TODO Auto-generated method stub
 		edtEmail	= (EditText)findViewById(R.id.edtEmail);
-		btnCancel	= (Button)findViewById(R.id.btnCancel);
-		btnSend		= (Button)findViewById(R.id.btnSend);
-		txtTitleBar = (TextView)findViewById(R.id.txtTitleBar);
-//		translate();
 
 	}
-	private void translate() {
-		// TODO Auto-generated method stub
-		edtEmail.setHint(MACROS.WRONGPASS_EMAIL_TXT);
-		btnCancel.setText(MACROS.WRONGPASS_CANCEL_BTN);
-		btnSend.setText(MACROS.WRONGPASS_SEND_BTN);
-		txtTitleBar.setText(MACROS.WRONGPASS_LBL);
-	}
-	
 	/**
 	 * @param view
 	 */
@@ -61,6 +42,5 @@ public class WrongPass_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
     }
 }

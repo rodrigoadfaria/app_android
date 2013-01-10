@@ -5,15 +5,11 @@ import java.io.FileOutputStream;
 import java.util.Calendar;
 
 import com.vinacredit.Resource.Library;
-import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.Sale.Charge.Charge_Activity;
-import com.vinacredit.activity.Sale.Identify.Identify_Activity;
 import com.vinacredit.activity.Sale.Sending.Sending_Activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -25,23 +21,20 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore.Images;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Signature_Activity extends Activity{
 
-	private TextView	txtTitleBar, txtPrice, txtName;
-	private Button		btnIdentify, btnSending, btnClear;
+	private TextView	txtPrice;
+	private Button		btnSending;
 	LinearLayout mContent;
     signature mSignature;
     public static String tempDir;
@@ -58,21 +51,16 @@ public class Signature_Activity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_signature);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//		initialize();
+		initialize();
 	}
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-		btnIdentify		= (Button)findViewById(R.id._btnIdentify);
 		btnSending		= (Button)findViewById(R.id._btnSending);
-		btnClear		= (Button)findViewById(R.id.btnClear);
 		txtPrice		= (TextView)findViewById(R.id.txtPrice);
-		txtName			= (TextView)findViewById(R.id.txtName);
 		
 		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		txtPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
-//		translate();
 		
 		
 		/* Draw signature */
@@ -111,11 +99,6 @@ public class Signature_Activity extends Activity{
 		mSignature.clear();
 	}
 	
-	private void translate() {
-		// TODO Auto-generated method stub
-		txtTitleBar.setText(MACROS.SIGNATURE_LBL);
-	}
-	
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
@@ -125,7 +108,6 @@ public class Signature_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
     }
 	
 	
@@ -164,7 +146,7 @@ public class Signature_Activity extends Activity{
         } catch (Exception e) 
         {
             e.printStackTrace();
-            Toast.makeText(this, "Could not initiate File System.. Is Sdcard mounted properly?", 1000).show();
+            Toast.makeText(this, "Could not initiate File System.. Is Sdcard mounted properly?", Toast.LENGTH_SHORT).show();
             return false;
         }
     }

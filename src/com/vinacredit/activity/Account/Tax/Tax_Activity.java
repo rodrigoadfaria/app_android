@@ -2,7 +2,6 @@ package com.vinacredit.activity.Account.Tax;
 
 import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.Account.Account_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,18 +9,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class Tax_Activity extends Activity{
 
-	private Button 		btnAccount;
-	private TextView	txtTitleBar;
-	private TextView	txtAddSaleTax, txtTaxRate, txtTax, txtTaxName;
+	private TextView 	txtTax;
 	private ToggleButton	tgbtnstatusTax;
 	String _str_tax = "";
 	boolean i_first_dot    = true;
@@ -37,15 +30,8 @@ public class Tax_Activity extends Activity{
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		btnAccount			= (Button)findViewById(R.id.btnAccount);
-		txtTitleBar			= (TextView)findViewById(R.id.txtTitleBar);
-		txtAddSaleTax		= (TextView)findViewById(R.id.txtAddSaleTax);
-		txtTaxRate			= (TextView)findViewById(R.id.txtTaxRate);
 		txtTax				= (TextView)findViewById(R.id.txtTax);
-		txtTaxName			= (TextView)findViewById(R.id.txtTaxName);
 		tgbtnstatusTax		= (ToggleButton)findViewById(R.id.tgbAddSaleTax);
-		
-//		translate();		
 		        
         SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE );
     	txtTax.setText(share.getString("TAX", "0%"));        
@@ -67,14 +53,6 @@ public class Tax_Activity extends Activity{
 		} else
 			bl_status = false;
 		
-	}
-	
-	private void translate() {
-		// TODO Auto-generated method stub
-		txtTitleBar.setText(MACROS.TAX_LBL);
-		txtAddSaleTax.setText(MACROS.TAX_SALETAX_LBL);
-		txtTaxRate.setText(MACROS.TAX_TAXRATE_LBL);
-		txtTaxName.setText(MACROS.TAX_TEXT_LBL);
 	}
 
 	public void btnAccount(View view){
@@ -213,7 +191,6 @@ public class Tax_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
     }
 	
 	@Override

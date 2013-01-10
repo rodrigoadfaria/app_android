@@ -10,7 +10,6 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
 
-import com.vinacredit.Resource.*;
 public class Library {    
     
     public static String addDotNumber(String str_number){

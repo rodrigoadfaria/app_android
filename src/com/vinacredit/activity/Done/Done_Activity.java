@@ -1,25 +1,18 @@
 package com.vinacredit.activity.Done;
 
-import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Sale_Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Done_Activity extends Activity{
 
-	private ImageView 	imgUsername;
 	private TextView 	txtSumPrice;
-	private TextView 	txtPaidThank;
-	private Button		btnDone;
 	static String email;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,22 +23,13 @@ public class Done_Activity extends Activity{
 	}
 	private void initialize() {
 		// TODO Auto-generated method stub
-		imgUsername		= (ImageView)findViewById(R.id.imgUsername);
 		txtSumPrice		= (TextView)findViewById(R.id.txtSumPrice);
-		txtPaidThank	= (TextView)findViewById(R.id.txtPaidThank);
-		btnDone			= (Button)findViewById(R.id.btnDone);
-		
-//		translate();	
+
 		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		txtSumPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
 //		Editor edit = s.edit();
 //		edit.remove("SUMPRICE");
 //		edit.commit();
-	}
-	private void translate() {
-		// TODO Auto-generated method stub
-		txtPaidThank.setText(MACROS.DONE_PAID_LBL);
-		btnDone.setText(MACROS.DONE_BTN);
 	}
 	
 	public void btnDone(View view){
@@ -66,6 +50,5 @@ public class Done_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
     }
 }

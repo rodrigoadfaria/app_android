@@ -1,56 +1,33 @@
 package com.vinacredit.activity.Sale.Sending;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 
 import com.vinacredit.Resource.Library;
-import com.vinacredit.Resource.MACROS;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Receipt.Receipt_Activity;
-import com.vinacredit.activity.Sale.Signature.Signature_Activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Sending_Activity extends Activity{
 
-	private Button		btnBack, btnReceipt, btnSend;
-	private TextView	txtTitlebar;
 	private ImageView	imgSignature;
 	private String 		decryption_data;
 	private byte[]		b;
-	private ArrayList<NameValuePair> nameValuePairs;
 	
 	int serverResponseCode = 0;
     ProgressDialog dialog = null;
@@ -60,18 +37,13 @@ public class Sending_Activity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sending);
-//		initialize();
+		initialize();
 	}
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		btnBack			= (Button)findViewById(R.id.btnBack);
-		btnReceipt		= (Button)findViewById(R.id.btnReceipt);
-		//txtTitlebar	= (Button)findViewById(R.id.txtTitleBar);
-		btnSend			= (Button)findViewById(R.id.btnSend);
 		imgSignature	= (ImageView)findViewById(R.id.imgSignature);
-		
-//		translate();
+
 		
 		Bundle extras = getIntent().getExtras();
 		b = extras.getByteArray("SIGNATURE");
@@ -80,19 +52,12 @@ public class Sending_Activity extends Activity{
 		Bitmap bit = ((BitmapDrawable)imgSignature.getDrawable()).getBitmap();
 
 		ba = Base64.encodeBytes(Library.getBytesFromBitmap(bit));
-//        nameValuePairs = new ArrayList<NameValuePair>();
-//		nameValuePairs.add(new BasicNameValuePair("image", ba));
 		
 		SharedPreferences share = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 	    decryption_data = share.getString("DECRYPTION", "");
 	    
         Toast.makeText(getApplicationContext(), decryption_data, Toast.LENGTH_LONG).show();
 
-	}
-
-	private void translate() {
-		// TODO Auto-generated method stub
-		//txtTitlebar.setText(MACROS.SEND_LBL);
 	}
 
 	public void btnBack(View view){
@@ -112,7 +77,7 @@ public class Sending_Activity extends Activity{
         dialog = ProgressDialog.show(Sending_Activity.this, "", "Uploading file...", true);
         new Thread(new Runnable() {
                public void run() {                    
-            	   int response= uploadFile();                    
+            	   uploadFile();                    
                }
              }).start(); 
 	}
@@ -126,31 +91,15 @@ public class Sending_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
     }
 	
 	//Send file on server
 	public int uploadFile() {
         
-        HttpURLConnection conn = null;        
-        InputStream is;
+        HttpURLConnection conn = null;
 
             try { 
-            
-            	/* *********************** */
-//            	HttpClient httpclient = new DefaultHttpClient();
-//
-//    			final HttpPost httppost = new	HttpPost("http://satrungkim.com/demo_iphone.php");
-//
-//    			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//
-//    			HttpResponse response = httpclient.execute(httppost);
-//
-//    			HttpEntity entity = response.getEntity();    			
-//    			is = entity.getContent();
-            	
-            	/* *********************** */
-            
+           
             
               //if you are using https, make sure to import java.net.HttpsURLConnection
           	  URL url=new URL("http://satrungkim.com/demo_iphone.php");

@@ -6,7 +6,6 @@ import java.util.concurrent.TimeoutException;
 
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -27,11 +26,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.imagpay.MessageHandler;
+//imagpay
 import com.imagpay.SwipeEvent;
 import com.imagpay.SwipeHandler;
 import com.imagpay.SwipeListener;
+
+//SReader
 import com.singular.hijack.SReaderApi;
+
 import com.vinacredit.Resource.Library;
 import com.vinacredit.Resource.MACROS;
 import com.vinacredit.Resource.MySQLiteHelper;
@@ -39,7 +41,6 @@ import com.vinacredit.activity.R;
 import com.vinacredit.activity.Account.Account_Activity;
 import com.vinacredit.activity.Sale.Charge.Charge_Activity;
 import com.vinacredit.activity.Sale.Identify.Identify_Activity;
-import com.vinacredit.activity.Sale.Sending.Sending_Activity;
 
 import con.vinacredit.DTO.Account;
 
@@ -51,17 +52,14 @@ public class Sale_Activity extends Activity{
 	
 	/* *********************************** */
 	private SwipeHandler _handler;
-	private MessageHandler _msgHandler;
+//	private MessageHandler _msgHandler;
 	/* *********************************** */
 	
-    private Button 		btn_gotoAccount, btn_gotoCharge;
-    private TextView	txtTitleBar;
-    private Button		btnTakeItem, btnClear;
     private ImageView	imgUsername, imgItem;
     private TextView	txtPriceItem, txtItem;
     private ListView	listSale;
     private EditText	edtItem;
-    private ProgressDialog dialog = null;
+    private Button		btnIdentify;
     
     private String		_str_tmp = "";
     private String 		_str_number_click = "";
@@ -188,9 +186,9 @@ public class Sale_Activity extends Activity{
 
 	private Runnable display_decryptiondata = new Runnable() {
 		public void run() {
-			String txt = version + "\n\nEncryption data\n";
-			txt += encryption_data + "\n\n\nDecryption data\n";
-			txt += decryption_data + "\n";
+//			String txt = version + "\n\nEncryption data\n";
+//			txt += encryption_data + "\n\n\nDecryption data\n";
+//			txt += decryption_data + "\n";
 //			result_text.setText(txt);
 //			Toast.makeText(Sale_Activity.this, txt,Toast.LENGTH_LONG).show();			
 			//dialog.dismiss();
@@ -212,7 +210,7 @@ public class Sale_Activity extends Activity{
 		public void run() {
 			encryption_data = "";
 			decryption_data = "";
-			String txt = version + "\n";
+//			String txt = version + "\n";
 //			result_text.setText(txt);
 		}
 	};
@@ -250,7 +248,7 @@ public class Sale_Activity extends Activity{
 		public MyToast(Context context, String txt) {
 			mContext = context;
 			mHandler = new Handler(mContext.getMainLooper());
-			mToast = Toast.makeText(mContext, txt, Toast.LENGTH_SHORT);
+//			mToast = Toast.makeText(mContext, txt, Toast.LENGTH_SHORT);
 		}
 
 		public void setText(String text) {
@@ -280,19 +278,13 @@ public class Sale_Activity extends Activity{
     }
     private void initialize() {
     	// TODO Auto-generated method stub
-    	btn_gotoAccount = (Button)findViewById(R.id._btnAccount);
-    	btn_gotoCharge  = (Button)findViewById(R.id._btnSaleCharge);
-    	txtTitleBar		= (TextView)findViewById(R.id.txtTitleBar);
-    	btnTakeItem		= (Button)findViewById(R.id.btnTakeItem);
-    	btnClear		= (Button)findViewById(R.id.btnClear);
     	imgUsername		= (ImageView)findViewById(R.id.imgUsername);
     	txtPriceItem	= (TextView)findViewById(R.id.txtPriceItem);
     	listSale		= (ListView)findViewById(R.id.listSale);
     	txtItem			= (TextView)findViewById(R.id.txtItem);
     	edtItem			= (EditText)findViewById(R.id.edtItem);
     	imgItem			= (ImageView)findViewById(R.id.imgItem);
-    	/* tranlate language */
-//    	translate();
+    	btnIdentify		= (Button)findViewById(R.id.btnIdentify);
     	
     	dataItem	 = new DataItem();
     	ListdataItem = new ArrayList<DataItem>();
@@ -394,14 +386,6 @@ public class Sale_Activity extends Activity{
 		
     }
     
-    private void translate() {
-	// TODO Auto-generated method stub
-    	txtTitleBar.setText(MACROS.SALE_LBL);
-    	btn_gotoAccount.setText(MACROS.SALE_ACCOUNT);
-    	btn_gotoCharge.setText(MACROS.SALE_CHARGE);
-    	
-    }
-    
     /**
      * button account
      * @param view
@@ -473,6 +457,7 @@ public class Sale_Activity extends Activity{
     	dataItem.setStrItem(edtItem.getText().toString());
     	dataItem.setQuantityItem("1x");
     	dataItem.setPriceItem(txtItem.getText().toString());
+    	if(_str_tmp.equals("")) return;
     	if(Library.isCheckPrice(_str_tmp)){
     		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
         	saleAdapter.notifyDataSetChanged();

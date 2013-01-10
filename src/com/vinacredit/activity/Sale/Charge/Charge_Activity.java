@@ -4,7 +4,6 @@ import com.vinacredit.Resource.Library;
 import com.vinacredit.Resource.MACROS;
 import com.vinacredit.Resource.MySQLiteHelper;
 import com.vinacredit.activity.R;
-import com.vinacredit.activity.Sale.Sale_Activity;
 import com.vinacredit.activity.Sale.Receipt.Receipt_Activity;
 
 import con.vinacredit.DTO.Bill;
@@ -13,7 +12,6 @@ import con.vinacredit.DTO.SumBill;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
@@ -21,10 +19,7 @@ import android.content.Intent;
 import android.database.SQLException;
 
 public class Charge_Activity extends Activity{
-	
-    private Button btnBack;
-    private Button btnCash;
-    private TextView txtTitlebar;
+
     private TextView txtPay, txtChange, txtSumPrice;
     
     private MySQLiteHelper mDb;
@@ -41,9 +36,6 @@ public class Charge_Activity extends Activity{
     }
     private void initialize() {
     	// TODO Auto-generated method stub
-    	btnBack  		= (Button)findViewById(R.id.btnBack);
-    	btnCash  		= (Button)findViewById(R.id.btnTenderCash);
-    	txtTitlebar		= (TextView)findViewById(R.id.txtTitleBar);
     	txtPay			= (TextView)findViewById(R.id.txtPay);
     	txtChange		= (TextView)findViewById(R.id.txtChange);
     	txtSumPrice		= (TextView)findViewById(R.id.txtSumPrice);
@@ -57,8 +49,7 @@ public class Charge_Activity extends Activity{
     	txtSumPrice.setText(bundle.getString("PRICEITEM"));
     	
     	_str_Sum = txtSumPrice.getText().toString().replace(",","");
-    	
-//    	translate();
+
 
     }
     
@@ -203,11 +194,6 @@ public class Charge_Activity extends Activity{
 		}   
 	}
 }
-    private void translate() {
-	// TODO Auto-generated method stub
-    	btnCash.setText(MACROS.CHARGE_TENDER_BTN);
-    	txtTitlebar.setText(MACROS.CHARGE_LBL);
-    }
     
     @Override
     public void onBackPressed() {
@@ -218,6 +204,5 @@ public class Charge_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-//    	translate();
     }
 }
