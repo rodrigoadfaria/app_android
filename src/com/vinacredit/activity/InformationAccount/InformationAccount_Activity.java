@@ -146,6 +146,5 @@ public class InformationAccount_Activity extends Activity {
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
-    	getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 }

@@ -80,7 +80,7 @@ public class Sale_Activity extends Activity{
 	
 	private boolean mHeadsetPlugged = false;
 	
-	
+	/* code SReader audio
 	private BroadcastReceiver mHeadsetReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -104,7 +104,7 @@ public class Sale_Activity extends Activity{
 			}
 		}
 	};
-	
+	end code SReader audio*/
 	private Handler handler = new Handler();
 	SReaderApi sreader = null;
 
@@ -307,15 +307,15 @@ public class Sale_Activity extends Activity{
 		
 		if(MACROS.isReader){
 			/* code SReader */
-			am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-
-			IntentFilter iFilter = new IntentFilter();
-			iFilter.addAction(Intent.ACTION_HEADSET_PLUG);
-			iFilter.addCategory(Intent.CATEGORY_DEFAULT);
-			registerReceiver(mHeadsetReceiver, iFilter);
-			setVolumeControlStream(AudioManager.STREAM_MUSIC);
-			int maxVol = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-			am.setStreamVolume(AudioManager.STREAM_MUSIC, maxVol, 0);		
+//			am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//
+//			IntentFilter iFilter = new IntentFilter();
+//			iFilter.addAction(Intent.ACTION_HEADSET_PLUG);
+//			iFilter.addCategory(Intent.CATEGORY_DEFAULT);
+//			registerReceiver(mHeadsetReceiver, iFilter);
+//			setVolumeControlStream(AudioManager.STREAM_MUSIC);
+//			int maxVol = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//			am.setStreamVolume(AudioManager.STREAM_MUSIC, maxVol, 0);		
 			/* end code SReader */
 		} else {
 			/* code IMagPayManager */
@@ -353,7 +353,8 @@ public class Sale_Activity extends Activity{
 				public void onDisconnected(SwipeEvent event) {
 //					sendMessage("Device is disconnected!");
 //					_testFlag = true;
-//					_handler.powerOff();
+//					if()
+					_handler.powerOff();
 //					_handler.onDestroy();
 					btnIdentify.setBackgroundResource(R.drawable.card_lock);
 //					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
@@ -364,9 +365,8 @@ public class Sale_Activity extends Activity{
 //					sendMessage("Device is connected!");
 //					Toast.makeText(getApplicationContext(), "Device is connected!", Toast.LENGTH_SHORT).show();
 					btnIdentify.setBackgroundResource(R.drawable.card_unlock);
-//					_testFlag = false;
-					_handler.powerOn();
-					_handler.isReadable();
+					if(_handler.isReadable())
+						_handler.powerOn();
 					
 				}
 
@@ -675,7 +675,6 @@ public class Sale_Activity extends Activity{
     	// TODO Auto-generated method stub
     	super.onResume();
     	_handler.powerOn();
-    	getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
     
 	@Override
@@ -692,14 +691,14 @@ public class Sale_Activity extends Activity{
 	    _handler.powerOff();
 	    
 //	    sreader.Stop();
-		if (sreader != null) {
-			sreader.Stop();
-			sreader = null;
-			if (myToast != null)
-				myToast.cancel();
-//			finish();
-//			System.exit(0);
-		}
+//		if (sreader != null) {
+//			sreader.Stop();
+//			sreader = null;
+//			if (myToast != null)
+//				myToast.cancel();
+////			finish();
+////			System.exit(0);
+//		}
 	}
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
@@ -717,12 +716,12 @@ public class Sale_Activity extends Activity{
 	
 	/* code SReader */
 	
-	@Override
-	public void onDestroy() {
-		if(MACROS.isReader)
-			unregisterReceiver(mHeadsetReceiver);
-		super.onDestroy();
-	}
+//	@Override
+//	public void onDestroy() {
+//		if(MACROS.isReader)
+//			unregisterReceiver(mHeadsetReceiver);
+//		super.onDestroy();
+//	}
 
 
 	private void onSwipe() {

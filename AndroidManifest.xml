@@ -39,7 +39,8 @@
         </activity>
         <activity
             android:name=".InformationAccount.InformationAccount_Activity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity 
             android:name=".Account.Account_Activity" 
@@ -64,7 +65,8 @@
         </activity>
         <activity 
             android:name=".Sale.Sale_Activity" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity 
             android:name=".Sale.Charge.Charge_Activity" 
@@ -75,7 +77,8 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name=".Sale.Signature.Signature_Activity" >
+            android:name=".Sale.Signature.Signature_Activity" 
+            android:screenOrientation="landscape">
         </activity>
         <activity 
             android:name=".Sale.Sending.Sending_Activity" 
