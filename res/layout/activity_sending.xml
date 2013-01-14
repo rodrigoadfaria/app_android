@@ -27,7 +27,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="25dp"/>
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/btnReceipt"
@@ -49,7 +49,8 @@
         android:layout_below="@id/relativelayout_title_bar"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:src="@drawable/chomsao"/>
+        android:src="@drawable/chomsao"
+        android:contentDescription="@string/imgView"/>
     <Button 
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
@@ -57,6 +58,6 @@
         android:layout_below="@id/imgSignature"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:text="Send"
+        android:text="@string/btnSend"
         android:onClick="send_server"/>
 </RelativeLayout>

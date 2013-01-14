@@ -2,13 +2,13 @@ package com.vinacredit.activity.InformationAccount;
 
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Sale_Activity;
-import com.vinacredit.activity.SignIn.SignIn_Activity;
 import com.vinacredit.Resource.*;
 
 import con.vinacredit.DTO.Account;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -69,6 +69,7 @@ public class InformationAccount_Activity extends Activity {
 	}
 	
 	public void checking(){
+		
 		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);		
 		i.putExtra("EMAIL", edtEmail.getText().toString());
 	    if(MACROS.TEST_DATABASE) {
@@ -84,16 +85,26 @@ public class InformationAccount_Activity extends Activity {
 			    account.setImageAcc(Library.getBytesFromBitmap(photo));
 			    
 			    dbSqlite.AddAccount(account);
-			    startActivity(i);
 			    dialog.dismiss();
+			    startActivity(i);			    
 	    		finish();
-	    	} else
-	    		dialog.dismiss();
-	    		Toast.makeText(getApplicationContext(), "Enter full infor,Please", Toast.LENGTH_SHORT).show();	    	
-	    }    	
-	    startActivity(i);
-	    dialog.dismiss();
-		finish();
+	    	} else {
+	    		runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+			    		Toast.makeText(getApplicationContext(), "Enter full infor,Please", Toast.LENGTH_SHORT).show();
+					}
+				});
+	    		
+	    	}	    			    	
+	    } else {
+		    dialog.dismiss();
+		    startActivity(i);	    
+			finish();
+	    }
 	}
 	
 	public void takePhoto(View view){
@@ -106,7 +117,8 @@ public class InformationAccount_Activity extends Activity {
 				edtCompany.getText().toString() != null && edtAddress.getText().toString() != null &&
 				edtNewpass.getText().toString().length() >= 8 && 
 				edtConfirmPass.getText().toString().equals(edtNewpass.getText().toString()) &&
-				edtOldPass.getText().toString().equals(oldPass))
+				edtOldPass.getText().toString().equals(oldPass) &
+				imgUsername != null)
 			return true;
 		return false;
 	}
@@ -134,5 +146,6 @@ public class InformationAccount_Activity extends Activity {
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
+    	getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 }

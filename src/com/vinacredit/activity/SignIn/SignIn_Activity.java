@@ -58,6 +58,11 @@ public class SignIn_Activity extends Activity{
 		}).start();
 	}
 	
+	
+	public void btnDemo(View v){
+		edtUsername.setText("hung@gmail.com");
+		edtPassword.setText("vina");
+	}
 	public void login(){
 		String email = edtUsername.getText().toString();
 		String pass  = edtPassword.getText().toString();
@@ -66,13 +71,27 @@ public class SignIn_Activity extends Activity{
 		/*----set flag -----*/
 		if(MACROS.TEST_SIGNIN_BL){		
 			if(email.equals("")){
-				dialog.dismiss();
-				Toast.makeText(getApplicationContext(), "Enter email,please!", Toast.LENGTH_SHORT).show();				
-				return;
+				runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+						Toast.makeText(getApplicationContext(), "Enter email,please!", Toast.LENGTH_SHORT).show();				
+						return;
+					}
+				});
 			} else if(pass.equals("")){
-				dialog.dismiss();
-				Toast.makeText(getApplicationContext(), "Enter pass,please!", Toast.LENGTH_SHORT).show();				
-				return;
+				runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+						Toast.makeText(getApplicationContext(), "Enter pass,please!", Toast.LENGTH_SHORT).show();				
+						return;
+					}
+				});
 			}
 			if(jsonDao.login(url, email, pass)) {
 				if(dbaccount.getAccountCount(email)) {
@@ -92,8 +111,15 @@ public class SignIn_Activity extends Activity{
 					finish();
 				}
 			} else {
-				dialog.dismiss();
-				Toast.makeText(getApplicationContext(), "Login unsuccessful", Toast.LENGTH_LONG).show();				
+				runOnUiThread(new Runnable() {					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+						Toast.makeText(getApplicationContext(), "Login unsuccessful", Toast.LENGTH_LONG).show();
+					}
+				});
+								
 			}
 		}
 		else {

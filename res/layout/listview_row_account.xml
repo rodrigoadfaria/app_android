@@ -26,7 +26,7 @@
         android:layout_toRightOf="@+id/imgList"
         android:text="@string/txtTitle"
         android:textColor="#040404"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:typeface="sans" />
     
     <!-- Rightend Arrow -->
@@ -48,7 +48,7 @@
         android:layout_centerVertical="true"
         android:gravity="right"
         android:text="@string/txtSubtitle"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"/>
 
 

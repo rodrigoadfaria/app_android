@@ -56,7 +56,7 @@ public class Sending_Activity extends Activity{
 		SharedPreferences share = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 	    decryption_data = share.getString("DECRYPTION", "");
 	    
-        Toast.makeText(getApplicationContext(), decryption_data, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), decryption_data, Toast.LENGTH_LONG).show();
 
 	}
 
@@ -74,7 +74,7 @@ public class Sending_Activity extends Activity{
 	
 	public void send_server(View v){
 		
-        dialog = ProgressDialog.show(Sending_Activity.this, "", "Uploading file...", true);
+        dialog = ProgressDialog.show(Sending_Activity.this, "", "Sending...", true);
         new Thread(new Runnable() {
                public void run() {                    
             	   uploadFile();                    
@@ -105,7 +105,7 @@ public class Sending_Activity extends Activity{
           	  URL url=new URL("http://satrungkim.com/demo_iphone.php");
 
           	  //you need to encode ONLY the values of the parameters
-          	  String param="string_1=" + URLEncoder.encode("vinacredit1","UTF-8")+
+          	  String param="string_1=" + URLEncoder.encode("vinacredit_android","UTF-8")+
           	  "&string_2="+URLEncoder.encode(decryption_data,"UTF-8")+
           	  "&string_3="+URLEncoder.encode("demo","UTF-8") + "&image="+URLEncoder.encode(ba,"UTF-8");
           	  
@@ -135,8 +135,8 @@ public class Sending_Activity extends Activity{
                   runOnUiThread(new Runnable() {
                        public void run() {
 //                           tv.setText("File Upload Completed.");
-                           Toast.makeText(Sending_Activity.this, serverResponseMessage + "\n" + "http://www.satrungkim.com/upload/iphone/vinacredit1.txt" + "\n" 
-                        		   			+ "http://www.satrungkim.com/upload/iphone/vinacredit_android.jpg", Toast.LENGTH_LONG).show();
+                           Toast.makeText(Sending_Activity.this, serverResponseMessage + "\n" + "http://www.satrungkim.com/upload/iphone/vinacredit_android.txt" + "\n" 
+                        		   			+ "http://www.satrungkim.com/upload/iphone/vinacredit_android.jpg", Toast.LENGTH_SHORT).show();
                        }
                    });  
               }

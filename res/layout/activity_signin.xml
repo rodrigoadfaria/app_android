@@ -18,7 +18,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="25dp"/>        
+            android:textSize="25sp"/>        
     </RelativeLayout>
     <EditText
         android:id="@+id/edtUsername"
@@ -54,5 +54,12 @@
         android:text="@string/btnWrongPass" 
         android:layout_gravity="center_horizontal"
         android:onClick="btnWrongPass"/>
+    <Button
+        android:id="@+id/btnDemo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Account demo" 
+        android:layout_gravity="center_horizontal"
+        android:onClick="btnDemo"/>
 
 </LinearLayout>

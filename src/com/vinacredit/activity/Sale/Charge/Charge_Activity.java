@@ -174,26 +174,37 @@ public class Charge_Activity extends Activity{
 		txtPay.setText(_str_tmp);
 	Log.i("Debug Charge","_str_tmp :" + _str_tmp);
 		 
-	
-	_str_Change = String.valueOf(Integer.parseInt(_str_tmp) - Integer.parseInt(_str_Sum));
-	txtChange.setText(Library.addDotNumber(_str_Change));
+	Double dou = Double.parseDouble(_str_tmp) - Double.parseDouble(_str_Sum);
+	Integer i = dou.intValue();
+	_str_Change = Library.addDotNumber(String.valueOf(i));
+	String as = _str_Change.replaceAll("-,", "-");
+	txtChange.setText(as);
 }
     public void clearClick(View view){
 	if(view.getId() == R.id.btn3){
 		if(_str_tmp.length() < 1){
 			txtPay.setText("0");
-		} else {
-			_str_tmp = _str_tmp.substring(0,_str_tmp.length()-1);
-			if(_str_tmp.length() > 3)
-				txtPay.setText(Library.addDotNumber(_str_tmp));
-			else
-				txtPay.setText(_str_tmp);
-			if(_str_tmp.length() < 1){
-				txtPay.setText("0");
-    		}
-		}   
-	}
-}
+		} else 
+			{
+				_str_tmp = _str_tmp.substring(0,_str_tmp.length()-1);
+				if(_str_tmp.length() > 3)
+					txtPay.setText(Library.addDotNumber(_str_tmp));
+				else
+					txtPay.setText(_str_tmp);
+				if(_str_tmp.length() < 1){
+					txtPay.setText("0");
+	    		}
+			}   
+		}
+//	if(_str_tmp.toString().length() < 0) {
+//		txtChange.setText("0");
+//		return;
+//	}		
+//	else {
+//		_str_Change = String.valueOf(Integer.parseInt(_str_tmp) - Integer.parseInt(_str_Sum));
+//		txtChange.setText(Library.addDotNumber(_str_Change));
+//	}	
+    }
     
     @Override
     public void onBackPressed() {

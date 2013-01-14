@@ -5,8 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#EEEEEE"
-    	android:layout_marginLeft="1.5dp"
-    	android:layout_marginRight="1.5dp">
+    	android:layout_margin="1.5dp">
 
 		<!-- Image Item-->
             <ImageView 
@@ -29,7 +28,7 @@
         android:gravity="center_vertical"
         android:text="@string/txtTitle"
         android:singleLine="true"
-        android:textSize="22dip" />
+        android:textSize="22sp" />
     
     <!-- Quantity Item -->
     <TextView 
@@ -39,7 +38,7 @@
         android:layout_toRightOf="@id/txtItem"
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
-        android:textSize="22dip"
+        android:textSize="22sp"
         android:text="@string/QuantityItem"/>
     
     <!-- Button plus -->
@@ -72,6 +71,6 @@
         android:layout_toLeftOf="@+id/btnMinus"
         android:gravity="right|center_vertical"
         android:text="@string/txtSubtitle"
-        android:textSize="22dip" />
+        android:textSize="22sp" />
 
 </RelativeLayout>

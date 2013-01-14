@@ -134,7 +134,7 @@ public class MySQLiteHelper
     	if(cursor.getCount() > 0)
     		return true;
     	cursor.close();
-    	close();    	
+    	close();
     	return false;
     }
     

@@ -43,10 +43,10 @@ public class Receipt_Activity extends Activity{
 //	        m.addAttachment("/sdcard/filelocation"); 
 	 
 	        if(m.send()) { 
-	          Toast.makeText(Receipt_Activity.this, "Email was sent successfully.", Toast.LENGTH_LONG).show(); 
+	          Toast.makeText(Receipt_Activity.this, "Email was sent successfully.", Toast.LENGTH_SHORT).show(); 
 	          startActivity(i);
 	        } else { 
-	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_LONG).show(); 
+	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_SHORT).show(); 
 	        } 
 	      } catch(Exception e) { 
 	        //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show(); 
@@ -56,7 +56,7 @@ public class Receipt_Activity extends Activity{
 	    }
 	
 	public void btnSkip(View view){
-		Toast.makeText(getApplicationContext(), "Skip send email", Toast.LENGTH_LONG ).show();
+		Toast.makeText(getApplicationContext(), "Skip send email", Toast.LENGTH_SHORT ).show();
 		Intent intent = new Intent(getApplicationContext(),Done_Activity.class);
 		startActivity(intent);
 		finish();

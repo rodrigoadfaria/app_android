@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,6 +29,7 @@ import android.widget.Toast;
 import com.imagpay.SwipeEvent;
 import com.imagpay.SwipeHandler;
 import com.imagpay.SwipeListener;
+import com.imagpay.utils.AudioUtils;
 
 //SReader
 import com.singular.hijack.SReaderApi;
@@ -119,7 +119,7 @@ public class Sale_Activity extends Activity{
 		public void run() {
 			String plug_str = mHeadsetPlugged ? "plugin" : "unplugin";
 			Toast.makeText(Sale_Activity.this, "Headset " + plug_str,
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 			if (sreader != null) {
 				CloseSinWave();
 //				finish();
@@ -151,7 +151,7 @@ public class Sale_Activity extends Activity{
 	private Runnable timeout_ack = new Runnable() {
 		public void run() {
 			Toast.makeText(Sale_Activity.this, "Timeout!!!",
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 		}
 	};
 
@@ -159,7 +159,7 @@ public class Sale_Activity extends Activity{
 		public void run() {
 //			result_text.setText(R.string.unknown_error);
 			Toast.makeText(Sale_Activity.this, "unknown_error",
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 		}
 	};
 
@@ -168,7 +168,7 @@ public class Sale_Activity extends Activity{
 			String txt = version + "\n";
 //			result_text.setText(txt);
 			Toast.makeText(Sale_Activity.this, txt,
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 //			if(txt.length() > 0)
 //				handler.post(swipe);
 		}
@@ -180,7 +180,7 @@ public class Sale_Activity extends Activity{
 			txt += encryption_data + "\n\n\n";
 //			result_text.setText(txt);
 			Toast.makeText(Sale_Activity.this, txt,
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 		}
 	};
 
@@ -351,7 +351,9 @@ public class Sale_Activity extends Activity{
 				public void onDisconnected(SwipeEvent event) {
 //					sendMessage("Device is disconnected!");
 //					_testFlag = true;
-//					_handler.powerOff();
+					AudioUtils.CHANNEL_TWO = 0;
+					_handler.powerOff();
+//					_handler.onDestroy();
 					btnIdentify.setBackgroundResource(R.drawable.card_lock);
 //					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
 				}
@@ -378,6 +380,7 @@ public class Sale_Activity extends Activity{
 				public void onStopped(SwipeEvent event) {
 //					if (!_testFlag)
 //						sendMessage("Device is stopped");
+					_handler.powerOff();
 					btnIdentify.setBackgroundResource(R.drawable.card_unlock);
 //					Toast.makeText(getApplicationContext(), "Device is stopped!", Toast.LENGTH_SHORT).show();
 				}
@@ -477,7 +480,7 @@ public class Sale_Activity extends Activity{
 		}    	
 	    
     	/*------ reset variable ------*/
-    	imgItem.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.chomsao));
+    	imgItem.setImageResource(R.drawable.chomsao);
     	bpPhoto = null;
     	_str_tmp="";
     	txtItem.setText("0");
@@ -670,7 +673,6 @@ public class Sale_Activity extends Activity{
     	// TODO Auto-generated method stub
     	super.onResume();
     	_handler.powerOn();
-//    	_handler.i
     	getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
     
@@ -715,7 +717,8 @@ public class Sale_Activity extends Activity{
 	
 	@Override
 	public void onDestroy() {
-		unregisterReceiver(mHeadsetReceiver);
+		if(MACROS.isReader)
+			unregisterReceiver(mHeadsetReceiver);
 		super.onDestroy();
 	}
 

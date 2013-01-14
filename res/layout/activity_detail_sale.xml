@@ -27,7 +27,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="25dp"/>
+            android:textSize="25sp"/>
     </RelativeLayout>  
     <ImageView 
          android:id="@+id/imgUsername"
@@ -52,7 +52,7 @@
         android:layout_alignParentLeft="true"
         android:text="@string/txtTotal"
         android:layout_margin="5dp"
-        android:textSize="24dip"
+        android:textSize="24sp"
         android:textColor="#FFFFFF" />
      <TextView 
          android:id="@+id/txtPriceTotal"
@@ -63,7 +63,7 @@
          android:layout_alignBaseline="@+id/txtTotal"
          android:text="@string/txtSumPrice"
          android:layout_margin="5dp"
-         android:textSize="24dip"
+         android:textSize="24sp"
          android:textColor="#FFFFFF"
          android:textStyle="bold"/>
 

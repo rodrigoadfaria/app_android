@@ -27,7 +27,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="25dp"/>
+            android:textSize="25sp"/>
     </RelativeLayout>
     
     <TextView 
@@ -90,6 +90,7 @@
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_dot_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -99,6 +100,8 @@
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn1"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_0_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -109,6 +112,8 @@
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn2"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="clearClick"
         android:src="@drawable/button_navigation_clear_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -120,6 +125,7 @@
         android:layout_height="45dp"
         android:layout_above="@id/btn1"
         android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_7_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -130,6 +136,8 @@
         android:layout_height="45dp"
         android:layout_above="@id/btn2"
         android:layout_toRightOf="@id/btn4"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_8_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -141,6 +149,8 @@
         android:layout_alignBaseline="@+id/btn5"
         android:layout_alignBottom="@+id/btn5"
         android:layout_alignLeft="@+id/btn3"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_9_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -152,6 +162,7 @@
         android:layout_height="45dp"
         android:layout_above="@id/btn4"
         android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_4_pressed"
         android:contentDescription="@string/imgView"/>
@@ -162,6 +173,8 @@
         android:layout_height="45dp"
         android:layout_above="@id/btn5"
         android:layout_toRightOf="@id/btn4"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_5_pressed"
         android:contentDescription="@string/imgView"/>
@@ -172,6 +185,8 @@
         android:layout_height="45dp"
         android:layout_below="@+id/btn11"
         android:layout_toRightOf="@+id/btn8"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_6_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -183,6 +198,7 @@
         android:layout_height="45dp"
         android:layout_above="@id/btn7"
         android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_1_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -193,6 +209,8 @@
         android:layout_height="45dp"
         android:layout_above="@id/btn8"
         android:layout_toRightOf="@id/btn7"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_2_pressed" 
         android:contentDescription="@string/imgView"/>
@@ -203,6 +221,8 @@
         android:layout_height="45dp"
         android:layout_above="@+id/btn8"
         android:layout_toRightOf="@+id/btn8"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
         android:onClick="numClick"
         android:src="@drawable/button_navigation_3_pressed"
         android:contentDescription="@string/imgView"/>

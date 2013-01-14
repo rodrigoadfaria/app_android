@@ -14,6 +14,7 @@ public class Done_Activity extends Activity{
 
 	private TextView 	txtSumPrice;
 	static String email;
+	private SharedPreferences s;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -25,17 +26,17 @@ public class Done_Activity extends Activity{
 		// TODO Auto-generated method stub
 		txtSumPrice		= (TextView)findViewById(R.id.txtSumPrice);
 
-		SharedPreferences s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
+		s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
 		txtSumPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
+		email = s.getString("EMAIL", "NOTHING");
 //		Editor edit = s.edit();
 //		edit.remove("SUMPRICE");
 //		edit.commit();
 	}
 	
-	public void btnDone(View view){
-		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
-		SharedPreferences share = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
-		intent.putExtra("EMAIL",share.getString("EMAIL", "NOTHING"));
+	public void btnDone(View view){	
+		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);	
+		intent.putExtra("EMAIL",email);
 		startActivity(intent);
 		finish();
 	}
