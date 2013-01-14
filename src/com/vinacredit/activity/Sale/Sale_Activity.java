@@ -30,6 +30,7 @@ import com.imagpay.SwipeEvent;
 import com.imagpay.SwipeHandler;
 import com.imagpay.SwipeListener;
 import com.imagpay.utils.AudioUtils;
+import com.imagpay.utils.DeviceUtils;
 
 //SReader
 import com.singular.hijack.SReaderApi;
@@ -323,6 +324,7 @@ public class Sale_Activity extends Activity{
 			_handler.setDownloadEnvironment(true);
 			_handler.setUploadEnvironment(true);
 			_handler.addSwipeListener(new SwipeListener() {
+								
 				@Override
 				public void onReadData(SwipeEvent event) {
 				}
@@ -351,8 +353,7 @@ public class Sale_Activity extends Activity{
 				public void onDisconnected(SwipeEvent event) {
 //					sendMessage("Device is disconnected!");
 //					_testFlag = true;
-					AudioUtils.CHANNEL_TWO = 0;
-					_handler.powerOff();
+//					_handler.powerOff();
 //					_handler.onDestroy();
 					btnIdentify.setBackgroundResource(R.drawable.card_lock);
 //					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
@@ -364,14 +365,15 @@ public class Sale_Activity extends Activity{
 //					Toast.makeText(getApplicationContext(), "Device is connected!", Toast.LENGTH_SHORT).show();
 					btnIdentify.setBackgroundResource(R.drawable.card_unlock);
 //					_testFlag = false;
-					_handler.isReadable();
 					_handler.powerOn();
+					_handler.isReadable();
+					
 				}
 
 				@Override
 				public void onStarted(SwipeEvent event) {
 //					if (!_testFlag)
-//						sendMessage("Device is started");
+//						sendMessage("Device is started");					
 					btnIdentify.setBackgroundResource(R.drawable.swipe_card);
 //					Toast.makeText(getApplicationContext(), "Device is started!", Toast.LENGTH_SHORT).show();
 				}
@@ -380,7 +382,7 @@ public class Sale_Activity extends Activity{
 				public void onStopped(SwipeEvent event) {
 //					if (!_testFlag)
 //						sendMessage("Device is stopped");
-					_handler.powerOff();
+//					_handler.powerOff();
 					btnIdentify.setBackgroundResource(R.drawable.card_unlock);
 //					Toast.makeText(getApplicationContext(), "Device is stopped!", Toast.LENGTH_SHORT).show();
 				}
