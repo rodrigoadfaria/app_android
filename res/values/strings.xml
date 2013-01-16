@@ -56,6 +56,7 @@
     <string name="btnSaleCharge">Charge</string>
     <string name="QuantityItem">1x</string>
     <string name="txtItem">0</string>
+    <string name="txtSwipeCard">Swipe Card</string>
     
     <!-- string of Sales History page -->
     <string name="btnAccount">Account</string>
@@ -85,6 +86,9 @@
     <string name="txtSumPrice">0</string>
     <string name="btnTenderCash">Tender Cash</string>
     <string name="btnSkip">Skip</string>
+    <string name="txtLabelPayment">Total Payment</string>
+    <string name="txtCashPaid">Cash Paid</string>
+    <string name="txtChangePaid">Change</string>
     
     <!-- string of Identify page -->
     <string name="txtTitleBarIdentify">Identify</string>

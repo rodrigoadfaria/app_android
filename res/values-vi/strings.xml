@@ -56,6 +56,7 @@
     <string name="btnSaleCharge">Thanh Toán</string>
     <string name="QuantityItem">1x</string>
     <string name="txtItem">0</string>
+    <string name="txtSwipeCard">Quét thẻ</string>
     
     <!-- string of Sales History page -->
     <string name="btnAccount">Tài khoản</string>
@@ -86,6 +87,9 @@
     <string name="txtSumPrice">0</string>
     <string name="btnTenderCash">Thanh toán</string>
     <string name="btnSkip">Bỏ qua</string>
+    <string name="txtLabelPayment">Tổng Thanh Toán</string>
+    <string name="txtCashPaid">Tiền mặt</string>
+    <string name="txtChangePaid">Tiền thừa</string>
     
     <!-- string of Identify page -->
     <string name="txtTitleBarIdentify">Xác nhận</string>

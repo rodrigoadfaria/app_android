@@ -104,9 +104,11 @@ public class Mail extends javax.mail.Authenticator {
       Transport.send(msg); 
  
       return true; 
-    } else { 
-      return false; 
     } 
+    else 
+	    { 
+	      return false; 
+	    } 
   } 
  
   public void addAttachment(String filename) throws Exception { 

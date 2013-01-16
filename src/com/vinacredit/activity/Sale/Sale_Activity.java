@@ -6,10 +6,8 @@ import java.util.concurrent.TimeoutException;
 
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
@@ -17,7 +15,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,8 +26,6 @@ import android.widget.Toast;
 import com.imagpay.SwipeEvent;
 import com.imagpay.SwipeHandler;
 import com.imagpay.SwipeListener;
-import com.imagpay.utils.AudioUtils;
-import com.imagpay.utils.DeviceUtils;
 
 //SReader
 import com.singular.hijack.SReaderApi;
@@ -57,7 +52,7 @@ public class Sale_Activity extends Activity{
 	/* *********************************** */
 	
     private ImageView	imgUsername, imgItem;
-    private TextView	txtPriceItem, txtItem;
+    private TextView	txtPriceItem, txtItem, txtSwipeCard;
     private ListView	listSale;
     private EditText	edtItem;
     private Button		btnIdentify;
@@ -281,6 +276,7 @@ public class Sale_Activity extends Activity{
     	// TODO Auto-generated method stub
     	imgUsername		= (ImageView)findViewById(R.id.imgUsername);
     	txtPriceItem	= (TextView)findViewById(R.id.txtPriceItem);
+    	txtSwipeCard	= (TextView)findViewById(R.id.txtSwipeCard);
     	listSale		= (ListView)findViewById(R.id.listSale);
     	txtItem			= (TextView)findViewById(R.id.txtItem);
     	edtItem			= (EditText)findViewById(R.id.edtItem);
@@ -289,6 +285,7 @@ public class Sale_Activity extends Activity{
     	
     	dataItem	 = new DataItem();
     	ListdataItem = new ArrayList<DataItem>();
+    	
     	saleAdapter  = new SaleAdapter(this, ListdataItem);
     	listSale.setAdapter(saleAdapter);
     	
@@ -356,6 +353,8 @@ public class Sale_Activity extends Activity{
 //					if()
 					_handler.powerOff();
 //					_handler.onDestroy();
+					btnIdentify.setVisibility(View.VISIBLE);
+					txtSwipeCard.setVisibility(View.GONE);
 					btnIdentify.setBackgroundResource(R.drawable.card_lock);
 //					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
 				}
@@ -374,7 +373,8 @@ public class Sale_Activity extends Activity{
 				public void onStarted(SwipeEvent event) {
 //					if (!_testFlag)
 //						sendMessage("Device is started");					
-					btnIdentify.setBackgroundResource(R.drawable.swipe_card);
+					btnIdentify.setVisibility(View.GONE);
+					txtSwipeCard.setVisibility(View.VISIBLE);
 //					Toast.makeText(getApplicationContext(), "Device is started!", Toast.LENGTH_SHORT).show();
 				}
 
@@ -506,7 +506,6 @@ public class Sale_Activity extends Activity{
     	Integer ip = b.intValue();
     	_str_total_price = String.valueOf(ip);
     	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
-    	
     	saleAdapter.notifyDataSetChanged();
     }
     

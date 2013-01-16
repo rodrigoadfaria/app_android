@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.vinacredit.activity.Welcome.Welcome_Activity"
+            android:name=".Splash.Splash_Activity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,9 @@
         </activity>
 
         <!-- Add another activity -->
+        <activity 
+            android:name=".Welcome.Welcome_Activity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".SignIn.SignIn_Activity"
             android:screenOrientation="portrait" >
@@ -70,7 +73,8 @@
         </activity>
         <activity 
             android:name=".Sale.Charge.Charge_Activity" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden">
         </activity>
         <activity 
             android:name=".Sale.Identify.Identify_Activity" 

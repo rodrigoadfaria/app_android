@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -53,6 +52,7 @@ public class Signature_Activity extends Activity{
 		initialize();
 	}
 
+	@SuppressWarnings({ "deprecation"})
 	private void initialize() {
 		// TODO Auto-generated method stub
 		btnSending		= (Button)findViewById(R.id._btnSending);

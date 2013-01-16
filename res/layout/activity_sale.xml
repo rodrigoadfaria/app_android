@@ -97,14 +97,25 @@
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
             android:onClick="btnIdentify"/>
+        <TextView 
+            android:id="@+id/txtSwipeCard"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:text="@string/txtSwipeCard"
+            android:visibility="gone"
+            android:gravity="center"/>
         <Button 
             android:id="@+id/btnClear"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="2dp"
-            android:background="@drawable/recyclebin"
+            android:text="@string/btnClear"
+            android:textSize="8sp"
             android:onClick="clear"/>         
     </RelativeLayout>
         <RelativeLayout 
@@ -145,7 +156,8 @@
 		        android:hint="@string/txtTitle"
 		        android:singleLine="true"
 		        android:textSize="20sp"
-		        android:inputType="textPersonName"/>
+		        android:inputType="textPersonName"
+		        android:imeOptions="actionDone"/>
             
             <!-- Button add -->
 		    <Button        
@@ -165,7 +177,7 @@
 		        android:layout_toLeftOf="@+id/btnAdd"
 		        android:gravity="right|center_vertical"
 		        android:layout_centerVertical="true"
-		        android:textSize="30sp"
+		        android:textSize="35sp"
 		        android:singleLine="true"
 		        android:text="@string/txtItem" />
         </RelativeLayout>

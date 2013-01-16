@@ -36,6 +36,13 @@ public class WrongPass_Activity extends Activity{
 	 * @param view
 	 */
 	public void btnSend(View view){
+	      if(edtEmail.getText().toString().equals("")) {
+	    	  Toast.makeText(WrongPass_Activity.this, "Enter email,Please!", Toast.LENGTH_SHORT).show(); 
+	    	  return;
+	      } else if(!edtEmail.getText().toString().contains("@") || !edtEmail.getText().toString().contains(".com")) {
+	    	  Toast.makeText(WrongPass_Activity.this, "Email incorrect,enter again.", Toast.LENGTH_SHORT).show(); 
+	    	  return;
+	      }
 		Toast.makeText(getApplicationContext(), "Sending email", Toast.LENGTH_LONG).show();
 	}
     @Override

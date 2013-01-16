@@ -11,7 +11,10 @@ import con.vinacredit.DTO.SumBill;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
@@ -20,7 +23,8 @@ import android.database.SQLException;
 
 public class Charge_Activity extends Activity{
 
-    private TextView txtPay, txtChange, txtSumPrice;
+    private TextView 	txtChange, txtSumPrice;
+    private EditText	txtPay;
     
     private MySQLiteHelper mDb;
     private SumBill			sumBill;
@@ -36,7 +40,7 @@ public class Charge_Activity extends Activity{
     }
     private void initialize() {
     	// TODO Auto-generated method stub
-    	txtPay			= (TextView)findViewById(R.id.txtPay);
+    	txtPay			= (EditText)findViewById(R.id.txtPay);
     	txtChange		= (TextView)findViewById(R.id.txtChange);
     	txtSumPrice		= (TextView)findViewById(R.id.txtSumPrice);
     	
@@ -51,6 +55,14 @@ public class Charge_Activity extends Activity{
     	_str_Sum = txtSumPrice.getText().toString().replace(",","");
 
 
+    	txtPay.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				// TODO Auto-generated method stub
+				return true;
+			}
+		});
     }
     
     public void btnBack(View view){
