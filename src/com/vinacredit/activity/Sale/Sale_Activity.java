@@ -13,15 +13,11 @@ import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,11 +56,7 @@ public class Sale_Activity extends Activity{
     private TextView	txtPriceItem, txtSwipeCard;
     private ListView	listSale;
     private Button		btnIdentify;
-    
-    
-    private View 		convertView;
-    private EditText	edtItem;
-    
+
     
     private String		_str_tmp = "";
     private String 		_str_number_click = "";
@@ -290,33 +282,8 @@ public class Sale_Activity extends Activity{
     	txtPriceItem	= (TextView)findViewById(R.id.txtPriceItem);
     	txtSwipeCard	= (TextView)findViewById(R.id.txtSwipeCard);
     	listSale		= (ListView)findViewById(R.id.listSale);
-    	btnIdentify		= (Button)findViewById(R.id.btnIdentify);
-    	
-//    	LayoutInflater inflater = LayoutInflater.from(this);
-//		convertView = inflater.inflate(R.layout.sale_add_item, null);
-//		edtItem		=(EditText)convertView.findViewById(R.id.edtItem);
-//		
-//		edtItem.addTextChangedListener(new TextWatcher() {
-//			
-//			@Override
-//			public void onTextChanged(CharSequence s, int start, int before, int count) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void beforeTextChanged(CharSequence s, int start, int count,
-//					int after) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void afterTextChanged(Editable s) {
-//				// TODO Auto-generated method stub
-//				ListdataItem.get(0).setStrItem(s.toString());
-//			}
-//		});
+    	btnIdentify		= (Button)findViewById(R.id.btnIdentify);    	
+
     	
     	
     	dataItem	 = new DataItem();

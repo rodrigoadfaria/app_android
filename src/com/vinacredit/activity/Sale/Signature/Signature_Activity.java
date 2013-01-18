@@ -91,7 +91,7 @@ public class Signature_Activity extends Activity{
 	    Intent intent = new Intent(getApplicationContext(),Sending_Activity.class);
 	    intent.putExtra("SIGNATURE", Library.getBytesFromBitmap(mBitmap));
 	    startActivity(intent);
-	    mSignature.save(mView);
+//	    mSignature.save(mView);
 	}
  
 	public void Clear(View v){

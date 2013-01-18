@@ -14,6 +14,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/camera"
+        android:background="@drawable/bg"
         android:contentDescription="@string/imgView"
         android:layout_marginLeft="1.5dp"
         android:onClick="takeItem"/>
@@ -41,8 +42,7 @@
         android:layout_height="30dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/x"
-        
+        android:background="@drawable/x"        
         android:onClick="DeleteItem" />
     
     <!-- Button Plus -->
