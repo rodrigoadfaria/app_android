@@ -6,17 +6,9 @@ public class DataItem {
 	
 	private Bitmap			imgItem;
 	private String 			strItem;
-	private String			quantityItem;
 	private String			priceItem;
-	private int				qtyItem = 1;
 	
-	
-	public int getQtyItem() {
-		return qtyItem;
-	}
-	public void setQtyItem(int qtyItem) {
-		this.qtyItem = qtyItem;
-	}
+
 	public Bitmap getImgItem() {
 		return imgItem;
 	}
@@ -29,12 +21,7 @@ public class DataItem {
 	public void setStrItem(String strItem) {
 		this.strItem = strItem;
 	}
-	public String getQuantityItem() {
-		return quantityItem;
-	}
-	public void setQuantityItem(String quantityItem) {
-		this.quantityItem = quantityItem;
-	}
+
 	public String getPriceItem() {
 		return priceItem;
 	}
@@ -44,10 +31,9 @@ public class DataItem {
 	
 	public DataItem(){}
 	
-	public DataItem(Bitmap imgItem, String strItem, String quantityItem, String priceItem){
+	public DataItem(Bitmap imgItem, String strItem, String priceItem){
 		this.imgItem 		= imgItem;
 		this.strItem	 	= strItem;
-		this.quantityItem 	= quantityItem;
 		this.priceItem		= priceItem;
 	}
 

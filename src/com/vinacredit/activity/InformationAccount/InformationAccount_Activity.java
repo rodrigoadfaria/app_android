@@ -136,8 +136,17 @@ public class InformationAccount_Activity extends Activity {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == CAMERA_REQUEST) {
-            photo = (Bitmap) data.getExtras().get("data");
-            imgUsername.setImageBitmap(photo);
+			if(resultCode == RESULT_OK){
+				if(data != null){
+					photo = (Bitmap) data.getExtras().get("data");
+		            imgUsername.setImageBitmap(photo);
+				} else 
+					Toast.makeText(getApplicationContext(), "No image.", Toast.LENGTH_SHORT).show();
+			}
+			if(resultCode == RESULT_CANCELED){
+				Toast.makeText(getApplicationContext(), "Picture could not be taken.", Toast.LENGTH_SHORT).show();
+			}
+            
 		}
 	}
 	

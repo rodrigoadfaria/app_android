@@ -77,40 +77,32 @@
     <RelativeLayout 
         android:id="@+id/relative2"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:background="#EEEEEE"
         android:layout_above="@id/btn11"
-        android:layout_margin="1dp">
-        <Button 
-            android:id="@+id/btnTakeItem"
-            android:background="@android:drawable/ic_menu_camera"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:onClick="takeItem"
-            android:layout_marginLeft="2dp"/>
+        android:layout_margin="1dp">        
         <Button 
             android:id="@+id/btnIdentify"
             android:background="@drawable/card_lock"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerInParent="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
             android:onClick="btnIdentify"/>
         <TextView 
             android:id="@+id/txtSwipeCard"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_centerInParent="true"
             android:layout_centerVertical="true"
             android:textStyle="bold"
             android:text="@string/txtSwipeCard"
             android:visibility="gone"
+            android:layout_marginLeft="2dp"
             android:gravity="center"/>
         <Button 
             android:id="@+id/btnClear"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="2dp"
@@ -128,70 +120,18 @@
         android:layout_marginLeft="1.5dp"
         android:layout_marginRight="1.5dp"
         android:layout_marginTop="1dp">
-        <RelativeLayout 
-            android:id="@+id/linear1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#EEEEEE"
-        	android:layout_margin="1.5dp">
-        	
-            <!-- Image Item-->
-            <ImageView 
-                android:id="@+id/imgItem"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/chomsao"
-                android:contentDescription="@string/imgView"
-                android:scaleType="fitXY"
-                android:layout_marginLeft="1dp"/>
-            
-            <!-- Name item  -->
-            <EditText 
-                android:id="@+id/edtItem"
-		        android:layout_width="60dp"
-		        android:layout_height="40dp"
-		        android:layout_marginLeft="5dp"
-		        android:layout_toRightOf="@id/imgItem"
-		        android:background="@drawable/bg"
-		        android:hint="@string/txtTitle"
-		        android:singleLine="true"
-		        android:textSize="20sp"
-		        android:inputType="textPersonName"
-		        android:imeOptions="actionDone"/>
-            
-            <!-- Button add -->
-		    <Button        
-		        android:id="@+id/btnAdd"
-		        android:background="@drawable/add"
-		        android:layout_width="40dp"
-		        android:layout_height="40dp"
-		        android:layout_alignParentRight="true"
-		        android:layout_centerVertical="true"
-		        android:onClick="AddItem"/>
-		    
-		   	<!-- Price item -->
-		    <TextView
-		        android:id="@+id/txtItem"
-		        android:layout_width="wrap_content"
-		        android:layout_height="40dp"
-		        android:layout_toLeftOf="@+id/btnAdd"
-		        android:gravity="right|center_vertical"
-		        android:layout_centerVertical="true"
-		        android:textSize="35sp"
-		        android:singleLine="true"
-		        android:text="@string/txtItem" />
-        </RelativeLayout>
 		<View
 		    android:layout_width="fill_parent"
 		    android:layout_height="1dip"
-		    android:layout_below="@id/linear1"
+		    android:layout_below="@id/relative1"
 		    android:background="#FFFAF0" />
         <ListView
             android:id="@+id/listSale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linear1"
-            android:layout_margin="1.5dp" >
+            android:layout_below="@+id/relative1"
+            android:layout_margin="1.5dp"
+            android:overScrollMode="never" >
 		</ListView>        
     </RelativeLayout>   
     

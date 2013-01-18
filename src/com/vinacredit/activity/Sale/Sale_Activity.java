@@ -13,8 +13,13 @@ import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,11 +56,15 @@ public class Sale_Activity extends Activity{
 //	private MessageHandler _msgHandler;
 	/* *********************************** */
 	
-    private ImageView	imgUsername, imgItem;
-    private TextView	txtPriceItem, txtItem, txtSwipeCard;
+    private ImageView	imgUsername;
+    private TextView	txtPriceItem, txtSwipeCard;
     private ListView	listSale;
-    private EditText	edtItem;
     private Button		btnIdentify;
+    
+    
+    private View 		convertView;
+    private EditText	edtItem;
+    
     
     private String		_str_tmp = "";
     private String 		_str_number_click = "";
@@ -63,9 +72,12 @@ public class Sale_Activity extends Activity{
     private MySQLiteHelper 	dbSqlite;
 	private Account			account;
     private SaleAdapter		saleAdapter;
+    private Adapter			adapter;
     private List<DataItem>	ListdataItem;
     private DataItem		dataItem;
     private Bitmap			bpPhoto;
+        
+    private int				location;
     
     private Bundle extras;
     
@@ -278,17 +290,44 @@ public class Sale_Activity extends Activity{
     	txtPriceItem	= (TextView)findViewById(R.id.txtPriceItem);
     	txtSwipeCard	= (TextView)findViewById(R.id.txtSwipeCard);
     	listSale		= (ListView)findViewById(R.id.listSale);
-    	txtItem			= (TextView)findViewById(R.id.txtItem);
-    	edtItem			= (EditText)findViewById(R.id.edtItem);
-    	imgItem			= (ImageView)findViewById(R.id.imgItem);
     	btnIdentify		= (Button)findViewById(R.id.btnIdentify);
+    	
+//    	LayoutInflater inflater = LayoutInflater.from(this);
+//		convertView = inflater.inflate(R.layout.sale_add_item, null);
+//		edtItem		=(EditText)convertView.findViewById(R.id.edtItem);
+//		
+//		edtItem.addTextChangedListener(new TextWatcher() {
+//			
+//			@Override
+//			public void onTextChanged(CharSequence s, int start, int before, int count) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void beforeTextChanged(CharSequence s, int start, int count,
+//					int after) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void afterTextChanged(Editable s) {
+//				// TODO Auto-generated method stub
+//				ListdataItem.get(0).setStrItem(s.toString());
+//			}
+//		});
+    	
     	
     	dataItem	 = new DataItem();
     	ListdataItem = new ArrayList<DataItem>();
-    	
-    	saleAdapter  = new SaleAdapter(this, ListdataItem);
-    	listSale.setAdapter(saleAdapter);
-    	
+//    	ListdataItem.add(0,dataItem);
+    	dataItem.setPriceItem("0");
+    	ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(),  dataItem.getPriceItem()));
+//    	saleAdapter  = new SaleAdapter(this, ListdataItem);
+    	adapter		 = new Adapter(this, ListdataItem);
+//    	listSale.setAdapter(saleAdapter);
+    	listSale.setAdapter(adapter);
     	/* database instance */
     	dbSqlite = new MySQLiteHelper(this);
     	
@@ -355,6 +394,7 @@ public class Sale_Activity extends Activity{
 //					_handler.onDestroy();
 					btnIdentify.setVisibility(View.VISIBLE);
 					txtSwipeCard.setVisibility(View.GONE);
+					txtSwipeCard.clearAnimation();
 					btnIdentify.setBackgroundResource(R.drawable.card_lock);
 //					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
 				}
@@ -375,6 +415,12 @@ public class Sale_Activity extends Activity{
 //						sendMessage("Device is started");					
 					btnIdentify.setVisibility(View.GONE);
 					txtSwipeCard.setVisibility(View.VISIBLE);
+			    	Animation anim = new AlphaAnimation(0.0f, 1.0f);
+			    	anim.setDuration(50); //You can manage the time of the blink with this parameter
+			    	anim.setStartOffset(50);
+			    	anim.setRepeatMode(Animation.REVERSE);
+			    	anim.setRepeatCount(Animation.INFINITE);
+			    	txtSwipeCard.startAnimation(anim);
 //					Toast.makeText(getApplicationContext(), "Device is started!", Toast.LENGTH_SHORT).show();
 				}
 
@@ -425,12 +471,15 @@ public class Sale_Activity extends Activity{
      */
     public void clear(View view){
     	ListdataItem.clear();
+    	bpPhoto = null;
+    	dataItem.setPriceItem("0");
+    	dataItem.setImgItem(bpPhoto);
+    	ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(),  dataItem.getPriceItem()));
     	_str_tmp = "";
     	_str_total_price = "0";
     	_str_number_click = "";
-    	txtItem.setText("0");
     	txtPriceItem.setText("0");
-    	saleAdapter.notifyDataSetChanged();
+    	adapter.notifyDataSetChanged();
     }
     
     /**
@@ -438,7 +487,7 @@ public class Sale_Activity extends Activity{
      * @param view
      */
     public void takeItem(View view){
-    	
+    	location = listSale.getPositionForView(view);
     	Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
     	startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
@@ -456,21 +505,123 @@ public class Sale_Activity extends Activity{
 //    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
 //		startActivity(i);
     }
+
+//    /**
+//     * add item
+//     * @param view
+//     */
+//    public void AddItem(View view){
+////    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
+//    	dataItem.setImgItem(bpPhoto);
+//    	dataItem.setStrItem(edtItem.getText().toString());
+//    	dataItem.setQuantityItem("1x");
+//    	dataItem.setPriceItem(txtItem.getText().toString());
+//    	if(_str_tmp.equals("")) return;
+//    	if(Library.isCheckPrice(_str_tmp)){
+//    		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
+//        	saleAdapter.notifyDataSetChanged();
+//        	
+//        	/*------ assign price item into total price ------*/
+//        	Double d = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_tmp);
+//        	Integer i = d.intValue();
+//        	_str_total_price = String.valueOf(i);
+//        	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+//    	} else {
+//			Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
+//		}    	
+//	    
+//    	/*------ reset variable ------*/
+//    	imgItem.setImageResource(R.drawable.chomsao);
+//    	bpPhoto = null;
+//    	_str_tmp="";
+//    	txtItem.setText("0");
+//    	edtItem.setText("");
+//    }
+//    
+//    /**
+//     * Plus price item
+//     * @param v
+//     */
+//    public void PlusItem(View v){
+//    	int i = listSale.getPositionForView(v);
+//    	
+//    	int count = ListdataItem.get(i).getQtyItem();
+//    	count++;
+//    	ListdataItem.get(i).setQtyItem(count);
+//    	ListdataItem.get(i).setQuantityItem(count + "x");
+//    	String _str_p = ListdataItem.get(i).getPriceItem().replaceAll(",", "");
+//    	/*------ assign price item into total price ------*/
+//    	Double b = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_p);
+//    	Integer ip = b.intValue();
+//    	_str_total_price = String.valueOf(ip);
+//    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+//    	saleAdapter.notifyDataSetChanged();
+//    }
+//    
+//    /**
+//     * minus price item
+//     * @param v
+//     */
+//    
+//    public void MinusItem(View v){
+//    	int ix = listSale.getPositionForView(v);
+//    	
+//    	int count = ListdataItem.get(ix).getQtyItem();
+//    	String _str_p = ListdataItem.get(ix).getPriceItem().replaceAll(",", "");
+//    	count--;
+//    	/*------ assign price item into total price ------*/
+//    	Double b = Double.parseDouble(_str_total_price) - Double.parseDouble(_str_p);
+//    	Integer i = b.intValue();
+//    	_str_total_price = String.valueOf(i);
+//    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+//    	
+//    	if(count < 1) 
+//    		{
+//    			ListdataItem.remove(ix);
+//    			saleAdapter.notifyDataSetChanged();
+//    			return;
+//    		}
+//    	ListdataItem.get(ix).setQtyItem(count);
+//    	ListdataItem.get(ix).setQuantityItem(count + "x");    	
+//    	
+//    	saleAdapter.notifyDataSetChanged();
+//    }
+    
     
     /**
-     * add item
-     * @param view
+     * delete item
+     * @param v
      */
-    public void AddItem(View view){
-//    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
+    public void DeleteItem(View v){
+    	int ix = listSale.getPositionForView(v);
+    	String _str_p = ListdataItem.get(ix).getPriceItem().replaceAll(",", "");
+    	
+    	/*------ assign price item into total price ------*/
+    	Double b = Double.parseDouble(_str_total_price) - Double.parseDouble(_str_p);
+    	Integer i = b.intValue();
+    	_str_total_price = String.valueOf(i);
+    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
+    	ListdataItem.remove(ix);
+    	if(ListdataItem.size() < 1)
+    		ListdataItem.add(dataItem);
+    	adapter.notifyDataSetChanged();
+    }
+    
+    /**
+     * check item
+     * @param v
+     */
+    public void CheckItem(View v){
+//    	int ix = listSale.getPositionForView(v);
+//    	Toast.makeText(getApplicationContext(),edtItem.getText().toString() + ListdataItem.size(), Toast.LENGTH_SHORT).show();
     	dataItem.setImgItem(bpPhoto);
-    	dataItem.setStrItem(edtItem.getText().toString());
-    	dataItem.setQuantityItem("1x");
-    	dataItem.setPriceItem(txtItem.getText().toString());
+//    	dataItem.setStrItem(edtItem.getText().toString());
+    	dataItem.setPriceItem(ListdataItem.get(0).getPriceItem());
+    	    	
     	if(_str_tmp.equals("")) return;
     	if(Library.isCheckPrice(_str_tmp)){
-    		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
-        	saleAdapter.notifyDataSetChanged();
+    		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getPriceItem()));
+    		adapter.notifyDataSetChanged();
         	
         	/*------ assign price item into total price ------*/
         	Double d = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_tmp);
@@ -480,62 +631,18 @@ public class Sale_Activity extends Activity{
     	} else {
 			Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
 		}    	
-	    
+    	
+    	
     	/*------ reset variable ------*/
-    	imgItem.setImageResource(R.drawable.chomsao);
+//    	imgItem.setImageResource(R.drawable.chomsao);
     	bpPhoto = null;
+    	ListdataItem.get(0).setImgItem(bpPhoto);
+    	ListdataItem.get(0).setStrItem("");
+    	ListdataItem.get(0).setPriceItem("0");
     	_str_tmp="";
-    	txtItem.setText("0");
-    	edtItem.setText("");
     }
     
-    /**
-     * Plus price item
-     * @param v
-     */
-    public void PlusItem(View v){
-    	int i = listSale.getPositionForView(v);
-    	
-    	int count = ListdataItem.get(i).getQtyItem();
-    	count++;
-    	ListdataItem.get(i).setQtyItem(count);
-    	ListdataItem.get(i).setQuantityItem(count + "x");
-    	String _str_p = ListdataItem.get(i).getPriceItem().replaceAll(",", "");
-    	/*------ assign price item into total price ------*/
-    	Double b = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_p);
-    	Integer ip = b.intValue();
-    	_str_total_price = String.valueOf(ip);
-    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
-    	saleAdapter.notifyDataSetChanged();
-    }
     
-    /**
-     * minus price item
-     * @param v
-     */
-    public void MinusItem(View v){
-    	int ix = listSale.getPositionForView(v);
-    	
-    	int count = ListdataItem.get(ix).getQtyItem();
-    	String _str_p = ListdataItem.get(ix).getPriceItem().replaceAll(",", "");
-    	count--;
-    	/*------ assign price item into total price ------*/
-    	Double b = Double.parseDouble(_str_total_price) - Double.parseDouble(_str_p);
-    	Integer i = b.intValue();
-    	_str_total_price = String.valueOf(i);
-    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
-    	
-    	if(count < 1) 
-    		{
-    			ListdataItem.remove(ix);
-    			saleAdapter.notifyDataSetChanged();
-    			return;
-    		}
-    	ListdataItem.get(ix).setQtyItem(count);
-    	ListdataItem.get(ix).setQuantityItem(count + "x");    	
-    	
-    	saleAdapter.notifyDataSetChanged();
-    }
     
     /**
      * button number pad
@@ -616,7 +723,7 @@ public class Sale_Activity extends Activity{
 				_str_number_click = "0";
 		    break;
 		case R.id.btn1:
-			if(txtItem.getText().toString().equals("0") || _str_tmp.length() >= 6)
+			if(ListdataItem.get(0).getPriceItem().equals("0") || _str_tmp.length() >= 6)
 				return;
 			else
 				_str_number_click = "000";
@@ -630,11 +737,13 @@ public class Sale_Activity extends Activity{
     		_str_tmp = _str_tmp + _str_number_click;
     	
     	if(_str_tmp.length() > 3) {
-    		txtItem.setText(Library.addDotNumber(_str_tmp));
+    		ListdataItem.get(0).setPriceItem(Library.addDotNumber(_str_tmp));
+    		adapter.notifyDataSetChanged();
     		return;
     	} else
     	{
-    		txtItem.setText(_str_tmp);
+    		ListdataItem.get(0).setPriceItem(_str_tmp);
+    		adapter.notifyDataSetChanged();
     		Log.i("Debug Charge","_str_tmp :" + _str_tmp);
     	}
 
@@ -649,18 +758,19 @@ public class Sale_Activity extends Activity{
     	if(view.getId() == R.id.btn3){
 //    	    String _str = txtItem.getText().toString();
     		if(_str_tmp.length() < 1){
-    			txtItem.setText("0");
+    			ListdataItem.get(0).setPriceItem("0");
     		} else {
     			_str_tmp = _str_tmp.substring(0,_str_tmp.length()-1);
     			if(_str_tmp.length() > 3)
-    				txtItem.setText(Library.addDotNumber(_str_tmp));
+    				ListdataItem.get(0).setPriceItem(Library.addDotNumber(_str_tmp));
     			else
-    				txtItem.setText(_str_tmp);
+    				ListdataItem.get(0).setPriceItem(_str_tmp);
     			if(_str_tmp.length() < 1){
-        			txtItem.setText("0");
+    				ListdataItem.get(0).setPriceItem("0");
         		}
     		}    		
     	}
+    	adapter.notifyDataSetChanged();
     }
     
     @Override
@@ -705,10 +815,28 @@ public class Sale_Activity extends Activity{
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
+		
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == CAMERA_REQUEST) {
-            bpPhoto = (Bitmap) data.getExtras().get("data");
-            imgItem.setImageBitmap(bpPhoto);
+			if(resultCode == Activity.RESULT_OK){
+				if(data != null){
+		            bpPhoto = (Bitmap) data.getExtras().get("data");
+		            if(location != 0){
+		            	ListdataItem.get(location).setImgItem(bpPhoto);
+			            adapter.notifyDataSetChanged();
+		            } else {
+		            	ListdataItem.get(0).setImgItem(bpPhoto);
+			            adapter.notifyDataSetChanged();
+		            }
+		            	
+				} else {
+					Toast.makeText(getApplicationContext(), "No image.", Toast.LENGTH_SHORT).show();
+				}
+			}
+			
+			if(resultCode == Activity.RESULT_CANCELED){
+				Toast.makeText(getApplicationContext(), "Picture could not be taken.", Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 	

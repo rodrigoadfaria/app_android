@@ -42,7 +42,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/x"
-        android:visibility="gone"
+        
         android:onClick="DeleteItem" />
     
     <!-- Button Plus -->
@@ -53,6 +53,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="25dp"
         android:layout_alignParentRight="true"
+        android:visibility="gone"
         android:background="@drawable/checkmark"
         android:onClick="CheckItem" />
         
@@ -68,7 +69,6 @@
         android:text="@string/txtSubtitle"
         android:hint=""
         android:background="@drawable/bg"
-        android:textStyle="bold"
         android:textSize="25sp"/>
 
 </RelativeLayout>
