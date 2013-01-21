@@ -134,7 +134,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative1"
             android:layout_margin="1.5dp"
-            android:overScrollMode="never" >
+            android:overScrollMode="never" 
+            android:transcriptMode="alwaysScroll"
+            android:stackFromBottom="true">
 		</ListView>        
     </RelativeLayout>   
     
