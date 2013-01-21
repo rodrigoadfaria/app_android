@@ -22,7 +22,7 @@
     <!-- Name Item -->
     <EditText
         android:id="@+id/edtItem"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/imgItem"
