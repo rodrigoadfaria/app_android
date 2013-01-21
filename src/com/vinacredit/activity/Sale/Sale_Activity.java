@@ -70,7 +70,7 @@ public class Sale_Activity extends Activity{
     private Bitmap			bpPhoto;
         
     private int				location;
-    
+    private int				location_listview;
     private Bundle extras;
     
     
@@ -290,7 +290,7 @@ public class Sale_Activity extends Activity{
     	ListdataItem = new ArrayList<DataItem>();
 //    	ListdataItem.add(0,dataItem);
     	dataItem.setPriceItem("0");
-    	ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(),  dataItem.getPriceItem()));
+    	ListdataItem.add(new DataItem(dataItem.getImgItem(), dataItem.getStrItem(),  dataItem.getPriceItem()));
 //    	saleAdapter  = new SaleAdapter(this, ListdataItem);
     	adapter		 = new Adapter(this, ListdataItem);
 //    	listSale.setAdapter(saleAdapter);
@@ -579,15 +579,15 @@ public class Sale_Activity extends Activity{
      * @param v
      */
     public void CheckItem(View v){
-//    	int ix = listSale.getPositionForView(v);
+    	location_listview = listSale.getPositionForView(v);
 //    	Toast.makeText(getApplicationContext(),edtItem.getText().toString() + ListdataItem.size(), Toast.LENGTH_SHORT).show();
     	dataItem.setImgItem(bpPhoto);
 //    	dataItem.setStrItem(edtItem.getText().toString());
-    	dataItem.setPriceItem(ListdataItem.get(0).getPriceItem());
+    	dataItem.setPriceItem(ListdataItem.get(location_listview).getPriceItem());
     	    	
     	if(_str_tmp.equals("")) return;
     	if(Library.isCheckPrice(_str_tmp)){
-    		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getPriceItem()));
+    		ListdataItem.add(new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getPriceItem()));
     		adapter.notifyDataSetChanged();
         	
         	/*------ assign price item into total price ------*/
@@ -603,9 +603,9 @@ public class Sale_Activity extends Activity{
     	/*------ reset variable ------*/
 //    	imgItem.setImageResource(R.drawable.chomsao);
     	bpPhoto = null;
-    	ListdataItem.get(0).setImgItem(bpPhoto);
-    	ListdataItem.get(0).setStrItem("");
-    	ListdataItem.get(0).setPriceItem("0");
+    	ListdataItem.get(location_listview+1).setImgItem(bpPhoto);
+    	ListdataItem.get(location_listview+1).setStrItem("");
+    	ListdataItem.get(location_listview+1).setPriceItem("0");
     	_str_tmp="";
     }
     
@@ -690,7 +690,7 @@ public class Sale_Activity extends Activity{
 				_str_number_click = "0";
 		    break;
 		case R.id.btn1:
-			if(ListdataItem.get(0).getPriceItem().equals("0") || _str_tmp.length() >= 6)
+			if(ListdataItem.get(listSale.getCount()-1).getPriceItem().equals("0") || _str_tmp.length() >= 6)
 				return;
 			else
 				_str_number_click = "000";
@@ -704,12 +704,12 @@ public class Sale_Activity extends Activity{
     		_str_tmp = _str_tmp + _str_number_click;
     	
     	if(_str_tmp.length() > 3) {
-    		ListdataItem.get(0).setPriceItem(Library.addDotNumber(_str_tmp));
+    		ListdataItem.get(listSale.getCount()-1).setPriceItem(Library.addDotNumber(_str_tmp));
     		adapter.notifyDataSetChanged();
     		return;
     	} else
     	{
-    		ListdataItem.get(0).setPriceItem(_str_tmp);
+    		ListdataItem.get(listSale.getCount()-1).setPriceItem(_str_tmp);
     		adapter.notifyDataSetChanged();
     		Log.i("Debug Charge","_str_tmp :" + _str_tmp);
     	}
@@ -725,15 +725,15 @@ public class Sale_Activity extends Activity{
     	if(view.getId() == R.id.btn3){
 //    	    String _str = txtItem.getText().toString();
     		if(_str_tmp.length() < 1){
-    			ListdataItem.get(0).setPriceItem("0");
+    			ListdataItem.get(listSale.getCount()-1).setPriceItem("0");
     		} else {
     			_str_tmp = _str_tmp.substring(0,_str_tmp.length()-1);
     			if(_str_tmp.length() > 3)
-    				ListdataItem.get(0).setPriceItem(Library.addDotNumber(_str_tmp));
+    				ListdataItem.get(listSale.getCount()-1).setPriceItem(Library.addDotNumber(_str_tmp));
     			else
-    				ListdataItem.get(0).setPriceItem(_str_tmp);
+    				ListdataItem.get(listSale.getCount()-1).setPriceItem(_str_tmp);
     			if(_str_tmp.length() < 1){
-    				ListdataItem.get(0).setPriceItem("0");
+    				ListdataItem.get(listSale.getCount()-1).setPriceItem("0");
         		}
     		}    		
     	}
@@ -788,11 +788,11 @@ public class Sale_Activity extends Activity{
 			if(resultCode == Activity.RESULT_OK){
 				if(data != null){
 		            bpPhoto = (Bitmap) data.getExtras().get("data");
-		            if(location != 0){
+		            if(location != listSale.getCount()-1){
 		            	ListdataItem.get(location).setImgItem(bpPhoto);
 			            adapter.notifyDataSetChanged();
 		            } else {
-		            	ListdataItem.get(0).setImgItem(bpPhoto);
+		            	ListdataItem.get(listSale.getCount()-1).setImgItem(bpPhoto);
 			            adapter.notifyDataSetChanged();
 		            }
 		            	

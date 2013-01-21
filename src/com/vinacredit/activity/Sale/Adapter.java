@@ -50,8 +50,8 @@ public class Adapter extends BaseAdapter {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(R.layout.sale_add_item, null);
 		}
-		if(mListDataItem.size() == 1 || pos == 0) {
-			final DataItem entry = mListDataItem.get(0);
+		if(mListDataItem.size() == pos + 1) {
+			final DataItem entry = mListDataItem.get(pos);
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(R.layout.sale_add_item, null);
 			if(entry != null){
@@ -91,32 +91,33 @@ public class Adapter extends BaseAdapter {
 				// set Price Item
 				EditText txtSubtitle = (EditText)convertView.findViewById(R.id.txtSubtitle);
 				txtSubtitle.setText(entry.getPriceItem());
-				
 
+				
 				
 				Button btnCheck = (Button)convertView.findViewById(R.id.btnCheck);
 				Button btnDel	= (Button)convertView.findViewById(R.id.btnDel);
+
+					btnCheck.setVisibility(View.VISIBLE);
+					btnDel.setVisibility(View.GONE);
 				
-				btnCheck.setVisibility(View.VISIBLE);
-				btnDel.setVisibility(View.GONE);
 			}
-		} else if(mListDataItem.size() != 1 || pos > 0){
+		} else {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(R.layout.sale_item, null);
 			final DataItem entry1 = mListDataItem.get(pos);
 			if(entry1 != null){
 				// set Image Item
-				ImageButton imgItem = (ImageButton)convertView.findViewById(R.id.imgItem);
+				ImageButton imgItem1 = (ImageButton)convertView.findViewById(R.id.imgItem);
 				if(entry1.getImgItem() == null)
-					imgItem.setImageResource(R.drawable.camera);
+					imgItem1.setImageResource(R.drawable.camera);
 				else
-					imgItem.setImageBitmap(entry1.getImgItem());
+					imgItem1.setImageBitmap(entry1.getImgItem());
 				
 				// set Name Item
-				EditText edtItem = (EditText)convertView.findViewById(R.id.edtItem);
-				edtItem.setText(entry1.getStrItem());
+				EditText edtItem1 = (EditText)convertView.findViewById(R.id.edtItem);
+				edtItem1.setText(entry1.getStrItem());
 
-				edtItem.addTextChangedListener(new TextWatcher() {
+				edtItem1.addTextChangedListener(new TextWatcher() {
 					
 					@Override
 					public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -140,15 +141,15 @@ public class Adapter extends BaseAdapter {
 				
 				
 				// set Price Item
-				EditText txtSubtitle = (EditText)convertView.findViewById(R.id.txtSubtitle);
-				txtSubtitle.setText(entry1.getPriceItem());
+				EditText txtSubtitle1 = (EditText)convertView.findViewById(R.id.txtSubtitle);
+				txtSubtitle1.setText(entry1.getPriceItem());
 				
 				
-				Button btnCheck = (Button)convertView.findViewById(R.id.btnCheck);
-				Button btnDel	= (Button)convertView.findViewById(R.id.btnDel);
-				
-				btnCheck.setVisibility(View.GONE);
-				btnDel.setVisibility(View.VISIBLE);
+//				Button btnCheck = (Button)convertView.findViewById(R.id.btnCheck);
+//				Button btnDel	= (Button)convertView.findViewById(R.id.btnDel);
+//				
+//				btnCheck.setVisibility(View.GONE);
+//				btnDel.setVisibility(View.VISIBLE);
 
 			}
 		}
