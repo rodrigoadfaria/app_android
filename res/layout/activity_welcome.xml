@@ -43,7 +43,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/btnSignIn" 
-        android:onClick="signin"/>
+        android:onClick="signin"/>    
 	<!--  
     <Button
         android:id="@+id/btnLanguageEnglish"

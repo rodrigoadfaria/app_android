@@ -98,19 +98,24 @@
             android:text="@string/txtSwipeCard"
             android:visibility="gone"
             android:layout_marginLeft="2dp"
-            android:gravity="center"/>
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+    		android:scrollHorizontally="true"
+            android:gravity="center">
+        </TextView>
         <Button 
             android:id="@+id/btnClear"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="2dp"
             android:text="@string/btnClear"
-            android:textSize="15sp"
-            android:textStyle="bold|italic"
-            android:background="@drawable/bg"
+            android:textSize="14sp"
+            android:background="@drawable/btn"
             android:duplicateParentState="true"
+            android:textStyle="italic"
+            android:gravity="center"
             android:onClick="clear"/>         
     </RelativeLayout>
         <RelativeLayout 
@@ -136,6 +141,8 @@
             android:layout_margin="1.5dp"
             android:overScrollMode="never" 
             android:transcriptMode="alwaysScroll"
+            android:clickable="false"
+            android:longClickable="false"
             android:stackFromBottom="true">
 		</ListView>        
     </RelativeLayout>   

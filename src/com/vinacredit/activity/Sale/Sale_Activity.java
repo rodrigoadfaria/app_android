@@ -15,8 +15,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,6 +47,14 @@ import con.vinacredit.DTO.Account;
 public class Sale_Activity extends Activity{
 	
 	private static final int CAMERA_REQUEST = 1888;
+	
+	private Animation fadeIn = null;
+	private Animation fadeOut = null;
+	// Listeners to detect the end of an animation
+    private LocalFadeInAnimationListener myFadeInAnimationListener = new LocalFadeInAnimationListener();
+    private LocalFadeOutAnimationListener myFadeOutAnimationListener = new LocalFadeOutAnimationListener();
+	
+	
 	
 	/* *********************************** */
 	private SwipeHandler _handler;
@@ -285,7 +294,6 @@ public class Sale_Activity extends Activity{
     	btnIdentify		= (Button)findViewById(R.id.btnIdentify);    	
 
     	
-    	
     	dataItem	 = new DataItem();
     	ListdataItem = new ArrayList<DataItem>();
 //    	ListdataItem.add(0,dataItem);
@@ -361,7 +369,7 @@ public class Sale_Activity extends Activity{
 //					_handler.onDestroy();
 					btnIdentify.setVisibility(View.VISIBLE);
 					txtSwipeCard.setVisibility(View.GONE);
-					txtSwipeCard.clearAnimation();
+					stopAnimation();
 					btnIdentify.setBackgroundResource(R.drawable.card_lock);
 //					Toast.makeText(getApplicationContext(), "Device is disconnected!", Toast.LENGTH_SHORT).show();
 				}
@@ -382,12 +390,7 @@ public class Sale_Activity extends Activity{
 //						sendMessage("Device is started");					
 					btnIdentify.setVisibility(View.GONE);
 					txtSwipeCard.setVisibility(View.VISIBLE);
-			    	Animation anim = new AlphaAnimation(0.0f, 1.0f);
-			    	anim.setDuration(50); //You can manage the time of the blink with this parameter
-			    	anim.setStartOffset(50);
-			    	anim.setRepeatMode(Animation.REVERSE);
-			    	anim.setRepeatCount(Animation.INFINITE);
-			    	txtSwipeCard.startAnimation(anim);
+					runAnimations();
 //					Toast.makeText(getApplicationContext(), "Device is started!", Toast.LENGTH_SHORT).show();
 				}
 
@@ -1066,5 +1069,80 @@ public class Sale_Activity extends Activity{
 			}
 		}
 	}
+	
+	
+	/* Animation textview */
+	/**
+     * Performs the actual fade-out
+     */
+    private void launchOutAnimation() {
+
+    	txtSwipeCard.startAnimation(fadeOut);
+
+    }    
     
+    /**
+     * Performs the actual fade-in
+     */
+    private void launchInAnimation() {
+    	txtSwipeCard.startAnimation(fadeIn);
+    }    
+
+    /**
+     * Starts the animation
+     */
+    private void runAnimations() {
+    	
+    	// Setup fadein/out animations
+	    fadeIn = AnimationUtils.loadAnimation(this, R.anim.fadein);
+	    fadeIn.setAnimationListener( myFadeInAnimationListener );
+	    fadeOut = AnimationUtils.loadAnimation(this, R.anim.fadeout);
+	    fadeOut.setAnimationListener( myFadeOutAnimationListener );
+	    
+	    // And start
+    	launchInAnimation();
+    	
+    }
+    
+    /**
+     * Animation listener for fade-out
+     * 
+     * @author VIJAYAKUMAR
+     *
+     */
+    private class LocalFadeInAnimationListener implements AnimationListener {
+    	
+	    public void onAnimationEnd(Animation animation) {
+	    	launchOutAnimation();
+		}
+		
+	    public void onAnimationRepeat(Animation animation){
+	    }
+	
+	    public void onAnimationStart(Animation animation) {
+	    }
+    };
+    
+    /**
+     * Animation listener for fade-in
+     * 
+     * @author VIJAYAKUMAR
+     *
+     */
+    private class LocalFadeOutAnimationListener implements AnimationListener {
+    	
+	    public void onAnimationEnd(Animation animation) {
+	    	launchInAnimation();
+		}
+		
+	    public void onAnimationRepeat(Animation animation) {
+	    }
+	
+	    public void onAnimationStart(Animation animation) {
+	    }
+    };
+    
+    public void stopAnimation(){
+    	txtSwipeCard.clearAnimation();
+    }
 }

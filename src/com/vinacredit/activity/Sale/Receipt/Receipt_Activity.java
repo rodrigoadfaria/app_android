@@ -23,7 +23,7 @@ public class Receipt_Activity extends Activity{
 
 	private EditText	edtEmail;
 	private Button		btnSend;
-	private Mail		m;
+	private MailTLS		m;
 	private Intent		intent;
 	private static final int	EMAIL_NULL = 1;
 	private static final int	EMAIL_INCORRECT = 2;
@@ -40,7 +40,7 @@ public class Receipt_Activity extends Activity{
 		btnSend			= (Button)findViewById(R.id.btnSend);
 		btnSend.setEnabled(false);
 		
-		m = new Mail("vinacredit1@gmail.com", "vinacredit1"); 
+		m = new MailTLS("vinacredit1@gmail.com", "vinacredit1"); 
 		m.setFrom("vinacredit1@gmail.com"); 
 	    m.setSubject("Receipt"); 
 	    m.setBody("Thank for paid!"); 
@@ -66,12 +66,13 @@ public class Receipt_Activity extends Activity{
 				    			  Toast.makeText(Receipt_Activity.this, "Email was sent successfully.", Toast.LENGTH_SHORT).show(); 
 				    	          startActivity(intent);
 				    	          return true;
-				    		  } else { 
-				    	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_SHORT).show(); 
+				    		  } else {				    			  
+				    	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_SHORT).show(); 				    			  
 				    	          return true;
-				  	        }				    		  
+				  	        }
 				    	  } catch(Exception e) { 
-				  	        //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show(); 
+				  	        //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+				    		  startActivity(intent);
 				  	        Log.e("MailApp", "Could not send email", e); 
 				  	      }
 				      }
@@ -132,10 +133,12 @@ public class Receipt_Activity extends Activity{
 	          Toast.makeText(Receipt_Activity.this, "Email was sent successfully.", Toast.LENGTH_SHORT).show(); 
 	          startActivity(intent);
 	        } else { 
-	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_SHORT).show(); 
+	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_SHORT).show();
+
 	        } 
 	      } catch(Exception e) { 
 	        //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show(); 
+	        	startActivity(intent);
 	        Log.e("MailApp", "Could not send email", e); 
 	      } 
 		

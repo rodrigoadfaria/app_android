@@ -6,17 +6,15 @@ import com.vinacredit.activity.R;
 
 import android.content.Context;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class Adapter extends BaseAdapter {
 	private Context mContext;
@@ -92,20 +90,9 @@ public class Adapter extends BaseAdapter {
 				});
 				
 				// set Price Item
-				final EditText txtSubtitle = (EditText)convertView.findViewById(R.id.txtSubtitle);
+				final TextView txtSubtitle = (TextView)convertView.findViewById(R.id.txtSubtitle);
 				txtSubtitle.setText(entry.getPriceItem());
 
-				txtSubtitle.setOnTouchListener(new OnTouchListener() {
-					
-					@Override
-					public boolean onTouch(View v, MotionEvent event) {
-						int inType = txtSubtitle.getInputType(); // backup the input type
-						txtSubtitle.setInputType(InputType.TYPE_NULL); // disable soft input
-						txtSubtitle.onTouchEvent(event); // call native handler
-						txtSubtitle.setInputType(inType); // restore input type
-						return true; // consume touch even
-						}
-				});
 				
 				Button btnCheck = (Button)convertView.findViewById(R.id.btnCheck);
 				Button btnDel	= (Button)convertView.findViewById(R.id.btnDel);
@@ -154,7 +141,7 @@ public class Adapter extends BaseAdapter {
 				
 				
 				// set Price Item
-				EditText txtSubtitle1 = (EditText)convertView.findViewById(R.id.txtSubtitle);
+				TextView txtSubtitle1 = (TextView)convertView.findViewById(R.id.txtSubtitle);
 				txtSubtitle1.setText(entry1.getPriceItem());
 				
 				
