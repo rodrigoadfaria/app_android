@@ -4,6 +4,11 @@
         
     <string name="external_dir">GetSignature</string>
     
+    <!-- string of Splash -->
+    <string name="txtSplash">Vinacredits Inc.</string>
+    <string name="txtVina">Mobile Based Point of Sale System</string>
+    
+    
     <!-- string content Description ImageView -->
     <string name="imgView">ImageView</string>
     

@@ -62,7 +62,7 @@ public class SaleAdapter extends BaseAdapter {
 				txtItem.setText(entry.getStrItem());
 				
 				// set Quantity Item
-				TextView txtQtyItem = (TextView)convertView.findViewById(R.id.txtQtyItem);
+//				TextView txtQtyItem = (TextView)convertView.findViewById(R.id.txtQtyItem);
 //				txtQtyItem.setText(entry.getQuantityItem());
 				
 				// set Price Item

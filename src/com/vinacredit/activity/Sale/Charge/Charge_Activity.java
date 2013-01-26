@@ -208,14 +208,6 @@ public class Charge_Activity extends Activity{
 	    		}
 			}   
 		}
-//	if(_str_tmp.toString().length() < 0) {
-//		txtChange.setText("0");
-//		return;
-//	}		
-//	else {
-//		_str_Change = String.valueOf(Integer.parseInt(_str_tmp) - Integer.parseInt(_str_Sum));
-//		txtChange.setText(Library.addDotNumber(_str_Change));
-//	}	
     }
     
     @Override

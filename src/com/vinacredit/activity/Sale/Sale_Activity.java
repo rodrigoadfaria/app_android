@@ -72,7 +72,7 @@ public class Sale_Activity extends Activity{
     private String		_str_total_price = "0";
     private MySQLiteHelper 	dbSqlite;
 	private Account			account;
-    private SaleAdapter		saleAdapter;
+//    private SaleAdapter		saleAdapter;
     private Adapter			adapter;
     private List<DataItem>	ListdataItem;
     private DataItem		dataItem;

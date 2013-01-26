@@ -8,13 +8,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
 import android.widget.ToggleButton;
 
 public class Tax_Activity extends Activity{
 
-	private TextView 	txtTax;
+	private EditText 	txtTax;
 	private ToggleButton	tgbtnstatusTax;
 	String _str_tax = "";
 	boolean i_first_dot    = true;
@@ -30,9 +32,19 @@ public class Tax_Activity extends Activity{
 
 	private void initialize() {
 		// TODO Auto-generated method stub
-		txtTax				= (TextView)findViewById(R.id.txtTax);
+		txtTax				= (EditText)findViewById(R.id.txtTax);
 		tgbtnstatusTax		= (ToggleButton)findViewById(R.id.tgbAddSaleTax);
 		        
+		txtTax.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				// TODO Auto-generated method stub
+				return true;
+			}
+		});
+		
+		
         SharedPreferences share = this.getSharedPreferences("STAX",MODE_PRIVATE );
     	txtTax.setText(share.getString("TAX", "0%"));        
         if(share.getBoolean("STATUSTAX", false)) {

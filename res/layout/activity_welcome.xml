@@ -1,67 +1,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:background="@drawable/splash">
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
+    <TextView 
+        android:id="@+id/txtSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtSplash"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/chomsao"
-        android:contentDescription="@string/imgView" />
-
-    <TextView
-        android:id="@+id/txt_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        android:text="@string/txtWelcome_vina"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/txt_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txt_welcome"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/txtWelcome_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="100dp"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:textColor="#0099FF"/>
 
     <Button
         android:id="@+id/btnSignIn"
-        android:layout_width="fill_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/btnSignIn" 
+        android:background="@drawable/btn"
         android:onClick="signin"/>    
-	<!--  
-    <Button
-        android:id="@+id/btnLanguageEnglish"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_margin="8dp"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/english_flag"
-        android:onClick="translate"/>
-
-    <Button
-        android:id="@+id/btnLanguageVietnam"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="8dp"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/vietnam_flag"
-        android:onClick="translate" />
-	-->
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtVina"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:textColor="#4F4F4F"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"/>
 </RelativeLayout>

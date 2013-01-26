@@ -34,8 +34,8 @@ public class Welcome_Activity extends Activity {
 	private void initialize() {
 		// TODO Auto-generated method stub
 		btnSignIn = (Button)findViewById(R.id.btnSignIn);
-		txt_welcome 	= (TextView)findViewById(R.id.txt_welcome);
-		txt_content 	= (TextView)findViewById(R.id.txt_content);
+//		txt_welcome 	= (TextView)findViewById(R.id.txt_welcome);
+//		txt_content 	= (TextView)findViewById(R.id.txt_content);
 
 	}
 	public void translate(){
