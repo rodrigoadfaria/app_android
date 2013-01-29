@@ -6,7 +6,9 @@ import java.util.concurrent.TimeoutException;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -435,11 +437,7 @@ public class Sale_Activity extends Activity{
 		startActivity(i);
     }
     
-    /**
-     * clear bill
-     * @param view
-     */
-    public void clear(View view){
+    public void ConfirmClear(){
     	ListdataItem.clear();
     	bpPhoto = null;
     	dataItem.setPriceItem("0");
@@ -450,6 +448,38 @@ public class Sale_Activity extends Activity{
     	_str_number_click = "";
     	txtPriceItem.setText("0");
     	adapter.notifyDataSetChanged();
+    }
+    
+    /**
+     * clear bill
+     * @param view
+     */
+    public void clear(View view){
+    	AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+    	
+//    	alertDialogBuilder.setTitle("Confirm Clear Bill");
+    	
+    	alertDialogBuilder.setMessage("Confirm Clear Bill")
+    						.setCancelable(false)
+    						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									ConfirmClear();
+								}
+							})
+							.setNegativeButton("No", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									dialog.cancel();
+								}
+							});
+    	AlertDialog alertDialog = alertDialogBuilder.create();
+    	
+    	alertDialog.show();
     }
     
     /**
@@ -474,89 +504,7 @@ public class Sale_Activity extends Activity{
     	}    	
 //    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
 //		startActivity(i);
-    }
-
-//    /**
-//     * add item
-//     * @param view
-//     */
-//    public void AddItem(View view){
-////    	Toast.makeText(getApplicationContext(), "demo add item", Toast.LENGTH_LONG).show();
-//    	dataItem.setImgItem(bpPhoto);
-//    	dataItem.setStrItem(edtItem.getText().toString());
-//    	dataItem.setQuantityItem("1x");
-//    	dataItem.setPriceItem(txtItem.getText().toString());
-//    	if(_str_tmp.equals("")) return;
-//    	if(Library.isCheckPrice(_str_tmp)){
-//    		ListdataItem.add(0,new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getQuantityItem(), dataItem.getPriceItem()));
-//        	saleAdapter.notifyDataSetChanged();
-//        	
-//        	/*------ assign price item into total price ------*/
-//        	Double d = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_tmp);
-//        	Integer i = d.intValue();
-//        	_str_total_price = String.valueOf(i);
-//        	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
-//    	} else {
-//			Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
-//		}    	
-//	    
-//    	/*------ reset variable ------*/
-//    	imgItem.setImageResource(R.drawable.chomsao);
-//    	bpPhoto = null;
-//    	_str_tmp="";
-//    	txtItem.setText("0");
-//    	edtItem.setText("");
-//    }
-//    
-//    /**
-//     * Plus price item
-//     * @param v
-//     */
-//    public void PlusItem(View v){
-//    	int i = listSale.getPositionForView(v);
-//    	
-//    	int count = ListdataItem.get(i).getQtyItem();
-//    	count++;
-//    	ListdataItem.get(i).setQtyItem(count);
-//    	ListdataItem.get(i).setQuantityItem(count + "x");
-//    	String _str_p = ListdataItem.get(i).getPriceItem().replaceAll(",", "");
-//    	/*------ assign price item into total price ------*/
-//    	Double b = Double.parseDouble(_str_total_price) + Double.parseDouble(_str_p);
-//    	Integer ip = b.intValue();
-//    	_str_total_price = String.valueOf(ip);
-//    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
-//    	saleAdapter.notifyDataSetChanged();
-//    }
-//    
-//    /**
-//     * minus price item
-//     * @param v
-//     */
-//    
-//    public void MinusItem(View v){
-//    	int ix = listSale.getPositionForView(v);
-//    	
-//    	int count = ListdataItem.get(ix).getQtyItem();
-//    	String _str_p = ListdataItem.get(ix).getPriceItem().replaceAll(",", "");
-//    	count--;
-//    	/*------ assign price item into total price ------*/
-//    	Double b = Double.parseDouble(_str_total_price) - Double.parseDouble(_str_p);
-//    	Integer i = b.intValue();
-//    	_str_total_price = String.valueOf(i);
-//    	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
-//    	
-//    	if(count < 1) 
-//    		{
-//    			ListdataItem.remove(ix);
-//    			saleAdapter.notifyDataSetChanged();
-//    			return;
-//    		}
-//    	ListdataItem.get(ix).setQtyItem(count);
-//    	ListdataItem.get(ix).setQuantityItem(count + "x");    	
-//    	
-//    	saleAdapter.notifyDataSetChanged();
-//    }
-    
+    }   
     
     /**
      * delete item

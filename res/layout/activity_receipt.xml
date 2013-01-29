@@ -9,7 +9,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/chomsao"
+        android:src="@drawable/sendmail"
         android:contentDescription="@string/imgView"/>
     
     <EditText 
