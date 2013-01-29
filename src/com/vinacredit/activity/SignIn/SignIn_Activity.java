@@ -116,7 +116,7 @@ public class SignIn_Activity extends Activity{
 					public void run() {
 						// TODO Auto-generated method stub
 						dialog.dismiss();
-						Toast.makeText(getApplicationContext(), "Login unsuccessful", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "Login unsuccessful", Toast.LENGTH_SHORT).show();
 					}
 				});
 								

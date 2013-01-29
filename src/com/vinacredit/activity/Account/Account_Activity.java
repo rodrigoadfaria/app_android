@@ -13,6 +13,8 @@ import com.vinacredit.activity.Welcome.Welcome_Activity;
 import con.vinacredit.DTO.Account;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
@@ -117,9 +119,34 @@ public class Account_Activity extends Activity{
 	}
 	
 	public void btnSignOut(View view){
-		Intent i = new Intent(getApplicationContext(),Welcome_Activity.class);
-		startActivity(i);
-		finish();
+    	AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+    	
+//    	alertDialogBuilder.setTitle("Confirm Clear Bill");
+    	
+    	alertDialogBuilder.setMessage("Confirm Sign out!")
+    						.setCancelable(false)
+    						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									Intent i = new Intent(getApplicationContext(),Welcome_Activity.class);
+									startActivity(i);
+									finish();
+								}
+							})
+							.setNegativeButton("No", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									dialog.cancel();
+								}
+							});
+    	AlertDialog alertDialog = alertDialogBuilder.create();
+    	
+    	alertDialog.show();
+		
 	}
 	
 	@Override
