@@ -84,6 +84,7 @@ public class Signature_Activity extends Activity{
 //	    Intent intent = new Intent(getApplicationContext(),Identify_Activity.class);
 //	    startActivity(intent);
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 	// action btn Sending 
 	public void gotoSending(View view){
@@ -91,6 +92,7 @@ public class Signature_Activity extends Activity{
 	    Intent intent = new Intent(getApplicationContext(),Sending_Activity.class);
 	    intent.putExtra("SIGNATURE", Library.getBytesFromBitmap(mBitmap));
 	    startActivity(intent);
+	    overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 //	    mSignature.save(mView);
 	}
  

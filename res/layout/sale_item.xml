@@ -22,7 +22,7 @@
     <!-- Name Item -->
     <EditText
         android:id="@+id/edtItem"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/imgItem"
@@ -38,26 +38,14 @@
     <!-- Button delete -->
     <Button
         android:id="@+id/btnDel"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
         android:background="@drawable/x"        
         android:onClick="DeleteItem" />
-    <!--  
-     Button Plus 
-    <Button
-        android:id="@+id/btnCheck"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentRight="true"
-        android:visibility="gone"
-        android:background="@drawable/checkmark"
-        android:onClick="CheckItem" />
-    -->    
+
     <!-- Price Item -->
     <TextView
         android:id="@+id/txtSubtitle"

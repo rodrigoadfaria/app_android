@@ -67,8 +67,9 @@ public class Charge_Activity extends Activity{
     
     public void btnBack(View view){
 //    	Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
-//		startActivity(i);
+//		startActivity(i);    	
     	finish();
+    	overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }
     
     public void btnTenderCash(View view){
@@ -89,8 +90,9 @@ public class Charge_Activity extends Activity{
 				Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 		}
-		startActivity(i);
+		startActivity(i);		
 		finish();
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
     
     public void numClick(View view){
@@ -208,6 +210,12 @@ public class Charge_Activity extends Activity{
 	    		}
 			}   
 		}
+		String strPay = txtPay.getText().toString().replaceAll(",", "");
+		Double dou = Double.parseDouble(strPay) - Double.parseDouble(_str_Sum);
+		Integer i = dou.intValue();
+		_str_Change = Library.addDotNumber(String.valueOf(i));
+		String as = _str_Change.replaceAll("-,", "-");
+		txtChange.setText(as);
     }
     
     @Override

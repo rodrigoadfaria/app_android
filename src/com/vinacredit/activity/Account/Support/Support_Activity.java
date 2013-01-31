@@ -25,8 +25,9 @@ public class Support_Activity extends Activity{
 	
 	public void btnAccount(View view){
 //		Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
-//		startActivity(intent);
+//		startActivity(intent);		
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 	
 	@Override

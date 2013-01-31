@@ -72,6 +72,7 @@ public class SaleHistory_Activity extends Activity{
 				myBundle.putString("SUMBILL", ListSumBill.get(position).getSumBill());
 				i.putExtras(myBundle);
 				startActivity(i);
+				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 			}
 			
 		});
@@ -82,6 +83,7 @@ public class SaleHistory_Activity extends Activity{
 //		Intent intent = new Intent(getApplicationContext(),Account_Activity.class);
 //		startActivity(intent);
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 	
 	@Override

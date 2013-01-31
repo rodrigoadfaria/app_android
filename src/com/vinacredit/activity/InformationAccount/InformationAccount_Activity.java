@@ -65,6 +65,7 @@ public class InformationAccount_Activity extends Activity {
 				checking();
 			}
 		}).start();
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 	
 	public void checking(){

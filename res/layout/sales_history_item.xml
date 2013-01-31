@@ -14,7 +14,7 @@
         android:gravity="center_vertical|left"
         android:text="@string/txtTitle"
         android:singleLine="true"
-        android:textSize="22dip"/>
+        android:textSize="22sp"/>
     <ImageView 
         android:id="@+id/imgStar"
         android:layout_width="wrap_content"
@@ -32,6 +32,6 @@
         android:layout_centerVertical="true"
         android:gravity="center_vertical|right"
         android:singleLine="true"
-        android:textSize="22dip"/>
+        android:textSize="22sp"/>
 
 </RelativeLayout>

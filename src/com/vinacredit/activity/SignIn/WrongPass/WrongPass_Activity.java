@@ -28,8 +28,9 @@ public class WrongPass_Activity extends Activity{
 	 */
 	public void btnCancel(View view){
 //		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
-//		startActivity(intent);
+//		startActivity(intent);		
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 	
 	/**

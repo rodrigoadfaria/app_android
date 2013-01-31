@@ -35,13 +35,15 @@ public class Identify_Activity extends Activity{
 	
 	public void btnBack(View view){
 //		Intent intent = new Intent(getApplicationContext(),Sale_Activity.class);
-//		startActivity(intent);
+//		startActivity(intent);		
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 
 	public void btnSignature(View view){
 		Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
 		startActivity(intent);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 	
 	public void btnTakePhoto(View view){

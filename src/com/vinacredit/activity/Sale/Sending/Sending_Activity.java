@@ -64,12 +64,14 @@ public class Sending_Activity extends Activity{
 //		Intent intent = new Intent(getApplicationContext(),Signature_Activity.class);
 //		startActivity(intent);
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 	
 	public void btnReceipt(View view){
 		Intent intent = new Intent(getApplicationContext(),Receipt_Activity.class);
 		startActivity(intent);
 		finish();
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 	
 	public void send_server(View v){

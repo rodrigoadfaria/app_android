@@ -39,7 +39,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:text="@string/txtSumPrice"
-        android:textSize="25sp"
+        android:textSize="45sp"
         android:textStyle="bold"
         android:textColor="#3399FF"/>
     <TextView 
@@ -130,7 +130,7 @@
     </LinearLayout>
     <Button
         android:id="@+id/btnTenderCash"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear2"
         android:layout_centerHorizontal="true"
@@ -282,7 +282,11 @@
         android:onClick="numClick"
         android:src="@drawable/button_navigation_3_pressed"
         android:contentDescription="@string/imgView"/>
-
+	<View
+        android:layout_above="@+id/btn12"
+	    android:layout_width="fill_parent"
+	    android:layout_height="3dip"
+	    android:background="#BBBBBB" />
 
 
 

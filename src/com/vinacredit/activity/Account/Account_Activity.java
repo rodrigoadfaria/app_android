@@ -100,6 +100,7 @@ public class Account_Activity extends Activity{
 					startActivity(i);
 					break;
 				}
+				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 			}
         	
 		});
@@ -110,6 +111,7 @@ public class Account_Activity extends Activity{
 //		Intent i = new Intent(getApplicationContext(),Sale_Activity.class);
 //		startActivity(i);
 		finish();
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 	
 	@Override

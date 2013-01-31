@@ -192,6 +192,7 @@
         android:onClick="numClick"
         android:src="@drawable/button_navigation_6_pressed" 
         android:contentDescription="@string/imgView"/>
+    
     <!-- 1 , 2 , 3 -->
 
     <ImageButton
@@ -228,6 +229,10 @@
         android:onClick="numClick"
         android:src="@drawable/button_navigation_3_pressed"
         android:contentDescription="@string/imgView"/>
-    
+    <View
+        android:layout_above="@+id/btn12"
+	    android:layout_width="fill_parent"
+	    android:layout_height="3dip"
+	    android:background="#BBBBBB" />
     
 </RelativeLayout>

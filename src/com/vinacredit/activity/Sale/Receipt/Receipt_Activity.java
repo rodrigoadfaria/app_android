@@ -78,6 +78,7 @@ public class Receipt_Activity extends Activity{
 				      }
 				      
 				}
+				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 				return false;
 			}
 		});
@@ -141,7 +142,7 @@ public class Receipt_Activity extends Activity{
 	        	startActivity(intent);
 	        Log.e("MailApp", "Could not send email", e); 
 	      } 
-		
+	      overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	    }
 	
 	public void btnSkip(View view){
@@ -149,6 +150,7 @@ public class Receipt_Activity extends Activity{
 		Intent intent = new Intent(getApplicationContext(),Done_Activity.class);
 		startActivity(intent);
 		finish();
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 
 	public int checkEmail(){

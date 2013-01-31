@@ -73,8 +73,9 @@ public class Tax_Activity extends Activity{
 		myBundle.putBoolean("STATUSTAX", bl_status);
 		myBundle.putString("TAX", txtTax.getText().toString());
 		intent.putExtras(myBundle);
-		setResult(Activity.RESULT_OK, intent);
+		setResult(Activity.RESULT_OK, intent);		
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 	
 	public void numClick(View view){

@@ -32,7 +32,7 @@
     <string name="btnSend">Send</string>
 
     <!-- string of Information Account page -->
-    <string name="txtTitleBarInfor">Information Account</string>
+    <string name="txtTitleBarInfor">Information</string>
     <string name="btnBack">Back</string>
     <string name="txtFirstname">First name</string>
     <string name="txtLastname">Last name</string>

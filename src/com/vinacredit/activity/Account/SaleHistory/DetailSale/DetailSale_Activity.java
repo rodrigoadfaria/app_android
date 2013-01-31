@@ -64,8 +64,9 @@ public class DetailSale_Activity extends Activity{
 				
 	}
 	
-	public void btnSaleHistory(View v){
+	public void btnSaleHistory(View v){		
 		finish();
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 	}
 	
 	@Override

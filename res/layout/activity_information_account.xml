@@ -116,7 +116,7 @@
 		    android:textSize="16sp" />
 		<EditText
 			android:id = "@+id/edtOldPass" 			
-		    android:layout_marginTop="16dp"
+		    android:layout_marginTop="10dp"
 			android:layout_below = "@+id/edtEmail" 
 			android:layout_toRightOf="@+id/imgUsername"
 			android:inputType="textPassword"

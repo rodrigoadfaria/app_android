@@ -50,8 +50,9 @@ public class Welcome_Activity extends Activity {
 	 */
 	public void signin(View view){
 		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
-		startActivity(intent);
+		startActivity(intent);		
 		finish();
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 	@Override
 	public void onBackPressed() {

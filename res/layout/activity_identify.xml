@@ -41,21 +41,29 @@
             android:textColor="@color/white" 
             android:onClick="btnSignature"/>
     </RelativeLayout>
-    
-        <ImageView 
+    	<RelativeLayout 
+    	    android:id="@+id/relativeImage"
+    	    android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+    	    android:layout_below="@id/relativelayout_title_bar"
+    	    android:background="@drawable/customshape"
+    	    android:layout_centerHorizontal="true">
+    	    <ImageView 
             android:id="@+id/imgIdentify"
             android:layout_width="350dp"
             android:layout_height="250dp"
-            android:src="@drawable/chomsao"
+            android:src="@drawable/takeyourpic"
             android:contentDescription="@string/imgView"
-            android:layout_below="@id/relativelayout_title_bar"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerInParent="true"
+            android:layout_margin="3dp"/>
+    	</RelativeLayout>
+        
         <Button
             android:id="@+id/btnTakePhoto"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imgIdentify"
+            android:layout_below="@id/relativeImage"
             android:layout_marginTop="20dp"
             android:text="@string/btnTakePhoto"
             android:layout_centerHorizontal="true"

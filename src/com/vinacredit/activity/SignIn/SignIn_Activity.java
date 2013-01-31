@@ -56,6 +56,7 @@ public class SignIn_Activity extends Activity{
 				login();
 			}
 		}).start();
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 	
 	
@@ -139,6 +140,7 @@ public class SignIn_Activity extends Activity{
 	public void btnWrongPass(View view){
 		Intent i = new Intent(getApplicationContext(),WrongPass_Activity.class);
 		startActivity(i);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 
 	@Override

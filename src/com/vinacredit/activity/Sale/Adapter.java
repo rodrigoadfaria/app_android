@@ -8,10 +8,11 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnTouchListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -90,15 +91,17 @@ public class Adapter extends BaseAdapter {
 				});
 				
 				// set Price Item
-				final TextView txtSubtitle = (TextView)convertView.findViewById(R.id.txtSubtitle);
+				final EditText txtSubtitle = (EditText)convertView.findViewById(R.id.txtSubtitle);
 				txtSubtitle.setText(entry.getPriceItem());
-
 				
-				Button btnCheck = (Button)convertView.findViewById(R.id.btnCheck);
-				Button btnDel	= (Button)convertView.findViewById(R.id.btnDel);
-
-					btnCheck.setVisibility(View.VISIBLE);
-					btnDel.setVisibility(View.GONE);
+				txtSubtitle.setOnTouchListener(new OnTouchListener() {
+					
+					@Override
+					public boolean onTouch(View arg0, MotionEvent arg1) {
+						// TODO Auto-generated method stub
+						return true;
+					}
+				});
 				
 			}
 		} else {
@@ -143,13 +146,7 @@ public class Adapter extends BaseAdapter {
 				// set Price Item
 				TextView txtSubtitle1 = (TextView)convertView.findViewById(R.id.txtSubtitle);
 				txtSubtitle1.setText(entry1.getPriceItem());
-				
-				
-//				Button btnCheck = (Button)convertView.findViewById(R.id.btnCheck);
-//				Button btnDel	= (Button)convertView.findViewById(R.id.btnDel);
-//				
-//				btnCheck.setVisibility(View.GONE);
-//				btnDel.setVisibility(View.VISIBLE);
+
 
 			}
 		}

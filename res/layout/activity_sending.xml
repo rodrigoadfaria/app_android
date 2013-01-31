@@ -53,7 +53,7 @@
         android:contentDescription="@string/imgView"/>
     <Button 
         android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/imgSignature"
         android:layout_centerHorizontal="true"
