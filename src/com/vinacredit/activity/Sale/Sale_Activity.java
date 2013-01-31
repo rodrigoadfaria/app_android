@@ -335,8 +335,11 @@ public class Sale_Activity extends Activity{
     	dataItem.setImgItem(bpPhoto);
     	dataItem.setPriceItem(ListdataItem.get(location_listview).getPriceItem());
     	    	
-    	if(_str_tmp.equals("")) return;
-    	if(Library.isCheckPrice(_str_tmp)){
+    	if(_str_tmp.equals("") || !Library.isCheckPrice(_str_tmp)){
+    		Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
+    		return;
+    	}
+
     		ListdataItem.add(new DataItem(dataItem.getImgItem(), dataItem.getStrItem(), dataItem.getPriceItem()));
     		adapter.notifyDataSetChanged();
         	
@@ -345,9 +348,7 @@ public class Sale_Activity extends Activity{
         	Integer i = d.intValue();
         	_str_total_price = String.valueOf(i);
         	txtPriceItem.setText(Library.addDotNumber(_str_total_price));
-    	} else {
-			Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
-		}    	
+   	
     	
     	
     	/*------ reset variable ------*/

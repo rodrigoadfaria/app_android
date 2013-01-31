@@ -91,6 +91,8 @@ public class Welcome_Activity extends Activity {
 		Configuration conf = res.getConfiguration();
 		conf.locale = myLocale;
 		res.updateConfiguration(conf, dm);
+		getBaseContext().getResources().updateConfiguration(conf, 
+			    getBaseContext().getResources().getDisplayMetrics());
 		Intent refresh = new Intent(this, Welcome_Activity.class);
 		startActivity(refresh);
 	}
