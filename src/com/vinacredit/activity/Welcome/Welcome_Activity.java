@@ -9,6 +9,7 @@ import com.vinacredit.activity.SignIn.SignIn_Activity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -49,6 +50,10 @@ public class Welcome_Activity extends Activity {
 	 * @param view
 	 */
 	public void signin(View view){
+		Bundle bundle = getIntent().getExtras();
+		SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_PRIVATE );
+	    SharedPreferences.Editor editor = share.edit();
+	    editor.commit();
 		Intent intent = new Intent(getApplicationContext(),SignIn_Activity.class);
 		startActivity(intent);		
 		finish();
@@ -91,10 +96,15 @@ public class Welcome_Activity extends Activity {
 		Configuration conf = res.getConfiguration();
 		conf.locale = myLocale;
 		res.updateConfiguration(conf, dm);
-		getBaseContext().getResources().updateConfiguration(conf, 
-			    getBaseContext().getResources().getDisplayMetrics());
 		Intent refresh = new Intent(this, Welcome_Activity.class);
 		startActivity(refresh);
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		
 	}
 	
 }

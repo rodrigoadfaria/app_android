@@ -47,7 +47,7 @@ public class SignIn_Activity extends Activity{
 	 * @param view
 	 */
 	public void btnSignIn(View view){
-		dialog = ProgressDialog.show(SignIn_Activity.this, "", "Log in...", true);
+		dialog = ProgressDialog.show(SignIn_Activity.this, "", getText(R.string.str_login), true);
 		new Thread(new Runnable() {
 			
 			@Override
@@ -78,7 +78,7 @@ public class SignIn_Activity extends Activity{
 					public void run() {
 						// TODO Auto-generated method stub
 						dialog.dismiss();
-						Toast.makeText(getApplicationContext(), "Enter email,please!", Toast.LENGTH_SHORT).show();				
+						Toast.makeText(getApplicationContext(), R.string.str_email, Toast.LENGTH_SHORT).show();				
 						return;
 					}
 				});
@@ -89,7 +89,7 @@ public class SignIn_Activity extends Activity{
 					public void run() {
 						// TODO Auto-generated method stub
 						dialog.dismiss();
-						Toast.makeText(getApplicationContext(), "Enter pass,please!", Toast.LENGTH_SHORT).show();				
+						Toast.makeText(getApplicationContext(),R.string.str_pass, Toast.LENGTH_SHORT).show();				
 						return;
 					}
 				});
@@ -117,7 +117,7 @@ public class SignIn_Activity extends Activity{
 					public void run() {
 						// TODO Auto-generated method stub
 						dialog.dismiss();
-						Toast.makeText(getApplicationContext(), "Login unsuccessful", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getApplicationContext(), R.string.str_loginFail, Toast.LENGTH_SHORT).show();
 					}
 				});
 								

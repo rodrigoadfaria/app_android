@@ -8,8 +8,8 @@
     
     <ImageView 
         android:id="@+id/imgCard"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginLeft="1.5dp"
         android:layout_centerVertical="true"
         android:src="@drawable/charge_money"
@@ -25,7 +25,7 @@
         android:gravity="center_vertical"
         android:text="@string/txtTitle"
         android:singleLine="true"
-        android:textSize="22dip" />
+        android:textSize="22sp" />
     <TextView 
         android:id="@+id/txtTime"
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         android:gravity="center_vertical"
         android:text="@string/txtTitle"
         android:singleLine="true"
-        android:textSize="22dip"/>
+        android:textSize="22sp"/>
     <TextView 
         android:id="@+id/txtPriceBill"
         android:layout_width="wrap_content"
@@ -47,6 +47,6 @@
         android:gravity="center_vertical"
         android:text="@string/txtSumPrice"
         android:singleLine="true"
-        android:textSize="22dip"/>
+        android:textSize="22sp"/>
 
 </RelativeLayout>

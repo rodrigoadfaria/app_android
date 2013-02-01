@@ -57,7 +57,7 @@ public class InformationAccount_Activity extends Activity {
 	}
 
 	public void btnContinue(View view){
-		dialog = ProgressDialog.show(InformationAccount_Activity.this, "", "Checking...", true);
+		dialog = ProgressDialog.show(InformationAccount_Activity.this, "", getText(R.string.str_check), true);
 		new Thread(new Runnable() {			
 			@Override
 			public void run() {
@@ -95,7 +95,7 @@ public class InformationAccount_Activity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						dialog.dismiss();
-			    		Toast.makeText(getApplicationContext(), "Enter full infor,Please", Toast.LENGTH_SHORT).show();
+			    		Toast.makeText(getApplicationContext(), R.string.str_infor, Toast.LENGTH_SHORT).show();
 					}
 				});
 	    		
@@ -142,10 +142,10 @@ public class InformationAccount_Activity extends Activity {
 					photo = (Bitmap) data.getExtras().get("data");
 		            imgUsername.setImageBitmap(photo);
 				} else 
-					Toast.makeText(getApplicationContext(), "No image.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), R.string.str_image, Toast.LENGTH_SHORT).show();
 			}
 			if(resultCode == RESULT_CANCELED){
-				Toast.makeText(getApplicationContext(), "Picture could not be taken.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), R.string.str_noImage, Toast.LENGTH_SHORT).show();
 			}
             
 		}

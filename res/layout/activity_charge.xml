@@ -74,7 +74,8 @@
 		    android:id="@+id/txtCashPaid"
 		    android:layout_width="65dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center|center_horizontal"
             android:text="@string/txtCashPaid"
             android:textStyle="bold"/>
         <EditText
@@ -113,7 +114,8 @@
 		    android:id="@+id/txtChangePaid"
 		    android:layout_width="65dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center|center_horizontal"
             android:text="@string/txtChangePaid"
             android:textStyle="bold"/>
     	<TextView

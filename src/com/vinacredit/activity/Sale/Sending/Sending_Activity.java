@@ -76,7 +76,7 @@ public class Sending_Activity extends Activity{
 	
 	public void send_server(View v){
 		
-        dialog = ProgressDialog.show(Sending_Activity.this, "", "Sending...", true);
+        dialog = ProgressDialog.show(Sending_Activity.this, "", getText(R.string.str_send), true);
         new Thread(new Runnable() {
                public void run() {                    
             	   uploadFile();                    

@@ -53,21 +53,21 @@ public class Receipt_Activity extends Activity{
 				// TODO Auto-generated method stub
 				if(actionId == EditorInfo.IME_ACTION_SEND){
 				      if(checkEmail() == EMAIL_NULL) {
-				    	  Toast.makeText(Receipt_Activity.this, "Enter email,Please!", Toast.LENGTH_SHORT).show(); 
+				    	  Toast.makeText(Receipt_Activity.this, R.string.str_email, Toast.LENGTH_SHORT).show(); 
 				    	  return true;
 				      } else if(checkEmail() == EMAIL_INCORRECT) {
-				    	  Toast.makeText(Receipt_Activity.this, "Email incorrect,enter again.", Toast.LENGTH_SHORT).show(); 
+				    	  Toast.makeText(Receipt_Activity.this, R.string.str_inemail, Toast.LENGTH_SHORT).show(); 
 				    	  return true;
 				      } else if(checkEmail() == 0){
 				    	  String[] toArr1 = {edtEmail.getText().toString()};
 				    	  m.setTo(toArr1);
 				    	  try{
 				    		  if(m.send()){
-				    			  Toast.makeText(Receipt_Activity.this, "Email was sent successfully.", Toast.LENGTH_SHORT).show(); 
+				    			  Toast.makeText(Receipt_Activity.this, R.string.str_sendOk, Toast.LENGTH_SHORT).show(); 
 				    	          startActivity(intent);
 				    	          return true;
 				    		  } else {				    			  
-				    	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_SHORT).show(); 				    			  
+				    	          Toast.makeText(Receipt_Activity.this, R.string.str_sendFail, Toast.LENGTH_SHORT).show(); 				    			  
 				    	          return true;
 				  	        }
 				    	  } catch(Exception e) { 
@@ -116,10 +116,10 @@ public class Receipt_Activity extends Activity{
 	public void sendMail(View view) {	
 		 
 	      if(checkEmail() == EMAIL_NULL) {
-	    	  Toast.makeText(Receipt_Activity.this, "Enter email,Please!", Toast.LENGTH_SHORT).show(); 
+	    	  Toast.makeText(Receipt_Activity.this, R.string.str_email, Toast.LENGTH_SHORT).show(); 
 	    	  return;
 	      } else if(checkEmail() == EMAIL_INCORRECT) {
-	    	  Toast.makeText(Receipt_Activity.this, "Email incorrect,enter again.", Toast.LENGTH_SHORT).show(); 
+	    	  Toast.makeText(Receipt_Activity.this, R.string.str_inemail, Toast.LENGTH_SHORT).show(); 
 	    	  return;
 	      }
 	      
@@ -131,10 +131,10 @@ public class Receipt_Activity extends Activity{
 //	        m.addAttachment("/sdcard/filelocation"); 
 	 
 	        if(m.send()) { 
-	          Toast.makeText(Receipt_Activity.this, "Email was sent successfully.", Toast.LENGTH_SHORT).show(); 
+	          Toast.makeText(Receipt_Activity.this, R.string.str_sendOk, Toast.LENGTH_SHORT).show(); 
 	          startActivity(intent);
 	        } else { 
-	          Toast.makeText(Receipt_Activity.this, "Email was not sent.", Toast.LENGTH_SHORT).show();
+	          Toast.makeText(Receipt_Activity.this, R.string.str_sendFail, Toast.LENGTH_SHORT).show();
 
 	        } 
 	      } catch(Exception e) { 
@@ -146,7 +146,7 @@ public class Receipt_Activity extends Activity{
 	    }
 	
 	public void btnSkip(View view){
-		Toast.makeText(getApplicationContext(), "Skip send email", Toast.LENGTH_SHORT ).show();
+		Toast.makeText(getApplicationContext(), R.string.str_skip, Toast.LENGTH_SHORT ).show();
 		Intent intent = new Intent(getApplicationContext(),Done_Activity.class);
 		startActivity(intent);
 		finish();

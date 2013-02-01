@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Identify_Activity extends Activity{
@@ -18,6 +19,7 @@ public class Identify_Activity extends Activity{
 	private static final int CAMERA_REQUEST = 9999;
 
 	private ImageView	imgIdentify;
+	private TextView	myImageViewText;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -29,7 +31,7 @@ public class Identify_Activity extends Activity{
 	private void initialize() {
 		// TODO Auto-generated method stub
 		imgIdentify		= (ImageView)findViewById(R.id.imgIdentify);
-
+		myImageViewText	= (TextView)findViewById(R.id.myImageViewText);
 
 	}
 	
@@ -69,12 +71,13 @@ public class Identify_Activity extends Activity{
 			if(resultCode == RESULT_OK){
 				if(data != null){
 					Bitmap photo = (Bitmap) data.getExtras().get("data");
+					myImageViewText.setVisibility(View.GONE);
 		            imgIdentify.setImageBitmap(photo);
 				} else
-					Toast.makeText(getApplicationContext(), "No image.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), R.string.str_image, Toast.LENGTH_SHORT).show();
 			}
             if(resultCode == RESULT_CANCELED){
-            	Toast.makeText(getApplicationContext(), "Picture could not be taken.", Toast.LENGTH_SHORT).show();
+            	Toast.makeText(getApplicationContext(), R.string.str_noImage, Toast.LENGTH_SHORT).show();
             }
 		} 
 	}

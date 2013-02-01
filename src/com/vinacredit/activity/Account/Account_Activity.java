@@ -125,9 +125,9 @@ public class Account_Activity extends Activity{
     	
 //    	alertDialogBuilder.setTitle("Confirm Clear Bill");
     	
-    	alertDialogBuilder.setMessage("Confirm Sign out!")
+    	alertDialogBuilder.setMessage(R.string.str_confirm)
     						.setCancelable(false)
-    						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    						.setPositiveButton(R.string.str_ok, new DialogInterface.OnClickListener() {
 								
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
@@ -137,7 +137,7 @@ public class Account_Activity extends Activity{
 									finish();
 								}
 							})
-							.setNegativeButton("No", new DialogInterface.OnClickListener() {
+							.setNegativeButton(R.string.str_cancel, new DialogInterface.OnClickListener() {
 								
 								@Override
 								public void onClick(DialogInterface dialog, int which) {

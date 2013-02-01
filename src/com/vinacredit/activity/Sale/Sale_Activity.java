@@ -273,9 +273,9 @@ public class Sale_Activity extends Activity{
     	
 //    	alertDialogBuilder.setTitle("Confirm Clear Bill");
     	
-    	alertDialogBuilder.setMessage("Confirm Clear Bill")
+    	alertDialogBuilder.setMessage(R.string.str_clear)
     						.setCancelable(false)
-    						.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    						.setPositiveButton(R.string.str_ok, new DialogInterface.OnClickListener() {
 								
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
@@ -283,7 +283,7 @@ public class Sale_Activity extends Activity{
 									ConfirmClear();
 								}
 							})
-							.setNegativeButton("No", new DialogInterface.OnClickListener() {
+							.setNegativeButton(R.string.str_cancel, new DialogInterface.OnClickListener() {
 								
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
@@ -336,7 +336,7 @@ public class Sale_Activity extends Activity{
     	dataItem.setPriceItem(ListdataItem.get(location_listview).getPriceItem());
     	    	
     	if(_str_tmp.equals("") || !Library.isCheckPrice(_str_tmp)){
-    		Toast.makeText(getApplicationContext(), "Enter price item > 100,Please!", Toast.LENGTH_SHORT).show();
+    		Toast.makeText(getApplicationContext(), R.string.str_price, Toast.LENGTH_SHORT).show();
     		return;
     	}
 
@@ -539,12 +539,12 @@ public class Sale_Activity extends Activity{
 		            }
 		            	
 				} else {
-					Toast.makeText(getApplicationContext(), "No image.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), R.string.str_image, Toast.LENGTH_SHORT).show();
 				}
 			}
 			
 			if(resultCode == Activity.RESULT_CANCELED){
-				Toast.makeText(getApplicationContext(), "Picture could not be taken.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), R.string.str_noImage, Toast.LENGTH_SHORT).show();
 			}
 		}
 	}	

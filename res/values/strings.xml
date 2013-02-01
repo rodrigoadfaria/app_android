@@ -121,4 +121,23 @@
     <string name="timeoutack">Time Out</string>
     <string name="second">\'s</string>
     <string name="de_len">Length Error = </string>
+    <string name="str_confirm">Are you sign out?</string>
+    <string name="str_clear">Are you clear?</string>
+    <string name="str_ok">Yes</string>
+    <string name="str_cancel">No</string>
+    <string name="str_infor">Enter full infor,Please</string>
+    <string name="str_image">No image</string>
+    <string name="str_noImage">Picture could not be taken.</string>
+    <string name="str_price">Enter price item > 100,Please!</string>
+    <string name="str_email">Enter email,Please!</string>
+    <string name="str_pass">Enter pass,Please!</string>
+    <string name="str_inemail">Email incorrect,enter again.</string>
+    <string name="str_sendOk">Send successful.</string>
+    <string name="str_sendFail">Send fail.</string>
+    <string name="str_skip">Skip</string>
+    <string name="str_login">Login...</string>
+    <string name="str_loginFail">Login unsuccessful</string>
+    <string name="str_send">Sending...</string>
+    <string name="str_check">Checking...</string>
+    <string name="str_pic">Take your picture</string>
 </resources>

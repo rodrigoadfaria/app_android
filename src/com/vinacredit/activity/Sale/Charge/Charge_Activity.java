@@ -1,13 +1,9 @@
 package com.vinacredit.activity.Sale.Charge;
 
 import com.vinacredit.Resource.Library;
-import com.vinacredit.Resource.MACROS;
-import com.vinacredit.Resource.MySQLiteHelper;
 import com.vinacredit.activity.R;
 import com.vinacredit.activity.Sale.Receipt.Receipt_Activity;
 
-import con.vinacredit.DTO.Bill;
-import con.vinacredit.DTO.SumBill;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,19 +12,13 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.SQLException;
 
 public class Charge_Activity extends Activity{
 
     private TextView 	txtChange, txtSumPrice;
     private EditText	txtPay;
-    
-    private MySQLiteHelper mDb;
-    private SumBill			sumBill;
-    private Bill			bill;
     
     private String		_str_tmp 	= "";
     private String		_str_Change = "";
@@ -43,11 +33,6 @@ public class Charge_Activity extends Activity{
     	txtPay			= (EditText)findViewById(R.id.txtPay);
     	txtChange		= (TextView)findViewById(R.id.txtChange);
     	txtSumPrice		= (TextView)findViewById(R.id.txtSumPrice);
-    	
-    	
-    	mDb = new MySQLiteHelper(this);
-    	sumBill = new SumBill();
-    	bill = new Bill();
     	
     	Bundle bundle = getIntent().getExtras();
     	txtSumPrice.setText(bundle.getString("PRICEITEM"));
@@ -74,22 +59,6 @@ public class Charge_Activity extends Activity{
     
     public void btnTenderCash(View view){
     	Intent i = new Intent(getApplicationContext(),Receipt_Activity.class);
-    	if (MACROS.TEST_DATABASE) {
-			Bundle myBundle = getIntent().getExtras();
-			sumBill.setEmail(myBundle.getString("EMAIL"));
-			sumBill.setDateSale(Library.getDate());
-			sumBill.setSumBill(_str_Sum);
-			
-			bill.setEmail(myBundle.getString("EMAIL"));
-			bill.setDateSale(Library.getDate());
-			bill.setSumItem(_str_Sum);
-			bill.setTimeSale(Library.getTime());
-			try {
-				mDb.insertBill(sumBill, bill);
-			} catch (SQLException e) {
-				Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-			}
-		}
 		startActivity(i);		
 		finish();
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);

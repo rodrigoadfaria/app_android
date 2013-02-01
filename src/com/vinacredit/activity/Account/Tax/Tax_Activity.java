@@ -24,7 +24,6 @@ public class Tax_Activity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-	    Log.i("debug","Tax_Activity");
 	    setContentView(R.layout.activity_tax);
 	    super.onCreate(savedInstanceState);
 	    initialize();

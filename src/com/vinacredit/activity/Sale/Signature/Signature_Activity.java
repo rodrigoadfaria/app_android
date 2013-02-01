@@ -3,6 +3,7 @@ package com.vinacredit.activity.Sale.Signature;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Calendar;
+import java.util.Locale;
 
 import com.vinacredit.Resource.Library;
 import com.vinacredit.activity.R;
@@ -12,6 +13,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -21,6 +24,7 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -78,6 +82,9 @@ public class Signature_Activity extends Activity{
         mSignature.setBackgroundColor(Color.WHITE);
         mContent.addView(mSignature, LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
         mView = mContent;
+        
+        SharedPreferences sL = this.getSharedPreferences("LANGUAGE", MODE_PRIVATE);
+    	Toast.makeText(getApplicationContext(), sL.getString("LANGUAGE", ""), Toast.LENGTH_SHORT).show();
 	}
 	//action btnIdentify
 	public void gotoIdentify(View view){
@@ -109,8 +116,21 @@ public class Signature_Activity extends Activity{
     protected void onResume() {
     	// TODO Auto-generated method stub
     	super.onResume();
+    	
     }
-	
+
+
+	public void setLocale(String lang) {
+
+		Locale myLocale = new Locale(lang);
+		Resources res = getResources();
+		DisplayMetrics dm = res.getDisplayMetrics();
+		Configuration conf = res.getConfiguration();
+		conf.locale = myLocale;
+		res.updateConfiguration(conf, dm);
+		Intent refresh = new Intent(this, Signature_Activity.class);
+		startActivity(refresh);
+	}
 	
     private String getTodaysDate() { 
     	 
