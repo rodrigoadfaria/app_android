@@ -42,7 +42,8 @@ import con.vinacredit.DTO.Account;
 
 public class Sale_Activity extends Activity{
 	
-	private static final int CAMERA_REQUEST = 1888;
+	private static final int 	CAMERA_REQUEST = 1888;
+	private static final String CHECKCARD		= "CHECKCARD";
 	
 	private Animation fadeIn = null;
 	private Animation fadeOut = null;
@@ -76,7 +77,7 @@ public class Sale_Activity extends Activity{
     private int				location;
     private int				location_listview;
     private Bundle extras;
-    
+    private SharedPreferences	shareCard;
 
 	private Handler handler = new Handler();
 	private String decryption_data = null;
@@ -85,15 +86,7 @@ public class Sale_Activity extends Activity{
 
 	private Runnable display_decryptiondata = new Runnable() {
 		public void run() {
-//			String txt = version + "\n\nEncryption data\n";
-//			txt += encryption_data + "\n\n\nDecryption data\n";
-//			txt += decryption_data + "\n";
-//			result_text.setText(txt);
-//			Toast.makeText(Sale_Activity.this, txt,Toast.LENGTH_LONG).show();			
-			//dialog.dismiss();
-	    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
-			startActivity(i);
-			overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
+		
 		}
 	};
 
@@ -169,7 +162,7 @@ public class Sale_Activity extends Activity{
 					}
 					decryption_data = sbf.toString().trim();
 					if(decryption_data.length() >= 16)
-						handler.post(display_decryptiondata);
+						gotoIdentify();
 					// char message
 //					sendMessage("Final(10)=>% " + sbf.toString().trim());
 				}
@@ -236,11 +229,26 @@ public class Sale_Activity extends Activity{
 		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }
     
+    public void gotoIdentify(){
+		shareCard = this.getSharedPreferences(CHECKCARD,MODE_PRIVATE );
+	    SharedPreferences.Editor editor = shareCard.edit();
+	    editor.putString(CHECKCARD,"CARD");
+	    editor.commit();
+    	Intent i = new Intent(getApplicationContext(),Identify_Activity.class);
+		startActivity(i);
+		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
+    }
+    
     /**
      * button charge
      * @param view
      */
     public void gotoCharge(View view){
+    	
+    	shareCard = this.getSharedPreferences(CHECKCARD,MODE_PRIVATE );
+	    SharedPreferences.Editor editor = shareCard.edit();
+	    editor.putString(CHECKCARD,"CASH");
+	    editor.commit();
     	
     	Intent i = new Intent(getApplicationContext(),Charge_Activity.class);
     	Bundle myBundle = new Bundle();

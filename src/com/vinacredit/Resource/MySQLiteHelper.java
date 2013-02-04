@@ -41,6 +41,7 @@ public class MySQLiteHelper
     public static final String KEY_SUMITEM 			= "sumItem";
     public static final String KEY_EMAIL_BILL 		= "email";
     public static final String KEY_DATESALE_BILL	= "dateSale";
+    public static final String KEY_CHECKCARD_BILL	= "checkCard";
     
     /*----- Set key name in table database SUMBILL -----*/
     public static final String KEY_DATESALE_SUMBILL	= "dateSale";
@@ -63,7 +64,8 @@ public class MySQLiteHelper
     	+ "timeSale text,"
     	+ "sumItem text,"
     	+ "email text,"
-    	+ "dateSale text);";
+    	+ "dateSale text,"
+    	+ "checkCard text);";
     
     private static final String DATABASE_CREATE_SUMBILL = 
     	"create table SumBill ( "
@@ -217,6 +219,7 @@ public class MySQLiteHelper
     	initialValues.put(KEY_SUMITEM, bill.getSumItem());
     	initialValues.put(KEY_EMAIL_BILL,bill.getEmail());
     	initialValues.put(KEY_DATESALE_BILL,bill.getDateSale());
+    	initialValues.put(KEY_CHECKCARD_BILL,bill.getCheckCard());
     	
     	db.insert(DATABASE_TABLE_BILL, null, initialValues);
     	close();
@@ -283,6 +286,7 @@ public class MySQLiteHelper
 			bill.setSumItem(mcursor.getString(1));
 			bill.setEmail(mcursor.getString(2));
 			bill.setDateSale(mcursor.getString(3));
+			bill.setCheckCard(mcursor.getString(4));
 			
 			bList.add(bill);
 		}    	

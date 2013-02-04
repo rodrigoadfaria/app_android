@@ -50,7 +50,6 @@ public class Welcome_Activity extends Activity {
 	 * @param view
 	 */
 	public void signin(View view){
-		Bundle bundle = getIntent().getExtras();
 		SharedPreferences share = this.getSharedPreferences("EMAIL",MODE_PRIVATE );
 	    SharedPreferences.Editor editor = share.edit();
 	    editor.commit();

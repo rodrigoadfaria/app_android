@@ -115,10 +115,10 @@ public class InformationAccount_Activity extends Activity {
 	public boolean isCheck(){
 		if(edtFirstname.getText().toString() != null && edtLastname.getText().toString() != null &&
 				edtCompany.getText().toString() != null && edtAddress.getText().toString() != null &&
-				edtNewpass.getText().toString().length() >= 8 && 
+				edtNewpass.getText().toString().length() >= 3 && 
 				edtConfirmPass.getText().toString().equals(edtNewpass.getText().toString()) &&
 				edtOldPass.getText().toString().equals(oldPass) &
-				imgUsername != null)
+				imgUsername.getDrawable() != null)
 			return true;
 		return false;
 	}

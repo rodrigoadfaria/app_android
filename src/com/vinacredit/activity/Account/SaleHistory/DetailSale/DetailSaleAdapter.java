@@ -53,7 +53,10 @@ public class DetailSaleAdapter extends BaseAdapter {
 		
 				// set Image Item
 				ImageView imgItem = (ImageView)convertView.findViewById(R.id.imgCard);
-				imgItem.setBackgroundResource(R.drawable.charge_money);
+				if(entry.getCheckCard().equals("CASH"))
+					imgItem.setBackgroundResource(R.drawable.charge_money);
+				else
+					imgItem.setBackgroundResource(R.drawable.visa);
 				
 				// set Bill Item
 				TextView txtItem = (TextView)convertView.findViewById(R.id.txtBill);

@@ -81,7 +81,9 @@
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name=".Sale.Signature.Signature_Activity" >
+            android:name=".Sale.Signature.Signature_Activity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation">
         </activity>
         <activity 
             android:name=".Sale.Sending.Sending_Activity" 

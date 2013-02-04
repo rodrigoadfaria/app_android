@@ -28,7 +28,7 @@ public class Done_Activity extends Activity{
 	private SumBill			sumBill;
     private Bill			bill;
     private con.vinacredit.DTO.Account account;
-	private SharedPreferences s;
+	private SharedPreferences s,sCard;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -43,6 +43,7 @@ public class Done_Activity extends Activity{
 		
 		
 		s = this.getSharedPreferences("EMAIL", MODE_PRIVATE);
+		sCard = this.getSharedPreferences("CHECKCARD", MODE_PRIVATE);
 		txtSumPrice.setText(s.getString("SUMPRICE", "0")+ " VND.");
 		email = s.getString("EMAIL", "NOTHING");
 		
@@ -67,6 +68,7 @@ public class Done_Activity extends Activity{
 			bill.setDateSale(Library.getDate());
 			bill.setSumItem(s.getString("SUMPRICE", "0").replaceAll(",",""));
 			bill.setTimeSale(Library.getTime());
+			bill.setCheckCard(sCard.getString("CHECKCARD", null));
 			try {
 				mDb.insertBill(sumBill, bill);
 			} catch (SQLException e) {

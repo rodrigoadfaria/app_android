@@ -55,7 +55,7 @@ public class DetailSale_Activity extends Activity{
 			
 			listBill = mDb.getBill(extras.getString("EMAIL"), extras.getString("DATE"));
 			
-
+			
 			txtPriceTotal.setText(Library.addDotNumber(extras.getString("SUMBILL")));
 			detailAdapter	= new DetailSaleAdapter(this, listBill);
 			listview1.setAdapter(detailAdapter);

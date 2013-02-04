@@ -44,6 +44,8 @@ public class Signature_Activity extends Activity{
     public int count = 1;
     public String current = null;
     private Bitmap mBitmap;
+    
+   
     View mView;
     File mypath;
  
@@ -83,8 +85,6 @@ public class Signature_Activity extends Activity{
         mContent.addView(mSignature, LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
         mView = mContent;
         
-        SharedPreferences sL = this.getSharedPreferences("LANGUAGE", MODE_PRIVATE);
-    	Toast.makeText(getApplicationContext(), sL.getString("LANGUAGE", ""), Toast.LENGTH_SHORT).show();
 	}
 	//action btnIdentify
 	public void gotoIdentify(View view){
@@ -119,6 +119,11 @@ public class Signature_Activity extends Activity{
     	
     }
 
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		super.onConfigurationChanged(newConfig);
+	}
 
 	public void setLocale(String lang) {
 
@@ -132,7 +137,21 @@ public class Signature_Activity extends Activity{
 		startActivity(refresh);
 	}
 	
-    private String getTodaysDate() { 
+	
+	
+    @Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+	}
+
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+	}
+
+	private String getTodaysDate() { 
     	 
         final Calendar c = Calendar.getInstance();
         int todaysDate =     (c.get(Calendar.YEAR) * 10000) + 
